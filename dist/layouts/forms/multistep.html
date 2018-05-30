@@ -16,7 +16,7 @@
         <h1 class="fz-page-title">
           @ Bantu Belikan
         </h1>
-        <ul class="fz-steps-select" data-steps-id="demoBlock">
+        <ul class="fz-steps-select" data-steps-id="demoForm">
           <li class="fz-step-title" data-step-nr="1">
             ( 1 ) Detail Barang
             Berat, ukuran dan karakteristik barang.
@@ -36,17 +36,28 @@
       </div>
       
       <div class="fz-content-wrapper">
-        <ul class="fz-content-steps" data-steps-id="demoBlock">
+        <ul class="fz-content-steps" data-steps-id="demoForm">
+          <!-- Step indicator -->
+          <h2 class="fz-step-indicator">
+            Bagian&nbsp;
+            <span class="fz-step-indicator__current">
+              <!-- Current step is pushed in here -->
+            </span>&nbsp;
+            dari&nbsp;
+            <span class="fz-step-indicator__total">
+              <!-- Total number of steps is pushed in here -->
+            </span>
+          </h2>
           <li class="fz-content-step" data-step-nr="1">
-            BAGIAN 1 DARI 3
+            Berat, ukuran dan karakteristik barang.
             <!-- Content -->
           </li>
           <li class="fz-content-step" data-step-nr="2">
-            BAGIAN 2 DARI 3
+            Ringkasan Penawaran dan Detail
             <!-- Content -->
           </li>
           <li class="fz-content-step" data-step-nr="3">
-            BAGIAN 3 DARI 3
+            Detail Pengiriman
             <!-- Content -->  
           </li>
         </ul>
@@ -55,5 +66,14 @@
     </div>
     <script src="../../frizzy.min.js"></script>
     <!-- <script src="../../demo/demo.js"></script> -->
+    <script type="text/javascript">
+      (() => {
+        // console.log("Clicking on first item by default...");
+        const firstStepTitleElements = document.getElementsByClassName("fz-step-title");
+        if (typeof firstStepTitleElements !== 'undefined') {
+          firstStepTitleElements[0].click();
+        }
+      })();
+    </script>
   </body>
 </html>

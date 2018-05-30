@@ -2,19 +2,21 @@ import './index.css';
 
 export default function multiStepFormLayout() {
 
+  const stepsContentEls = document.getElementsByClassName('fz-content-steps');
   const stepContentEls = document.getElementsByClassName('fz-content-step');
   const stepTitleEls = document.getElementsByClassName('fz-step-title');
 
   const wrapper = document.getElementsByClassName('fz-steps-wrapper')[0];
   
   function toggleStepContent (evt) {
-    console.log(" " + evt.target.parentNode.dataset.stepsId + "-" + evt.target.dataset.stepNr);
+    // console.log(" " + evt.target.parentNode.dataset.stepsId + "-" + evt.target.dataset.stepNr);
     const selectedBlock = evt.target.parentNode.dataset.stepsId;
     const selectedStep = evt.target.dataset.stepNr;
     if (typeof selectedBlock !== 'undefined' && typeof selectedStep !== 'undefined') {
       // hide other blocks
       styliseSelectedStepTitle(selectedBlock, selectedStep);
       toggleSelectedStepContent(selectedBlock, selectedStep);
+      setStepIndicatorValues(selectedBlock, selectedStep);
     }
   }
 
@@ -25,10 +27,30 @@ export default function multiStepFormLayout() {
         break;
       }
       if (stepTitleEls[i].dataset.stepNr === selectedStep) {
-          // show the selected step
+        // show the selected step
         stepTitleEls[i].style.backgroundColor = "#ffff";
       } else {
         stepTitleEls[i].style.backgroundColor = "#fafafa";
+      }
+    }
+  }
+  
+  function setStepIndicatorValues (currentBlock, selectedStep) {
+    if (typeof currentBlock === 'undefined' || typeof selectedStep === 'undefined') {
+      return;
+    }
+    let actualSteps;
+    for (let i = 0; i < stepContentEls.length; i++) {
+      if (typeof stepsContentEls[i].dataset.stepsId === 'undefined') {
+        break;
+      }
+      if (stepsContentEls[i].dataset.stepsId === currentBlock) {
+        actualSteps = stepsContentEls[i].getElementsByClassName('fz-content-step');
+        if (actualSteps.length > 0) {
+          stepsContentEls[i].getElementsByClassName('fz-step-indicator__current')[0].innerHTML = selectedStep;
+          stepsContentEls[i].getElementsByClassName('fz-step-indicator__total')[0].innerHTML = actualSteps.length;
+          break;
+        }
       }
     }
   }
@@ -57,6 +79,7 @@ export default function multiStepFormLayout() {
       stepTitlesEls[i].addEventListener('click', toggleStepContent);
       styliseSelectedStepTitle(stepsBlock, selectedStep);
       toggleSelectedStepContent(stepsBlock, selectedStep);
+      setStepIndicatorValues(stepsBlock, selectedStep);
     }
   }
   

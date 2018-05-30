@@ -1,0 +1,80 @@
+label.fz-radio-wrapper {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.fz-radio-wrapper {
+	margin: 10px 0 20px 0;
+}
+
+/* Hide the browser's default radio button */
+label.fz-radio-wrapper input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Shared button styles */
+.fz-radio-wrapper .fz-radio-inner {
+	border: solid 1px #e5e5e5;
+	border-radius: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+	padding: 10px 20px;
+	
+	.fz-radio-graphic svg {
+		fill: #5c5c5c;
+		height: 80px;
+		width: auto;
+	}
+	
+	.fz-radio-inner__title {
+		font-size: 14px;
+		font-weight: normal;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		text-align: center;
+		color: rgba(0, 0, 0, 0.8);
+	}
+	
+	.fz-radio-inner__subtitle {
+		font-size: 11px;
+		font-weight: normal;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1.65;
+		letter-spacing: normal;
+		text-align: center;
+		color: rgba(0, 0, 0, 0.6);
+	}
+	
+}
+
+/* On mouse-over the actual input, custom styles should be declared in here */
+label.fz-radio-wrapper:hover input ~ .fz-radio-inner {
+  background-color: rgba(101, 190, 185, 0.1);
+}
+
+/* On actual input checked, custom styles should be declared in here */
+label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
+	border-color: #65beb9;
+  background-color: rgba(101, 190, 185, 0.1);
+	color: #65beb9;
+	
+	.fz-radio-graphic svg {
+		fill: #65beb9;
+	}
+	
+}

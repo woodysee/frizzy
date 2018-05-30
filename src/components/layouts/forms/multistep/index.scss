@@ -1,0 +1,29 @@
+.fz-steps-wrapper {
+  background-color: #fafafa;
+  float: left;
+  width: 33%;
+}
+.fz-content-wrapper {
+  background-color: #ffff;
+  float: right;
+  width: 67%;
+}
+
+ul.fz-content-steps, ul.fz-steps-select {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+li.fz-step-title {
+  cursor: pointer;
+  padding: 10px 0 30px 0;
+  
+  &:hover {
+    color: #65beb9;
+  }
+  
+}
+
+li.fz-step-title:first-child {
+  background-color: #ffffff;
+}

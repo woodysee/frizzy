@@ -1,8 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en" dir="ltr">
 
   <head>
+    <meta charset="utf-8" />
     <title>frizzy</title>
+    <link rel="stylesheet" href="demo/demo.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" />
   </head>
 
   <body>
@@ -10,8 +14,76 @@
     <h1 class="world add-a-logo-on-the-right" id="page-title">
       Frizzy
     </h1>
-    <h2 class="hello">Reusable UI component library for Airfrov web.</h2>
+    <h2 class="hello">
+      Reusable UI component library for Airfrov web.
+    </h2>
     <!-- Add the script to the bottom of the HTML page -->
+    <div class="demo-container">
+      <h3>Adding a logo on the right</h3>
+      <p class="add-a-logo-on-the-right">
+        Adding <code>add-a-logo-on-the-right</code> class name should generate a logo here:
+      </p>
+    </div>
+    <div class="demo-container" id="demo-container--input-radio-basic">
+      <h3>Basic Radio Input</h3>
+        
+      <div class="fz-radio-grp">
+        <label class="fz-radio-wrapper">
+          <input class="fz-radio" type="radio" checked name="multiRadioInputs" value="1">
+          <span class="fz-radio-inner">1 kilogram</span>
+        </label>
+        <label class="fz-radio-wrapper">
+          <input class="fz-radio" type="radio" name="multiRadioInputs" value="2" />
+          <span class="fz-radio-inner">2 kilograms</span>
+        </label>
+        <label class="fz-radio-wrapper">
+          <input class="fz-radio" type="radio" name="multiRadioInputs" value="3" />
+          <span class="fz-radio-inner">3 kilograms</span>
+        </label>
+        <label class="fz-radio-wrapper">
+          <input class="fz-radio" type="radio" name="multiRadioInputs" value="4" />
+          <span class="fz-radio-inner">4 kilograms</span>
+        </label>
+        <label class="fz-radio-wrapper">
+          <input class="fz-radio" type="radio" name="multiRadioInputs" value="5" />
+          <span class="fz-radio-inner">5 kilograms</span>
+        </label>
+      </div>
+      
+      <div id="console--input-radio-basic">
+        <!-- Selected radio value will be printed here -->
+      </div>
+      
+    </div>
+    
+    <div class="demo-container" id="demo-container--input-radio-binary">
+      <h3>Binary Radio Input</h3>
+      <div class="fz-input-radio-binary-group">
+        
+        <div class="fz-radio-grp">
+          <label class="fz-radio-wrapper">
+            <input class="fz-radio" type="radio" checked name="binaryRadioInputs" value="Yes" />
+            <span class="fz-radio-inner">Ya</span>
+          </label>
+          <label class="fz-radio-wrapper">
+            <input class="fz-radio" type="radio" name="binaryRadioInputs" value="No" />
+            <span class="fz-radio-inner">Tidak</span>
+          </label>
+        </div>
+        
+        <div id="console--input-radio-binary">
+          <!-- Selected radio value will be printed here -->
+        </div>
+        
+      </div>
+    </div>
+    
+    <div class="demo-container">
+      <h3>Multistep Form</h3>
+      <a href="layouts/forms/multistep.html">Go to Multistep Form</a>
+    </div>
+    
     <script src="frizzy.min.js"></script>
+    <script src="demo/demo.js"></script>
   </body>
 </html>

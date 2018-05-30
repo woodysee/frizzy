@@ -10,10 +10,29 @@ export default function multiStepFormLayout() {
   
   function toggleStepContent (evt) {
     // console.log(" " + evt.target.parentNode.dataset.stepsId + "-" + evt.target.dataset.stepNr);
-    const selectedBlock = evt.target.parentNode.dataset.stepsId;
-    const selectedStep = evt.target.dataset.stepNr;
-    if (typeof selectedBlock !== 'undefined' && typeof selectedStep !== 'undefined') {
+    let el = evt.target;
+    let parentEl = el.parentNode;
+    let selectedBlock = parentEl.dataset.stepsId;
+    while (typeof selectedBlock === 'undefined') {
+      if (parentEl.getElementsByClassName('fz-steps-select').length > 0) {
+        selectedBlock = parentEl.getElementsByClassName('fz-steps-select')[0].dataset.stepsId;
+        break;
+      }
+      parentEl = parentEl.parentNode;
+    }
+    
+    let selectedStep = el.dataset.stepNr;
+    while (typeof el.dataset === 'undefined' || typeof selectedStep === 'undefined') {
+      if (typeof el.dataset !== 'undefined' && typeof el.dataset.stepNr !== 'undefined') {
+        selectedStep = el.dataset.stepNr;
+        break;
+      }
+      el = el.parentNode;
+    }
+    
+    if (typeof selectedBlock !== 'undefined' || typeof selectedStep !== 'undefined') {
       // hide other blocks
+      // console.log("selectedStep", selectedStep, "for", selectedBlock);
       styliseSelectedStepTitle(selectedBlock, selectedStep);
       toggleSelectedStepContent(selectedBlock, selectedStep);
       setStepIndicatorValues(selectedBlock, selectedStep);
@@ -69,14 +88,14 @@ export default function multiStepFormLayout() {
     }
   }
   
-  const stepTitlesEls = document.getElementsByClassName("fz-steps-select");
+  const stepsSelectEls = document.getElementsByClassName("fz-steps-select");
   let stepsBlock, selectedStep;
   
-  if (typeof stepTitlesEls !== 'undefined') {
-    for (let i = 0; i < stepTitlesEls.length; i++) {
-      stepsBlock = stepTitlesEls[i].dataset.stepsId;
-      selectedStep = stepTitlesEls[i].dataset.stepNr;
-      stepTitlesEls[i].addEventListener('click', toggleStepContent);
+  if (typeof stepsSelectEls !== 'undefined') {
+    for (let i = 0; i < stepsSelectEls.length; i++) {
+      stepsBlock = stepsSelectEls[i].dataset.stepsId;
+      selectedStep = stepsSelectEls[i].dataset.stepNr;
+      stepsSelectEls[i].addEventListener('click', toggleStepContent, false);
       styliseSelectedStepTitle(stepsBlock, selectedStep);
       toggleSelectedStepContent(stepsBlock, selectedStep);
       setStepIndicatorValues(stepsBlock, selectedStep);

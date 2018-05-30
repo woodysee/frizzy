@@ -4,63 +4,93 @@
     <meta charset="utf-8" />
     <title>frizzy - multistep form</title>
     <link rel="stylesheet" href="../../demo/demo.css" />
+    <link rel="stylesheet" href="multistep.css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
   </head>
   <body>
     <a href="../../index.html">Back</a>
     <h1>Multistep Form</h1>
     <div class="demo-container">
       
-      <div class="fz-steps-wrapper">
-        <h1 class="fz-page-title">
-          @ Bantu Belikan
-        </h1>
-        <ul class="fz-steps-select" data-steps-id="demoForm">
-          <li class="fz-step-title" data-step-nr="1">
-            ( 1 ) Detail Barang
-            Berat, ukuran dan karakteristik barang.
-            <!-- Content -->
-          </li>
-          <li class="fz-step-title" data-step-nr="2">
-            ( 2 ) Ringkasan Penawaran dan Detail
-            Ringkasan penawaran dan detail trip.
-            <!-- Content -->
-          </li>
-          <li class="fz-step-title" data-step-nr="3">
-            ( 3 ) Detail Pengiriman
-            Complete delivery details and chosen service.
-            <!-- Content -->
-          </li>
-        </ul>
-      </div>
-      
-      <div class="fz-content-wrapper">
-        <ul class="fz-content-steps" data-steps-id="demoForm">
-          <!-- Step indicator -->
-          <h2 class="fz-step-indicator">
-            Bagian&nbsp;
-            <span class="fz-step-indicator__current">
-              <!-- Current step is pushed in here -->
-            </span>&nbsp;
-            dari&nbsp;
-            <span class="fz-step-indicator__total">
-              <!-- Total number of steps is pushed in here -->
-            </span>
-          </h2>
-          <li class="fz-content-step" data-step-nr="1">
-            Berat, ukuran dan karakteristik barang.
-            <!-- Content -->
-          </li>
-          <li class="fz-content-step" data-step-nr="2">
-            Ringkasan Penawaran dan Detail
-            <!-- Content -->
-          </li>
-          <li class="fz-content-step" data-step-nr="3">
-            Detail Pengiriman
-            <!-- Content -->  
-          </li>
-        </ul>
+      <div class="fz-multistep-form-wrapper">
+        
+        <div class="fz-steps-wrapper">
+          <h1 class="fz-page-title">
+            <i class="fas fa-gift"></i> Bantu Belikan
+          </h1>
+          <ul class="fz-steps-select" data-steps-id="demoForm">
+            <li class="fz-step-title" data-step-nr="1">
+              <div class="fz-step-nr-disc">
+                <div class="fz-step-nr">1</div>
+              </div>
+              <div class="fz-step-copy">
+                <h2 class="fz-step-title__name">
+                  Detail Barang
+                </h2>
+                <h3 class="fz-step-title__standfirst">
+                  Berat, ukuran dan karakteristik barang.
+                </h3>
+              </div>
+            </li>
+            <li class="fz-step-title" data-step-nr="2">
+              <div class="fz-step-nr-disc">
+                <div class="fz-step-nr">2</div>
+              </div>
+              <div class="fz-step-copy">
+                <h2 class="fz-step-title__name">
+                  Ringkasan Penawaran dan Detail
+                </h2>
+                <h3 class="fz-step-title__standfirst">
+                  Ringkasan penawaran dan detail trip.
+                </h3>
+              </div>
+            </li>
+            <li class="fz-step-title" data-step-nr="3">
+              <div class="fz-step-nr-disc">
+                <div class="fz-step-nr">3</div>
+              </div>
+              <div class="fz-step-copy">
+                <h2 class="fz-step-title__name">
+                  Detail Pengiriman
+                </h2>
+                <h3 class="fz-step-title__standfirst">
+                  Complete delivery details and chosen service.
+                </h3>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="fz-content-wrapper">
+          <ul class="fz-content-steps" data-steps-id="demoForm">
+            <!-- Step indicator -->
+            <h2 class="fz-step-indicator">
+              Bagian&nbsp;
+              <span class="fz-step-indicator__current">
+                <!-- Current step is pushed in here -->
+              </span>&nbsp;
+              dari&nbsp;
+              <span class="fz-step-indicator__total">
+                <!-- Total number of steps is pushed in here -->
+              </span>
+            </h2>
+            <li class="fz-content-step" data-step-nr="1">
+              Berat, ukuran dan karakteristik barang.
+              <!-- Content -->
+            </li>
+            <li class="fz-content-step" data-step-nr="2">
+              Ringkasan Penawaran dan Detail
+              <!-- Content -->
+            </li>
+            <li class="fz-content-step" data-step-nr="3">
+              Detail Pengiriman
+              <!-- Content -->  
+            </li>
+          </ul>
+        </div>
+        
       </div>
       
     </div>

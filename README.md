@@ -9,20 +9,18 @@ Reusable UI component library for Airfrov web.
 ## Adding a new component
 
 1. Create a new folder inside `./src/components`, e.g. `./src/components/someButton`.
-2. The entry file is `index.js`. Keep the component self-contained.
-3. Add the new component to be added into the compiled script.
+2. The entry file is `index.js`. Keep the component self-contained. Typically the minimum files are `someButton/index.js` &amp; `someButton/index.scss`. To compile all SCSS files into CSS files, run `npm run build-css`. `npm run watch-css` allows continuous compiling whenever SCSS files are modified. 
+3. Add the new component to be added into the compiled script as so:
 
 ```js
-
 // ./index.js
 
 import someButton from './components/someButton';
 
 ```
-4. Allow the scripts to be used afterwards.
+4. You can also allow the component to be run on page load where the script is launched.
 
 ```js
-
 // ./index.js
 
 import someButton from './components/someButton';
@@ -30,11 +28,22 @@ someButton();
 
 ```
 
-5. Compile the script once the changes are made.
+5. Compile the script once the changes are made. `npm run build-css` is also run before webpack compilation.
 
 ```shell
 
 npm run build
+
+```
+
+6. To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`. `/dist/demo` is not necessary and can be deleted when deploying.
+
+```html
+
+<body>
+  <!-- content here -->
+  <script src="path/to/dist/frizzy.min.js"></script>
+</body>
 
 ```
 

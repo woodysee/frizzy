@@ -31,7 +31,7 @@ someButton();
 npm run build
 ```
 
-6. To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`. `/dist/demo` is not necessary and can be deleted when deploying.
+- To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`. `/dist/demo` is not necessary and can be deleted when deploying.
 
 ```html
 <body>

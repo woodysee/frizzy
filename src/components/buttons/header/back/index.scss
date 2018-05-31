@@ -11,12 +11,14 @@ $white: #ffff;
   font-weight: 500;
   letter-spacing: 0.6px;
   padding: 3px 3px 3px 3px;
+  text-decoration: none;
   text-transform: uppercase;
   
   &:hover {
     border-color: $airfrovTeal;
     background-color: $airfrovTeal;
     color: $white;
+    text-decoration: none;
   }
   
   &:active {

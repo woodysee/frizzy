@@ -15,6 +15,13 @@ $stepNrDiscDiameter: 21px;
   background-color: #fafafa;
   float: left;
   width: $stepTitlesWidth;
+  
+  .fz-header-back-btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: $pageTitleLeftPadding;
+  }
+  
 }
 .fz-page-title {
   color: #333333;
@@ -55,7 +62,7 @@ li.fz-step-title {
   display: -webkit-flex;
   display: flex;
   font-size: 19px;
-  padding: 10px 0 30px $pageTitleLeftPadding;
+  padding: 10px 10px 30px $pageTitleLeftPadding;
   
   &:first-child {
     background-color: #ffffff;
@@ -118,7 +125,7 @@ li.fz-step-title {
     margin: 0 0 0 0;
   }
   
-  .fz-step-title__standfirst {
+  .fz-step-title__deck {
     color: rgba(0, 0, 0, 0.5);
     font-size: 11px;
     margin-top: 5px;

@@ -6,7 +6,7 @@ module.exports = {
     filename: 'frizzy.min.js',
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'none',
+  mode: 'production',
   module: {
     rules: [
       {

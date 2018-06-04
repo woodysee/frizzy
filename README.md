@@ -91,6 +91,34 @@ npm run build
 
 ```
 
+#### Labelled Checkbox
+
+```html
+
+<!-- With label -->
+<div class="fz-checkbox-wrapper">
+	<div class="fz-checkbox-label">
+		With label (left)
+	</div>
+	<input class="fz-checkbox" id="with-label-left" type="checkbox" />
+	<label class="fz-checkbox-tick" for="with-label-left">
+		<!-- Tick element -->
+	</label>
+</div>
+
+<!-- With label -->
+<div class="fz-checkbox-wrapper">
+	<input class="fz-checkbox" id="with-label-right" type="checkbox" />
+	<label class="fz-checkbox-tick" for="with-label-right">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-checkbox-label">
+		With label (right)
+	</div>
+</div>
+
+```
+
 ### Buttons
 
 #### Header: Back

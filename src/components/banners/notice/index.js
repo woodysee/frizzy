@@ -1,29 +1,25 @@
 import './index.css';
 
 export default function noticeBanner() {
-	const noticeBannerEls = document.getElementsByClassName("fz-banner--notice");
-	const noticeBannerIcon =
-	'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="29" viewBox="0 0 29 29">'+
-		'<defs>'+
-				'<path id="af-banner-notice-1" d="M14.5 29C6.492 29 0 22.508 0 14.5S6.492 0 14.5 0 29 6.492 29 14.5 22.508 29 14.5 29zm5.022-20.844H9.478c-.353 0-.66.132-.925.397a1.268 1.268 0 0 0-.397.925v10.044c0 .353.132.66.397.925.264.265.572.397.925.397h10.044c.353 0 .66-.132.925-.397.265-.264.397-.572.397-.925V9.478c0-.353-.132-.66-.397-.925a1.268 1.268 0 0 0-.925-.397zm-3.21 9.516v-1.36h-5.437v1.36h5.438zm1.813-2.719v-1.36h-7.25v1.36h7.25zm0-2.719v-1.359h-7.25v1.36h7.25z"/>'+
-		'</defs>'+
-		'<g fill="none" fill-rule="evenodd">'+
-				'<mask id="af-banner-notice-2" fill="#fff">'+
-						'<use xlink:href="#a"/>'+
-				'</mask>'+
-				'<use fill="#FFF" xlink:href="#a" />'+
-				'<g fill="#F8CE8A" mask="url(#b)">'+
-						'<path d="M0 0h29v29H0z"/>'+
+	const reminderSVG = (
+		'<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve">'+
+			'<g>'+
+				'<g>'+
+					'<path fill="#FFFFFF" d="M14.5,29C6.5,29,0,22.5,0,14.5S6.5,0,14.5,0S29,6.5,29,14.5S22.5,29,14.5,29z M19.5,8.2h-10c-0.4,0-0.7,0.1-0.9,0.4C8.3,8.8,8.2,9.1,8.2,9.5v10c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4h10c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-10c0-0.4-0.1-0.7-0.4-0.9C20.2,8.3,19.9,8.2,19.5,8.2z M16.3,17.7v-1.4h-5.4v1.4H16.3L16.3,17.7zM18.1,15v-1.4h-7.2V15H18.1z M18.1,12.2v-1.4h-7.2v1.4H18.1L18.1,12.2z"/>'+
 				'</g>'+
-		'</g>'+
-	'</svg>';
-	let iconWrappers;
+				'<path fill="#F8CE8A" d="M14.5,29C6.5,29,0,22.5,0,14.5S6.5,0,14.5,0S29,6.5,29,14.5S22.5,29,14.5,29z M19.5,8.2h-10c-0.4,0-0.7,0.1-0.9,0.4C8.3,8.8,8.2,9.1,8.2,9.5v10c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4h10c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-10c0-0.4-0.1-0.7-0.4-0.9C20.2,8.3,19.9,8.2,19.5,8.2z M16.3,17.7v-1.4h-5.4v1.4H16.3L16.3,17.7zM18.1,15v-1.4h-7.2V15H18.1z M18.1,12.2v-1.4h-7.2v1.4H18.1L18.1,12.2z"/>'+
+			'</g>'+
+		'</svg>'
+	);
+	const noticeBannerEls = document.getElementsByClassName("fz-banner--notice");
+	let iconWrappers, noticeBannerIconClone;
 	if (noticeBannerEls.length > 0) {
 		for (let i = 0; i < noticeBannerEls.length; i++) {
 			iconWrappers = noticeBannerEls[i].getElementsByClassName('fz-banner__icon');
 			if (iconWrappers.length > 0) {
 				for (let i = 0; i < iconWrappers.length; i++) {
-					iconWrappers[i].innerHTML = noticeBannerIcon;
+					iconWrappers[i].innerHTML = reminderSVG;
+					iconWrappers[i].style.width = "30px";
 				}
 			}
 		}

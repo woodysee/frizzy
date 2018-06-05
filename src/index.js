@@ -3,6 +3,7 @@
 import basicCheckboxInput from './components/inputs/checkbox/basic';
 import basicRadioInput from './components/inputs/radio/basic';
 import binaryRadioInput from './components/inputs/radio/binary';
+import multilineRadioInput from './components/inputs/radio/multiline';
 import multiStepFormLayout from './components/layouts/forms/multistep';
 import headerBackBtn from './components/buttons/header/back';
 
@@ -11,5 +12,6 @@ import headerBackBtn from './components/buttons/header/back';
 basicCheckboxInput();
 basicRadioInput();
 binaryRadioInput();
+multilineRadioInput();
 multiStepFormLayout();
 headerBackBtn();

@@ -91,6 +91,93 @@ npm run build
 
 ```
 
+#### Multiple Inline Radios (Big)
+
+```html
+
+<div class="fz-radio-grp">
+	<label class="fz-radio-wrapper">
+		<input class="fz-radio" type="radio" checked name="radio" value="kecil" />
+		<div class="fz-radio-inner">
+			<span class="fz-radio-graphic">
+				<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
+				<!-- Works with Font Awesome 5 -->
+				<i class="fas fa-mobile-alt"></i>
+			</span>
+			<p class="fz-radio-inner__title">
+				Small
+			</p>
+			<p class="fz-radio-inner__subtitle">
+				20 x 20 x 20 cm
+			</p>
+		</div>
+	</label>
+	<label class="fz-radio-wrapper">
+		<input class="fz-radio" type="radio" name="radio" value="sedang" />
+		<div class="fz-radio-inner">
+			<span class="fz-radio-graphic">
+				<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
+				<!-- Works with your custom inline SVG -->
+				<svg id="please-for-the-love-of-all-things-good-rename-this-to-something-unique" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 322.7 261.28">
+					<path d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/>
+				</svg>
+			</span>
+			<p class="fz-radio-inner__title">
+				Medium
+			</p>
+			<p class="fz-radio-inner__subtitle">
+				30 x 25 x 20 cm
+			</p>
+		</div>
+	</label>
+	<label class="fz-radio-wrapper">
+		<input class="fz-radio" type="radio" name="radio" value="besar" />
+		<div class="fz-radio-inner">
+			<span class="fz-radio-graphic">
+				<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
+				<!-- Works with Font Awesome 4 -->
+				<i class="fa fa-suitcase" aria-hidden="true"></i>
+			</span>
+			<p class="fz-radio-inner__title">
+				Large
+			</p>
+			<p class="fz-radio-inner__subtitle">
+				35 x 22 x 55 cm
+			</p>
+		</div>
+	</label>
+</div>
+
+```
+
+#### Labelled Checkbox
+
+```html
+
+<!-- With label -->
+<div class="fz-checkbox-wrapper">
+	<div class="fz-checkbox-label">
+		With label (left)
+	</div>
+	<input class="fz-checkbox" id="rename-this-to-suit-the-context-in-which-it-is-used" type="checkbox" />
+	<label class="fz-checkbox-tick" for="rename-this-to-suit-the-context-in-which-it-is-used">
+		<!-- Tick element -->
+	</label>
+</div>
+
+<!-- With label -->
+<div class="fz-checkbox-wrapper">
+	<input class="fz-checkbox" id="rename-this-too-to-suit-the-context-in-which-it-is-used" type="checkbox" />
+	<label class="fz-checkbox-tick" for="rename-this-too-to-suit-the-context-in-which-it-is-used">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-checkbox-label">
+		With label (right)
+	</div>
+</div>
+
+```
+
 ### Buttons
 
 #### Header: Back

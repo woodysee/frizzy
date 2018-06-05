@@ -1,0 +1,89 @@
+/* Tickbox element */
+$length: 25;
+$tickboxSize: $length + px;
+$borderWidth: ($length / 10) + px;
+
+.fz-checkbox {
+  display: none;
+}
+.fz-checkbox:checked + .fz-checkbox-tick {
+  background: #65beb9;
+  border-color: #65beb9;
+}
+.fz-checkbox:checked + .fz-checkbox-tick:after {
+  transform: scale(0.8);  
+}
+.fz-checkbox-wrapper {
+  align-items: center; /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left; /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center;
+  
+}
+.fz-checkbox-label {
+  display: -webkit-flex;
+  display: -webkit-box; /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-size: ($length / 2) + px;
+  margin-left: ($length / 5) + px;
+  margin-right: ($length / 5) + px;
+}
+.fz-checkbox-tick {
+  display: block;
+  box-sizing: border-box;
+  width: $tickboxSize;
+  height: $tickboxSize;
+  background: #FFF;
+  margin: ($length / 2)+px 0;
+  border: $borderWidth solid #65beb9;
+  border-radius: 10%;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+  margin-left: ($length / 5) + px;
+  margin-right: ($length / 5) + px;
+}
+.fz-checkbox-tick:before {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 300%;
+  width: 300%;
+  top: -100%;
+  left: -100%;
+  z-index: -1;
+  border-radius: 50%;
+  transition: .3s;
+}
+.fz-checkbox-tick:after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: url("teal-tick.svg") center center no-repeat;
+  background-size: contain;
+  transform: scale(0);
+  transition: .2s;
+}
+.fz-checkbox-tick:active:before {
+  background: rgba(143,142,143,0.2);
+}
+.fz-checkbox-wrapper {
+  &:nth-child(2) {
+    margin-left: 0px;
+  }
+  
+}

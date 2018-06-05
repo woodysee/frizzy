@@ -14,6 +14,7 @@ $stepNrDiscDiameter: 21px;
 .fz-steps-wrapper {
   background-color: #fafafa;
   float: left;
+  height: 100vh;
   width: $stepTitlesWidth;
   
   .fz-header-back-btn {
@@ -80,7 +81,7 @@ li.fz-step-title {
   &:hover > .fz-step-copy > .fz-step-title__name {
     color: $airfrovTeal;
   }
-   
+  
   .fz-step-nr-disc, .fz-step-nr {
     display: -webkit-box;
     display: -moz-box;
@@ -114,7 +115,7 @@ li.fz-step-title {
   
   .fz-step-copy {
     float: left;
-    min-width: $stepNrDiscDiameter * 2;
+    width: $viewportWidth / 4;
     margin: 0 0 0 10px;
   }
   

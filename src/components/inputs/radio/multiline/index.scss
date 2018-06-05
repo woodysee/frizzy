@@ -32,11 +32,24 @@ label.fz-radio-wrapper input {
   text-align: center;
 	padding: 10px 20px;
 	
-	.fz-radio-graphic svg {
-		fill: #5c5c5c;
-		height: 80px;
-		width: auto;
-	}
+	.fz-radio-graphic {
+		i {
+			/* For Font-Awesome */
+		  align-items: center; /* aligns vertically */
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			justify-content: center; /* aligns horizontally */
+			font-size: 50px;
+		}
+		svg {
+			fill: #5c5c5c;
+			height: 47px;
+			width: 47px;
+		}
+	} 
 	
 	.fz-radio-inner__title {
 		font-size: 14px;
@@ -73,8 +86,10 @@ label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
   background-color: rgba(101, 190, 185, 0.1);
 	color: #65beb9;
 	
-	.fz-radio-graphic svg {
-		fill: #65beb9;
+	.fz-radio-graphic {
+		svg {
+			fill: #65beb9;
+		}
 	}
 	
 }

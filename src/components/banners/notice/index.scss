@@ -1,0 +1,42 @@
+.fz-banner--notice,
+.fz-banner--warning {
+  border-radius: 2px;
+  align-items: center; /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 25px 0;
+  justify-content: left; /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center;
+  
+  .fz-banner__icon,
+  .fz-banner__copy {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+  
+  .fz-banner__copy {
+    color: #d5aa66;
+    font-size: 11px;
+    line-height: 1.4;
+    margin-right: 10px;
+  }
+  
+}
+
+.fz-banner--notice {
+  background-color: rgba(248, 206, 138, 0.1);
+}

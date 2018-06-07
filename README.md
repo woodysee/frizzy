@@ -191,6 +191,64 @@ npm run build
 
 ```
 
+#### Positive
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn--pos">
+		Berikutnya (Button) <i class="fa fa-caret-right"></i> 
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn--pos">
+		Berikutnya (Anchor)
+	</a>
+
+```
+
+#### Negative
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn--neg">
+		<i class="fa fa-caret-left"></i> Tidak (Button)
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn--neg">
+		Tidak (Anchor)
+	</a>
+
+```
+
+### Banners
+
+#### Alert: Notice
+
+```html
+
+<div class="fz-banner--notice">
+	<div class="fz-banner__icon">
+	</div>
+	<div class="fz-banner__copy">
+		Ongkir bervariasi tergantung jarak dari lokasi Traveller yang memesan Go-Send dan akan dibayarkan oleh requester saat driver Gojek memberikan barang request
+	</div>
+</div>
+
+```
+
+#### Alert: Warning
+
+```html
+
+<div class="fz-banner--warning">
+	<div class="fz-banner__icon">
+	</div>
+	<div class="fz-banner__copy">
+		Ini tidak dapat lagi dilakukan pada versi aplikasi ini. Silahkan update aplikasi melalui App Store atau Google Play.
+	</div>
+</div>
+
+```
+
 ### Layouts
 
 #### Multistep Form
@@ -256,6 +314,9 @@ Ensure that `data-steps-id` in `.fz-steps-select` value in the steps title list 
 				</div>
 			</li>
 		</ul>
+		<div class="fz-steps-footer">
+			Apakah produk ini boleh dibawa masuk ke Indonesia? Cek <a href="https://www.airfrov.com">FAQ</a> kami.
+		</div>
 	</div>
 	
 	<div class="fz-content-wrapper">

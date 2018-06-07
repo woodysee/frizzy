@@ -1,0 +1,40 @@
+$red: #e48581;
+$white: #ffffff;
+$redButtonBG: rgba(228,133,129,0.1);
+$minButtonWidth: 100px;
+$buttonPaddingTop: $minButtonWidth / 10;
+$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+
+button.fz-btn--neg, a.fz-btn--neg {
+  border-radius: 2px;
+  background-color: $white;
+  border: solid 1px $red;
+  color: $red;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: $minButtonWidth;
+  padding: $buttonPaddingTop;
+  text-align: center;
+  &:hover {
+    background-color: $redButtonBG;
+  }
+  
+  &:active {
+    background-color: $red;
+    color: $white;
+  }
+  
+}
+
+button.fz-btn--neg {
+  padding: $buttonPaddingTop;
+}
+
+a.fz-btn--neg {
+  padding: $anchorPaddingTop;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -8,6 +8,7 @@ import multiStepFormLayout from './components/layouts/forms/multistep';
 import headerBackBtn from './components/buttons/header/back';
 import noticeAlertBanner from './components/banners/alerts/notice';
 import warningAlertBanner from './components/banners/alerts/warning';
+import negativeButton from './components/buttons/negative';
 
 // Initialise each imported component on page load (optional, only if there is JS)
 // addALogoOnTheRightComponent();
@@ -19,3 +20,4 @@ multiStepFormLayout();
 headerBackBtn();
 noticeAlertBanner();
 warningAlertBanner();
+negativeButton();

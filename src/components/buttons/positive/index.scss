@@ -1,0 +1,42 @@
+$green: #5cb85c;
+$white: #ffffff;
+$lightGreen: #ddffdd;
+$minButtonWidth: 100px;
+$buttonPaddingTop: $minButtonWidth / 10;
+$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+
+button.fz-btn--pos, a.fz-btn--pos {
+  border-radius: 2px;
+  background-color: $green;
+  border: solid 1px $green;
+  color: $white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: $minButtonWidth;
+  padding: $buttonPaddingTop;
+  text-align: center;
+  
+  &:hover {
+    color: $lightGreen;
+  }
+  
+  &:active {
+    background-color: $lightGreen;
+    border-color: $green;
+    color: $green;
+  }
+  
+}
+
+button.fz-btn--pos {
+  padding: $buttonPaddingTop;
+}
+
+a.fz-btn--pos {
+  padding: $anchorPaddingTop;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

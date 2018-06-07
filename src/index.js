@@ -6,7 +6,8 @@ import binaryRadioInput from './components/inputs/radio/binary';
 import multilineRadioInput from './components/inputs/radio/multiline';
 import multiStepFormLayout from './components/layouts/forms/multistep';
 import headerBackBtn from './components/buttons/header/back';
-import noticeBanners from './components/banners/notice';
+import noticeAlertBanner from './components/banners/alerts/notice';
+import warningAlertBanner from './components/banners/alerts/warning';
 
 // Initialise each imported component on page load (optional, only if there is JS)
 // addALogoOnTheRightComponent();
@@ -16,4 +17,5 @@ binaryRadioInput();
 multilineRadioInput();
 multiStepFormLayout();
 headerBackBtn();
-noticeBanners();
+noticeAlertBanner();
+warningAlertBanner();

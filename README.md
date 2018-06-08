@@ -66,7 +66,7 @@ npm run build
 
 ```html
 
-<div class="fz-radio-grp">
+<div class="fz-radio-grp--big">
 	<label class="fz-radio-wrapper">
 		<input class="fz-radio" type="radio" checked name="multiRadioInputs" value="1">
 		<span class="fz-radio-inner">1 kilogram</span>

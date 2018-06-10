@@ -2,6 +2,8 @@
 $length: 25;
 $tickboxSize: $length + px;
 $borderWidth: ($length / 10) + px;
+$tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.7 261.28"><path style="fill: #FFF;" d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/></svg>';
+/* See https://css-tricks.com/using-svg/ */
 
 .fz-checkbox {
   display: none;
@@ -73,7 +75,8 @@ $borderWidth: ($length / 10) + px;
   display: block;
   height: 100%;
   width: 100%;
-  background: url("teal-tick.svg") center center no-repeat;
+  background: url("data:image/svg+xml;charset=UTF-8," + $tealTickEl) center center no-repeat;
+  /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
   background-size: contain;
   transform: scale(0);
   transition: .2s;

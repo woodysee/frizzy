@@ -11,7 +11,7 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 20px 0;
+  padding: 20px;
   justify-content: left; /* aligns horizontally */
   margin: 0 auto 10px auto;
   text-align: center;
@@ -26,13 +26,16 @@
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    margin-left: 10px;
+  }
+  
+  .fz-banner__icon {
+    width: 10%;
   }
   
   .fz-banner__copy {
     font-size: 11px;
     line-height: 1.4;
-    margin-right: 10px;
+    width: 90%;
   }
   
 }

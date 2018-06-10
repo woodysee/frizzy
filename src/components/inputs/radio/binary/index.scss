@@ -1,3 +1,6 @@
+$borderRadius: 2px;
+$airfrovTeal: #65beb9;
+
 .fz-radio-grp--binary {
 	
 	label.fz-radio-wrapper {
@@ -7,17 +10,19 @@
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
+		margin: 10px 0 10px 0;
 		user-select: none;
 		
 		/* Shared button styles */
 		.fz-radio-inner {
-			border: solid 1px #65beb9;
+			border: solid 1px $airfrovTeal;
 			color: rgba(0, 0, 0, 0.6);
 			font-size: 11px;
 			font-weight: normal;
 			text-align: center;
 			padding: 6px 19.41px;
 			line-height: 1.4;
+			white-space: nowrap;
 		}
 		
 		&:first-child, &:last-child {
@@ -32,14 +37,14 @@
 		&:first-child {
 			margin-right: -2px;
 			.fz-radio-inner {
-				border-radius: 5px 0 0 5px;
+				border-radius: $borderRadius 0 0 $borderRadius;
 			}
 		}
 		
 		&:last-child {
 			margin-left: -3px;
 			.fz-radio-inner {
-				border-radius: 0 5px 5px 0;
+				border-radius: 0 $borderRadius $borderRadius 0;
 			}
 		}
 		/* Hide the browser's default radio button */
@@ -58,8 +63,8 @@
 
 	/* On actual input checked, custom styles should be declared in here */
 	label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
-		border-color: #65beb9;
-		background-color: #65beb9;
+		border-color: $airfrovTeal;
+		background-color: $airfrovTeal;
 		color: #ffffff;
 	}
 

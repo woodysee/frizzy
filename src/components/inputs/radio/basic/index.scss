@@ -1,20 +1,27 @@
+$min-width-of-xs-devices: 480px;
+$min-width-of-sm-devices: 768px;
+$min-width-of-md-devices: 992px;
+$min-width-of-lg-devices: 1200px;
+
 .fz-radio-grp {
 	
 	label.fz-radio-wrapper {
-		display: inline-block;
-		position: relative;
 		cursor: pointer;
+		display: inline-block;
+		margin: 10px 0 10px 0;
+		position: relative;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-	}
-
-	/* Hide the browser's default radio button */
-	label.fz-radio-wrapper input {
-		position: absolute;
-		opacity: 0;
-		cursor: pointer;
+		
+		input {
+			/* Hide the browser's default radio button */
+			cursor: pointer;
+			position: absolute;
+			opacity: 0;
+		}
+		
 	}
 
 	/* Shared button styles */
@@ -23,26 +30,99 @@
 		border-radius: 2px;
 		color: rgba(0, 0, 0, 0.6);
 		font-family: 'Open Sans';
-	  font-size: 11px;
-	  font-weight: 600;
-	  font-style: normal;
-	  font-stretch: normal;
-	  line-height: normal;
-	  letter-spacing: normal;
-	  text-align: center;
+		font-size: 11px;
+		font-weight: 600;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: normal;
+		letter-spacing: normal;
 		padding: 10px 20px;
+		text-align: center;
+		white-space: nowrap;
 	}
 
 	/* On mouse-over the actual input, custom styles should be declared in here */
 	label.fz-radio-wrapper:hover input ~ .fz-radio-inner {
-	  background-color: rgba(101, 190, 185, 0.1);
+		background-color: rgba(101, 190, 185, 0.1);
 	}
 
 	/* On actual input checked, custom styles should be declared in here */
 	label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
 		border-color: #65beb9;
-	  background-color: rgba(101, 190, 185, 0.1);
+		background-color: rgba(101, 190, 185, 0.1);
 		color: #65beb9;
+	}
+	
+	@media screen and (max-width: $min-width-of-xs-devices - 1px) {
+		/* Mobile */
+		display: inline-block;
+		text-align: left;
+		
+		.fz-radio-wrapper,
+		.fz-radio-wrapper .fz-radio-inner {
+			width: 100%;
+		}
+		
+		.fz-radio-wrapper .fz-radio-inner {
+				display: inline-block;
+				padding: 10px 0;
+		}
+	}
+	
+	@media screen and (min-width: $min-width-of-xs-devices) and (max-width: $min-width-of-sm-devices - 1px) {
+		/* Mobile */
+		display: inline-block;
+		text-align: left;
+		
+		.fz-radio-wrapper,
+		.fz-radio-wrapper .fz-radio-inner {
+			width: 100%;
+		}
+		
+		.fz-radio-wrapper .fz-radio-inner {
+				display: inline-block;
+				padding: 10px 0;
+		}
+		
+	}
+	
+	@media screen and (min-width: $min-width-of-sm-devices) and (max-width: $min-width-of-md-devices - 1px) {
+		/* Tablets */
+		display: inline-block;
+		text-align: left;
+		
+		.fz-radio-wrapper .fz-radio-inner {
+				display: inline-block;
+				padding: 10px 15px;
+		}
+		
+	}
+	@media screen and (min-width: $min-width-of-md-devices) and (max-width: $min-width-of-lg-devices - 1px) {
+		/* Small Desktops / Laptops */
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		justify-content: space-between;
+		
+		.fz-radio-wrapper .fz-radio-inner {
+			padding: 10px 20px;
+		}
+		
+	}
+	@media screen and (min-width: $min-width-of-lg-devices) {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		justify-content: space-between;
+		
+		.fz-radio-wrapper .fz-radio-inner {
+			padding: 15px 2vw;
+		}
+		
 	}
 	
 }

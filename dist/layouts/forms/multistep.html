@@ -186,7 +186,7 @@
 								</div>
 								<div class="fz-radio-grp--big">
 									<label class="fz-radio-wrapper">
-										<input class="fz-radio" type="radio" checked name="radio" value="kecil" />
+										<input class="fz-radio" type="radio" checked name="size" value="kecil" />
 										<div class="fz-radio-inner">
 											<span class="fz-radio-graphic" id="req-help__item-details__size__icon--s">
 												<i class="fas fa-mobile-alt"></i>
@@ -200,7 +200,7 @@
 										</div>
 									</label>
 									<label class="fz-radio-wrapper">
-										<input class="fz-radio" type="radio" name="radio" value="sedang" />
+										<input class="fz-radio" type="radio" name="size" value="sedang" />
 										<div class="fz-radio-inner">
 											<span class="fz-radio-graphic" id="req-help__item-details__size__icon--m">
 											</span>
@@ -213,7 +213,7 @@
 										</div>
 									</label>
 									<label class="fz-radio-wrapper">
-										<input class="fz-radio" type="radio" name="radio" value="besar" />
+										<input class="fz-radio" type="radio" name="size" value="besar" />
 										<div class="fz-radio-inner">
 											<span class="fz-radio-graphic" id="req-help__item-details__size__icon--l">
 											</span>
@@ -232,7 +232,7 @@
 							<div class="fz-form-grp--footer-cta" style="float:right;">
 								<div class="fz-btn-grp">
 									<button type="button" class="fz-btn--pos">
-										Berikutnya <i class="fas fa-caret-right"></i> 
+										Berikutnya <i class="fa fa-caret-right" aria-hidden="true"></i> 
 									</button>
 								</div>
 							</div>
@@ -241,7 +241,52 @@
 						
 						<li class="fz-content-step" data-step-nr="2">
 							Ringkasan Penawaran dan Detail
-							<!-- Content -->
+							
+							<div class="fz-radio-grp--big">
+								<label class="fz-radio-wrapper">
+									<input class="fz-radio" type="radio" checked name="radio" value="kecil" />
+									<div class="fz-radio-inner">
+										<span class="fz-radio-graphic" id="req-help__offer-details__expiry--1">
+											<i class="fa fa-calendar" aria-hidden="true"></i>
+										</span>
+										<p class="fz-radio-inner__title">
+											1 hari
+										</p>
+										<p class="fz-radio-inner__subtitle">
+											&nbsp;
+										</p>
+									</div>
+								</label>
+								<label class="fz-radio-wrapper">
+									<input class="fz-radio" type="radio" name="radio" value="sedang" />
+									<div class="fz-radio-inner">
+										<span class="fz-radio-graphic" id="req-help__offer-details__expiry--3">
+											<i class="fa fa-calendar" aria-hidden="true"></i>
+										</span>
+										<p class="fz-radio-inner__title">
+											3 hari
+										</p>
+										<p class="fz-radio-inner__subtitle">
+											&nbsp;
+										</p>
+									</div>
+								</label>
+								<label class="fz-radio-wrapper">
+									<input class="fz-radio" type="radio" name="radio" value="besar" />
+									<div class="fz-radio-inner">
+										<span class="fz-radio-graphic" id="req-help__offer-details__expiry--5">
+											<i class="fa fa-calendar" aria-hidden="true"></i>
+										</span>
+										<p class="fz-radio-inner__title">
+											5 hari
+										</p>
+										<p class="fz-radio-inner__subtitle">
+											&nbsp;
+										</p>
+									</div>
+								</label>
+							</div>
+							
 						</li>
 						
 						<li class="fz-content-step" data-step-nr="3">
@@ -314,23 +359,23 @@
 			
 			(() => {
 				function arrayCompare(a1, a2) {
-				  if (a1.length != a2.length) return false;
-				  const length = a2.length;
-				  for (let i = 0; i < length; i++) {
-				    if (a1[i] !== a2[i]) return false;
-				  }
-				  return true;
+					if (a1.length != a2.length) return false;
+					const length = a2.length;
+					for (let i = 0; i < length; i++) {
+						if (a1[i] !== a2[i]) return false;
+					}
+					return true;
 				}
 				function inArray(needle, haystack) {
-				  const length = haystack.length;
-				  for(let i = 0; i < length; i++) {
-				    if(typeof haystack[i] == 'object') {
-				      if(arrayCompare(haystack[i], needle)) return true;
-				    } else {
-				      if(haystack[i] == needle) return true;
-				    }
-				  }
-				  return false;
+					const length = haystack.length;
+					for(let i = 0; i < length; i++) {
+						if(typeof haystack[i] == 'object') {
+							if(arrayCompare(haystack[i], needle)) return true;
+						} else {
+							if(haystack[i] == needle) return true;
+						}
+					}
+					return false;
 				}
 				function toggleCompletedStepTitleStyle (currentBlock, selectedStep, isCompleted) {
 					for (let k = 0; k < stepNrDiscNrEls.length; k++) {
@@ -342,6 +387,63 @@
 						}
 					}
 				}
+			})();
+			
+			(() => {
+				const offerExpiryCalendarEl = (
+					'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62.99 59.18">'+
+						'<defs><style>'+
+							'.fz-svg__cal__day { fill-opacity: 0.5; } .fz-svg__cal__day--selected { fill-opacity: 1; }'+
+						'</style></defs>'+
+						'<path d="M63,12.46H0V2A2,2,0,0,1,2,0H61a2,2,0,0,1,2,2Z" />'+
+						'<g>'+
+							'<path class="fz-svg__cal__day" data-day="9" d="M0,46.88H12.44v12.3H2a2,2,0,0,1-2-2Z" />'+
+							'<rect class="fz-svg__cal__day" data-day="5" y="31.51" width="12.44" height="12.3" />'+
+							'<rect class="fz-svg__cal__day" data-day="1" y="16.13" width="12.44" height="12.3" />'+
+						'</g>'+
+						'<g>'+
+							'<rect class="fz-svg__cal__day" data-day="10" x="16.85" y="46.88" width="12.44" height="12.3" />'+
+							'<rect class="fz-svg__cal__day" data-day="6" x="16.85" y="31.51" width="12.44" height="12.3" />'+
+							'<rect class="fz-svg__cal__day" data-day="2" x="16.85" y="16.13" width="12.44" height="12.3" />'+
+						'</g>'+
+						'<g>'+
+							'<rect class="fz-svg__cal__day" data-day="11" x="33.7" y="46.88" width="12.43" height="12.3" />'+
+							'<rect class="fz-svg__cal__day" data-day="7" x="33.7" y="31.51" width="12.43" height="12.3" />'+
+							'<rect class="fz-svg__cal__day" data-day="3" x="33.7" y="16.13" width="12.43" height="12.3" />'+
+						'</g>'+
+						'<g>'+
+							'<path class="fz-svg__cal__day" data-day="12" d="M50.55,46.88H63v10.3a2,2,0,0,1-2,2H50.55Z" />'+
+							'<rect class="fz-svg__cal__day" data-day="8" x="50.55" y="31.51" width="12.44" height="12.3"/>'+
+							'<rect class="fz-svg__cal__day" data-day="4" x="50.55" y="16.13" width="12.44" height="12.3"/>'+
+						'</g>'+
+					'</svg>'
+				);
+				
+				function initialiseCalendarIconWithCustomDays (calendarIconWrapper, days) {
+					calendarIconWrapper.innerHTML = offerExpiryCalendarEl;
+					const calendarDays = calendarIconWrapper.getElementsByClassName('fz-svg__cal__day');
+					if (calendarDays.length > 0) {
+						let dayNr;
+						for (let i = 0; i < calendarDays.length; i++) {
+							dayNr = calendarDays[i].dataset.day;
+							// console.log(calendarDays[i]);
+							if (typeof dayNr !== 'undefined') {
+								if (parseInt(dayNr) <= days) {
+									calendarDays[i].classList.add('fz-svg__cal__day--selected');
+								}
+							}
+						}
+					}
+				}
+			
+				const calendar1IconWrapper = document.getElementById("req-help__offer-details__expiry--1");
+				const calendar3IconWrapper = document.getElementById("req-help__offer-details__expiry--3");
+				const calendar5IconWrapper = document.getElementById("req-help__offer-details__expiry--5");
+				
+				initialiseCalendarIconWithCustomDays(calendar1IconWrapper, 1);
+				initialiseCalendarIconWithCustomDays(calendar3IconWrapper, 3);
+				initialiseCalendarIconWithCustomDays(calendar5IconWrapper, 5);
+				
 			})();
 			
 		</script>

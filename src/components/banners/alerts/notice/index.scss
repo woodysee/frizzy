@@ -1,8 +1,12 @@
+@import '../alerts.scss';
+
 .fz-banner--notice {
   background-color: rgba(248, 206, 138, 0.1);
   
   .fz-banner__icon {
-    width: 30px;
+    svg {
+      width: 30px;
+    }
   }
   
   .fz-banner__copy {

@@ -1,5 +1,6 @@
 $radioIconSize: 64px;
 $min-width-of-lg-devices: 1200px;
+$airfrovTeal: #65beb9;
 
 .fz-radio-grp--big {
 	
@@ -13,6 +14,7 @@ $min-width-of-lg-devices: 1200px;
 	label.fz-radio-wrapper {
 		cursor: pointer;
 		display: inline-block;
+		min-width: 125px;
 		position: relative;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -70,6 +72,13 @@ $min-width-of-lg-devices: 1200px;
 				height: $radioIconSize;
 				width: $radioIconSize;
 			}
+			svg.fz-svg--greyscale {
+				// Fill declaration must be set manually per path in the svg element
+				-moz-filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
+				-ms-filter: grayscale(100%);
+				filter: grayscale(100%);
+			}
 		} 
 		
 		.fz-radio-inner__title {
@@ -107,13 +116,19 @@ $min-width-of-lg-devices: 1200px;
 
 	/* On actual input checked, custom styles should be declared in here */
 	label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
-		border-color: #65beb9;
+		border-color: $airfrovTeal;
 		background-color: rgba(101, 190, 185, 0.1);
-		color: #65beb9;
+		color: $airfrovTeal;
 		
 		.fz-radio-graphic {
 			svg {
-				fill: #65beb9;
+				fill: $airfrovTeal;
+			}
+			svg.fz-svg--greyscale {
+				-moz-filter: unset;
+				-webkit-filter: unset;
+				-ms-filter: unset;
+				filter: unset;
 			}
 		}
 		

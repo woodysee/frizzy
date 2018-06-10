@@ -2,11 +2,16 @@ html, body {
   font-family: 'Open Sans';
 }
 
+.demo-container,
+#console--input-radio-basic,
+#console--input-radio-binary {
+  width: 50vw;
+}
+
 #console--input-radio-basic, #console--input-radio-binary {
 	background-color: black;
 	color: #65beb9;
 	font-family: 'Courier New', Courier, monospace;
 	margin-top: 20px;
 	padding: 10px;
-	width: 50%;
 }

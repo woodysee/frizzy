@@ -36,8 +36,9 @@ $min-width-of-lg-devices: 1200px;
 		font-stretch: normal;
 		line-height: normal;
 		letter-spacing: normal;
-		text-align: center;
 		padding: 10px 20px;
+		text-align: center;
+		white-space: nowrap;
 	}
 
 	/* On mouse-over the actual input, custom styles should be declared in here */
@@ -119,7 +120,7 @@ $min-width-of-lg-devices: 1200px;
 		justify-content: space-between;
 		
 		.fz-radio-wrapper .fz-radio-inner {
-			padding: 10px 20px;
+			padding: 15px 2vw;
 		}
 		
 	}

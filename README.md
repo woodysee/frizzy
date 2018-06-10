@@ -66,7 +66,7 @@ npm run build
 
 ```html
 
-<div class="fz-radio-grp--big">
+<div class="fz-radio-grp">
 	<label class="fz-radio-wrapper">
 		<input class="fz-radio" type="radio" checked name="multiRadioInputs" value="1">
 		<span class="fz-radio-inner">1 kilogram</span>
@@ -95,14 +95,14 @@ npm run build
 
 ```html
 
-<div class="fz-radio-grp">
+<div class="fz-radio-grp--big">
 	<label class="fz-radio-wrapper">
 		<input class="fz-radio" type="radio" checked name="radio" value="kecil" />
 		<div class="fz-radio-inner">
 			<span class="fz-radio-graphic">
 				<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
 				<!-- Works with Font Awesome 5 -->
-				<i class="fas fa-mobile-alt"></i>
+				<i class="fa fa-mobile" aria-hidden="true"></i>
 			</span>
 			<p class="fz-radio-inner__title">
 				Small
@@ -118,7 +118,7 @@ npm run build
 			<span class="fz-radio-graphic">
 				<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
 				<!-- Works with your custom inline SVG -->
-				<svg id="please-for-the-love-of-all-things-good-rename-this-to-something-unique" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 322.7 261.28">
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 322.7 261.28">
 					<path d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/>
 				</svg>
 			</span>
@@ -159,16 +159,16 @@ npm run build
 	<div class="fz-checkbox-label">
 		With label (left)
 	</div>
-	<input class="fz-checkbox" id="rename-this-to-suit-the-context-in-which-it-is-used" type="checkbox" />
-	<label class="fz-checkbox-tick" for="rename-this-to-suit-the-context-in-which-it-is-used">
+	<input class="fz-checkbox" id="business-logic-name-1" type="checkbox" />
+	<label class="fz-checkbox-tick" for="business-logic-name-1">
 		<!-- Tick element -->
 	</label>
 </div>
 
 <!-- With label -->
 <div class="fz-checkbox-wrapper">
-	<input class="fz-checkbox" id="rename-this-too-to-suit-the-context-in-which-it-is-used" type="checkbox" />
-	<label class="fz-checkbox-tick" for="rename-this-too-to-suit-the-context-in-which-it-is-used">
+	<input class="fz-checkbox" id="business-logic-name-2" type="checkbox" />
+	<label class="fz-checkbox-tick" for="business-logic-name-2">
 		<!-- Tick element -->
 	</label>
 	<div class="fz-checkbox-label">
@@ -196,7 +196,7 @@ npm run build
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
 	<button type="button" class="fz-btn--pos">
-		Berikutnya (Button) <i class="fa fa-caret-right"></i> 
+		Berikutnya (Button) <i class="fa fa-caret-right" aria-hidden="true"></i> 
 	</button>
 
 	<a href="https://www.airfrov.com" class="fz-btn--pos">
@@ -210,7 +210,7 @@ npm run build
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
 	<button type="button" class="fz-btn--neg">
-		<i class="fa fa-caret-left"></i> Tidak (Button)
+		<i class="fa fa-caret-left" aria-hidden="true"></i> Tidak (Button)
 	</button>
 
 	<a href="https://www.airfrov.com" class="fz-btn--neg">
@@ -267,7 +267,7 @@ Ensure that `data-steps-id` in `.fz-steps-select` value in the steps title list 
 <div class="fz-multistep-form-wrapper">
 	<div class="fz-steps-wrapper">
 		<a class="fz-header-back-btn">
-			<i class="fas fa-caret-left"></i>
+			<i class="fa fa-caret-left"></i>
 			Kembali ke Request
 		</a>
 		<h1 class="fz-page-title">
@@ -276,7 +276,13 @@ Ensure that `data-steps-id` in `.fz-steps-select` value in the steps title list 
 		<ul class="fz-steps-select" data-steps-id="demoForm">
 			<li class="fz-step-title" data-step-nr="1">
 				<div class="fz-step-nr-disc">
-					<div class="fz-step-nr">1</div>
+					<div class="fz-step-tick">
+						<!-- Tick element and style is hidden when the parent element is `.fz-step-nr-disc`. -->
+					</div>
+					<div class="fz-step-nr">
+						<!-- Step number is shown when the parent element is `.fz-step-nr-disc`. -->
+						1
+					</div>
 				</div>
 				<div class="fz-step-copy">
 					<h2 class="fz-step-title__name">
@@ -288,8 +294,14 @@ Ensure that `data-steps-id` in `.fz-steps-select` value in the steps title list 
 				</div>
 			</li>
 			<li class="fz-step-title" data-step-nr="2">
-				<div class="fz-step-nr-disc">
-					<div class="fz-step-nr">2</div>
+				<div class="fz-step-nr-disc--done">
+					<div class="fz-step-tick">
+						<!-- Tick element and style is shown when the parent element class is `.fz-step-nr-disc&#8212;&#8212;done` signifiying a complete step in the multistep form. -->
+					</div>
+					<div class="fz-step-nr">
+						<!-- Step number is hidden when the parent element is `.fz-step-nr-disc&#8212;&#8212;done` to make way for the tick in the sibling .fz-step-tick element. -->
+						2
+					</div>
 				</div>
 				<div class="fz-step-copy">
 					<h2 class="fz-step-title__name">
@@ -332,19 +344,88 @@ Ensure that `data-steps-id` in `.fz-steps-select` value in the steps title list 
 					<!-- Total number of steps is pushed in here -->
 				</span>
 			</h2>
+			<!-- Step 1 -->
 			<li class="fz-content-step" data-step-nr="1">
-				Berat, ukuran dan karakteristik barang.
+				<h3 class="fz-content-step__title">
+					Detail Barang
+				</h3>
+				<hr />
+				<!-- Special Handling -->
+				<div class="fz-form-grp">
+					<div class="fz-form-grp__name">
+						<div class="fz-form-grp__name__title">
+							Penanganan Khusus
+						</div>
+						<div class="fz-form-grp__name__deck">
+							mudah basi, harus masuk kulkas, dll
+						</div>
+					</div>
+					<div class="fz-form-grp__input">
+						<div class=" fz-radio-grp--binary">
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" checked name="handleWithCare" value="Yes" />
+								<span class="fz-radio-inner">Ya</span>
+							</label>
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" name="handleWithCare" value="No" />
+								<span class="fz-radio-inner">Tidak</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- End: Special Handling -->
+				<hr />
+				<!-- Weight -->
+				<div class="fz-form-grp--multiline">
+					<div class="fz-form-grp__name">
+						<div class="fz-form-grp__name__title">
+							Berat Barang
+						</div>
+					</div>
+					<div class="fz-form-grp__input">
+						<div class="fz-radio-grp">
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" checked name="weight" value="1">
+								<span class="fz-radio-inner">1 kilogram</span>
+							</label>
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" name="weight" value="2" />
+								<span class="fz-radio-inner">2 kilogram</span>
+							</label>
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" name="weight" value="3" />
+								<span class="fz-radio-inner">3 kilogram</span>
+							</label>
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" name="weight" value="4" />
+								<span class="fz-radio-inner">4 kilogram</span>
+							</label>
+							<label class="fz-radio-wrapper">
+								<input class="fz-radio" type="radio" name="weight" value="5" />
+								<span class="fz-radio-inner">5 kilogram</span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- End: Weight -->
 			</li>
+			<!-- End: Step 1 -->
+			<!-- Step 2 -->
 			<li class="fz-content-step" data-step-nr="2">
 				Ringkasan Penawaran dan Detail
 			</li>
+			<!-- End: Step 2 -->
+			<!-- Step 3 -->
 			<li class="fz-content-step" data-step-nr="3">
 				Detail Pengiriman
 			</li>
+			<!-- End: Step 3 -->
 		</ul>
+		<!-- End: .fz-content-steps -->
 	</div>
-	
+	<!-- End: .fz-content-wrapper -->
 </div>
+<!-- End: .fz-multistep-form-wrapper -->
 
 <!-- ... Your other content ... -->
 

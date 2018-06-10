@@ -8,6 +8,10 @@ export default function multiStepFormLayout() {
 
   const wrapper = document.getElementsByClassName('fz-steps-wrapper')[0];
   
+  const airfrovTealColour = '#65beb9';
+  const unselectedDiscBorderColour = '#b1afaf';
+  const unselectedTitleNameColour = 'rgba(0, 0, 0, 0.5)';
+  
   function toggleStepContent (evt) {
     // console.log(" " + evt.target.parentNode.dataset.stepsId + "-" + evt.target.dataset.stepNr);
     let el = evt.target;
@@ -40,16 +44,61 @@ export default function multiStepFormLayout() {
   }
 
   function styliseSelectedStepTitle (currentBlock, selectedStep) {
+    let stepNrDiscEls, stepNrCopyTitleEls;
     for (let i = 0; i < stepTitleEls.length; i++) {
       // default style is unselected
       if (stepTitleEls[i].parentNode.dataset.stepsId !== currentBlock) {
         break;
       }
+      stepNrDiscEls = stepTitleEls[i].getElementsByClassName("fz-step-nr-disc");
+      stepNrCopyTitleEls = stepTitleEls[i].getElementsByClassName("fz-step-title__name");
       if (stepTitleEls[i].dataset.stepNr === selectedStep) {
         // show the selected step
         stepTitleEls[i].style.backgroundColor = "#ffff";
+        if (stepNrDiscEls.length > 0) {
+          for (let j = 0; j < stepNrDiscEls.length; j++) {
+            stepNrDiscEls[j].style.borderColor = airfrovTealColour;
+            stepNrDiscEls[j].style.color = airfrovTealColour;
+          }
+        }
+        if (stepNrCopyTitleEls.length > 0) {
+          for (let j = 0; j < stepNrCopyTitleEls.length; j++) {
+            stepNrCopyTitleEls[j].style.borderColor = stepNrCopyTitleEls[j].style.color = airfrovTealColour;
+          }
+        }
       } else {
         stepTitleEls[i].style.backgroundColor = "#fafafa";
+        if (stepNrDiscEls.length > 0) {
+          for (let j = 0; j < stepNrDiscEls.length; j++) {
+            stepNrDiscEls[j].style.removeProperty('borderColor');
+            // Removed script-invoked style declaration to restore styles, especially hover styles from stylesheet
+            if (stepNrDiscEls[j].style.removeProperty) {
+              stepNrDiscEls[j].style.removeProperty('border-color');
+            } else {
+              // Retrospective support for IE9
+              stepNrDiscEls[j].style.removeAttribute('borderColor');
+            }
+            if (stepNrDiscEls[j].style.removeProperty) {
+              stepNrDiscEls[j].style.removeProperty('color');
+            } else {
+              // Retrospective support for IE9
+              stepNrDiscEls[j].style.removeAttribute('color');
+            }
+          }
+        }
+        if (stepNrCopyTitleEls.length > 0) {
+          for (let j = 0; j < stepNrCopyTitleEls.length; j++) {
+            // Removed script-invoked style declaration to restore styles, especially hover styles from stylesheet
+            if (stepNrCopyTitleEls[j].style.removeProperty) {
+              stepNrCopyTitleEls[j].style.removeProperty('border-color');
+              stepNrCopyTitleEls[j].style.removeProperty('color');
+            } else {
+              // Retrospective support for IE9
+              stepNrCopyTitleEls[j].style.removeAttribute('borderColor');
+              stepNrCopyTitleEls[j].style.removeAttribute('color');
+            }
+          }
+        }
       }
     }
   }

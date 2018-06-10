@@ -24,6 +24,7 @@
 					<ul class="fz-steps-select" data-steps-id="demoForm">
 						<li class="fz-step-title" data-step-nr="1">
 							<div class="fz-step-nr-disc">
+								<div class="fz-step-tick"></div>
 								<div class="fz-step-nr">1</div>
 							</div>
 							<div class="fz-step-copy">
@@ -37,6 +38,7 @@
 						</li>
 						<li class="fz-step-title" data-step-nr="2">
 							<div class="fz-step-nr-disc">
+								<div class="fz-step-tick"></div>
 								<div class="fz-step-nr">2</div>
 							</div>
 							<div class="fz-step-copy">
@@ -50,6 +52,7 @@
 						</li>
 						<li class="fz-step-title" data-step-nr="3">
 							<div class="fz-step-nr-disc">
+								<div class="fz-step-tick"></div>
 								<div class="fz-step-nr">3</div>
 							</div>
 							<div class="fz-step-copy">
@@ -226,8 +229,13 @@
 								<!-- End: Size -->
 							</div>
 							
-							
-							
+							<div class="fz-form-grp--footer-cta" style="float:right;">
+								<div class="fz-btn-grp">
+									<button type="button" class="fz-btn--pos">
+										Berikutnya <i class="fas fa-caret-right"></i> 
+									</button>
+								</div>
+							</div>
 							<!-- End: Bagian Nr 1 - Detail Barang -->
 						</li>
 						
@@ -302,6 +310,38 @@
 				iconWrapperS.innerHTML = phoneIcon;
 				iconWrapperM.innerHTML = backpackIcon;
 				iconWrapperL.innerHTML = luggageIcon;
+			})();
+			
+			(() => {
+				function arrayCompare(a1, a2) {
+				  if (a1.length != a2.length) return false;
+				  const length = a2.length;
+				  for (let i = 0; i < length; i++) {
+				    if (a1[i] !== a2[i]) return false;
+				  }
+				  return true;
+				}
+				function inArray(needle, haystack) {
+				  const length = haystack.length;
+				  for(let i = 0; i < length; i++) {
+				    if(typeof haystack[i] == 'object') {
+				      if(arrayCompare(haystack[i], needle)) return true;
+				    } else {
+				      if(haystack[i] == needle) return true;
+				    }
+				  }
+				  return false;
+				}
+				function toggleCompletedStepTitleStyle (currentBlock, selectedStep, isCompleted) {
+					for (let k = 0; k < stepNrDiscNrEls.length; k++) {
+						if (inArray('fz-step-nr-disc', stepNrDiscNrEls[k].classList) && !inArray('fz-step-nr-disc--done', stepNrDiscNrEls[k].classList) && isCompleted) {
+							stepNrDiscNrEls[k].classList.replace('fz-step-nr-disc','fz-step-nr-disc--done');
+						}
+						if (inArray('fz-step-nr-disc--done', stepNrDiscNrEls[k].classList) && !inArray('fz-step-nr-disc', stepNrDiscNrEls[k].classList) && isCompleted) {
+							stepNrDiscNrEls[k].classList.replace('fz-step-nr-disc--done','fz-step-nr-disc');
+						}
+					}
+				}
 			})();
 			
 		</script>

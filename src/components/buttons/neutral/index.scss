@@ -1,0 +1,42 @@
+$grey: #e5e5e5;
+$white: #ffffff;
+$lightGrey: #b0b0b0;
+$minButtonWidth: 100px;
+$buttonPaddingTop: $minButtonWidth / 10;
+$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+
+button.fz-btn--neu, a.fz-btn--neu {
+  border-radius: 2px;
+  background-color: $white;
+  border: solid 1px $grey;
+  color: $lightGrey;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: $minButtonWidth;
+  padding: $buttonPaddingTop;
+  text-align: center;
+  
+  &:hover {
+    background-color: $grey;
+  }
+  
+  &:active {
+    background-color: $lightGrey;
+    border-color: $lightGrey;
+    color: $white;
+  }
+  
+}
+
+button.fz-btn--neu {
+  padding: $buttonPaddingTop;
+}
+
+a.fz-btn--neu {
+  padding: $anchorPaddingTop;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

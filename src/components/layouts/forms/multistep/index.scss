@@ -191,9 +191,15 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     -webkit-justify-content: space-between;
     justify-content: space-between;
     .fz-btn-grp {
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      
+      button {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      
     }
     
   }

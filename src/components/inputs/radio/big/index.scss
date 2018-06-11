@@ -11,7 +11,8 @@ $airfrovTeal: #65beb9;
 	display: flex;
 	justify-content: space-between;
 	
-	label.fz-radio-wrapper {
+	label.fz-radio-wrapper,
+	label.fz-radio-wrapper--disabled {
 		cursor: pointer;
 		display: inline-block;
 		min-width: 125px;
@@ -22,7 +23,8 @@ $airfrovTeal: #65beb9;
 		user-select: none;
 	}
 
-	.fz-radio-wrapper {
+	.fz-radio-wrapper,
+	.fz-radio-wrapper--disabled {
 		margin: 10px 5px 20px 5px;
 		
 		&:first-child {
@@ -36,14 +38,16 @@ $airfrovTeal: #65beb9;
 	}
 
 	/* Hide the browser's default radio button */
-	label.fz-radio-wrapper input {
+	label.fz-radio-wrapper input,
+	label.fz-radio-wrapper--disabled input {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
 	}
 
 	/* Shared button styles */
-	.fz-radio-wrapper .fz-radio-inner {
+	.fz-radio-wrapper .fz-radio-inner,
+	.fz-radio-wrapper--disabled .fz-radio-inner {
 		border: solid 1px #e5e5e5;
 		border-radius: 2px;
 		font-size: 11px;
@@ -108,14 +112,20 @@ $airfrovTeal: #65beb9;
 		}
 		
 	}
+	
+	.fz-radio-wrapper--disabled .fz-radio-inner {
+		opacity: 0.5;
+	}
 
 	/* On mouse-over the actual input, custom styles should be declared in here */
-	label.fz-radio-wrapper:hover input ~ .fz-radio-inner {
+	label.fz-radio-wrapper:hover input ~ .fz-radio-inner,
+	label.fz-radio-wrapper--disabled:hover input ~ .fz-radio-inner {
 		background-color: rgba(101, 190, 185, 0.1);
 	}
 
 	/* On actual input checked, custom styles should be declared in here */
-	label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
+	label.fz-radio-wrapper input:checked ~ .fz-radio-inner,
+	label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner {
 		border-color: $airfrovTeal;
 		background-color: rgba(101, 190, 185, 0.1);
 		color: $airfrovTeal;

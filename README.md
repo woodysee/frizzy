@@ -205,6 +205,20 @@ npm run build
 
 ```
 
+#### Neutral
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn--neu">
+		<i class="fa fa-caret-left" aria-hidden="true"></i> Sebelumnya (Button)
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn--neu">
+		Sebelumnya (Anchor)
+	</a>
+
+```
+
 #### Negative
 
 ```html

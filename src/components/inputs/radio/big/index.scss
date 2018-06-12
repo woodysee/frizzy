@@ -1,5 +1,6 @@
 $radioIconSize: 64px;
 $min-width-of-lg-devices: 1200px;
+$airfrovTeal: #65beb9;
 
 .fz-radio-grp--big {
 	
@@ -10,9 +11,11 @@ $min-width-of-lg-devices: 1200px;
 	display: flex;
 	justify-content: space-between;
 	
-	label.fz-radio-wrapper {
+	label.fz-radio-wrapper,
+	label.fz-radio-wrapper--disabled {
 		cursor: pointer;
 		display: inline-block;
+		min-width: 125px;
 		position: relative;
 		-webkit-user-select: none;
 		-moz-user-select: none;
@@ -20,7 +23,8 @@ $min-width-of-lg-devices: 1200px;
 		user-select: none;
 	}
 
-	.fz-radio-wrapper {
+	.fz-radio-wrapper,
+	.fz-radio-wrapper--disabled {
 		margin: 10px 5px 20px 5px;
 		
 		&:first-child {
@@ -34,14 +38,16 @@ $min-width-of-lg-devices: 1200px;
 	}
 
 	/* Hide the browser's default radio button */
-	label.fz-radio-wrapper input {
+	label.fz-radio-wrapper input,
+	label.fz-radio-wrapper--disabled input {
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
 	}
 
 	/* Shared button styles */
-	.fz-radio-wrapper .fz-radio-inner {
+	.fz-radio-wrapper .fz-radio-inner,
+	.fz-radio-wrapper--disabled .fz-radio-inner {
 		border: solid 1px #e5e5e5;
 		border-radius: 2px;
 		font-size: 11px;
@@ -69,6 +75,13 @@ $min-width-of-lg-devices: 1200px;
 				fill: #5c5c5c;
 				height: $radioIconSize;
 				width: $radioIconSize;
+			}
+			svg.fz-svg--greyscale {
+				// Fill declaration must be set manually per path in the svg element
+				-moz-filter: grayscale(100%);
+				-webkit-filter: grayscale(100%);
+				-ms-filter: grayscale(100%);
+				filter: grayscale(100%);
 			}
 		} 
 		
@@ -99,21 +112,33 @@ $min-width-of-lg-devices: 1200px;
 		}
 		
 	}
+	
+	.fz-radio-wrapper--disabled .fz-radio-inner {
+		opacity: 0.5;
+	}
 
 	/* On mouse-over the actual input, custom styles should be declared in here */
-	label.fz-radio-wrapper:hover input ~ .fz-radio-inner {
+	label.fz-radio-wrapper:hover input ~ .fz-radio-inner,
+	label.fz-radio-wrapper--disabled:hover input ~ .fz-radio-inner {
 		background-color: rgba(101, 190, 185, 0.1);
 	}
 
 	/* On actual input checked, custom styles should be declared in here */
-	label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
-		border-color: #65beb9;
+	label.fz-radio-wrapper input:checked ~ .fz-radio-inner,
+	label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner {
+		border-color: $airfrovTeal;
 		background-color: rgba(101, 190, 185, 0.1);
-		color: #65beb9;
+		color: $airfrovTeal;
 		
 		.fz-radio-graphic {
 			svg {
-				fill: #65beb9;
+				fill: $airfrovTeal;
+			}
+			svg.fz-svg--greyscale {
+				-moz-filter: unset;
+				-webkit-filter: unset;
+				-ms-filter: unset;
+				filter: unset;
 			}
 		}
 		

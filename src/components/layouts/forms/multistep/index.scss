@@ -81,6 +81,12 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     font-weight: 500;
   }
   
+  h4 {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
   .fz-form-grp,
   .fz-form-grp__name,
   .fz-form-grp__input,
@@ -181,7 +187,6 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     display: flex;
   }
   
-  
   .fz-form-grp--footer-cta {
     -webkit-align-items: center;
     align-items: center;
@@ -191,9 +196,21 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     -webkit-justify-content: space-between;
     justify-content: space-between;
     .fz-btn-grp {
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      
+      button {
+        margin-left: 5px;
+        margin-right: 5px;
+        &:first-child {
+          margin-left: 0px;
+        }
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+      
     }
     
   }

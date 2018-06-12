@@ -6,7 +6,7 @@
   function printValueOfSelected () {
     for (let i = 0; i < selectors.length; i++) {
       if (selectors[i].checked) {
-        printTargetEl.innerHTML = "> " + selectors[i].value;
+        printTargetEl.innerHTML = "&nbsp;&gt;&nbsp;" + selectors[i].value;
       }
     }
   }
@@ -25,7 +25,7 @@
   function printValueOfSelected () {
     for (let i = 0; i < selectors.length; i++) {
       if (selectors[i].checked) {
-        printTargetEl.innerHTML = "> " + selectors[i].value;
+        printTargetEl.innerHTML = "&nbsp;&gt;&nbsp;" + selectors[i].value;
       }
     }
   }

@@ -2,18 +2,22 @@
 $length: 25;
 $tickboxSize: $length + px;
 $borderWidth: ($length / 10) + px;
-$tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.7 261.28"><path style="fill: #FFF;" d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/></svg>';
+$white: #ffffff;
+$grey: #b0b0b0;
+$green: #5cb85c;
+// $tealFatTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.7 261.28"><path style="fill: #FFF;" d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/></svg>';
+$tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="'+$white+'" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>';
 /* See https://css-tricks.com/using-svg/ */
 
 .fz-checkbox {
   display: none;
 }
 .fz-checkbox:checked + .fz-checkbox-tick {
-  background: #65beb9;
-  border-color: #65beb9;
+  background: $green;
+  border-color: $green;
 }
 .fz-checkbox:checked + .fz-checkbox-tick:after {
-  transform: scale(0.8);  
+  transform: scale(0.9);  
 }
 .fz-checkbox-wrapper {
   align-items: center; /* aligns vertically */
@@ -50,7 +54,7 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.7 261.28"
   height: $tickboxSize;
   background: #FFF;
   margin: ($length / 2)+px 0;
-  border: $borderWidth solid #65beb9;
+  border: $borderWidth solid $grey;
   border-radius: 10%;
   position: relative;
   cursor: pointer;

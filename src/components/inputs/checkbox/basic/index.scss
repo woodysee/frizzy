@@ -74,6 +74,13 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
   border-radius: 50%;
   transition: .3s;
 }
+
+.fz-content-wrapper {
+  .fz-checkbox-tick:before {
+    z-index: 0;
+  }
+}
+
 .fz-checkbox-tick:after {
   content: '';
   display: block;

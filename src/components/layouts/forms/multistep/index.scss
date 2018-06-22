@@ -51,6 +51,12 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     }
     
   }
+
+  @media only screen 
+  and (max-device-width : $min-width-of-sm-devices - 1px)
+  {
+    display: none;
+  }
   
 }
 .fz-page-title {
@@ -105,6 +111,12 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     width: $stepsContentWidth - $pageContentLeftPadding;
+
+    @media only screen 
+    and (max-device-width : $min-width-of-sm-devices - 1px)
+    {
+      width: 100%;
+    }
     
     .fz-form-grp__name,
     .fz-form-grp__input {
@@ -212,9 +224,21 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
       }
       
     }
+
+    @media only screen and (max-device-width : $min-width-of-sm-devices - 1px)
+    {
+      display: none;
+    }
     
   }
-  
+
+    @media only screen 
+    and (max-device-width : $min-width-of-sm-devices - 1px)
+    {
+      width: $viewportWidth - 5vw;
+    }
+
+  /* End of .fz-content-wrapper */
 }
 
 ul.fz-content-steps, ul.fz-steps-select {

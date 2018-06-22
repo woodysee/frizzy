@@ -10,7 +10,8 @@ $airfrovTeal: #65beb9;
 $white: #ffffff;
 $stepNrDiscDiameter: 21px;
 
-$tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><g><polygon style="fill: '+$white+';" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></g></svg>';
+$tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><g><polygon style="fill:%23ffffff;" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></g></svg>';
+/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 
 .fz-multistep-form-wrapper {
   margin-left: 0;
@@ -50,6 +51,12 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
       }
     }
     
+  }
+
+  @media only screen 
+  and (max-device-width : $min-width-of-sm-devices - 1px)
+  {
+    display: none;
   }
   
 }
@@ -105,6 +112,12 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     width: $stepsContentWidth - $pageContentLeftPadding;
+
+    @media only screen 
+    and (max-device-width : $min-width-of-sm-devices - 1px)
+    {
+      width: 100%;
+    }
     
     .fz-form-grp__name,
     .fz-form-grp__input {
@@ -212,9 +225,21 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
       }
       
     }
+
+    @media only screen and (max-device-width : $min-width-of-sm-devices - 1px)
+    {
+      display: none;
+    }
     
   }
-  
+
+    @media only screen 
+    and (max-device-width : $min-width-of-sm-devices - 1px)
+    {
+      width: $viewportWidth - 5vw;
+    }
+
+  /* End of .fz-content-wrapper */
 }
 
 ul.fz-content-steps, ul.fz-steps-select {

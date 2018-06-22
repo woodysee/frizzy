@@ -1,4 +1,6 @@
 $radioIconSize: 64px;
+$min-width-of-xs-devices: 480px;
+$min-width-of-sm-devices: 768px;
 $min-width-of-lg-devices: 1200px;
 $airfrovTeal: #65beb9;
 
@@ -10,6 +12,19 @@ $airfrovTeal: #65beb9;
 	display: -webkit-flex;
 	display: flex;
 	justify-content: space-between;
+	
+	@media only screen and (max-device-width : $min-width-of-sm-devices - 1px) {
+		-ms-overflow-style: none;  // IE 10+
+		overflow: -moz-scrollbars-none;  // Firefox
+		overflow: auto;
+		white-space: nowrap;
+		&::-webkit-scrollbar {
+			background: transparent;  /* optional: just make scrollbar invisible */
+			width: 0px;  /* remove scrollbar space */
+		}
+		
+
+	}
 	
 	label.fz-radio-wrapper,
 	label.fz-radio-wrapper--disabled {

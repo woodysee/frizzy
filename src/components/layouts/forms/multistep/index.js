@@ -5,12 +5,8 @@ export default function multiStepFormLayout() {
   const stepsContentEls = document.getElementsByClassName('fz-content-steps');
   const stepContentEls = document.getElementsByClassName('fz-content-step');
   const stepTitleEls = document.getElementsByClassName('fz-step-title');
-
-  const wrapper = document.getElementsByClassName('fz-steps-wrapper')[0];
   
   const airfrovTealColour = '#65beb9';
-  const unselectedDiscBorderColour = '#b1afaf';
-  const unselectedTitleNameColour = 'rgba(0, 0, 0, 0.5)';
   
   function toggleStepContent (evt) {
     // console.log(" " + evt.target.parentNode.dataset.stepsId + "-" + evt.target.dataset.stepNr);

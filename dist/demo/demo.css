@@ -15,3 +15,16 @@ html, body {
 	margin-top: 20px;
 	padding: 10px 0;
 }
+
+@media only screen and (max-width: 767px) {
+	.demo-container {
+		width: 100vw;
+	}
+
+	#console--input-radio-basic,
+	#console--input-radio-binary {
+		width: unset;
+		margin: 20px 20px 0 0;
+	}
+
+}

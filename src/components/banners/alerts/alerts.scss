@@ -29,13 +29,15 @@
   }
   
   .fz-banner__icon {
+    max-width: 30px;
     width: 10%;
   }
   
   .fz-banner__copy {
     font-size: 11px;
     line-height: 1.4;
-    width: 90%;
+    padding-left: 5%;
+    width: 85%;
   }
   
 }

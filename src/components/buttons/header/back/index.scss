@@ -4,7 +4,6 @@ $white: #ffffff;
 .fz-header-back-btn {
   background-color: unset;
   border: solid 1px rgba(0,0,0,0);
-  border-radius: 2px;
   color: $airfrovTeal;
   cursor: pointer;
   font-size: 11px;
@@ -14,17 +13,11 @@ $white: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   
-  &:hover {
-    border-color: $airfrovTeal;
-    background-color: $airfrovTeal;
-    color: $white;
-    text-decoration: none;
-  }
-  
-  &:active {
+  &:hover, &:active, &:focus, &:visited {
+    border-bottom: solid 1px $airfrovTeal;
     background-color: rgba(0,0,0,0);
-    border-color: $airfrovTeal;
     color: $airfrovTeal;
+    text-decoration: none;
   }
   
 }

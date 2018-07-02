@@ -6,6 +6,20 @@ Reusable UI component library for Airfrov web.
 
 `npm install` installs all vendor packages needed inside `./node_modules`.
 
+## Wishlist
+
+- [ ] Green radio inputs (vertically stacked)
+	- Vertically stacked
+	- Used in view offer
+- [ ] Datepicker
+	- No weird random positions when expanded on a mobile device
+	- When expanding datepicker on a mobile device, datepicker slides down with button big enough for a touch interface
+- [ ] Multiple image upload field
+	- Must not scale
+	- Good to have: Able to rotate images
+- [ ] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content
+- [ ] Good to have: Allow selective loading of UI components to speed up load time
+
 ## Adding a new component
 
 - Create a new folder inside `./src/components`, e.g. `./src/components/someButton`.

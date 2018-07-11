@@ -4,11 +4,14 @@ html, body {
 
 .demo-container,
 #console--input-radio-basic,
-#console--input-radio-binary {
+#console--input-radio-binary,
+#console--input-radio-classic {
   width: 50vw;
 }
 
-#console--input-radio-basic, #console--input-radio-binary {
+#console--input-radio-basic,
+#console--input-radio-binary,
+#console--input-radio-classic {
 	background-color: black;
 	color: #65beb9;
 	font-family: 'Courier New', Courier, monospace;
@@ -22,7 +25,8 @@ html, body {
 	}
 
 	#console--input-radio-basic,
-	#console--input-radio-binary {
+	#console--input-radio-binary,
+  #console--input-radio-classic {
 		width: unset;
 		margin: 20px 20px 0 0;
 	}

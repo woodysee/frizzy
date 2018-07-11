@@ -2,6 +2,7 @@
 // import addALogoOnTheRightComponent from './components/addALogoOnTheRight';
 import basicCheckboxInput from './components/inputs/checkbox/basic';
 import basicRadioInput from './components/inputs/radio/basic';
+import classicRadioInput from './components/inputs/radio/classic';
 import binaryRadioInput from './components/inputs/radio/binary';
 import bigRadioInput from './components/inputs/radio/big';
 import multiStepFormLayout from './components/layouts/forms/multistep';
@@ -16,6 +17,7 @@ import positiveButton from './components/buttons/positive';
 // addALogoOnTheRightComponent();
 basicCheckboxInput();
 basicRadioInput();
+classicRadioInput();
 binaryRadioInput();
 bigRadioInput();
 multiStepFormLayout();

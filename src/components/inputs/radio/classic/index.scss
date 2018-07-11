@@ -3,10 +3,13 @@ $radio-bg-colour--checked: #ffffff;
 $radio-inner-colour: rgba(92, 184, 92, 1);
 $radio-border-colour: rgba(92, 184, 92, 1);
 $radio-bg-colour--hover: rgba(92,184,92,0.1);
-$radio-diameter: 24px;
-$label-font-size: $radio-diameter * 0.9;
+$radio-diameter: 21px;
+$label-font-size: $radio-diameter * 0.7;
 $radio-border-width: $radio-diameter / 12;
-$radio-inner-diameter: 0.8 * $radio-diameter;
+$radio-inner-diameter: 0.7 * $radio-diameter;
+$radio-inner-diameter: 0.7 * $radio-diameter;
+$radio-inner-position--y: ($radio-diameter - $radio-inner-diameter) / 2;
+$radio-inner-position--x: ($radio-diameter - $radio-inner-diameter) / 2;
 
 .fz-radio-grp--classic {
   
@@ -67,8 +70,8 @@ $radio-inner-diameter: 0.8 * $radio-diameter;
     }
     /* Style the indicator (dot/circle) */
     .fz-radio-inner:after {
-      top: 3.5px;
-      left: 3.5px;
+      top: $radio-inner-position--y;
+      left: $radio-inner-position--x;
       width: $radio-inner-diameter;
       height: $radio-inner-diameter;
       border-radius: 50%;

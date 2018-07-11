@@ -1,0 +1,82 @@
+$radio-bg-colour: #ffffff;
+$radio-bg-colour--checked: #ffffff;
+$radio-inner-colour: rgba(92, 184, 92, 1);
+$radio-border-colour: rgba(92, 184, 92, 1);
+$radio-bg-colour--hover: rgba(92,184,92,0.1);
+$radio-diameter: 21px;
+$label-font-size: $radio-diameter * 0.7;
+$radio-border-width: $radio-diameter / 12;
+$radio-inner-diameter: 0.7 * $radio-diameter;
+$radio-inner-diameter: 0.7 * $radio-diameter;
+$radio-inner-position--y: ($radio-diameter - $radio-inner-diameter) / 2;
+$radio-inner-position--x: ($radio-diameter - $radio-inner-diameter) / 2;
+
+.fz-radio-grp--classic {
+  
+  label.fz-radio-wrapper {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: $radio-diameter / 2;
+    cursor: pointer;
+    font-size: $label-font-size;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Hides the browser's default radio button */
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+
+  /* Create a custom radio button */
+  .fz-radio-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: $radio-diameter;
+    width: $radio-diameter;
+    background-color: $radio-bg-colour;
+    border: solid $radio-border-width $radio-border-colour;
+    border-radius: 50%;
+  }
+
+
+  label.fz-radio-wrapper {
+    /* On mouse-over, add a grey background colour */
+    &:hover input ~ .fz-radio-inner {
+      background-color: $radio-bg-colour--hover;
+    }
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    input:checked ~ .fz-radio-inner {
+      background-color: $radio-bg-colour--checked;
+    }
+  }
+
+  /* When the radio button is checked */
+  .fz-radio-inner:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  label.fz-radio-wrapper {
+    input:checked ~ .fz-radio-inner:after {
+      display: block;
+    }
+    /* Style the indicator (dot/circle) */
+    .fz-radio-inner:after {
+      top: $radio-inner-position--y;
+      left: $radio-inner-position--x;
+      width: $radio-inner-diameter;
+      height: $radio-inner-diameter;
+      border-radius: 50%;
+      background: $radio-inner-colour;
+    }
+  }
+  
+}

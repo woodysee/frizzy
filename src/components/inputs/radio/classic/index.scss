@@ -1,82 +1,104 @@
-$radio-bg-colour: #ffffff;
-$radio-bg-colour--checked: #ffffff;
-$radio-inner-colour: rgba(92, 184, 92, 1);
-$radio-border-colour: rgba(92, 184, 92, 1);
-$radio-bg-colour--hover: rgba(92,184,92,0.1);
-$radio-diameter: 21px;
-$label-font-size: $radio-diameter * 0.7;
-$radio-border-width: $radio-diameter / 12;
-$radio-inner-diameter: 0.7 * $radio-diameter;
-$radio-inner-diameter: 0.7 * $radio-diameter;
-$radio-inner-position--y: ($radio-diameter - $radio-inner-diameter) / 2;
-$radio-inner-position--x: ($radio-diameter - $radio-inner-diameter) / 2;
-
-.fz-radio-grp--classic {
+/* Classic radio element */
+$length: 25px;
+$radio-inner-length: round($length * (9 / 10));
+$border-width: round($length / 15);
+$white: #ffffff;
+$green-hexcode: "5cb85c";
+$green: #5cb85c;
+$radio-inner-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%23'+"5cb85c"+'" cx="50.5" cy="50.5" r="50"/></svg>';
+$clicked-halo-colour: rgba(143,142,143,0.2);
+/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
+/* See https://css-tricks.com/using-svg/ */
   
-  label.fz-radio-wrapper {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: $radio-diameter / 2;
-    cursor: pointer;
-    font-size: $label-font-size;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* Hides the browser's default radio button */
-    input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-  }
-
-  /* Create a custom radio button */
-  .fz-radio-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: $radio-diameter;
-    width: $radio-diameter;
-    background-color: $radio-bg-colour;
-    border: solid $radio-border-width $radio-border-colour;
-    border-radius: 50%;
-  }
-
-
-  label.fz-radio-wrapper {
-    /* On mouse-over, add a grey background colour */
-    &:hover input ~ .fz-radio-inner {
-      background-color: $radio-bg-colour--hover;
-    }
-    /* Create the indicator (the dot/circle - hidden when not checked) */
-    input:checked ~ .fz-radio-inner {
-      background-color: $radio-bg-colour--checked;
-    }
-  }
-
-  /* When the radio button is checked */
-  .fz-radio-inner:after {
-    content: "";
-    position: absolute;
+.fz-radio-wrapper[data-fz-radio-type="classic"] {
+  align-items: center; /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left; /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center;
+  
+  .fz-radio {
     display: none;
   }
-
-  /* Show the indicator (dot/circle) when checked */
-  label.fz-radio-wrapper {
-    input:checked ~ .fz-radio-inner:after {
-      display: block;
-    }
-    /* Style the indicator (dot/circle) */
-    .fz-radio-inner:after {
-      top: $radio-inner-position--y;
-      left: $radio-inner-position--x;
-      width: $radio-inner-diameter;
-      height: $radio-inner-diameter;
-      border-radius: 50%;
-      background: $radio-inner-colour;
-    }
+  .fz-radio:checked + .fz-radio-inner {
+    background: $white;
+    border-color: $green;
+  }
+  .fz-radio:checked + .fz-radio-inner:after {
+    transform: scale(0.7);  
   }
   
+  .fz-radio-label {
+    display: -webkit-flex;
+    display: -webkit-box; /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: ($length / 2);
+    margin-left: ($length / 5);
+    margin-right: ($length / 5);
+  }
+  
+  .fz-radio-inner {
+    display: block;
+    box-sizing: border-box;
+    width: $radio-inner-length;
+    height: $radio-inner-length;
+    background: $white;
+    margin: ($length / 5);
+    border: $border-width solid $green;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: ($length / 5);
+    margin-right: ($length / 5);
+  }
+  .fz-radio-inner:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 300%;
+    width: 300%;
+    top: -100%;
+    left: -100%;
+    z-index: -1;
+    border-radius: 50%;
+    transition: .3s;
+  }
+  .fz-radio-inner:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url("data:image/svg+xml;charset=UTF-8," + $radio-inner-el) center center no-repeat;
+    /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
+    background-size: contain;
+    transform: scale(0);
+    transition: .2s;
+  }
+  .fz-radio-inner:active:before {
+    background: $clicked-halo-colour;
+  }
+}
+
+.fz-content-wrapper {
+  .fz-radio-wrapper[data-fz-radio-type="classic"] {
+    &:nth-child(2) {
+      margin-left: 0px;
+    }
+    .fz-radio-inner:before {
+      z-index: 0;
+    }
+  }
 }

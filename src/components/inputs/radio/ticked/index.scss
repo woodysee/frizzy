@@ -1,0 +1,104 @@
+/* Tickbox element */
+$length: 25px;
+$tickboxSize: $length * (9 / 10);
+$borderWidth: ($length / 10);
+$white: #ffffff;
+$grey: #b0b0b0;
+$green: #5cb85c;
+// $tealFatTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.7 261.28"><path style="fill: %23FFF;" d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/></svg>';
+$tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>';
+/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
+/* See https://css-tricks.com/using-svg/ */
+  
+.fz-radio-wrapper[data-fz-radio-type="ticked"] {
+  align-items: center; /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left; /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center;
+  
+  .fz-radio {
+    display: none;
+  }
+  .fz-radio:checked + .fz-radio-tick {
+    background: $green;
+    border-color: $green;
+  }
+  .fz-radio:checked + .fz-radio-tick:after {
+    transform: scale(0.9);  
+  }
+  
+  .fz-radio-label {
+    display: -webkit-flex;
+    display: -webkit-box; /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: ($length / 2) + px;
+    margin-left: ($length / 5) + px;
+    margin-right: ($length / 5) + px;
+  }
+  
+  .fz-radio-tick {
+    display: block;
+    box-sizing: border-box;
+    width: $tickboxSize;
+    height: $tickboxSize;
+    background: #FFF;
+    margin: ($length / 5)+px 0;
+    border: $borderWidth solid $grey;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: ($length / 5) + px;
+    margin-right: ($length / 5) + px;
+  }
+  .fz-radio-tick:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 300%;
+    width: 300%;
+    top: -100%;
+    left: -100%;
+    z-index: -1;
+    border-radius: 50%;
+    transition: .3s;
+  }
+  .fz-radio-tick:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url("data:image/svg+xml;charset=UTF-8," + $tealTickEl) center center no-repeat;
+    /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
+    background-size: contain;
+    transform: scale(0);
+    transition: .2s;
+  }
+  .fz-radio-tick:active:before {
+    background: rgba(143,142,143,0.2);
+  }
+}
+
+.fz-content-wrapper {
+  .fz-radio-wrapper[data-fz-radio-type="classic"] {
+    &:nth-child(2) {
+      margin-left: 0px;
+    }
+    .fz-radio-tick:before {
+      z-index: 0;
+    }
+  }
+}

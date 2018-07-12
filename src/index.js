@@ -3,6 +3,7 @@
 import basicCheckboxInput from './components/inputs/checkbox/basic';
 import basicRadioInput from './components/inputs/radio/basic';
 import classicRadioInput from './components/inputs/radio/classic';
+import tickedRadioInput from './components/inputs/radio/ticked';
 import binaryRadioInput from './components/inputs/radio/binary';
 import bigRadioInput from './components/inputs/radio/big';
 import multiStepFormLayout from './components/layouts/forms/multistep';
@@ -18,6 +19,7 @@ import positiveButton from './components/buttons/positive';
 basicCheckboxInput();
 basicRadioInput();
 classicRadioInput();
+tickedRadioInput();
 binaryRadioInput();
 bigRadioInput();
 multiStepFormLayout();

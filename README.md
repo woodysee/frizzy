@@ -8,16 +8,17 @@ Reusable UI component library for Airfrov web.
 
 ## Wishlist
 
-- [ ] Green radio inputs (vertically stacked)
+- [x] Green radio inputs (vertically stacked)
 	- Vertically stacked
 	- Used in view offer
+- [ ] Modal
 - [ ] Datepicker
 	- No weird random positions when expanded on a mobile device
 	- When expanding datepicker on a mobile device, datepicker slides down with button big enough for a touch interface
 - [ ] Multiple image upload field
 	- Must not scale
 	- Good to have: Able to rotate images
-- [ ] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content
+- [x] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content
 - [ ] Good to have: Allow selective loading of UI components to speed up load time
 
 ## Adding a new component
@@ -61,7 +62,7 @@ npm run build
 #### Binary Inline Radios
 
 ```html
-	
+
 <div class="fz-radio-grp--binary">
 	<label class="fz-radio-wrapper">
 		<input class="fz-radio" type="radio" checked name="binaryRadioInputs" value="Yes" />
@@ -73,6 +74,77 @@ npm run build
 	</label>
 </div>
 
+```
+
+#### Classic Stacked Radios
+
+```html
+	
+<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+	<div class="fz-radio-label">
+		Stok habis
+	</div>
+	<input class="fz-radio" id="batalkan-penawaran__stok" type="radio" name="classicRadioInputs" value="Out of stock" checked />
+	<label class="fz-radio-inner" for="batalkan-penawaran__stok">
+		<!-- Radio element -->
+	</label>
+</div>
+
+<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+	<input class="fz-radio" id="batalkan-penawaran__barang" type="radio" name="classicRadioInputs" value="Could not find item"/>
+	<label class="fz-radio-inner" for="batalkan-penawaran__barang">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-radio-label">
+		Barang tidak ditemukan
+	</div>
+</div>
+
+<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+	<input class="fz-radio" id="batalkan-penawaran__waktu" type="radio" name="classicRadioInputs" value="Not enough time to purchase"/>
+	<label class="fz-radio-inner" for="batalkan-penawaran__waktu">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-radio-label">
+		Waktu terbatas  
+	</div>
+</div>
+
+```
+
+#### Ticked Stacked Radios
+
+```html
+	
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+	<div class="fz-radio-label">
+		Vegetarian
+	</div>
+	<input class="fz-radio" id="meal-selection__veg" type="radio" name="tickedRadioInputs" value="veg" />
+	<label class="fz-radio-inner" for="meal-selection__veg">
+		<!-- Tick element -->
+	</label>
+</div>
+
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+	<input class="fz-radio" id="meal-selection__noveg" type="radio" name="tickedRadioInputs" value="nonveg" checked />
+	<label class="fz-radio-inner" for="meal-selection__chicken">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-radio-label">
+		Non-vegetarian (Chicken)
+	</div>
+</div>
+
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+	<input class="fz-radio" id="meal-selection__noveg" type="radio" name="tickedRadioInputs" value="nonveg" checked />
+	<label class="fz-radio-inner" for="meal-selection__fish">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-radio-label">
+		Non-vegetarian (Fish)
+	</div>
+</div>
 
 ```
 

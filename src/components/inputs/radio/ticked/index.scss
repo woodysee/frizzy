@@ -1,16 +1,16 @@
-/* Classic radio element */
+/* Ticked radio element */
 $length: 25px;
-$radio-inner-length: round($length * (9 / 10));
-$border-width: round($length / 15);
+$radio-inner-length: $length * (9 / 10);
+$border-width: ($length / 10);
 $white: #ffffff;
-$green-hexcode: "5cb85c";
+$grey: #b0b0b0;
 $green: #5cb85c;
-$radio-inner-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%23'+"5cb85c"+'" cx="50.5" cy="50.5" r="50"/></svg>';
+$radio-inner-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>';
 $clicked-halo-colour: rgba(143,142,143,0.2);
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 /* See https://css-tricks.com/using-svg/ */
   
-.fz-radio-wrapper[data-fz-radio-type="classic"] {
+.fz-radio-wrapper[data-fz-radio-type="ticked"] {
   align-items: center; /* aligns vertically */
   display: -webkit-box;
   display: -moz-box;
@@ -28,11 +28,11 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     display: none;
   }
   .fz-radio:checked + .fz-radio-inner {
-    background: $white;
+    background: $green;
     border-color: $green;
   }
   .fz-radio:checked + .fz-radio-inner:after {
-    transform: scale(0.7);  
+    transform: scale(0.8);  
   }
   
   .fz-radio-label {
@@ -55,8 +55,8 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     width: $radio-inner-length;
     height: $radio-inner-length;
     background: $white;
-    margin: ($length / 5);
-    border: $border-width solid $green;
+    margin: ($length / 5) 0;
+    border: $border-width solid $grey;
     border-radius: 50%;
     position: relative;
     cursor: pointer;

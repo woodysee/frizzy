@@ -12,11 +12,10 @@
 	</head>
 
 	<body>
-		<!-- By calling in `add-a-logo-on-the-right`, we will add a logo on the right -->
-		<h1 class="world add-a-logo-on-the-right" id="page-title">
+		<h1 id="page-title">
 			Frizzy
 		</h1>
-		<h2 class="hello">
+		<h2>
 			Reusable UI component library for Airfrov web.
 		</h2>
 		
@@ -45,25 +44,47 @@
 		<div class="demo-container" id="demo-container--input-radio-classic">
 			<h3>Classic Radio Input</h3>
 			<div class="fz-input-radio-classic-group">
-				
-				<div class="fz-radio-grp--classic">
-					<label class="fz-radio-wrapper">
-						One
-						<input class="fz-radio" type="radio" checked name="classicRadioInputs" value="One">
-						<span class="fz-radio-inner"></span>
-					</label>
-					<label class="fz-radio-wrapper">
-						Two
-						<input class="fz-radio" type="radio" name="classicRadioInputs" value="Two">
-						<span class="fz-radio-inner"></span>
-					</label>
-					<label class="fz-radio-wrapper">
-						Three
-						<input class="fz-radio" type="radio" name="classicRadioInputs" value="Three">
-						<span class="fz-radio-inner"></span>
+				<hr />
+				<h4 style="color: gray; font-family: 'Helvetica', sans-serif; font-weight: 400;">Batalkan Penawaran</h4>
+				<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+					<div class="fz-radio-label">
+						Stok habis
+					</div>
+					<input class="fz-radio" id="batalkan-penawaran__stok" type="radio" name="classicRadioInputs" value="Out of stock" checked />
+					<label class="fz-radio-inner" for="batalkan-penawaran__stok">
+						<!-- Radio element -->
 					</label>
 				</div>
+				<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+					<input class="fz-radio" id="batalkan-penawaran__barang" type="radio" name="classicRadioInputs" value="Could not find item"/>
+					<label class="fz-radio-inner" for="batalkan-penawaran__barang">
+						<!-- Tick element -->
+					</label>
+					<div class="fz-radio-label">
+						Barang tidak ditemukan
+					</div>
+				</div>
 				
+				<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+					<input class="fz-radio" id="batalkan-penawaran__waktu" type="radio" name="classicRadioInputs" value="Not enough time to purchase"/>
+					<label class="fz-radio-inner" for="batalkan-penawaran__waktu">
+						<!-- Tick element -->
+					</label>
+					<div class="fz-radio-label">
+						Waktu terbatas  
+					</div>
+				</div>
+				
+				<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+					<input class="fz-radio" id="batalkan-penawaran__space" type="radio" name="classicRadioInputs" value="Limited luggage space" />
+					<label class="fz-radio-inner" for="batalkan-penawaran__space">
+						<!-- Tick element -->
+					</label>
+					<div class="fz-radio-label">
+						Ruang bagasi terbatas
+					</div>
+				</div>
+				<hr />
 				<div id="console--input-radio-classic">
 					<!-- Selected radio value will be printed here -->
 				</div>

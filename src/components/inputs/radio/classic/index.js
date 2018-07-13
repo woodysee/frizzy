@@ -5,7 +5,6 @@ export default function inputRadioClassic() {
   const radioInputs = document.querySelectorAll(".fz-radio-wrapper[data-fz-radio-type='classic']");
   
   function styliseRadioChildrenByUserDeclaration (el, length) {
-    const borderColour = "#5cb85c";
     const radioInnerLength = Math.round(length * 0.9);
     const borderWidth = Math.round(length  / 15);
     switch (true) {
@@ -29,7 +28,7 @@ export default function inputRadioClassic() {
   
   for (let i = 0; i < radioInputs.length; i++) {
     let size = "18px";
-    console.log(radioInputs[i]);
+    // console.log(radioInputs[i]);
     if (typeof radioInputs[i].dataset.fzRadioSize !== "undefined") {
       const userDeclaredSize = radioInputs[i].dataset.fzRadioSize.split("px");
       size = parseFloat(userDeclaredSize[0]);
@@ -38,7 +37,7 @@ export default function inputRadioClassic() {
       // console.log(userDeclaredSize[1] === "");
       // console.log(typeof parseFloat(userDeclaredSize[0]) === "number");
       if (userDeclaredSize.length === 2 && userDeclaredSize[1] === "" && typeof size === "number") {
-        console.log(`...valid user declared size. Declaring user styles by setting to ${userDeclaredSize[0]} px...`);
+        // console.log(`...valid user declared size. Declaring user styles by setting to ${userDeclaredSize[0]} px...`);
         const radioInputChildren = radioInputs[i].children;
         for (let j = 0; j < radioInputChildren.length; j++) {
           styliseRadioChildrenByUserDeclaration(radioInputChildren[j], size);

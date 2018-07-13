@@ -9,7 +9,6 @@ export default function tickedRadioInput() {
     const borderWidth = Math.round(length  / 10);
     switch (true) {
       case inArray("fz-radio-label", el.classList):
-        console.log(el.style.fontSize);
         el.style.fontSize = Math.round(length / 2) + "px";
         el.style.marginLeft = Math.round(length / 5) + "px";
         el.style.marginRight = Math.round(length / 5) + "px";

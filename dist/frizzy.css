@@ -1,3 +1,96 @@
+button.fz-btn--pos, a.fz-btn--pos {
+  border-radius: 2px;
+  background-color: #5cb85c;
+  border: solid 1px #5cb85c;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 100px;
+  padding: 10px;
+  text-align: center; }
+  button.fz-btn--pos:hover, a.fz-btn--pos:hover {
+    color: #ddffdd; }
+  button.fz-btn--pos:active, a.fz-btn--pos:active {
+    background-color: #ddffdd;
+    border-color: #5cb85c;
+    color: #5cb85c; }
+
+button.fz-btn--pos {
+  padding: 10px; }
+
+a.fz-btn--pos {
+  padding: 9px;
+  text-decoration: none; }
+  a.fz-btn--pos:hover {
+    text-decoration: none; }
+button.fz-btn--neg, a.fz-btn--neg {
+  border-radius: 2px;
+  background-color: #ffffff;
+  border: solid 1px #e48581;
+  color: #e48581;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 100px;
+  padding: 10px;
+  text-align: center; }
+  button.fz-btn--neg:hover, a.fz-btn--neg:hover {
+    background-color: rgba(228, 133, 129, 0.1); }
+  button.fz-btn--neg:active, a.fz-btn--neg:active {
+    background-color: #e48581;
+    color: #ffffff; }
+
+button.fz-btn--neg {
+  padding: 10px; }
+
+a.fz-btn--neg {
+  padding: 9px;
+  text-decoration: none; }
+  a.fz-btn--neg:hover {
+    text-decoration: none; }
+button.fz-btn--neu, a.fz-btn--neu {
+  border-radius: 2px;
+  background-color: #ffffff;
+  border: solid 1px #e5e5e5;
+  color: #b0b0b0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 100px;
+  padding: 10px;
+  text-align: center; }
+  button.fz-btn--neu:hover, a.fz-btn--neu:hover {
+    background-color: #e5e5e5; }
+  button.fz-btn--neu:active, a.fz-btn--neu:active {
+    background-color: #b0b0b0;
+    border-color: #b0b0b0;
+    color: #ffffff; }
+
+button.fz-btn--neu {
+  padding: 10px; }
+
+a.fz-btn--neu {
+  padding: 9px;
+  text-decoration: none; }
+  a.fz-btn--neu:hover {
+    text-decoration: none; }
+.fz-header-back-btn {
+  background-color: unset;
+  border: solid 1px rgba(0, 0, 0, 0);
+  color: #65beb9;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  padding: 3px 3px 3px 3px;
+  text-decoration: none;
+  text-transform: uppercase; }
+  .fz-header-back-btn:hover, .fz-header-back-btn:active, .fz-header-back-btn:focus, .fz-header-back-btn:visited {
+    border-bottom: solid 1px #65beb9;
+    background-color: rgba(0, 0, 0, 0);
+    color: #65beb9;
+    text-decoration: none; }
 /* Common styles for all alert banners */
 .fz-banner--notice,
 .fz-banner--warning {
@@ -135,628 +228,6 @@
     width: 30px; }
   .fz-banner--warning .fz-banner__copy {
     color: #e2775c; }
-.fz-header-back-btn {
-  background-color: unset;
-  border: solid 1px rgba(0, 0, 0, 0);
-  color: #65beb9;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.6px;
-  padding: 3px 3px 3px 3px;
-  text-decoration: none;
-  text-transform: uppercase; }
-  .fz-header-back-btn:hover, .fz-header-back-btn:active, .fz-header-back-btn:focus, .fz-header-back-btn:visited {
-    border-bottom: solid 1px #65beb9;
-    background-color: rgba(0, 0, 0, 0);
-    color: #65beb9;
-    text-decoration: none; }
-button.fz-btn--neg, a.fz-btn--neg {
-  border-radius: 2px;
-  background-color: #ffffff;
-  border: solid 1px #e48581;
-  color: #e48581;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  min-width: 100px;
-  padding: 10px;
-  text-align: center; }
-  button.fz-btn--neg:hover, a.fz-btn--neg:hover {
-    background-color: rgba(228, 133, 129, 0.1); }
-  button.fz-btn--neg:active, a.fz-btn--neg:active {
-    background-color: #e48581;
-    color: #ffffff; }
-
-button.fz-btn--neg {
-  padding: 10px; }
-
-a.fz-btn--neg {
-  padding: 9px;
-  text-decoration: none; }
-  a.fz-btn--neg:hover {
-    text-decoration: none; }
-button.fz-btn--neu, a.fz-btn--neu {
-  border-radius: 2px;
-  background-color: #ffffff;
-  border: solid 1px #e5e5e5;
-  color: #b0b0b0;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  min-width: 100px;
-  padding: 10px;
-  text-align: center; }
-  button.fz-btn--neu:hover, a.fz-btn--neu:hover {
-    background-color: #e5e5e5; }
-  button.fz-btn--neu:active, a.fz-btn--neu:active {
-    background-color: #b0b0b0;
-    border-color: #b0b0b0;
-    color: #ffffff; }
-
-button.fz-btn--neu {
-  padding: 10px; }
-
-a.fz-btn--neu {
-  padding: 9px;
-  text-decoration: none; }
-  a.fz-btn--neu:hover {
-    text-decoration: none; }
-button.fz-btn--pos, a.fz-btn--pos {
-  border-radius: 2px;
-  background-color: #5cb85c;
-  border: solid 1px #5cb85c;
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  min-width: 100px;
-  padding: 10px;
-  text-align: center; }
-  button.fz-btn--pos:hover, a.fz-btn--pos:hover {
-    color: #ddffdd; }
-  button.fz-btn--pos:active, a.fz-btn--pos:active {
-    background-color: #ddffdd;
-    border-color: #5cb85c;
-    color: #5cb85c; }
-
-button.fz-btn--pos {
-  padding: 10px; }
-
-a.fz-btn--pos {
-  padding: 9px;
-  text-decoration: none; }
-  a.fz-btn--pos:hover {
-    text-decoration: none; }
-/* Tickbox element */
-/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
-/* See https://css-tricks.com/using-svg/ */
-.fz-checkbox {
-  display: none; }
-
-.fz-checkbox:checked + .fz-checkbox-tick {
-  background: #5cb85c;
-  border-color: #5cb85c; }
-
-.fz-checkbox:checked + .fz-checkbox-tick:after {
-  transform: scale(0.9); }
-
-.fz-checkbox-wrapper {
-  align-items: center;
-  /* aligns vertically */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  justify-content: left;
-  /* aligns horizontally */
-  margin: 0 auto;
-  text-align: center; }
-
-.fz-checkbox-label {
-  display: -webkit-flex;
-  display: -webkit-box;
-  /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  font-size: 12.5px;
-  margin-left: 5px;
-  margin-right: 5px; }
-
-.fz-checkbox-tick {
-  display: block;
-  box-sizing: border-box;
-  width: 25px;
-  height: 25px;
-  background: #FFF;
-  margin: 12.5px 0;
-  border: 2.5px solid #b0b0b0;
-  border-radius: 10%;
-  position: relative;
-  cursor: pointer;
-  transition: .2s;
-  margin-left: 5px;
-  margin-right: 5px; }
-
-.fz-checkbox-tick:before {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 300%;
-  width: 300%;
-  top: -100%;
-  left: -100%;
-  z-index: -1;
-  border-radius: 50%;
-  transition: .3s; }
-
-.fz-content-wrapper .fz-checkbox-tick:before {
-  z-index: 0; }
-
-.fz-checkbox-tick:after {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 100%;
-  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>') center center no-repeat;
-  /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
-  background-size: contain;
-  transform: scale(0);
-  transition: .2s; }
-
-.fz-checkbox-tick:active:before {
-  background: rgba(143, 142, 143, 0.2); }
-
-.fz-checkbox-wrapper:nth-child(2) {
-  margin-left: 0px; }
-.fz-radio-grp {
-  /* Shared button styles */
-  /* On mouse-over the actual input, custom styles should be declared in here */
-  /* On actual input checked, custom styles should be declared in here */ }
-  .fz-radio-grp label.fz-radio-wrapper,
-  .fz-radio-grp label.fz-radio-wrapper--disabled {
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px 0 10px 0;
-    position: relative;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-    .fz-radio-grp label.fz-radio-wrapper input,
-    .fz-radio-grp label.fz-radio-wrapper--disabled input {
-      /* Hide the browser's default radio button */
-      cursor: pointer;
-      position: absolute;
-      opacity: 0; }
-  .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-  .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-    border: solid 1px #e5e5e5;
-    border-radius: 2px;
-    color: rgba(0, 0, 0, 0.6);
-    font-family: 'Open Sans';
-    font-size: 11px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    padding: 10px 20px;
-    text-align: center;
-    white-space: nowrap; }
-  .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-    opacity: 0.5; }
-  .fz-radio-grp label.fz-radio-wrapper:hover input ~ .fz-radio-inner,
-  .fz-radio-grp label.fz-radio-wrapper--disabled:hover input ~ .fz-radio-inner {
-    background-color: rgba(101, 190, 185, 0.1); }
-  .fz-radio-grp label.fz-radio-wrapper input:checked ~ .fz-radio-inner,
-  .fz-radio-grp label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner {
-    border-color: #65beb9;
-    background-color: rgba(101, 190, 185, 0.1);
-    color: #65beb9; }
-  @media screen and (max-width: 479px) {
-    .fz-radio-grp {
-      /* Mobile */
-      display: inline-block;
-      text-align: left; }
-      .fz-radio-grp .fz-radio-wrapper,
-      .fz-radio-grp .fz-radio-wrapper--disabled,
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        width: 100%; }
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        display: inline-block;
-        padding: 10px 0; } }
-  @media screen and (min-width: 480px) and (max-width: 767px) {
-    .fz-radio-grp {
-      /* Mobile */
-      display: inline-block;
-      text-align: left; }
-      .fz-radio-grp .fz-radio-wrapper,
-      .fz-radio-grp .fz-radio-wrapper--disabled,
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        width: 100%; }
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        display: inline-block;
-        padding: 10px 0; } }
-  @media screen and (min-width: 768px) and (max-width: 991px) {
-    .fz-radio-grp {
-      /* Tablets */
-      display: inline-block;
-      text-align: left; }
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        display: inline-block;
-        padding: 10px 15px; } }
-  @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .fz-radio-grp {
-      /* Small Desktops / Laptops */
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      justify-content: space-between; }
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        padding: 10px 20px; } }
-  @media screen and (min-width: 1200px) {
-    .fz-radio-grp {
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      justify-content: space-between; }
-      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
-      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
-        padding: 15px 2vw; } }
-.fz-radio-grp--big {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-between;
-  /* Hide the browser's default radio button */
-  /* Shared button styles */
-  /* On mouse-over the actual input, custom styles should be declared in here */
-  /* On actual input checked, custom styles should be declared in here */ }
-  @media only screen and (max-device-width: 767px) {
-    .fz-radio-grp--big {
-      -ms-overflow-style: none;
-      overflow: -moz-scrollbars-none;
-      overflow: auto;
-      white-space: nowrap; }
-      .fz-radio-grp--big::-webkit-scrollbar {
-        background: transparent;
-        /* optional: just make scrollbar invisible */
-        width: 0px;
-        /* remove scrollbar space */ } }
-  .fz-radio-grp--big label.fz-radio-wrapper,
-  .fz-radio-grp--big label.fz-radio-wrapper--disabled {
-    cursor: pointer;
-    display: inline-block;
-    min-width: 125px;
-    position: relative;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none; }
-  .fz-radio-grp--big .fz-radio-wrapper,
-  .fz-radio-grp--big .fz-radio-wrapper--disabled {
-    margin: 10px 5px 20px 5px; }
-    .fz-radio-grp--big .fz-radio-wrapper:first-child,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled:first-child {
-      margin: 10px 5px 20px 0px; }
-    .fz-radio-grp--big .fz-radio-wrapper:last-child,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled:last-child {
-      margin: 10px 0px 20px 5px; }
-  .fz-radio-grp--big label.fz-radio-wrapper input,
-  .fz-radio-grp--big label.fz-radio-wrapper--disabled input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer; }
-  .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner,
-  .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner {
-    border: solid 1px #e5e5e5;
-    border-radius: 2px;
-    font-size: 11px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    padding: 10px 20px; }
-    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-graphic i,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-graphic i {
-      /* For Font-Awesome */
-      align-items: center;
-      /* aligns vertically */
-      display: -webkit-box;
-      display: -moz-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      justify-content: center;
-      /* aligns horizontally */
-      font-size: 67px; }
-    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-graphic svg,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-graphic svg {
-      fill: #5c5c5c;
-      height: 64px;
-      width: 64px; }
-    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale {
-      -moz-filter: grayscale(100%);
-      -webkit-filter: grayscale(100%);
-      -ms-filter: grayscale(100%);
-      filter: grayscale(100%); }
-    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-inner__title,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-inner__title {
-      color: rgba(0, 0, 0, 0.8);
-      font-size: 14px;
-      font-weight: normal;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      margin-bottom: 5px;
-      margin-top: 5px;
-      text-align: center; }
-    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-inner__subtitle,
-    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-inner__subtitle {
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 11px;
-      font-weight: normal;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.65;
-      letter-spacing: normal;
-      margin-bottom: 5px;
-      margin-top: 5px;
-      text-align: center; }
-  .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner {
-    opacity: 0.5; }
-  .fz-radio-grp--big label.fz-radio-wrapper:hover input ~ .fz-radio-inner,
-  .fz-radio-grp--big label.fz-radio-wrapper--disabled:hover input ~ .fz-radio-inner {
-    background-color: rgba(101, 190, 185, 0.1); }
-  .fz-radio-grp--big label.fz-radio-wrapper input:checked ~ .fz-radio-inner,
-  .fz-radio-grp--big label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner {
-    border-color: #65beb9;
-    background-color: rgba(101, 190, 185, 0.1);
-    color: #65beb9; }
-    .fz-radio-grp--big label.fz-radio-wrapper input:checked ~ .fz-radio-inner .fz-radio-graphic svg,
-    .fz-radio-grp--big label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner .fz-radio-graphic svg {
-      fill: #65beb9; }
-    .fz-radio-grp--big label.fz-radio-wrapper input:checked ~ .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale,
-    .fz-radio-grp--big label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale {
-      -moz-filter: unset;
-      -webkit-filter: unset;
-      -ms-filter: unset;
-      filter: unset; }
-  @media screen and (min-width: 1400px) {
-    .fz-radio-grp--big {
-      display: inline-block; } }
-.fz-radio-grp--binary {
-  /* On mouse-over the actual input, custom styles should be declared in here */
-  /* On actual input checked, custom styles should be declared in here */ }
-  .fz-radio-grp--binary label.fz-radio-wrapper {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    margin: 10px 0 10px 0;
-    user-select: none;
-    /* Shared button styles */
-    /* Hide the browser's default radio button */ }
-    .fz-radio-grp--binary label.fz-radio-wrapper .fz-radio-inner {
-      border: solid 1px #65beb9;
-      color: rgba(0, 0, 0, 0.6);
-      font-size: 11px;
-      font-weight: normal;
-      text-align: center;
-      padding: 6px 19.41px;
-      line-height: 1.4;
-      white-space: nowrap; }
-    .fz-radio-grp--binary label.fz-radio-wrapper:first-child, .fz-radio-grp--binary label.fz-radio-wrapper:last-child {
-      display: inline-block; }
-      .fz-radio-grp--binary label.fz-radio-wrapper:first-child .fz-radio-inner, .fz-radio-grp--binary label.fz-radio-wrapper:last-child .fz-radio-inner {
-        border-width: 1px 1px 1px 1px; }
-    .fz-radio-grp--binary label.fz-radio-wrapper:first-child {
-      margin-right: -2px; }
-      .fz-radio-grp--binary label.fz-radio-wrapper:first-child .fz-radio-inner {
-        border-radius: 2px 0 0 2px; }
-    .fz-radio-grp--binary label.fz-radio-wrapper:last-child {
-      margin-left: -3px; }
-      .fz-radio-grp--binary label.fz-radio-wrapper:last-child .fz-radio-inner {
-        border-radius: 0 2px 2px 0; }
-    .fz-radio-grp--binary label.fz-radio-wrapper input {
-      cursor: pointer;
-      position: absolute;
-      opacity: 0; }
-  .fz-radio-grp--binary label.fz-radio-wrapper:hover input ~ .fz-radio-inner {
-    background-color: rgba(101, 190, 185, 0.1); }
-  .fz-radio-grp--binary label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
-    border-color: #65beb9;
-    background-color: #65beb9;
-    color: #ffffff; }
-/* Classic radio element */
-/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
-/* See https://css-tricks.com/using-svg/ */
-.fz-radio-wrapper[data-fz-radio-type="classic"] {
-  align-items: center;
-  /* aligns vertically */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  justify-content: left;
-  /* aligns horizontally */
-  margin: 0 auto;
-  text-align: center; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio {
-    display: none; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner {
-    background: #ffffff;
-    border-color: #5cb85c; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner:after {
-    transform: scale(0.7); }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-label {
-    display: -webkit-flex;
-    display: -webkit-box;
-    /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    font-size: 12.5px;
-    margin-left: 5px;
-    margin-right: 5px; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner {
-    display: block;
-    box-sizing: border-box;
-    width: 23px;
-    height: 23px;
-    background: #ffffff;
-    margin: 5px;
-    border: 2px solid #5cb85c;
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-    transition: .2s;
-    margin-left: 5px;
-    margin-right: 5px; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
-    content: '';
-    position: absolute;
-    display: block;
-    height: 300%;
-    width: 300%;
-    top: -100%;
-    left: -100%;
-    z-index: -1;
-    border-radius: 50%;
-    transition: .3s; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:after {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;
-    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%235cb85c" cx="50.5" cy="50.5" r="50"/></svg>') center center no-repeat;
-    /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
-    background-size: contain;
-    transform: scale(0);
-    transition: .2s; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:active:before {
-    background: rgba(143, 142, 143, 0.2); }
-
-.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"]:nth-child(2) {
-  margin-left: 0px; }
-
-.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
-  z-index: 0; }
-/* Ticked radio element */
-/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
-/* See https://css-tricks.com/using-svg/ */
-.fz-radio-wrapper[data-fz-radio-type="ticked"] {
-  align-items: center;
-  /* aligns vertically */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  justify-content: left;
-  /* aligns horizontally */
-  margin: 0 auto;
-  text-align: center; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio {
-    display: none; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio:checked + .fz-radio-inner {
-    background: #5cb85c;
-    border-color: #5cb85c; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio:checked + .fz-radio-inner:after {
-    transform: scale(0.8); }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-label {
-    display: -webkit-flex;
-    display: -webkit-box;
-    /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    font-size: 12.5px;
-    margin-left: 5px;
-    margin-right: 5px; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner {
-    display: block;
-    box-sizing: border-box;
-    width: 22.5px;
-    height: 22.5px;
-    background: #ffffff;
-    margin: 5px 0;
-    border: 2.5px solid #b0b0b0;
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-    transition: .2s;
-    margin-left: 5px;
-    margin-right: 5px; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:before {
-    content: '';
-    position: absolute;
-    display: block;
-    height: 300%;
-    width: 300%;
-    top: -100%;
-    left: -100%;
-    z-index: -1;
-    border-radius: 50%;
-    transition: .3s; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:after {
-    content: '';
-    display: block;
-    height: 100%;
-    width: 100%;
-    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>') center center no-repeat;
-    /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
-    background-size: contain;
-    transform: scale(0);
-    transition: .2s; }
-  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:active:before {
-    background: rgba(143, 142, 143, 0.2); }
-
-.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"]:nth-child(2) {
-  margin-left: 0px; }
-
-.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
-  z-index: 0; }
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 .fz-multistep-form-wrapper {
   margin-left: 0;
@@ -1017,3 +488,532 @@ li.fz-step-title {
     font-size: 11px;
     font-weight: 500;
     margin-top: 5px; }
+/* Ticked radio element */
+/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
+/* See https://css-tricks.com/using-svg/ */
+.fz-radio-wrapper[data-fz-radio-type="ticked"] {
+  align-items: center;
+  /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left;
+  /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio {
+    display: none; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio:checked + .fz-radio-inner {
+    background: #5cb85c;
+    border-color: #5cb85c; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio:checked + .fz-radio-inner:after {
+    transform: scale(0.8); }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-label {
+    display: -webkit-flex;
+    display: -webkit-box;
+    /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 12.5px;
+    margin-left: 5px;
+    margin-right: 5px; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner {
+    display: block;
+    box-sizing: border-box;
+    width: 22.5px;
+    height: 22.5px;
+    background: #ffffff;
+    margin: 5px 0;
+    border: 2.5px solid #b0b0b0;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: 5px;
+    margin-right: 5px; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 300%;
+    width: 300%;
+    top: -100%;
+    left: -100%;
+    z-index: -1;
+    border-radius: 50%;
+    transition: .3s; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>') center center no-repeat;
+    /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
+    background-size: contain;
+    transform: scale(0);
+    transition: .2s; }
+  .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:active:before {
+    background: rgba(143, 142, 143, 0.2); }
+
+.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"]:nth-child(2) {
+  margin-left: 0px; }
+
+.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
+  z-index: 0; }
+.fz-radio-grp--big {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  /* Hide the browser's default radio button */
+  /* Shared button styles */
+  /* On mouse-over the actual input, custom styles should be declared in here */
+  /* On actual input checked, custom styles should be declared in here */ }
+  @media only screen and (max-device-width: 767px) {
+    .fz-radio-grp--big {
+      -ms-overflow-style: none;
+      overflow: -moz-scrollbars-none;
+      overflow: auto;
+      white-space: nowrap; }
+      .fz-radio-grp--big::-webkit-scrollbar {
+        background: transparent;
+        /* optional: just make scrollbar invisible */
+        width: 0px;
+        /* remove scrollbar space */ } }
+  .fz-radio-grp--big label.fz-radio-wrapper,
+  .fz-radio-grp--big label.fz-radio-wrapper--disabled {
+    cursor: pointer;
+    display: inline-block;
+    min-width: 125px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .fz-radio-grp--big .fz-radio-wrapper,
+  .fz-radio-grp--big .fz-radio-wrapper--disabled {
+    margin: 10px 5px 20px 5px; }
+    .fz-radio-grp--big .fz-radio-wrapper:first-child,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled:first-child {
+      margin: 10px 5px 20px 0px; }
+    .fz-radio-grp--big .fz-radio-wrapper:last-child,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled:last-child {
+      margin: 10px 0px 20px 5px; }
+  .fz-radio-grp--big label.fz-radio-wrapper input,
+  .fz-radio-grp--big label.fz-radio-wrapper--disabled input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer; }
+  .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner,
+  .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner {
+    border: solid 1px #e5e5e5;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    padding: 10px 20px; }
+    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-graphic i,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-graphic i {
+      /* For Font-Awesome */
+      align-items: center;
+      /* aligns vertically */
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center;
+      /* aligns horizontally */
+      font-size: 67px; }
+    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-graphic svg,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-graphic svg {
+      fill: #5c5c5c;
+      height: 64px;
+      width: 64px; }
+    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale {
+      -moz-filter: grayscale(100%);
+      -webkit-filter: grayscale(100%);
+      -ms-filter: grayscale(100%);
+      filter: grayscale(100%); }
+    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-inner__title,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-inner__title {
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      text-align: center; }
+    .fz-radio-grp--big .fz-radio-wrapper .fz-radio-inner .fz-radio-inner__subtitle,
+    .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner .fz-radio-inner__subtitle {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 11px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.65;
+      letter-spacing: normal;
+      margin-bottom: 5px;
+      margin-top: 5px;
+      text-align: center; }
+  .fz-radio-grp--big .fz-radio-wrapper--disabled .fz-radio-inner {
+    opacity: 0.5; }
+  .fz-radio-grp--big label.fz-radio-wrapper:hover input ~ .fz-radio-inner,
+  .fz-radio-grp--big label.fz-radio-wrapper--disabled:hover input ~ .fz-radio-inner {
+    background-color: rgba(101, 190, 185, 0.1); }
+  .fz-radio-grp--big label.fz-radio-wrapper input:checked ~ .fz-radio-inner,
+  .fz-radio-grp--big label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner {
+    border-color: #65beb9;
+    background-color: rgba(101, 190, 185, 0.1);
+    color: #65beb9; }
+    .fz-radio-grp--big label.fz-radio-wrapper input:checked ~ .fz-radio-inner .fz-radio-graphic svg,
+    .fz-radio-grp--big label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner .fz-radio-graphic svg {
+      fill: #65beb9; }
+    .fz-radio-grp--big label.fz-radio-wrapper input:checked ~ .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale,
+    .fz-radio-grp--big label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner .fz-radio-graphic svg.fz-svg--greyscale {
+      -moz-filter: unset;
+      -webkit-filter: unset;
+      -ms-filter: unset;
+      filter: unset; }
+  @media screen and (min-width: 1400px) {
+    .fz-radio-grp--big {
+      display: inline-block; } }
+/* Classic radio element */
+/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
+/* See https://css-tricks.com/using-svg/ */
+.fz-radio-wrapper[data-fz-radio-type="classic"] {
+  align-items: center;
+  /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left;
+  /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio {
+    display: none; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner {
+    background: #ffffff;
+    border-color: #5cb85c; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner:after {
+    transform: scale(0.7); }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-label {
+    display: -webkit-flex;
+    display: -webkit-box;
+    /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 12.5px;
+    margin-left: 5px;
+    margin-right: 5px; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner {
+    display: block;
+    box-sizing: border-box;
+    width: 23px;
+    height: 23px;
+    background: #ffffff;
+    margin: 5px;
+    border: 2px solid #5cb85c;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: 5px;
+    margin-right: 5px; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 300%;
+    width: 300%;
+    top: -100%;
+    left: -100%;
+    z-index: -1;
+    border-radius: 50%;
+    transition: .3s; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%235cb85c" cx="50.5" cy="50.5" r="50"/></svg>') center center no-repeat;
+    /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
+    background-size: contain;
+    transform: scale(0);
+    transition: .2s; }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:active:before {
+    background: rgba(143, 142, 143, 0.2); }
+
+.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"]:nth-child(2) {
+  margin-left: 0px; }
+
+.fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
+  z-index: 0; }
+.fz-radio-grp {
+  /* Shared button styles */
+  /* On mouse-over the actual input, custom styles should be declared in here */
+  /* On actual input checked, custom styles should be declared in here */ }
+  .fz-radio-grp label.fz-radio-wrapper,
+  .fz-radio-grp label.fz-radio-wrapper--disabled {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 0 10px 0;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+    .fz-radio-grp label.fz-radio-wrapper input,
+    .fz-radio-grp label.fz-radio-wrapper--disabled input {
+      /* Hide the browser's default radio button */
+      cursor: pointer;
+      position: absolute;
+      opacity: 0; }
+  .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+  .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+    border: solid 1px #e5e5e5;
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Open Sans';
+    font-size: 11px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    padding: 10px 20px;
+    text-align: center;
+    white-space: nowrap; }
+  .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+    opacity: 0.5; }
+  .fz-radio-grp label.fz-radio-wrapper:hover input ~ .fz-radio-inner,
+  .fz-radio-grp label.fz-radio-wrapper--disabled:hover input ~ .fz-radio-inner {
+    background-color: rgba(101, 190, 185, 0.1); }
+  .fz-radio-grp label.fz-radio-wrapper input:checked ~ .fz-radio-inner,
+  .fz-radio-grp label.fz-radio-wrapper--disabled input:checked ~ .fz-radio-inner {
+    border-color: #65beb9;
+    background-color: rgba(101, 190, 185, 0.1);
+    color: #65beb9; }
+  @media screen and (max-width: 479px) {
+    .fz-radio-grp {
+      /* Mobile */
+      display: inline-block;
+      text-align: left; }
+      .fz-radio-grp .fz-radio-wrapper,
+      .fz-radio-grp .fz-radio-wrapper--disabled,
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        width: 100%; }
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        display: inline-block;
+        padding: 10px 0; } }
+  @media screen and (min-width: 480px) and (max-width: 767px) {
+    .fz-radio-grp {
+      /* Mobile */
+      display: inline-block;
+      text-align: left; }
+      .fz-radio-grp .fz-radio-wrapper,
+      .fz-radio-grp .fz-radio-wrapper--disabled,
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        width: 100%; }
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        display: inline-block;
+        padding: 10px 0; } }
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .fz-radio-grp {
+      /* Tablets */
+      display: inline-block;
+      text-align: left; }
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        display: inline-block;
+        padding: 10px 15px; } }
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .fz-radio-grp {
+      /* Small Desktops / Laptops */
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-between; }
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        padding: 10px 20px; } }
+  @media screen and (min-width: 1200px) {
+    .fz-radio-grp {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: space-between; }
+      .fz-radio-grp .fz-radio-wrapper .fz-radio-inner,
+      .fz-radio-grp .fz-radio-wrapper--disabled .fz-radio-inner {
+        padding: 15px 2vw; } }
+.fz-radio-grp--binary {
+  /* On mouse-over the actual input, custom styles should be declared in here */
+  /* On actual input checked, custom styles should be declared in here */ }
+  .fz-radio-grp--binary label.fz-radio-wrapper {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin: 10px 0 10px 0;
+    user-select: none;
+    /* Shared button styles */
+    /* Hide the browser's default radio button */ }
+    .fz-radio-grp--binary label.fz-radio-wrapper .fz-radio-inner {
+      border: solid 1px #65beb9;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 11px;
+      font-weight: normal;
+      text-align: center;
+      padding: 6px 19.41px;
+      line-height: 1.4;
+      white-space: nowrap; }
+    .fz-radio-grp--binary label.fz-radio-wrapper:first-child, .fz-radio-grp--binary label.fz-radio-wrapper:last-child {
+      display: inline-block; }
+      .fz-radio-grp--binary label.fz-radio-wrapper:first-child .fz-radio-inner, .fz-radio-grp--binary label.fz-radio-wrapper:last-child .fz-radio-inner {
+        border-width: 1px 1px 1px 1px; }
+    .fz-radio-grp--binary label.fz-radio-wrapper:first-child {
+      margin-right: -2px; }
+      .fz-radio-grp--binary label.fz-radio-wrapper:first-child .fz-radio-inner {
+        border-radius: 2px 0 0 2px; }
+    .fz-radio-grp--binary label.fz-radio-wrapper:last-child {
+      margin-left: -3px; }
+      .fz-radio-grp--binary label.fz-radio-wrapper:last-child .fz-radio-inner {
+        border-radius: 0 2px 2px 0; }
+    .fz-radio-grp--binary label.fz-radio-wrapper input {
+      cursor: pointer;
+      position: absolute;
+      opacity: 0; }
+  .fz-radio-grp--binary label.fz-radio-wrapper:hover input ~ .fz-radio-inner {
+    background-color: rgba(101, 190, 185, 0.1); }
+  .fz-radio-grp--binary label.fz-radio-wrapper input:checked ~ .fz-radio-inner {
+    border-color: #65beb9;
+    background-color: #65beb9;
+    color: #ffffff; }
+/* Tickbox element */
+/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
+/* See https://css-tricks.com/using-svg/ */
+.fz-checkbox {
+  display: none; }
+
+.fz-checkbox:checked + .fz-checkbox-tick {
+  background: #5cb85c;
+  border-color: #5cb85c; }
+
+.fz-checkbox:checked + .fz-checkbox-tick:after {
+  transform: scale(0.9); }
+
+.fz-checkbox-wrapper {
+  align-items: center;
+  /* aligns vertically */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: left;
+  /* aligns horizontally */
+  margin: 0 auto;
+  text-align: center; }
+
+.fz-checkbox-label {
+  display: -webkit-flex;
+  display: -webkit-box;
+  /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-size: 12.5px;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.fz-checkbox-tick {
+  display: block;
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+  background: #FFF;
+  margin: 12.5px 0;
+  border: 2.5px solid #b0b0b0;
+  border-radius: 10%;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+.fz-checkbox-tick:before {
+  content: '';
+  position: absolute;
+  display: block;
+  height: 300%;
+  width: 300%;
+  top: -100%;
+  left: -100%;
+  z-index: -1;
+  border-radius: 50%;
+  transition: .3s; }
+
+.fz-content-wrapper .fz-checkbox-tick:before {
+  z-index: 0; }
+
+.fz-checkbox-tick:after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>') center center no-repeat;
+  /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
+  background-size: contain;
+  transform: scale(0);
+  transition: .2s; }
+
+.fz-checkbox-tick:active:before {
+  background: rgba(143, 142, 143, 0.2); }
+
+.fz-checkbox-wrapper:nth-child(2) {
+  margin-left: 0px; }

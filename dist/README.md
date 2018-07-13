@@ -2,9 +2,9 @@
 
 Reusable UI component library for Airfrov web.
 
-## **Version:** 0.2.0
+## Updates (0.2.0)
 
-- Separated minified script
+- Separated minified and optimised compiled stylesheet
 - New components
 	- Classic Stacked Radios
 	- Ticked Stacked Radios
@@ -16,7 +16,7 @@ To use the library in the webpage, use the script tag as shown in the page of Ai
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.2.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your content here -->

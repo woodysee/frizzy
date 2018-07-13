@@ -732,23 +732,35 @@ li.fz-step-title {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    font-size: 12.5px;
-    margin-left: 5px;
-    margin-right: 5px; }
+    font-size: 14px;
+    margin-left: 3.6px;
+    margin-right: 3.6px; }
+    @media screen and (max-width: 768px) {
+      .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-label {
+        font-size: 14px;
+        margin-left: 20px;
+        margin-right: 20px; } }
   .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner {
     display: block;
     box-sizing: border-box;
-    width: 23px;
-    height: 23px;
+    width: 16px;
+    height: 16px;
     background: #ffffff;
-    margin: 5px;
-    border: 2px solid #5cb85c;
+    margin: 3.6px;
+    border: 1px solid #5cb85c;
     border-radius: 50%;
     position: relative;
     cursor: pointer;
     transition: .2s;
-    margin-left: 5px;
-    margin-right: 5px; }
+    margin-left: 3.6px;
+    margin-right: 3.6px; }
+    @media screen and (max-width: 768px) {
+      .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner {
+        margin: 4px;
+        margin-left: 4px;
+        margin-right: 4px;
+        width: 18px;
+        height: 18px; } }
   .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {
     content: '';
     position: absolute;

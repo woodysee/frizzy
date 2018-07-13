@@ -27,7 +27,7 @@ export default function tickedRadioInput() {
   
   for (let i = 0; i < radioInputs.length; i++) {
     let size = "18px";
-    console.log(radioInputs[i]);
+    // console.log(radioInputs[i]);
     if (typeof radioInputs[i].dataset.fzRadioSize !== "undefined") {
       const userDeclaredSize = radioInputs[i].dataset.fzRadioSize.split("px");
       size = parseFloat(userDeclaredSize[0]);
@@ -36,12 +36,12 @@ export default function tickedRadioInput() {
       // console.log(userDeclaredSize[1] === "");
       // console.log(typeof parseFloat(userDeclaredSize[0]) === "number");
       if (userDeclaredSize.length === 2 && userDeclaredSize[1] === "" && typeof size === "number") {
-        console.log(`...valid user declared size. Declaring user styles by setting to ${userDeclaredSize[0]} px...`);
+        // console.log(`...valid user declared size. Declaring user styles by setting to ${userDeclaredSize[0]} px...`);
         const radioInputChildren = radioInputs[i].children;
         for (let j = 0; j < radioInputChildren.length; j++) {
           styliseRadioChildrenByUserDeclaration(radioInputChildren[j], size);
         }
-        console.log(radioInputChildren);
+        // console.log(radioInputChildren);
       }
     }
   }

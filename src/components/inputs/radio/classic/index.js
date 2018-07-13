@@ -43,7 +43,7 @@ export default function inputRadioClassic() {
         for (let j = 0; j < radioInputChildren.length; j++) {
           styliseRadioChildrenByUserDeclaration(radioInputChildren[j], size);
         }
-        console.log(radioInputChildren);
+        // console.log(radioInputChildren);
       }
     }
   }

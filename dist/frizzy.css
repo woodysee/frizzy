@@ -533,13 +533,13 @@ li.fz-step-title {
     height: 22.5px;
     background: #ffffff;
     margin: 5px 0;
-    border: 2.5px solid #b0b0b0;
+    border-color: #b0b0b0;
     border-radius: 50%;
+    border-style: solid;
+    border-width: 2.5px;
     position: relative;
     cursor: pointer;
-    transition: .2s;
-    margin-left: 5px;
-    margin-right: 5px; }
+    transition: .2s; }
   .fz-radio-wrapper[data-fz-radio-type="ticked"] .fz-radio-inner:before {
     content: '';
     position: absolute;
@@ -747,18 +747,16 @@ li.fz-step-title {
     height: 16px;
     background: #ffffff;
     margin: 3.6px;
-    border: 1px solid #5cb85c;
+    border-color: #5cb85c;
+    border-style: solid;
+    border-width: 1px;
     border-radius: 50%;
     position: relative;
     cursor: pointer;
-    transition: .2s;
-    margin-left: 3.6px;
-    margin-right: 3.6px; }
+    transition: .2s; }
     @media screen and (max-width: 768px) {
       .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner {
         margin: 4px;
-        margin-left: 4px;
-        margin-right: 4px;
         width: 18px;
         height: 18px; } }
   .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:before {

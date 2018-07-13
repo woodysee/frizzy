@@ -62,7 +62,7 @@ npm run build
 #### Binary Inline Radios
 
 ```html
-
+	
 <div class="fz-radio-grp--binary">
 	<label class="fz-radio-wrapper">
 		<input class="fz-radio" type="radio" checked name="binaryRadioInputs" value="Yes" />
@@ -74,13 +74,16 @@ npm run build
 	</label>
 </div>
 
+
 ```
 
 #### Classic Stacked Radios
 
+Declaring `data-fz-radio-size` is optional. The default radio size is **18px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the radio size.
+
 ```html
 	
-<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+<div class="fz-radio-wrapper" data-fz-radio-type="classic" data-fz-radio-size="18px">
 	<div class="fz-radio-label">
 		Stok habis
 	</div>
@@ -114,9 +117,11 @@ npm run build
 
 #### Ticked Stacked Radios
 
+Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the radio size.
+
 ```html
 	
-<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked" data-fz-radio-size="25px">
 	<div class="fz-radio-label">
 		Vegetarian
 	</div>
@@ -126,7 +131,7 @@ npm run build
 	</label>
 </div>
 
-<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked" data-fz-radio-size="50px">
 	<input class="fz-radio" id="meal-selection__noveg" type="radio" name="tickedRadioInputs" value="nonveg" checked />
 	<label class="fz-radio-inner" for="meal-selection__chicken">
 		<!-- Tick element -->
@@ -136,7 +141,7 @@ npm run build
 	</div>
 </div>
 
-<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked" data-fz-radio-size="10px">
 	<input class="fz-radio" id="meal-selection__noveg" type="radio" name="tickedRadioInputs" value="nonveg" checked />
 	<label class="fz-radio-inner" for="meal-selection__fish">
 		<!-- Tick element -->
@@ -277,20 +282,6 @@ npm run build
 
 ```
 
-#### Positive
-
-```html
-	<!-- Font Awesome is needed for the caret icon -->
-	<button type="button" class="fz-btn--pos">
-		Berikutnya (Button) <i class="fa fa-caret-right" aria-hidden="true"></i> 
-	</button>
-
-	<a href="https://www.airfrov.com" class="fz-btn--pos">
-		Berikutnya (Anchor)
-	</a>
-
-```
-
 #### Neutral
 
 ```html
@@ -301,6 +292,20 @@ npm run build
 
 	<a href="https://www.airfrov.com" class="fz-btn--neu">
 		Sebelumnya (Anchor)
+	</a>
+
+```
+
+#### Positive
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn--pos">
+		Berikutnya (Button) <i class="fa fa-caret-right" aria-hidden="true"></i> 
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn--pos">
+		Berikutnya (Anchor)
 	</a>
 
 ```

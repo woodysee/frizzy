@@ -48,9 +48,11 @@ To use the library in the webpage, use the script tag as shown in the page of Ai
 
 #### Classic Stacked Radios
 
+Declaring `data-fz-radio-size` is optional. The default radio size is **18px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the radio size.
+
 ```html
 	
-<div class="fz-radio-wrapper" data-fz-radio-type="classic">
+<div class="fz-radio-wrapper" data-fz-radio-type="classic" data-fz-radio-size="18px">
 	<div class="fz-radio-label">
 		Stok habis
 	</div>
@@ -84,9 +86,11 @@ To use the library in the webpage, use the script tag as shown in the page of Ai
 
 #### Ticked Stacked Radios
 
+Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the radio size.
+
 ```html
 	
-<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked" data-fz-radio-size="25px">
 	<div class="fz-radio-label">
 		Vegetarian
 	</div>
@@ -96,7 +100,7 @@ To use the library in the webpage, use the script tag as shown in the page of Ai
 	</label>
 </div>
 
-<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked" data-fz-radio-size="50px">
 	<input class="fz-radio" id="meal-selection__noveg" type="radio" name="tickedRadioInputs" value="nonveg" checked />
 	<label class="fz-radio-inner" for="meal-selection__chicken">
 		<!-- Tick element -->
@@ -106,7 +110,7 @@ To use the library in the webpage, use the script tag as shown in the page of Ai
 	</div>
 </div>
 
-<div class="fz-radio-wrapper" data-fz-radio-type="ticked">
+<div class="fz-radio-wrapper" data-fz-radio-type="ticked" data-fz-radio-size="10px">
 	<input class="fz-radio" id="meal-selection__noveg" type="radio" name="tickedRadioInputs" value="nonveg" checked />
 	<label class="fz-radio-inner" for="meal-selection__fish">
 		<!-- Tick element -->

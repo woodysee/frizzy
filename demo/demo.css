@@ -2,6 +2,14 @@ html, body {
   font-family: 'Open Sans';
 }
 
+code {
+  background-color: rgba(255,226,223,0.5);
+  border-radius: 3px;
+  color: rgba(255,128,120,1);
+  font-family: 'Menlo', 'Courier New', Courier, monospace;
+  padding: 1px;
+}
+
 .demo-container,
 #console--input-radio-basic,
 #console--input-radio-binary,
@@ -36,7 +44,7 @@ html, body {
   #console--input-radio-classic,
   #console--input-radio-ticked {
 		width: unset;
-		margin: 20px 20px 0 0;
+		margin: 20px 0 0 0;
 	}
 
 }

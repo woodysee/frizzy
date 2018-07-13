@@ -1,7 +1,10 @@
 /* Classic radio element */
-$length: 25px;
+$length: 18px;
+$length--mobile: 20px;
 $radio-inner-length: round($length * (9 / 10));
+$radio-inner-length--mobile: round($length--mobile * (9 / 10));
 $border-width: round($length / 15);
+$border-width--mobile: round($length--mobile / 15);
 $white: #ffffff;
 $green-hexcode: "5cb85c";
 $green: #5cb85c;
@@ -44,9 +47,16 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    font-size: ($length / 2);
+    font-size: round($length / 1.3);
     margin-left: ($length / 5);
     margin-right: ($length / 5);
+    
+    @media screen and (max-width: 768px) {
+      font-size: round($length--mobile / 1.4);
+      margin-left: $length--mobile;
+      margin-right: $length--mobile;
+    }
+    
   }
   
   .fz-radio-inner {
@@ -56,13 +66,20 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     height: $radio-inner-length;
     background: $white;
     margin: ($length / 5);
-    border: $border-width solid $green;
+    border-color: $green;
+    border-style: solid;
+    border-width: $border-width;
     border-radius: 50%;
     position: relative;
     cursor: pointer;
     transition: .2s;
-    margin-left: ($length / 5);
-    margin-right: ($length / 5);
+    
+    @media screen and (max-width: 768px) {
+      margin: ($length--mobile / 5);
+      width: $radio-inner-length--mobile;
+      height: $radio-inner-length--mobile;
+    }
+    
   }
   .fz-radio-inner:before {
     content: '';

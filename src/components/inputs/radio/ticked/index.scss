@@ -56,13 +56,13 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     height: $radio-inner-length;
     background: $white;
     margin: ($length / 5) 0;
-    border: $border-width solid $grey;
+    border-color: $grey;
     border-radius: 50%;
+    border-style: solid;
+    border-width: $border-width;
     position: relative;
     cursor: pointer;
     transition: .2s;
-    margin-left: ($length / 5);
-    margin-right: ($length / 5);
   }
   .fz-radio-inner:before {
     content: '';

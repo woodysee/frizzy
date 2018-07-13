@@ -36,7 +36,7 @@ html, body {
   #console--input-radio-classic,
   #console--input-radio-ticked {
 		width: unset;
-		margin: 20px 20px 0 0;
+		margin: 20px 0 0 0;
 	}
 
 }

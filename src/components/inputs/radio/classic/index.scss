@@ -66,18 +66,16 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     height: $radio-inner-length;
     background: $white;
     margin: ($length / 5);
-    border: $border-width solid $green;
+    border-color: $green;
+    border-style: solid;
+    border-width: $border-width;
     border-radius: 50%;
     position: relative;
     cursor: pointer;
     transition: .2s;
-    margin-left: ($length / 5);
-    margin-right: ($length / 5);
     
     @media screen and (max-width: 768px) {
       margin: ($length--mobile / 5);
-      margin-left: ($length--mobile / 5);
-      margin-right: ($length--mobile / 5);
       width: $radio-inner-length--mobile;
       height: $radio-inner-length--mobile;
     }

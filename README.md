@@ -46,9 +46,14 @@ someButton();
 npm run build
 ```
 
-- To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`. `/dist/demo` is not necessary and can be deleted when deploying.
+- To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`.
+
+To use the library in the webpage, add the script tag (mandatory) and stylesheet reference (optional, but recommended especially if multiple stylesheets are used in the document) as shown in the page of Airfrov website where Frizzy components are used.
 
 ```html
+<head>
+	<link rel="stylesheet" href="path/to/dist/frizzy.min.css" />
+</head>
 <body>
 	<!-- content here -->
 	<script src="path/to/dist/frizzy.min.js"></script>

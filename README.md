@@ -8,7 +8,7 @@ Reusable UI component library for Airfrov web.
 
 ## Wishlist
 
-- [x] Green radio inputs (vertically stacked)
+- [x] Green radio inputs (vertically stacked) (0.2.0)
 	- Vertically stacked
 	- Used in view offer
 - [ ] Modal
@@ -18,7 +18,7 @@ Reusable UI component library for Airfrov web.
 - [ ] Multiple image upload field
 	- Must not scale
 	- Good to have: Able to rotate images
-- [x] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content
+- [x] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content (0.2.0)
 - [ ] Good to have: Allow selective loading of UI components to speed up load time
 
 ## Adding a new component

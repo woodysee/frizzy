@@ -9,7 +9,6 @@ export default function tickedRadioInput() {
     const borderWidth = Math.round(length  / 10);
     switch (true) {
       case inArray("fz-radio-label", el.classList):
-        console.log(el.style.fontSize);
         el.style.fontSize = Math.round(length / 2) + "px";
         el.style.marginLeft = Math.round(length / 5) + "px";
         el.style.marginRight = Math.round(length / 5) + "px";
@@ -27,21 +26,15 @@ export default function tickedRadioInput() {
   
   for (let i = 0; i < radioInputs.length; i++) {
     let size = "18px";
-    console.log(radioInputs[i]);
     if (typeof radioInputs[i].dataset.fzRadioSize !== "undefined") {
       const userDeclaredSize = radioInputs[i].dataset.fzRadioSize.split("px");
       size = parseFloat(userDeclaredSize[0]);
-      // console.log(userDeclaredSize);
-      // console.log(userDeclaredSize.length === 2);
-      // console.log(userDeclaredSize[1] === "");
-      // console.log(typeof parseFloat(userDeclaredSize[0]) === "number");
       if (userDeclaredSize.length === 2 && userDeclaredSize[1] === "" && typeof size === "number") {
-        console.log(`...valid user declared size. Declaring user styles by setting to ${userDeclaredSize[0]} px...`);
+        // console.log(`...valid user declared size. Declaring user styles by setting to ${userDeclaredSize[0]} px...`);
         const radioInputChildren = radioInputs[i].children;
         for (let j = 0; j < radioInputChildren.length; j++) {
           styliseRadioChildrenByUserDeclaration(radioInputChildren[j], size);
         }
-        console.log(radioInputChildren);
       }
     }
   }

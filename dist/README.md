@@ -2,7 +2,13 @@
 
 Reusable UI component library for Airfrov web.
 
-## Updates (0.2.0)
+## Updates
+
+### 0.2.1
+- Removed development loggers when radio buttons used
+- Left aligned copy in alert banner components
+
+### 0.2.0
 
 - Separated minified and optimised compiled stylesheet
 - New components

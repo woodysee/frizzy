@@ -6,21 +6,6 @@ Reusable UI component library for Airfrov web.
 
 `npm install` installs all vendor packages needed inside `./node_modules`.
 
-## Wishlist
-
-- [x] Green radio inputs (vertically stacked) (0.2.0)
-	- Vertically stacked
-	- Used in view offer
-- [ ] Modal
-- [ ] Datepicker
-	- No weird random positions when expanded on a mobile device
-	- When expanding datepicker on a mobile device, datepicker slides down with button big enough for a touch interface
-- [ ] Multiple image upload field
-	- Must not scale
-	- Good to have: Able to rotate images
-- [x] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content (0.2.0)
-- [ ] Good to have: Allow selective loading of UI components to speed up load time
-
 ## Adding a new component
 
 - Create a new folder inside `./src/components`, e.g. `./src/components/someButton`.
@@ -273,6 +258,10 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 </div>
 
 ```
+
+#### Images Upload Input: Default
+
+#### Images Upload Input: Captioned
 
 ### Buttons
 

@@ -1,8 +1,8 @@
-import '../index.css';
+import './index.css';
 
 export default function defaultImagesFileInput () {
   
-  const demoImageUploadSlots = document.querySelectorAll('.fz-uploader[data-fz-uploader="image"]');
+  const defaultImageUploadSlots = document.querySelectorAll('.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"]');
   
   function detectRemovalOfUploadedImage (evt) {
     let previewImgGrpEl, removeImgBtnEl;
@@ -15,7 +15,8 @@ export default function defaultImagesFileInput () {
       removeImgBtnEl = evt.target;
       previewImgGrpEl = evt.target.parentNode;
     }
-    previewImgGrpEl.style.display = "none"; removeImgBtnEl.removeEventListener('click', detectRemovalOfUploadedImage);
+    previewImgGrpEl.style.display = "none";
+    removeImgBtnEl.removeEventListener('click', detectRemovalOfUploadedImage);
     previewImgGrpEl.innerHTML = (
       '<div class="fz-upload-slot__preview-wrapper">'+
         '<img src="#" alt="Image Preview" />'+
@@ -54,8 +55,8 @@ export default function defaultImagesFileInput () {
     
   }
   
-  for (let i = 0; i < demoImageUploadSlots.length; i++) {
-    demoImageUploadSlots[i].addEventListener('change', detectChangesOfUploadedImages);
+  for (let i = 0; i < defaultImageUploadSlots.length; i++) {
+    defaultImageUploadSlots[i].addEventListener('change', detectChangesOfUploadedImages);
   }
   
 }

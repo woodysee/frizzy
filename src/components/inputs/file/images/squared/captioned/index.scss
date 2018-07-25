@@ -1,0 +1,51 @@
+@import '../index.scss';
+
+.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] {
+  
+  .fz-upload-slot {
+    height: $slot-dimension * 1.08;
+    margin-bottom: $slot-dimension * 0.08 * 2 - 3px;
+    
+    .fz-upload-slot__placeholder {
+      height: $slot-dimension;
+    }
+    
+    input[type="file"] {
+      height: $slot-dimension;
+    }
+    
+    .fz-upload-slot__caption-grp {
+      height: $slot-dimension * 0.08;
+      position: absolute;
+      z-index: 5;
+      bottom: -$slot-dimension * (0.08 / 2);
+      width: $slot-dimension;
+      input {
+        border: solid 0.5px #adadad;
+        border-radius: 0.25em;
+        cursor: auto;
+        font-size: $slot-dimension * 0.07;
+        padding: 2.5%;
+        opacity: 1;
+        width: $slot-dimension - ($slot-dimension * 0.05);
+        z-index: 6;
+      }
+    }
+    
+  }
+  
+  .fz-upload-slot__preview-grp {
+    
+    height: $slot-dimension;
+    
+    .fz-upload-slot__preview-wrapper {
+      height: $slot-dimension;
+    }
+    
+    button.fz-upload-slot__rm-img {
+      bottom: $slot-dimension * 0.08 * 2;
+    }
+    
+  }
+  
+}

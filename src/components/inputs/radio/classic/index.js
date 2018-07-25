@@ -5,7 +5,6 @@ export default function inputRadioClassic() {
   const radioInputs = document.querySelectorAll(".fz-radio-wrapper[data-fz-radio-type='classic']");
   
   function styliseRadioChildrenByUserDeclaration (el, length) {
-    const borderColour = "#5cb85c";
     const radioInnerLength = Math.round(length * 0.9);
     const borderWidth = Math.round(length  / 15);
     switch (true) {

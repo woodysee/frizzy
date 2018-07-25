@@ -6,21 +6,6 @@ Reusable UI component library for Airfrov web.
 
 `npm install` installs all vendor packages needed inside `./node_modules`.
 
-## Wishlist
-
-- [x] Green radio inputs (vertically stacked) (0.2.0)
-	- Vertically stacked
-	- Used in view offer
-- [ ] Modal
-- [ ] Datepicker
-	- No weird random positions when expanded on a mobile device
-	- When expanding datepicker on a mobile device, datepicker slides down with button big enough for a touch interface
-- [ ] Multiple image upload field
-	- Must not scale
-	- Good to have: Able to rotate images
-- [x] Separate CSS from JS to allow CSS to load on top of content and JS to load after CSS content (0.2.0)
-- [ ] Good to have: Allow selective loading of UI components to speed up load time
-
 ## Adding a new component
 
 - Create a new folder inside `./src/components`, e.g. `./src/components/someButton`.
@@ -46,9 +31,14 @@ someButton();
 npm run build
 ```
 
-- To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`. `/dist/demo` is not necessary and can be deleted when deploying.
+- To use the library in the webpage, copy all of `/dist` and its contents to your own asset repository. Then just add a script tag linking to its location to the page where the `frizzy.min.js`.
+
+To use the library in the webpage, add the script tag (mandatory) and stylesheet reference (optional, but recommended especially if multiple stylesheets are used in the document) as shown in the page of Airfrov website where Frizzy components are used.
 
 ```html
+<head>
+	<link rel="stylesheet" href="path/to/dist/frizzy.min.css" />
+</head>
 <body>
 	<!-- content here -->
 	<script src="path/to/dist/frizzy.min.js"></script>
@@ -268,6 +258,10 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 </div>
 
 ```
+
+#### Images Upload Input: Default
+
+#### Images Upload Input: Captioned
 
 ### Buttons
 

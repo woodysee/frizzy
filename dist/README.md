@@ -4,6 +4,9 @@ Reusable UI component library for Airfrov web.
 
 ## Updates
 
+### 0.3.0
+- Added multiple images upload components: Default &amp; Captioned.
+
 ### 0.2.1
 - Removed development loggers when radio buttons used
 - Left aligned copy in alert banner components
@@ -17,7 +20,7 @@ Reusable UI component library for Airfrov web.
 
 ## Initialising
 
-To use the library in the webpage, use the script tag as shown in the page of Airfrov website where Frizzy components are used.
+To use the library in the webpage, add the script tag (mandatory) and stylesheet reference (optional, but recommended especially if multiple stylesheets are used in the document) as shown in the page of Airfrov website where Frizzy components are used.
 
 ```html
 <head>

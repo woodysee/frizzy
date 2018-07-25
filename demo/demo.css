@@ -10,6 +10,10 @@ code {
   padding: 1px;
 }
 
+.fz-banner__copy code {
+  display: inline;
+}
+
 .demo-container,
 #console--input-radio-basic,
 #console--input-radio-binary,

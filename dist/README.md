@@ -5,9 +5,7 @@ Reusable UI component library for Airfrov web.
 ## Updates
 
 ### 0.3.0
-- Added multiple images upload components
-	- Default
-	- Captioned
+- Added multiple images upload components: Default &amp; Captioned.
 
 ### 0.2.1
 - Removed development loggers when radio buttons used

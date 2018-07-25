@@ -319,10 +319,29 @@
     
     <div class="demo-container">
       <h3>Multiple Image Uploader</h3>
+      <p>
+        Declaring <code>data-fz-upload-slots</code> attribute is optional.
+      
+        If the <code>data-fz-upload-slots</code> attribute is declared inside the <code>data-fz-upload-slots</code> element:
+        
+        <ul>
+          <li>
+            In the <code>.fz-uploader</code> parent container, you <b>MUST</b> at least include a single <code>.fz-upload-slot</code> element.
+            All inner contents will dynamically be replaced by script-pushed snippets based on the last <code>.fz-upload-slot</code> element.
+          </li>
+          <li>
+            The <i>last</i> <code>.fz-upload-slot</code> element <b>SHOULD NOT</b> have attributes or properties, i.e. <code>id="..."</code> attribute, as the entire node element, including its attributes and properties, will be used to clone new upload slots.
+          </li>
+          <li>
+            The <code>display</code> attribute of the CSSStyleDeclaration / style attribute of the <code>.fz-upload-slot</code> element <b>MUST NOT</b> be mutated further by the user agent. This attribute is used to determine if the upload slot is empty or occupied by an existing image when scanning all slots in the event an image is added or removed.
+          </li>
+        </ul>
+      </p>
+      
       <h4>Default</h4>
-      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-max-upload-slots="3">
         <div class="fz-upload-slots">
-          <!-- Upload slot 1 -->
+          <!-- Below: Upload slot 1 -->
           <div class="fz-upload-slot">
             <div class="fz-upload-slot__placeholder">
               <div class="fz-upload-slot__placeholder__icon"></div>
@@ -338,8 +357,9 @@
               </button>
             </div>
           </div>
-          <!-- End: Upload slot 1 -->
-          <!-- Upload slot 2 -->
+          <!-- Above: Upload slot 1 -->
+          <!-- Below: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
+          <!-- Below: Upload slot 2 -->
           <div class="fz-upload-slot">
             <div class="fz-upload-slot__placeholder">
               <div class="fz-upload-slot__placeholder__icon"></div>
@@ -355,7 +375,8 @@
               </button>
             </div>
           </div>
-          <!-- End: Upload slot 2 -->
+          <!-- Above: Upload slot 2 -->
+          <!-- Above: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
         </div>
         <div class="fz-uploader__errors">
           Something went wrong!
@@ -365,7 +386,7 @@
     
     <div class="demo-container">
       <h4>Captioned</h4>
-      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-max-upload-slots="3">
         <div class="fz-upload-slots">
           <!-- Upload slot 1 -->
           <div class="fz-upload-slot">

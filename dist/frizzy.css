@@ -10,11 +10,11 @@ button.fz-btn--pos, a.fz-btn--pos {
   padding: 10px;
   text-align: center; }
   button.fz-btn--pos:hover, a.fz-btn--pos:hover {
-    color: #ddffdd; }
+    border-color: #6ec76e;
+    background-color: #6ec76e; }
   button.fz-btn--pos:active, a.fz-btn--pos:active {
-    background-color: #ddffdd;
-    border-color: #5cb85c;
-    color: #5cb85c; }
+    background-color: #5cb85c;
+    border-color: #5cb85c; }
 
 button.fz-btn--pos {
   padding: 10px; }
@@ -103,7 +103,8 @@ button.fz-btn--pri, a.fz-btn--pri {
   padding: 10px;
   text-align: center; }
   button.fz-btn--pri:hover, a.fz-btn--pri:hover {
-    background-color: #77ccc8; }
+    background-color: #77ccc8;
+    border-color: #77ccc8; }
   button.fz-btn--pri:active, a.fz-btn--pri:active {
     background-color: #52AFA9;
     border-color: #52AFA9; }

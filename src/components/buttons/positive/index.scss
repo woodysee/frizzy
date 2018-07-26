@@ -1,6 +1,7 @@
 $green: #5cb85c;
 $white: #ffffff;
-$lightGreen: #ddffdd;
+$lightGreen: #6ec76e;
+$darkGreen: #5cb85c;
 $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
 $anchorPaddingTop: ($minButtonWidth / 10) - 1;
@@ -18,13 +19,13 @@ button.fz-btn--pos, a.fz-btn--pos {
   text-align: center;
   
   &:hover {
-    color: $lightGreen;
+    border-color: $lightGreen;
+    background-color: $lightGreen;
   }
   
   &:active {
-    background-color: $lightGreen;
-    border-color: $green;
-    color: $green;
+    background-color: $darkGreen;
+    border-color: $darkGreen;
   }
   
 }

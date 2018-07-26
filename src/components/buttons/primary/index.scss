@@ -21,6 +21,7 @@ button.fz-btn--pri, a.fz-btn--pri {
   
   &:hover {
     background-color: $primary-colour--light;
+    border-color: $primary-colour--light;
   }
   
   &:active {

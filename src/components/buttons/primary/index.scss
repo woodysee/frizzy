@@ -1,0 +1,43 @@
+$primary-colour: #65beb9;
+$primary-colour--light: #77ccc8;
+$primary-color--dark: #52AFA9;
+$white: #ffffff;
+
+$minButtonWidth: 100px;
+$buttonPaddingTop: $minButtonWidth / 10;
+$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+
+button.fz-btn--pri, a.fz-btn--pri {
+  border-radius: 2px;
+  background-color: $primary-colour;
+  border: solid 1px $primary-colour;
+  color: $white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: $minButtonWidth;
+  padding: $buttonPaddingTop;
+  text-align: center;
+  
+  &:hover {
+    background-color: $primary-colour--light;
+  }
+  
+  &:active {
+    background-color: $primary-color--dark;
+    border-color: $primary-color--dark;
+  }
+  
+}
+
+button.fz-btn--pri {
+  padding: $buttonPaddingTop;
+}
+
+a.fz-btn--pri {
+  padding: $anchorPaddingTop;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

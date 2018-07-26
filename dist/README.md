@@ -5,7 +5,8 @@ Reusable UI component library for Airfrov web.
 ## Updates
 
 ### 0.3.0
-- Added multiple images upload components: Default &amp; Captioned.
+- Added Primary Button component based on Airfrov primary colour (i.e. teal)
+<!-- - Added multiple images upload components: Default &amp; Captioned. -->
 
 ### 0.2.1
 - Removed development loggers when radio buttons used
@@ -25,11 +26,11 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.2.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.3.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your content here -->
-	<script src="/css/frizzy/0.2.0/dist/frizzy.min.js"></script>
+	<script src="/css/frizzy/0.3.0/dist/frizzy.min.js"></script>
 </body>
 ```
 
@@ -270,6 +271,20 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 	<a href="https://www.airfrov.com" class="fz-btn--neu">
 		Sebelumnya (Anchor)
+	</a>
+
+```
+
+#### Primary
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn--pri">
+		<i class="fa fa-caret-left" aria-hidden="true"></i> View Dispute
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn--pri">
+		Penawaran dari Traveller
 	</a>
 
 ```

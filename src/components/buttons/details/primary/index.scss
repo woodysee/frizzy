@@ -14,11 +14,21 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__co
   display: flex;
 }
 
+a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  background-color: #ffffff;
+  border: solid 1px #e0dfdf;
+  color: #65beb9;
+  cursor: pointer;
+  @media only screen and (min-device-width: 768px) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
   text-decoration: none;
 }
 button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
-  padding: unset;
   width: 100%;
 }
 
@@ -75,16 +85,5 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
     @media only screen and (min-device-width: 768px) {
       width: 90%;
     }
-  }
-}
-
-a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
-  background-color: #ffffff;
-  border: solid 1px #e0dfdf;
-  color: #65beb9;
-  cursor: pointer;
-  @media only screen and (min-device-width: 768px) {
-    padding-right: 15px;
-    padding-left: 15px;
   }
 }

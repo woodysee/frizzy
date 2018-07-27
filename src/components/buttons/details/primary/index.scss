@@ -47,24 +47,24 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
     svg {
       align-self: center;
       fill: #65beb9;
-      height: $icon-size * (9/7);
-      width: $icon-size * (9/7);
+      max-height: $font-size;
+      max-width: $font-size;
     }
     &:first-child {
-      font-size: $icon-size * (9/7);
-      @media only screen and (min-device-width: 1400px) {
-        svg { align-self: flex-start };
-        padding-left: 5%;
-        width: 10%;
+      font-size: $font-size;
+      @media only screen and (min-device-width: 768px) {
+        width: 5%;
+        svg { align-self: flex-start }
         text-align: left; // For Font Awesome
       }
     }
     &:last-child {
+      color: #e0dfdf;
+      svg { fill: #e0dfdf }
       text-align: center;
-      @media only screen and (min-device-width: 1400px) {
-        svg { align-self: flex-end };
-        padding-right: 5%;
-        width: 10%;
+      @media only screen and (min-device-width: 768px) {
+        width: 5%;
+        svg { align-self: flex-end }
         text-align: right; // For Font Awesome
       }
     }
@@ -72,6 +72,9 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
   .fz-btn__copy {
     text-align: left;
     width: 70%;
+    @media only screen and (min-device-width: 768px) {
+      width: 90%;
+    }
   }
 }
 
@@ -80,4 +83,8 @@ a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], button.fz-btn[d
   border: solid 1px #e0dfdf;
   color: #65beb9;
   cursor: pointer;
+  @media only screen and (min-device-width: 768px) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 }

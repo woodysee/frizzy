@@ -17,6 +17,8 @@ import neutralDefaultButton from './components/buttons/default/neutral';
 import positiveDefaultButton from './components/buttons/default/positive';
 import primaryDefaultButton from './components/buttons/default/primary';
 
+import primaryDetailsButton from './components/buttons/details/primary';
+
 // Initialise each imported component on page load (optional, only if there is JS)
 // addALogoOnTheRightComponent();
 basicCheckboxInput();
@@ -32,7 +34,9 @@ headerBackBtn();
 noticeAlertBanner();
 warningAlertBanner();
 
-negativeDefaultButton();
-neutralDefaultButton();
-positiveDefaultButton();
-primaryDefaultButton();
+negativeDefaultButton(); // No JS
+neutralDefaultButton(); // No JS
+positiveDefaultButton(); // No JS
+primaryDefaultButton(); // No JS
+
+primaryDetailsButton(); // No JS

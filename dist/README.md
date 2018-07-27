@@ -5,8 +5,10 @@ Reusable UI component library for Airfrov web.
 ## Updates
 
 ### 0.3.0
-- Added Primary Button component based on Airfrov primary colour (i.e. teal)
-<!-- - Added multiple images upload components: Default &amp; Captioned. -->
+- Added multiple images upload components: Default &amp; Captioned.
+ 
+### 0.3.0-a
+- Added Primary Button components (i.e. Default and Details) based on Airfrov primary colour (i.e. teal)
 
 ### 0.2.1
 - Removed development loggers when radio buttons used
@@ -317,6 +319,41 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 		Tidak (Anchor)
 	</a>
 
+```
+
+#### Details
+##### Neutral
+
+```html
+	<a class="fz-btn" data-fz-btn-variant="pri" data-fz-btn-type="details" href="#">
+		<div class="fz-btn__icon">
+			<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
+			<!-- Works with your custom inline SVG -->
+			<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 322.7 261.28">
+				<path d="M322.7,48.4,124,247.1h0l-14.18,14.18L0,151.46,48.48,103,109.9,164.4,274.3,0l48.4,48.4Z"/>
+			</svg>
+		</div>
+		<div class="fz-btn__copy">
+			View dispute
+		</div>
+		<div class="fz-btn__icon">
+			<i class="fa fa-caret-right"></i>
+		</div>
+	</a>
+	<button type="button" class="fz-btn" data-fz-btn-variant="pri" data-fz-btn-type="details">
+		<div class="fz-btn__icon">
+			<!-- Custom SVG / Font Awesome 4 or 5 glyphicon should go in here -->
+			<!-- Works with your custom inline SVG -->
+			<i class="fa fa-exclamation-circle">
+			</i>
+		</div>
+		<div class="fz-btn__copy">
+			View dispute
+		</div>
+		<div class="fz-btn__icon">
+			<i class="fa fa-caret-right"></i>
+		</div>
+	</button>
 ```
 
 ### Banners

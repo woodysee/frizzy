@@ -1,0 +1,77 @@
+$font-size: 14px;
+$icon-size: 18px;
+
+.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"],
+.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__icon,
+.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__copy {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  -webkit-align-items: center;
+  align-items: center; /* aligns vertically */
+  border-radius: 2px;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: $font-size;
+  -webkit-justify-content: center;
+  margin: 0 auto;
+  justify-content: center; /* aligns horizontally */
+  text-align: center;
+  .fz-btn__icon, .fz-btn__copy {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+  .fz-btn__icon {
+    width: 15%;
+    svg {
+        align-self: center;
+        fill: #65beb9;
+        width: $icon-size * (9/7);
+    }
+    &:first-child {
+      font-size: $icon-size * (9/7);
+      @media only screen and (min-device-width: 768px) {
+          svg { align-self: flex-start };
+          padding-left: 15px;
+          width: 10%;
+          text-align: left; // For Font Awesome
+      }
+    }
+    &:last-child {
+      text-align: center;
+      @media only screen and (min-device-width: 768px) {
+          svg { align-self: flex-end };
+          padding-right: 15px;
+          width: 10%;
+          text-align: right; // For Font Awesome
+      }
+    }
+  }
+  .fz-btn__copy {
+    text-align: left;
+    width: 70%;
+  }
+}
+
+.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], .fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  background-color: #ffffff;
+  border: solid 1px #e0dfdf;
+  color: #65beb9;
+  cursor: pointer;
+  padding: 10px;
+}
+a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  text-decoration: none;
+}
+button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  width: 100%;
+}

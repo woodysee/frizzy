@@ -19,6 +19,10 @@ a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], button.fz-btn[d
   border: solid 1px #e0dfdf;
   color: #65beb9;
   cursor: pointer;
+  &:hover, &:active {
+    background-color: #ffffff;
+    border: solid 1px #e0dfdf;
+  }
   @media only screen and (min-device-width: 768px) {
     padding-right: 15px;
     padding-left: 15px;

@@ -6,7 +6,8 @@ $buttonPaddingTop: $minButtonWidth / 10;
 $anchorPaddingTop: ($minButtonWidth / 10) - 1;
 
 button.fz-btn--neg, a.fz-btn--neg,
-button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"] {
+button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"],
+button.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]) {
   border-radius: 2px;
   background-color: $white;
   border: solid 1px $red;
@@ -29,12 +30,14 @@ button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"] {
 }
 
 button.fz-btn--neg,
-button.fz-btn[data-fz-btn-variant="neg"] {
+button.fz-btn[data-fz-btn-variant="neg"],
+button.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]) {
   padding: $buttonPaddingTop;
 }
 
 a.fz-btn--neg,
-a.fz-btn[data-fz-btn-variant="neg"] {
+a.fz-btn[data-fz-btn-variant="neg"],
+button.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]) {
   padding: $anchorPaddingTop;
   text-decoration: none;
   &:hover {

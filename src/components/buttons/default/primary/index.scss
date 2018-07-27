@@ -8,7 +8,8 @@ $buttonPaddingTop: $minButtonWidth / 10;
 $anchorPaddingTop: ($minButtonWidth / 10) - 1;
 
 button.fz-btn--pri, a.fz-btn--pri,
-button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
+button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"],
+button.fz-btn[data-fz-btn-variant="pri"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="pri"]:not([data-fz-btn-type="details"]) {
   border-radius: 2px;
   background-color: $primary-colour;
   border: solid 1px $primary-colour;
@@ -33,12 +34,13 @@ button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
 }
 
 button.fz-btn--pri,
-button.fz-btn[data-fz-btn-variant="pri"] {
+button.fz-btn[data-fz-btn-variant="pri"],
+button.fz-btn[data-fz-btn-variant="pri"]:not([data-fz-btn-type="details"]) {
   padding: $buttonPaddingTop;
 }
 
 a.fz-btn--pri,
-a.fz-btn[data-fz-btn-variant="pri"] {
+a.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"]:not([data-fz-btn-type="details"]) {
   padding: $anchorPaddingTop;
   text-decoration: none;
   &:hover {

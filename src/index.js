@@ -12,10 +12,10 @@ import multiStepFormLayout from './components/layouts/forms/multistep';
 import headerBackBtn from './components/buttons/header/back';
 import noticeAlertBanner from './components/banners/alerts/notice';
 import warningAlertBanner from './components/banners/alerts/warning';
-import negativeButton from './components/buttons/negative';
-import neutralButton from './components/buttons/neutral';
-import positiveButton from './components/buttons/positive';
-import primaryButton from './components/buttons/primary';
+import negativeDefaultButton from './components/buttons/default/negative';
+import neutralDefaultButton from './components/buttons/default/neutral';
+import positiveDefaultButton from './components/buttons/default/positive';
+import primaryDefaultButton from './components/buttons/default/primary';
 
 // Initialise each imported component on page load (optional, only if there is JS)
 // addALogoOnTheRightComponent();
@@ -31,7 +31,8 @@ multiStepFormLayout();
 headerBackBtn();
 noticeAlertBanner();
 warningAlertBanner();
-negativeButton();
-neutralButton();
-positiveButton();
-primaryButton();
+
+negativeDefaultButton();
+neutralDefaultButton();
+positiveDefaultButton();
+primaryDefaultButton();

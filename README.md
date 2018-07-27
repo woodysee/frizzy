@@ -259,13 +259,10 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
-#### Images Upload Input: Default
-
-#### Images Upload Input: Captioned
-
 ### Buttons
 
-#### Header: Back
+#### Header
+##### Back
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
@@ -276,7 +273,8 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
-#### Neutral
+#### Default
+##### Neutral
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
@@ -290,7 +288,7 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
-#### Primary
+##### Primary
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
@@ -304,7 +302,7 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
-#### Positive
+##### Positive
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
@@ -318,7 +316,7 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
-#### Negative
+##### Negative
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->

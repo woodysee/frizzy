@@ -4,10 +4,10 @@ Reusable UI component library for Airfrov web.
 
 ## Updates
 
-### 0.3.0
+### 0.4.0 (WIP)
 - Added multiple images upload components: Default &amp; Captioned.
  
-### 0.3.0-a
+### 0.3.0
 - Added Primary Button components (i.e. Default and Details) based on Airfrov primary colour (i.e. teal)
 
 ### 0.2.1

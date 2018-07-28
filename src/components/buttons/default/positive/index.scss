@@ -1,0 +1,49 @@
+$green: #5cb85c;
+$white: #ffffff;
+$lightGreen: #6ec76e;
+$darkGreen: #5cb85c;
+$minButtonWidth: 100px;
+$buttonPaddingTop: $minButtonWidth / 10;
+$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+
+button.fz-btn--pos, a.fz-btn--pos,
+button.fz-btn[data-fz-btn-variant="pos"], a.fz-btn[data-fz-btn-variant="pos"],
+button.fz-btn[data-fz-btn-variant="pos"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="pos"]:not([data-fz-btn-type="details"]) {
+  border-radius: 2px;
+  background-color: $green;
+  border: solid 1px $green;
+  color: $white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: $minButtonWidth;
+  padding: $buttonPaddingTop;
+  text-align: center;
+  
+  &:hover {
+    border-color: $lightGreen;
+    background-color: $lightGreen;
+  }
+  
+  &:active {
+    background-color: $darkGreen;
+    border-color: $darkGreen;
+  }
+  
+}
+
+button.fz-btn--pos,
+button.fz-btn[data-fz-btn-variant="pos"],
+button.fz-btn[data-fz-btn-variant="pos"]:not([data-fz-btn-type="details"]) {
+  padding: $buttonPaddingTop;
+}
+
+a.fz-btn--pos,
+a.fz-btn[data-fz-btn-variant="pos"],
+a.fz-btn[data-fz-btn-variant="pos"]:not([data-fz-btn-type="details"]) {
+  padding: $anchorPaddingTop;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

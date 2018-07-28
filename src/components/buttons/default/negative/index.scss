@@ -1,0 +1,46 @@
+$red: #e48581;
+$white: #ffffff;
+$redButtonBG: rgba(228,133,129,0.1);
+$minButtonWidth: 100px;
+$buttonPaddingTop: $minButtonWidth / 10;
+$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+
+button.fz-btn--neg, a.fz-btn--neg,
+button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"],
+button.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]) {
+  border-radius: 2px;
+  background-color: $white;
+  border: solid 1px $red;
+  color: $red;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: $minButtonWidth;
+  padding: $buttonPaddingTop;
+  text-align: center;
+  &:hover {
+    background-color: $redButtonBG;
+  }
+  
+  &:active {
+    background-color: $red;
+    color: $white;
+  }
+  
+}
+
+button.fz-btn--neg,
+button.fz-btn[data-fz-btn-variant="neg"],
+button.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]) {
+  padding: $buttonPaddingTop;
+}
+
+a.fz-btn--neg,
+a.fz-btn[data-fz-btn-variant="neg"],
+button.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]), a.fz-btn[data-fz-btn-variant="neg"]:not([data-fz-btn-type="details"]) {
+  padding: $anchorPaddingTop;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}

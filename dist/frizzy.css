@@ -1248,6 +1248,9 @@ li.fz-step-title {
     height: 200px; }
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img {
     bottom: 32px; }
+
+.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-uploader__errors {
+  margin-top: 15px; }
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slots,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slots,

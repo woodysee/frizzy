@@ -1,6 +1,46 @@
 $font-size: 14px;
 $icon-size: 18px;
 
+// Unsetting previously declared styles for .fz-btn[data-fz-btn-variant="pri"]...
+
+button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  border-radius: unset;
+  background-color: unset;
+  border: unset;
+  color: unset;
+  cursor: unset;
+  font-size: unset;
+  font-weight: unset;
+  min-width: unset;
+  padding: unset;
+  text-align: unset;
+  
+  &:hover {
+    background-color: unset;
+    border-color: unset;
+  }
+  
+  &:active {
+    background-color: unset;
+    border-color: unset;
+  }
+  
+}
+
+button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  padding: unset;
+}
+
+a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  padding: unset;
+  text-decoration: unset;
+  &:hover {
+    text-decoration: unset;
+  }
+}
+
+// ...unset previously declared styles for .fz-btn[data-fz-btn-variant="pri"].
+
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"],
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__icon,
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__copy,

@@ -5,7 +5,8 @@ $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
 $anchorPaddingTop: ($minButtonWidth / 10) - 1;
 
-button.fz-btn--neu, a.fz-btn--neu {
+button.fz-btn--neu, a.fz-btn--neu,
+button.fz-btn[data-fz-btn-variant="neu"], a.fz-btn[data-fz-btn-variant="neu"] {
   border-radius: 2px;
   background-color: $white;
   border: solid 1px $grey;
@@ -29,11 +30,13 @@ button.fz-btn--neu, a.fz-btn--neu {
   
 }
 
-button.fz-btn--neu {
+button.fz-btn--neu,
+button.fz-btn[data-fz-btn-variant="neu"] {
   padding: $buttonPaddingTop;
 }
 
-a.fz-btn--neu {
+a.fz-btn--neu,
+a.fz-btn[data-fz-btn-variant="neu"] {
   padding: $anchorPaddingTop;
   text-decoration: none;
   &:hover {

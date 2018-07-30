@@ -278,11 +278,11 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
-	<button type="button" class="fz-btn--neu">
+	<button type="button" class="fz-btn" data-fz-btn-variant="neu">
 		<i class="fa fa-caret-left" aria-hidden="true"></i> Sebelumnya (Button)
 	</button>
 
-	<a href="https://www.airfrov.com" class="fz-btn--neu">
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="neu">
 		Sebelumnya (Anchor)
 	</a>
 
@@ -292,11 +292,11 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
-	<button type="button" class="fz-btn--pri">
+	<button type="button" class="fz-btn" data-fz-btn-variant="pri">
 		<i class="fa fa-caret-left" aria-hidden="true"></i> View Dispute
 	</button>
 
-	<a href="https://www.airfrov.com" class="fz-btn--pri">
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="pri">
 		Penawaran dari Traveller
 	</a>
 
@@ -306,11 +306,11 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
-	<button type="button" class="fz-btn--pos">
+	<button type="button" class="fz-btn" data-fz-btn-variant="pos">
 		Berikutnya (Button) <i class="fa fa-caret-right" aria-hidden="true"></i> 
 	</button>
 
-	<a href="https://www.airfrov.com" class="fz-btn--pos">
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="pos">
 		Berikutnya (Anchor)
 	</a>
 
@@ -320,11 +320,11 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
-	<button type="button" class="fz-btn--neg">
+	<button type="button" class="fz-btn" data-fz-btn-variant="neg">
 		<i class="fa fa-caret-left" aria-hidden="true"></i> Tidak (Button)
 	</button>
 
-	<a href="https://www.airfrov.com" class="fz-btn--neg">
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="neg">
 		Tidak (Anchor)
 	</a>
 

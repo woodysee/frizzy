@@ -1,6 +1,46 @@
 $font-size: 14px;
 $icon-size: 18px;
 
+// Unsetting previously declared styles for .fz-btn[data-fz-btn-variant="pri"]...
+
+button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  border-radius: unset;
+  background-color: unset;
+  border: unset;
+  color: unset;
+  cursor: unset;
+  font-size: unset;
+  font-weight: unset;
+  min-width: unset;
+  padding: unset;
+  text-align: unset;
+  
+  &:hover {
+    background-color: unset;
+    border-color: unset;
+  }
+  
+  &:active {
+    background-color: unset;
+    border-color: unset;
+  }
+  
+}
+
+button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  padding: unset;
+}
+
+a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  padding: unset;
+  text-decoration: unset;
+  &:hover {
+    text-decoration: unset;
+  }
+}
+
+// ...unset previously declared styles for .fz-btn[data-fz-btn-variant="pri"].
+
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"],
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__icon,
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__copy,
@@ -14,11 +54,26 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] .fz-btn__co
   display: flex;
 }
 
+a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
+  background-color: #ffffff;
+  border: solid 1px #e0dfdf;
+  color: #65beb9;
+  cursor: pointer;
+  padding: unset;
+  &:hover, &:active {
+    background-color: #ffffff;
+    border: solid 1px #e0dfdf;
+  }
+  @media only screen and (min-device-width: 768px) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
 a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
   text-decoration: none;
 }
 button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
-  padding: unset;
   width: 100%;
 }
 
@@ -30,6 +85,7 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  font-weight: normal;
   font-size: $font-size;
   -webkit-justify-content: center;
   margin: 0 auto;
@@ -75,16 +131,5 @@ button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
     @media only screen and (min-device-width: 768px) {
       width: 90%;
     }
-  }
-}
-
-a.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"], button.fz-btn[data-fz-btn-variant="pri"][data-fz-btn-type="details"] {
-  background-color: #ffffff;
-  border: solid 1px #e0dfdf;
-  color: #65beb9;
-  cursor: pointer;
-  @media only screen and (min-device-width: 768px) {
-    padding-right: 15px;
-    padding-left: 15px;
   }
 }

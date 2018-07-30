@@ -6,7 +6,8 @@ $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
 $anchorPaddingTop: ($minButtonWidth / 10) - 1;
 
-button.fz-btn--pos, a.fz-btn--pos {
+button.fz-btn--pos, a.fz-btn--pos,
+button.fz-btn[data-fz-btn-variant="pos"], a.fz-btn[data-fz-btn-variant="pos"] {
   border-radius: 2px;
   background-color: $green;
   border: solid 1px $green;
@@ -30,11 +31,13 @@ button.fz-btn--pos, a.fz-btn--pos {
   
 }
 
-button.fz-btn--pos {
+button.fz-btn--pos,
+button.fz-btn[data-fz-btn-variant="pos"] {
   padding: $buttonPaddingTop;
 }
 
-a.fz-btn--pos {
+a.fz-btn--pos,
+a.fz-btn[data-fz-btn-variant="pos"] {
   padding: $anchorPaddingTop;
   text-decoration: none;
   &:hover {

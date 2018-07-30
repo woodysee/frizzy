@@ -43,10 +43,14 @@ function detectChangesOfUploadedImages (evt) {
       previewImageEl.style.width = "100%";
     }
   }
-  if (typeof evt.target.files === 'undefined' || typeof evt.target.files[0] === 'undefined') {
+  if (evt.target === null || evt.target.files === null) return;
+  
+  if (evt.target.files.length > 2 && evt.target.files[1] !== null) {
+    // console.log("... preventing multiple uploads for this image slot. All images attempted to be uploaded are cleared from this image slot.");
     evt.target.value = "";
     return;
   }
+  
   reader.readAsDataURL(evt.target.files[0]);
   
   const removeUploadedImageBtns = previewWrapperEl.getElementsByClassName('fz-upload-slot__rm-img');
@@ -68,7 +72,11 @@ function getUploadSlotSnippet (slotsEl) {
   // console.log("We are using the last .fz-upload-slot child (because it will always be empty) in the parent .fz-upload-slots element as a reference element to create upload snippets.");
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   if (existingImageUploadSlotEls.length === 0) return '';
-  const uploadSlotSnippet = existingImageUploadSlotEls[existingImageUploadSlotEls.length-1].cloneNode(true);
+  let uploadSlotSnippet = existingImageUploadSlotEls[existingImageUploadSlotEls.length-1].cloneNode(true);
+  const uploadSlotSnippetInputs = uploadSlotSnippet.getElementsByTagName("input");
+  for (let i = 0; i < uploadSlotSnippetInputs.length; i++) {
+    uploadSlotSnippetInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+  }
   return uploadSlotSnippet;
 }
 
@@ -105,6 +113,10 @@ function removeImageUploadSlot (slotsEl, slotElMarkedForRemoval) {
   if (numberOfExistingImages === maxUploadSlots - 1) {
     // console.log("...adding a new empty slot since not already maxed out.");
     const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
+    const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
+    for (let i = 0; i < emptySlotElInputs.length; i++) {
+      emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+    }
     targetEl.appendChild(emptySlotEl);
   }
   slotElMarkedForRemoval.remove();

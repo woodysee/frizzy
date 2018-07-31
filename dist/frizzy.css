@@ -384,7 +384,7 @@ a.fz-btn[data-fz-btn-variant="pri"] {
     width: 85%; }
 
 .fz-banner--notice {
-  background-color: rgba(248, 206, 138, 0.1); }
+  background-color: #fdfbf4; }
   .fz-banner--notice .fz-banner__icon svg {
     width: 30px; }
   .fz-banner--notice .fz-banner__copy {
@@ -432,7 +432,7 @@ a.fz-btn[data-fz-btn-variant="pri"] {
     width: 85%; }
 
 .fz-banner--warning {
-  background-color: rgba(255, 120, 90, 0.1); }
+  background-color: #fef2ef; }
   .fz-banner--warning .fz-banner__icon svg {
     width: 30px; }
   .fz-banner--warning .fz-banner__copy {

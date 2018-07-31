@@ -259,6 +259,135 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
+### Inputs: File
+
+#### Squared Image File Uploader
+
+<ul>
+  <li><code>class="fz-uploader"</code> - <b>Required</b></li>
+  <li><code>data-fz-uploader-file-type="image"</code> - <b>Required</b></li>
+  <li><code>data-fz-uploader-variant="squared__default"</code> - <b>Required</b></li>
+  <li>
+    <code>data-fz-upload-slots</code> - <b>Optional</b>. But if declared inside the <code>.fz-uploader</code> element:
+    <ul>
+      <li>
+        In the <code>.fz-uploader</code> parent container, you <b>MUST</b> at least include a single <code>.fz-upload-slot</code> element.
+        All inner contents will dynamically be replaced by script-pushed snippets based on the last <code>.fz-upload-slot</code> element.
+      </li>
+      <li>
+        The <i>last</i> <code>.fz-upload-slot</code> element <b>SHOULD NOT</b> have attributes or properties, i.e. <code>id="..."</code> attribute, as the entire node element, including its attributes and properties, will be used to clone new upload slots.
+      </li>
+      <li>
+        The <code>display</code> attribute of the CSSStyleDeclaration / style attribute of the <code>.fz-upload-slot</code> element <b>MUST NOT</b> be mutated further by the user agent. This attribute is used to determine if the upload slot is empty or occupied by an existing image when scanning all slots in the event an image is added or removed.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <code>data-fz-total-size-limit="8"</code>
+    Optional. In megabytes (1 MB = 10^6 bytes). If included, total size of all files allowed to be selected for upload in this <code>.fz-uploader</code> group is limited by the amount declared. This value <b>MUST NOT</b> be reassigned after the page is loaded.
+  </li>
+  <li>
+    <code>data-fz-file-size-limit="0"</code>
+    Optional. In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
+  </li>
+</ul>
+
+##### Default
+
+```html
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3">
+  <div class="fz-upload-slots">
+    <!-- Below: Upload slot 1 -->
+    <div class="fz-upload-slot">
+      <div class="fz-upload-slot__placeholder">
+        <div class="fz-upload-slot__placeholder__icon"></div>
+        <div class="fz-upload-slot__placeholder__text">Upload image</div>
+      </div>
+      <input type="file" name="defaultDemoImages" accept="image/jpg,image/png,image/jpeg" />
+      <div class="fz-upload-slot__preview-grp">
+        <div class="fz-upload-slot__preview-wrapper">
+          <img src="#" alt="Image Preview" />
+        </div>
+        <button class="fz-upload-slot__rm-img">
+          <div class="fz-upload-slot__rm-img__icon"></div>
+        </button>
+      </div>
+    </div>
+    <!-- Above: Upload slot 1 -->
+    <!-- Below: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
+    <!-- Below: Upload slot 2 -->
+    <div class="fz-upload-slot">
+      <div class="fz-upload-slot__placeholder">
+        <div class="fz-upload-slot__placeholder__icon"></div>
+        <div class="fz-upload-slot__placeholder__text">Upload image</div>
+      </div>
+      <input type="file" name="defaultDemoImages" accept="image/jpg,image/png,image/jpeg" />
+      <div class="fz-upload-slot__preview-grp">
+        <div class="fz-upload-slot__preview-wrapper">
+          <img src="#" alt="Image Preview" />
+        </div>
+        <button class="fz-upload-slot__rm-img">
+          <div class="fz-upload-slot__rm-img__icon"></div>
+        </button>
+      </div>
+    </div>
+    <!-- Above: Upload slot 2 -->
+    <!-- Above: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
+  </div>
+</div>
+```
+
+##### Captioned
+
+Captions per each squared image.
+
+```html
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-max-upload-slots="3">
+  <div class="fz-upload-slots">
+    <!-- Upload slot 1 -->
+    <div class="fz-upload-slot">
+      <div class="fz-upload-slot__placeholder">
+        <div class="fz-upload-slot__placeholder__icon"></div>
+        <div class="fz-upload-slot__placeholder__text">Upload image</div>
+      </div>
+      <input type="file" name="captionedDemoImages" accept="image/jpg,image/png,image/jpeg"/>
+      <div class="fz-upload-slot__preview-grp">
+        <div class="fz-upload-slot__preview-wrapper">
+          <img src="#" alt="Image Preview" />
+        </div>
+        <button class="fz-upload-slot__rm-img">
+          <div class="fz-upload-slot__rm-img__icon"></div>
+        </button>
+      </div>
+      <div class="fz-upload-slot__caption-grp">
+        <input type="text" name="captionedDemoCaptions" value="" placeholder="Captions for the image" />
+      </div>
+    </div>
+    <!-- End: Upload slot 1 -->
+    <!-- Upload slot 2 -->
+    <div class="fz-upload-slot">
+      <div class="fz-upload-slot__placeholder">
+        <div class="fz-upload-slot__placeholder__icon"></div>
+        <div class="fz-upload-slot__placeholder__text">Upload image</div>
+      </div>
+      <input type="file" name="captionedDemoImages" accept="image/jpg,image/png,image/jpeg"/>
+      <div class="fz-upload-slot__preview-grp">
+        <div class="fz-upload-slot__preview-wrapper">
+          <img src="#" alt="Image Preview" />
+        </div>
+        <button class="fz-upload-slot__rm-img">
+          <div class="fz-upload-slot__rm-img__icon"></div>
+        </button>
+      </div>
+      <div class="fz-upload-slot__caption-grp">
+        <input type="text" name="captionedDemoCaptions" value="" placeholder="Captions for the image" />
+      </div>
+    </div>
+    <!-- End: Upload slot 2 -->
+  </div>
+</div>
+```
+
 ### Buttons
 
 #### Header
@@ -325,6 +454,20 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 	</button>
 
 	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="neg">
+		Tidak (Anchor)
+	</a>
+
+```
+
+##### Info
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn" data-fz-btn-variant="info">
+		<i class="fa fa-caret-left" aria-hidden="true"></i> Tidak (Button)
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="info">
 		Tidak (Anchor)
 	</a>
 

@@ -201,10 +201,12 @@ button.fz-btn[data-fz-btn-variant="info"], a.fz-btn[data-fz-btn-variant="info"] 
   text-align: center; }
   button.fz-btn--info:hover, a.fz-btn--info:hover,
   button.fz-btn[data-fz-btn-variant="info"]:hover, a.fz-btn[data-fz-btn-variant="info"]:hover {
-    background-color: #47aaff; }
+    background-color: #4099e5;
+    border: solid 1px #4099e5; }
   button.fz-btn--info:active, a.fz-btn--info:active,
   button.fz-btn[data-fz-btn-variant="info"]:active, a.fz-btn[data-fz-btn-variant="info"]:active {
     background-color: #24557f;
+    border: solid 1px #24557f;
     color: #ffffff; }
 
 button.fz-btn--info,

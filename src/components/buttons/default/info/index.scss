@@ -1,5 +1,5 @@
 $primary-colour--default: #337ab7;
-$primary-colour--light: #47aaff;
+$primary-colour--light: #4099e5;
 $primary-colour--dark: #24557f;
 $white: #ffffff;
 $minButtonWidth: 100px;
@@ -20,10 +20,12 @@ button.fz-btn[data-fz-btn-variant="info"], a.fz-btn[data-fz-btn-variant="info"] 
   text-align: center;
   &:hover {
     background-color: $primary-colour--light;
+    border: solid 1px $primary-colour--light;
   }
   
   &:active {
     background-color: $primary-colour--dark;
+    border: solid 1px $primary-colour--dark;
     color: $white;
   }
   

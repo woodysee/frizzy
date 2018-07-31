@@ -330,6 +330,20 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
+##### Info
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn" data-fz-btn-variant="info">
+		<i class="fa fa-caret-left" aria-hidden="true"></i> Tidak (Button)
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="info">
+		Tidak (Anchor)
+	</a>
+
+```
+
 #### Details
 ##### Neutral
 

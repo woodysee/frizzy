@@ -187,6 +187,37 @@ a.fz-btn[data-fz-btn-variant="neg"] {
   a.fz-btn--neg:hover,
   a.fz-btn[data-fz-btn-variant="neg"]:hover {
     text-decoration: none; }
+button.fz-btn--info, a.fz-btn--info,
+button.fz-btn[data-fz-btn-variant="info"], a.fz-btn[data-fz-btn-variant="info"] {
+  border-radius: 2px;
+  background-color: #337ab7;
+  border: solid 1px #337ab7;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 100px;
+  padding: 10px;
+  text-align: center; }
+  button.fz-btn--info:hover, a.fz-btn--info:hover,
+  button.fz-btn[data-fz-btn-variant="info"]:hover, a.fz-btn[data-fz-btn-variant="info"]:hover {
+    background-color: #47aaff; }
+  button.fz-btn--info:active, a.fz-btn--info:active,
+  button.fz-btn[data-fz-btn-variant="info"]:active, a.fz-btn[data-fz-btn-variant="info"]:active {
+    background-color: #24557f;
+    color: #ffffff; }
+
+button.fz-btn--info,
+button.fz-btn[data-fz-btn-variant="info"] {
+  padding: 10px; }
+
+a.fz-btn--info,
+a.fz-btn[data-fz-btn-variant="info"] {
+  padding: 9px;
+  text-decoration: none; }
+  a.fz-btn--info:hover,
+  a.fz-btn[data-fz-btn-variant="info"]:hover {
+    text-decoration: none; }
 button.fz-btn--neu, a.fz-btn--neu,
 button.fz-btn[data-fz-btn-variant="neu"], a.fz-btn[data-fz-btn-variant="neu"] {
   border-radius: 2px;

@@ -5,7 +5,7 @@ function detectRemovalOfUploadedImage (evt) {
     removeImgBtnEl = evt.target.parentNode;
     previewImgGrpEl = evt.target.parentNode.parentNode;
   } else {
-    // console.log("... while the parent btn element is clicked for Firefox.");
+    // console.log("The parent btn element is clicked for Firefox.");
     removeImgBtnEl = evt.target;
     previewImgGrpEl = evt.target.parentNode;
   }
@@ -19,21 +19,26 @@ function detectRemovalOfUploadedImage (evt) {
       '<div class="fz-upload-slot__rm-img__icon"></div>'+
     '</button>'
   );
+  
+  // console.log("If applicable, dynamically removing extra image slot...");
   const slotEl = previewImgGrpEl.parentNode;
-  const slotsEl = slotEl.parentNode.parentNode;
-  if (typeof slotsEl.dataset.fzMaxUploadSlots !== 'undefined') {
-    removeImageUploadSlot(slotsEl, slotEl);
-    slotsEl.addEventListener('change', detectChangesOfUploadedImages);
+  const uploaderEl = slotEl.parentNode.parentNode;
+  if (typeof uploaderEl.dataset.fzMaxUploadSlots !== 'undefined') {
+    removeImageUploadSlot(uploaderEl, slotEl);
+    uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
   }
 }
 
 function detectChangesOfUploadedImages (evt) {
-  const previewWrapperEl = evt.target.parentNode.getElementsByClassName('fz-upload-slot__preview-grp')[0];
-  const previewImageEl = evt.target.parentNode.querySelector('.fz-upload-slot__preview-wrapper img');
+  const uploadSlotEl = evt.target.parentNode;
+  const uploaderEl = uploadSlotEl.parentNode.parentNode;
+  const previewWrapperEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+  const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
   const reader = new FileReader();
-  reader.onload = (evt) => {
+  reader.onload = (whenLoaded) => {
+    const loadedReader = whenLoaded.target;
     previewWrapperEl.style.display = "block";
-    previewImageEl.src = evt.target.result;
+    previewImageEl.src = loadedReader.result;
     // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
     if (previewImageEl.style.width >= previewImageEl.style.height) {
       // console.log("...the height.");
@@ -42,6 +47,21 @@ function detectChangesOfUploadedImages (evt) {
       // console.log("...the width.");
       previewImageEl.style.width = "100%";
     }
+    
+    if (!fileSizeIsWithinLimit(uploaderEl, evt.target.files[0])) {
+      // console.warn("...this file exceeded declared file size limit.");
+      previewWrapperEl.style.display = "none";
+      removeImageUploadSlot(uploaderEl, uploadSlotEl);
+      return;
+    }
+    
+    if (!totalSizeOfFilesIsWithinLimit(uploaderEl)) {
+      // console.warn("...total size of files exceeded declared total size limit.");
+      previewWrapperEl.style.display = "none";
+      removeImageUploadSlot(uploaderEl, uploadSlotEl);
+      return;
+    }
+    
   }
   if (evt.target === null || evt.target.files === null) return;
   
@@ -58,17 +78,54 @@ function detectChangesOfUploadedImages (evt) {
   for (let i = 0; i < removeUploadedImageBtns.length; i++) {
     removeUploadedImageBtns[i].addEventListener('click', detectRemovalOfUploadedImage);
   }
-  
-  const slotsEl = evt.target.parentNode.parentNode.parentNode;
-  if (typeof slotsEl.dataset.fzMaxUploadSlots !== 'undefined') {
-    addImageUploadSlot(slotsEl);
-    slotsEl.addEventListener('change', detectChangesOfUploadedImages);
+  // console.log("If applicable, dynamically adding new image slot...");
+  if (typeof uploaderEl.dataset.fzMaxUploadSlots !== 'undefined') {
+    addImageUploadSlot(uploaderEl);
+    uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
   }
   
 }
 
-function getUploadSlotSnippet (slotsEl) {
-  const targetEl = slotsEl.getElementsByClassName('fz-upload-slots')[0];
+function calculateTotalSizeOfFiles (uploaderEl) {
+  const imageFileInputEls = uploaderEl.querySelectorAll('.fz-upload-slot input[type="file"]');
+  let totalSize = 0;
+  for (let i = 0; i < imageFileInputEls.length; i++) {
+    if (imageFileInputEls[i].files.length > 0) {
+      totalSize += imageFileInputEls[i].files[0].size
+    }
+  }
+  return totalSize; // in bytes
+}
+
+function fileSizeIsWithinLimit (uploaderEl, file) {
+  const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
+  if (typeof uploaderEl.dataset.fzFileSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzFileSizeLimit) > 0) {
+    // console.log("...max file size was declared.");
+    const maxFileSize = Math.ceil(parseFloat(uploaderEl.dataset.fzFileSizeLimit) * bytesInAMegabyte);
+    if (file.size >= maxFileSize) {
+      console.warn(`The size of this file (${file.size / bytesInAMegabyte} MB) exceeded declared size limit per file (${maxFileSize / bytesInAMegabyte} MB). As such, this file (${file.name}) was prevented from being selected for upload.`);
+    }
+    return file.size < maxFileSize;
+  }
+  return true;
+}
+
+function totalSizeOfFilesIsWithinLimit (uploaderEl) {
+  const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
+  if (typeof uploaderEl.dataset.fzTotalSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzTotalSizeLimit) > 0) {
+    // console.log("...max total size of files allowed to be uploaded was declared.");
+    const maxTotalSize = Math.ceil(parseFloat(uploaderEl.dataset.fzTotalSizeLimit) * bytesInAMegabyte);
+    const totalSize = calculateTotalSizeOfFiles(uploaderEl);
+    if (totalSize >= maxTotalSize) {
+      console.warn(`The total size of all files (${totalSize / bytesInAMegabyte} MB) exceeded declared total size limit of all files (${maxTotalSize / bytesInAMegabyte} MB). As such, the latest file was prevented from being selected for upload.`);
+    }
+    return totalSize < maxTotalSize;
+  }
+  return true;
+}
+
+function getUploadSlotSnippet (uploaderEl) {
+  const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
   // console.log("We are using the last .fz-upload-slot child (because it will always be empty) in the parent .fz-upload-slots element as a reference element to create upload snippets.");
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   if (existingImageUploadSlotEls.length === 0) return '';
@@ -80,27 +137,27 @@ function getUploadSlotSnippet (slotsEl) {
   return uploadSlotSnippet;
 }
 
-function initialiseImageUploadSlots (slotsEl) {
-  const targetEl = slotsEl.getElementsByClassName('fz-upload-slots')[0];
-  const uploadSlotSnippet = getUploadSlotSnippet(slotsEl);
+function initialiseImageUploadSlots (uploaderEl) {
+  const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
+  const uploadSlotSnippet = getUploadSlotSnippet(uploaderEl);
   if (uploadSlotSnippet === '') return;
   targetEl.innerHTML = "";
   targetEl.appendChild(uploadSlotSnippet);
 }
 
-function addImageUploadSlot (slotsEl) {
-  const targetEl = slotsEl.getElementsByClassName('fz-upload-slots')[0];
+function addImageUploadSlot (uploaderEl) {
+  const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
-  const uploadSlotSnippet = getUploadSlotSnippet(slotsEl);
-  const maxUploadSlots = parseInt(slotsEl.dataset.fzMaxUploadSlots);
+  const uploadSlotSnippet = getUploadSlotSnippet(uploaderEl);
+  const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   if (existingImageUploadSlotEls.length >= maxUploadSlots) return;
   if (uploadSlotSnippet === '') return;
   targetEl.appendChild(uploadSlotSnippet);
 }
 
-function removeImageUploadSlot (slotsEl, slotElMarkedForRemoval) {
-  const targetEl = slotsEl.getElementsByClassName('fz-upload-slots')[0];  
+function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
+  const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];  
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   let previewImageGroup, visibilityOfPreviewImage, numberOfExistingImages = 0;
   for (let i = 0; i < existingImageUploadSlotEls.length; i++) {
@@ -108,7 +165,7 @@ function removeImageUploadSlot (slotsEl, slotElMarkedForRemoval) {
     visibilityOfPreviewImage = previewImageGroup.style.display;
     if (visibilityOfPreviewImage !== 'none') numberOfExistingImages++;
   }
-  const maxUploadSlots = parseInt(slotsEl.dataset.fzMaxUploadSlots);
+  const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   if (numberOfExistingImages === maxUploadSlots - 1) {
     // console.log("...adding a new empty slot since not already maxed out.");

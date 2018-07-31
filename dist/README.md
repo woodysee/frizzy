@@ -30,11 +30,11 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.3.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.4.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your content here -->
-	<script src="/css/frizzy/0.3.0/dist/frizzy.min.js"></script>
+	<script src="/css/frizzy/0.4.0/dist/frizzy.min.js"></script>
 </body>
 ```
 

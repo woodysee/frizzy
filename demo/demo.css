@@ -1,5 +1,5 @@
-html, body {
-  font-family: 'Open Sans';
+html, body, * {
+  font-family: 'Open Sans', sans-serif;
 }
 
 code {

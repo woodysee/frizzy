@@ -388,6 +388,61 @@ Captions per each squared image.
 </div>
 ```
 
+#### Comment
+
+<ul>
+  <li>
+    <code>data-fz-comment-img-inner-html="Upload image"</code> - 
+    Optional. Inner HTML for the text shown if an image is in preview
+  </li>
+  <li>
+    <code>data-fz-comment-txt-inner-html="Upload image"</code> - 
+    Required if <code>data-fz-comment-img-inner-html</code> is declared. Inner HTML for the text shown if an image is removed from preview.
+  </li>
+</ul>
+
+```html
+<div class="demo-container">
+  <h4>Comment</h4>
+  <ul>
+    <li>
+      <code>data-fz-comment-img-inner-html="Upload image"</code> - 
+      Optional. Inner HTML for the text shown if an image is in preview
+    </li>
+    <li>
+      <code>data-fz-comment-txt-inner-html="Upload image"</code> - 
+      Required if <code>data-fz-comment-img-inner-html</code> is declared. Inner HTML for the text shown if an image is removed from preview.
+    </li>
+  </ul>
+  <div class="fz-comment-grp">
+    <textarea name="foobar" rows="3" cols="30" placeholder="Enter text here..."></textarea>
+    <div class="fz-comment__cta">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8">
+        <div class="fz-upload-slots">
+          <!-- Upload slot 1 -->
+          <div class="fz-upload-slot">
+            <div class="fz-upload-slot__icon"></div>
+            <input type="file" name="barfoo" accept="image/jpg,image/png,image/jpeg"/>
+            <div class="fz-upload-slot__preview-grp">
+              <div class="fz-upload-slot__preview-wrapper">
+                <img src="#" alt="Image Preview" />
+              </div>
+              <button class="fz-upload-slot__rm-img">
+                <div class="fz-upload-slot__rm-img__icon"></div>
+              </button>
+            </div>
+          </div>
+          <!-- End: Upload slot 1 -->
+        </div>
+      </div>
+      <button class="fz-btn fz-comment__submit" data-fz-btn-variant="info" type="button" name="foobarfoo" data-fz-comment-img-inner-html="Upload image" data-fz-comment-txt-inner-html="Submit">
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+```
+
 ### Buttons
 
 #### Header

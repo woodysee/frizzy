@@ -23,6 +23,11 @@ function detectRemovalOfUploadedImage (evt) {
   // console.log("If applicable, dynamically removing extra image slot...");
   const slotEl = previewImgGrpEl.parentNode;
   const uploaderEl = slotEl.parentNode.parentNode;
+  const inputEl = slotEl.querySelector('input[type="file"]');
+  
+  // console.log("Clearing current input...");
+  inputEl.value = "";
+  
   if (typeof uploaderEl.dataset.fzMaxUploadSlots !== 'undefined') {
     removeImageUploadSlot(uploaderEl, slotEl);
     uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
@@ -159,16 +164,16 @@ function addImageUploadSlot (uploaderEl) {
 function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];  
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
-  let previewImageGroup, visibilityOfPreviewImage, numberOfExistingImages = 0;
+  let previewImageGroup, fileInputValue, numberOfExistingImages = 0;
   for (let i = 0; i < existingImageUploadSlotEls.length; i++) {
     previewImageGroup = existingImageUploadSlotEls[i].getElementsByClassName('fz-upload-slot__preview-grp')[0];
-    visibilityOfPreviewImage = previewImageGroup.style.display;
-    if (visibilityOfPreviewImage !== 'none') numberOfExistingImages++;
+    fileInputValue = previewImageGroup.parentNode.querySelector(`input[type="file"]`).value;
+    if (fileInputValue !== "") numberOfExistingImages++;
   }
   const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   if (numberOfExistingImages === maxUploadSlots - 1) {
-    // console.log("...adding a new empty slot since not already maxed out.");
+    // console.log(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
     const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
     const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
     for (let i = 0; i < emptySlotElInputs.length; i++) {
@@ -185,5 +190,7 @@ export {
   getUploadSlotSnippet,
   initialiseImageUploadSlots,
   addImageUploadSlot,
-  removeImageUploadSlot
+  removeImageUploadSlot,
+  totalSizeOfFilesIsWithinLimit,
+  fileSizeIsWithinLimit
 }

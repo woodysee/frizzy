@@ -299,7 +299,7 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 		<b>Optional.</b> Where <code>someFunctionIfNotWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload hits or exceeds the declared file size limit in <code>data-fz-file-size-limit</code>.
 	</li>
 	<li>
-		```javascript
+		```js
 		function someFunctionIfWithinFileSizeLimit (uploaderEl) {
 			console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
 		}

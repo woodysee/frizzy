@@ -72,3 +72,12 @@
   wrapperEl.addEventListener("click", printValueOfSelected);
   
 })();
+
+function someFunctionIfWithinFileSizeLimit (uploaderEl) {
+  console.log(uploaderEl);
+  console.log("Is within size limit!");
+}
+function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
+  console.log(uploaderEl);
+  console.log("Is not within size limit!");
+}

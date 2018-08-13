@@ -4,9 +4,9 @@ Reusable UI component library for Airfrov web.
 
 ## Updates
 
-### 0.4.0 (WIP)
+### 0.4.0
 - Added Info Default Button component
-- Added multiple images upload components: Default &amp; Captioned.
+- Added multiple images upload components with file and total size detection and support for user-defined resolve and reject callback declarations in the window scope: Default, Captioned and Comment.
  
 ### 0.3.0
 - Added Primary Button components (i.e. Default and Details) based on Airfrov primary colour (i.e. teal)
@@ -283,12 +283,31 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
     <code>data-fz-file-size-limit="0"</code>
     Optional. In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
   </li>
+  <li>
+    <code>data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinFileSizeLimit"</code> - 
+    <b>Optional.</b> Where <code>someFunctionIfWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload does not exceed the declared file size limit in <code>data-fz-file-size-limit</code>.
+  </li>
+  <li>
+    <code>data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinFileSizeLimit"</code> - 
+    <b>Optional.</b> Where <code>someFunctionIfNotWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload hits or exceeds the declared file size limit in <code>data-fz-file-size-limit</code>.
+  </li>
+  <li>
+    ```javascript
+    function someFunctionIfWithinFileSizeLimit (uploaderEl) {
+      console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+    }
+
+    function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
+      console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+    }
+    ```
+  </li>
 </ul>
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinSizeLimit" data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinSizeLimit">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -335,7 +354,7 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 Captions per each squared image.
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-max-upload-slots="3">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-total-size-limit="8" data-fz-file-size-limit="8" data-fz-max-upload-slots="3" data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinSizeLimit" data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinSizeLimit">
   <div class="fz-upload-slots">
     <!-- Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -410,7 +429,7 @@ Captions per each squared image.
   <div class="fz-comment-grp">
     <textarea name="foobar" rows="3" cols="30" placeholder="Enter text here..."></textarea>
     <div class="fz-comment__cta">
-      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8" data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinSizeLimit" data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinSizeLimit">
         <div class="fz-upload-slots">
           <!-- Upload slot 1 -->
           <div class="fz-upload-slot">

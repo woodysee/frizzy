@@ -10,6 +10,19 @@ code {
   padding: 1px;
 }
 
+.code-snippet {
+  border: none;
+  background-color: rgba(255,226,223,0.2);
+  border-radius: 3px;
+  color: rgba(255,128,120,1);
+  font-family: 'Menlo', 'Courier New', Courier, monospace;
+  font-size: 15px;
+  margin-top: 10px;
+  padding: 10px;
+  resize: none;
+  width: 100%;
+}
+
 .fz-banner__copy code {
   display: inline;
 }

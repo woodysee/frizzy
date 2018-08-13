@@ -45,13 +45,6 @@ function detectChangesOfUploadedImages (evt) {
     previewWrapperEl.style.display = "block";
     previewImageEl.src = loadedReader.result;
     // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
-    if (previewImageEl.style.width >= previewImageEl.style.height) {
-      // console.log("...the height.");
-      previewImageEl.style.height = "100%";
-    } else {
-      // console.log("...the width.");
-      previewImageEl.style.width = "100%";
-    }
     
     if (!fileSizeIsWithinLimit(uploaderEl, evt.target.files[0])) {
       // console.warn("...this file exceeded declared file size limit.");
@@ -65,6 +58,21 @@ function detectChangesOfUploadedImages (evt) {
       previewWrapperEl.style.display = "none";
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
+    }
+    
+    switch (true) {
+      case previewImageEl.style.width > previewImageEl.style.height:
+        // previewImageEl.style.width = "";
+        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.height = "100%";
+        break;
+      case previewImageEl.style.width < previewImageEl.style.height:
+        // previewImageEl.style.height = "";
+        previewImageEl.style.removeProperty("height");
+        previewImageEl.style.width = "100%";
+        break;
+      default:
+        previewImageEl.style.width = previewImageEl.style.height = "100%";
     }
     
   }
@@ -104,11 +112,23 @@ function calculateTotalSizeOfFiles (uploaderEl) {
 
 function fileSizeIsWithinLimit (uploaderEl, file) {
   const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
+  const resolve = uploaderEl.dataset.fzInvokeIfWithinFileSizeLimit; // User-defined success function
+  const reject = uploaderEl.dataset.fzInvokeIfNotWithinFileSizeLimit; // User-defined reject function
   if (typeof uploaderEl.dataset.fzFileSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzFileSizeLimit) > 0) {
     // console.log("...max file size was declared.");
     const maxFileSize = Math.ceil(parseFloat(uploaderEl.dataset.fzFileSizeLimit) * bytesInAMegabyte);
     if (file.size >= maxFileSize) {
-      console.warn(`The size of this file (${file.size / bytesInAMegabyte} MB) exceeded declared size limit per file (${maxFileSize / bytesInAMegabyte} MB). As such, this file (${file.name}) was prevented from being selected for upload.`);
+      if (typeof reject !== 'undefined' && typeof window[reject] === 'function') {
+        // console.log("...Invoking user-defined reject function declared on the window scope if file size is not within limit.");
+        window[reject](uploaderEl);
+      } else {
+        console.warn(`The size of this file (${file.size / bytesInAMegabyte} MB) exceeded declared size limit per file (${maxFileSize / bytesInAMegabyte} MB). As such, this file (${file.name}) was prevented from being selected for upload.`);
+      }
+    } else {
+      if (typeof resolve !== 'undefined' && typeof window[resolve] === 'function') {
+        // console.log("...Invoking user-defined resolve function if file size is within limit.");
+        window[resolve](uploaderEl);
+      }
     }
     return file.size < maxFileSize;
   }
@@ -122,7 +142,12 @@ function totalSizeOfFilesIsWithinLimit (uploaderEl) {
     const maxTotalSize = Math.ceil(parseFloat(uploaderEl.dataset.fzTotalSizeLimit) * bytesInAMegabyte);
     const totalSize = calculateTotalSizeOfFiles(uploaderEl);
     if (totalSize >= maxTotalSize) {
-      console.warn(`The total size of all files (${totalSize / bytesInAMegabyte} MB) exceeded declared total size limit of all files (${maxTotalSize / bytesInAMegabyte} MB). As such, the latest file was prevented from being selected for upload.`);
+      if (typeof reject !== 'undefined' && typeof reject === 'function') {
+        // console.log("...Invoking user-defined reject function if file size is not within limit.");
+        reject();
+      } else {
+        console.warn(`The total size of all files (${totalSize / bytesInAMegabyte} MB) exceeded declared total size limit of all files (${maxTotalSize / bytesInAMegabyte} MB). As such, the latest file was prevented from being selected for upload.`);
+      }
     }
     return totalSize < maxTotalSize;
   }

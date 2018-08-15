@@ -5,9 +5,11 @@ Reusable UI component library for Airfrov web.
 ## Updates
 
 ### 0.5.0
+- Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.
 - Added Bookmark Checkbox Input
-- Breaking change to multiple images upload component. Collapsed user-defined resolve and reject callback declarations in multiple images upload component (Default, Captioned and Comment) into single user-defined callback declaration. Additional boolean formal parameter for callback if file size limit was reached.
+- Breaking change to multiple images upload component. Collapsed user-defined resolve and reject callback declarations in multiple images upload component (Default, Captioned and Comment) into single user-defined callback declaration. New callback formal parameter structure.
 - Added support for user-defined callback function for total file size for multiple images upload component
+- Fixes to multiple images upload components (proportion bug, added backing colour for images with transparent backgrounds)
 
 ### 0.4.0
 - Added Info Default Button component

@@ -28,6 +28,7 @@ code {
 }
 
 .demo-container,
+.console,
 #console--input-radio-basic,
 #console--input-radio-binary,
 #console--input-radio-classic,
@@ -35,6 +36,7 @@ code {
   width: 50vw;
 }
 
+.console,
 #console--input-radio-basic,
 #console--input-radio-binary,
 #console--input-radio-classic,
@@ -55,7 +57,8 @@ code {
 	.demo-container {
 		width: 100vw;
 	}
-
+  
+  .console,
 	#console--input-radio-basic,
 	#console--input-radio-binary,
   #console--input-radio-classic,

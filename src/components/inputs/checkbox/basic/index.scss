@@ -10,16 +10,6 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 /* See https://css-tricks.com/using-svg/ */
 
-.fz-checkbox {
-  display: none;
-}
-.fz-checkbox:checked + .fz-checkbox-tick {
-  background: $green;
-  border-color: $green;
-}
-.fz-checkbox:checked + .fz-checkbox-tick:after {
-  transform: scale(0.9);  
-}
 .fz-checkbox-wrapper {
   align-items: center; /* aligns vertically */
   display: -webkit-box;
@@ -34,71 +24,86 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
   margin: 0 auto;
   text-align: center;
   
-}
-.fz-checkbox-label {
-  display: -webkit-flex;
-  display: -webkit-box; /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  font-size: ($length / 2) + px;
-  margin-left: ($length / 5) + px;
-  margin-right: ($length / 5) + px;
-}
-.fz-checkbox-tick {
-  display: block;
-  box-sizing: border-box;
-  width: $tickboxSize;
-  height: $tickboxSize;
-  background: #FFF;
-  margin: ($length / 2)+px 0;
-  border: $borderWidth solid $grey;
-  border-radius: 10%;
-  position: relative;
-  cursor: pointer;
-  transition: .2s;
-  margin-left: ($length / 5) + px;
-  margin-right: ($length / 5) + px;
-}
-.fz-checkbox-tick:before {
-  content: '';
-  position: absolute;
-  display: block;
-  height: 300%;
-  width: 300%;
-  top: -100%;
-  left: -100%;
-  z-index: -1;
-  border-radius: 50%;
-  transition: .3s;
+  .fz-checkbox-label {
+    display: -webkit-flex;
+    display: -webkit-box; /* needed for Safari. See https://css-tricks.com/forums/topic/flexbox-not-working-on-safari/ */
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: ($length / 2) + px;
+    margin-left: ($length / 5) + px;
+    margin-right: ($length / 5) + px;
+  }
+  .fz-checkbox {
+    display: none;
+    
+    &:checked + .fz-checkbox-tick {
+      background: $green;
+      border-color: $green;
+    }
+    
+    &:checked + .fz-checkbox-tick:after {
+      transform: scale(0.9);  
+    }
+    
+  }
+  .fz-checkbox-tick {
+    display: block;
+    box-sizing: border-box;
+    width: $tickboxSize;
+    height: $tickboxSize;
+    background: #FFF;
+    margin: ($length / 2)+px 0;
+    border: $borderWidth solid $grey;
+    border-radius: 10%;
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: ($length / 5) + px;
+    margin-right: ($length / 5) + px;
+    
+    &:before {
+      content: '';
+      position: absolute;
+      display: block;
+      height: 300%;
+      width: 300%;
+      top: -100%;
+      left: -100%;
+      z-index: -1;
+      border-radius: 50%;
+      transition: .3s;
+    }
+    
+    &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: url("data:image/svg+xml;charset=UTF-8," + $tealTickEl) center center no-repeat;
+      /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
+      background-size: contain;
+      transform: scale(0);
+      transition: .2s;
+    }
+    
+    &:active:before {
+      background: rgba(143,142,143,0.2);
+    }
+    
+  }
+  
+  &:nth-child(2) {
+    margin-left: 0px;
+  }
+  
 }
 
 .fz-content-wrapper {
   .fz-checkbox-tick:before {
     z-index: 0;
   }
-}
-
-.fz-checkbox-tick:after {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 100%;
-  background: url("data:image/svg+xml;charset=UTF-8," + $tealTickEl) center center no-repeat;
-  /* teal-tick.svg is inserted raw here as modifiers (e.g. :after, :hover) cannot be edited in JS. */
-  background-size: contain;
-  transform: scale(0);
-  transition: .2s;
-}
-.fz-checkbox-tick:active:before {
-  background: rgba(143,142,143,0.2);
-}
-.fz-checkbox-wrapper {
-  &:nth-child(2) {
-    margin-left: 0px;
-  }
-  
 }

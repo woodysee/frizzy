@@ -4,6 +4,9 @@ Reusable UI component library for Airfrov web.
 
 ## Updates
 
+### 0.5.0
+- Added Bookmark Checkbox Input
+
 ### 0.4.0
 - Added Info Default Button component
 - Added multiple images upload components with file and total size detection and support for user-defined resolve and reject callback declarations in the window scope: Default, Captioned and Comment.
@@ -30,11 +33,11 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.4.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.5.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your content here -->
-	<script src="/css/frizzy/0.4.0/dist/frizzy.min.js"></script>
+	<script src="/css/frizzy/0.5.0/dist/frizzy.min.js"></script>
 </body>
 ```
 
@@ -248,6 +251,19 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 	<div class="fz-checkbox-label">
 		With label (right)
 	</div>
+</div>
+
+```
+
+### Bookmark Checkbox
+
+Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the checkbox size.
+
+```html
+
+<div class="fz-checkbox-wrapper" data-fz-checkbox-type="bookmark" data-fz-checkbox-size="40px">
+  <input class="fz-checkbox" type="checkbox" value="some_value" />
+  <div class="fz-bookmark"></div>
 </div>
 
 ```

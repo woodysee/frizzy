@@ -318,6 +318,20 @@
     </div>
     
     <div class="demo-container">
+      <h3>Bookmark Checkbox</h3>
+      <p>Declaring <code>data-fz-checkbox-size</code> is optional. The default checkbox size is <b>25px</b>. Since <code>/frizzy.js</code> is only loaded once, changing this data attribute <b>after</b> the page is loaded will not change the checkbox size.</p>
+      <div class="fz-checkbox-wrapper" data-fz-checkbox-type="bookmark" data-fz-checkbox-size="40px">
+        <!-- Standalone -->
+        <input class="fz-checkbox" type="checkbox" />
+        <div class="fz-bookmark"></div>
+      </div>
+      <div class="console" id="console--input-checkbox-bookmark">
+        <!-- Checkbox value will be printed here -->
+        &nbsp;&gt; Not favourited
+      </div>
+    </div>
+    
+    <div class="demo-container">
       <h3>Multiple Image Uploader</h3>
       <p>Requires both CSS and JS to work.</p>
       <ul>

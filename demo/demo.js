@@ -81,3 +81,26 @@ function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
   console.log(uploaderEl);
   console.log("Is not within size limit!");
 }
+
+(() => {
+  const tickboxEls = document.querySelectorAll(`.fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-checkbox`);
+  const tickboxWrapperEls = document.querySelectorAll(`.fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"]`);
+  let childrenEls;
+  function bookmarkClickHandler (evt) {
+    const bookmarkTarget = document.getElementById("console--input-checkbox-bookmark");
+    const tickboxEl = evt.target;
+    if (tickboxEl.checked) {
+      bookmarkTarget.innerHTML = "&nbsp;&gt; Favourited";
+    } else {
+      bookmarkTarget.innerHTML = "&nbsp;&gt; Not favourited";
+    }
+  }
+  for (let i = 0; i < tickboxWrapperEls.length; i++) {
+    childrenEls = tickboxWrapperEls[i].children;
+    for (let j = 0; j < childrenEls.length; j++) {
+      if (childrenEls[j].classList.contains("fz-checkbox")) {
+          childrenEls[j].addEventListener("click", bookmarkClickHandler);
+      }
+    }
+  }
+})();

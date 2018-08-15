@@ -1,11 +1,12 @@
 // Add all components to be compiled here
-// import addALogoOnTheRightComponent from './components/addALogoOnTheRight';
 import basicCheckboxInput from './components/inputs/checkbox/basic';
 import basicRadioInput from './components/inputs/radio/basic';
 import classicRadioInput from './components/inputs/radio/classic';
 import tickedRadioInput from './components/inputs/radio/ticked';
 import binaryRadioInput from './components/inputs/radio/binary';
 import bigRadioInput from './components/inputs/radio/big';
+
+import bookmarkCheckboxInput from './components/inputs/checkbox/bookmark';
 
 import defaultImagesFileInput from './components/inputs/file/images/squared/default';
 import captionedImagesFileInput from './components/inputs/file/images/squared/captioned';
@@ -23,9 +24,10 @@ import primaryDefaultButton from './components/buttons/default/primary';
 import primaryDetailsButton from './components/buttons/details/primary';
 
 // Initialise each imported component on page load (optional, only if there is JS)
-// addALogoOnTheRightComponent();
 basicCheckboxInput();
 basicRadioInput();
+
+bookmarkCheckboxInput();
 
 defaultImagesFileInput();
 captionedImagesFileInput();

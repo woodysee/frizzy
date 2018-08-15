@@ -74,10 +74,10 @@
 })();
 
 function userDefinedCallbackAfterUploadForTotalSize (uploader) {
-  console.log(uploader);
+  // console.log(uploader);
 }
 function userDefinedCallbackAfterUploadForFileSize (uploader) {
-  console.log(uploader);
+  // console.log(uploader);
 }
 
 (() => {

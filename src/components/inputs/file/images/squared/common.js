@@ -62,17 +62,18 @@ function detectChangesOfUploadedImages (evt) {
     
     switch (true) {
       case previewImageEl.style.width > previewImageEl.style.height:
-        previewImageEl.style.width = "";
-        // previewImageEl.style.removeProperty("width");
+        // previewImageEl.style.width = "";
+        previewImageEl.style.removeProperty("width");
         previewImageEl.style.height = "100%";
         break;
       case previewImageEl.style.width < previewImageEl.style.height:
-        previewImageEl.style.height = "";
-        // previewImageEl.style.removeProperty("height");
+        // previewImageEl.style.height = "";
+        previewImageEl.style.removeProperty("height");
         previewImageEl.style.width = "100%";
         break;
       default:
-        previewImageEl.style.width = previewImageEl.style.height = "100%";
+        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.height = "100%";
     }
     
   }

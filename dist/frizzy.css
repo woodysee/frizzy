@@ -1651,6 +1651,78 @@ li.fz-step-title {
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-uploader__errors,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-uploader__errors {
   margin-left: 10px; }
+.fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] {
+  align-items: unset;
+  display: block;
+  -webkit-flex-wrap: unset;
+  -ms-flex-wrap: unset;
+  flex-wrap: unset;
+  justify-content: unset;
+  margin: unset;
+  text-align: unset;
+  height: unset;
+  width: unset; }
+  .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-checkbox {
+    display: unset; }
+  .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"]:nth-child(2) {
+    margin-left: unset; }
+
+.fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] {
+  position: relative;
+  overflow-y: hidden;
+  height: 25px;
+  width: 25px; }
+  .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-checkbox {
+    cursor: pointer;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    height: inherit;
+    width: inherit;
+    z-index: 2; }
+    .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-checkbox:hover ~ .fz-bookmark {
+      background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321.48 380"><path fill="%2365beb9" d="M288.89,32.5H32V344.12L138.1,242.26l22.33-21.33,22.33,21.33L288.89,344.12Zm3-32.11A29.41,29.41,0,0,1,321,28.49V351.9a28.63,28.63,0,0,1-29.1,27.85,30.52,30.52,0,0,1-20.83-8L160.43,265.35,49.78,371.72A30.75,30.75,0,0,1,29,380a28.09,28.09,0,0,1-11-2.25A27.83,27.83,0,0,1-.15,351.89V28.49A27.8,27.8,0,0,1,17.92,2.65,28.09,28.09,0,0,1,29,.39Z"/></svg>') center center no-repeat; }
+    .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-checkbox:checked ~ .fz-bookmark {
+      background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321.48 380"><path fill="%2365beb9" d="M288.89,32.5H32V344.12L138.1,242.26l22.33-21.33,22.33,21.33L288.89,344.12Zm3-32.11A29.41,29.41,0,0,1,321,28.49V351.9a28.63,28.63,0,0,1-29.1,27.85,30.52,30.52,0,0,1-20.83-8L160.43,265.35,49.78,371.72A30.75,30.75,0,0,1,29,380a28.09,28.09,0,0,1-11-2.25A27.83,27.83,0,0,1-.15,351.89V28.49A27.8,27.8,0,0,1,17.92,2.65,28.09,28.09,0,0,1,29,.39Z"/></svg>') center center no-repeat;
+      z-index: 0; }
+      .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-checkbox:checked ~ .fz-bookmark::after {
+        top: 0%; }
+  .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-bookmark {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321.48 380"><path fill="%23b0b0b0" d="M288.89,32.5H32V344.12L138.1,242.26l22.33-21.33,22.33,21.33L288.89,344.12Zm3-32.11A29.41,29.41,0,0,1,321,28.49V351.9a28.63,28.63,0,0,1-29.1,27.85,30.52,30.52,0,0,1-20.83-8L160.43,265.35,49.78,371.72A30.75,30.75,0,0,1,29,380a28.09,28.09,0,0,1-11-2.25A27.83,27.83,0,0,1-.15,351.89V28.49A27.8,27.8,0,0,1,17.92,2.65,28.09,28.09,0,0,1,29,.39Z"/></svg>') center center no-repeat;
+    background-size: contain;
+    border: none;
+    content: '';
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px;
+    height: inherit;
+    width: inherit;
+    z-index: 1; }
+    .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-bookmark:hover {
+      background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321.48 380"><path fill="%23b0b0b0" d="M288.89,32.5H32V344.12L138.1,242.26l22.33-21.33,22.33,21.33L288.89,344.12Zm3-32.11A29.41,29.41,0,0,1,321,28.49V351.9a28.63,28.63,0,0,1-29.1,27.85,30.52,30.52,0,0,1-20.83-8L160.43,265.35,49.78,371.72A30.75,30.75,0,0,1,29,380a28.09,28.09,0,0,1-11-2.25A27.83,27.83,0,0,1-.15,351.89V28.49A27.8,27.8,0,0,1,17.92,2.65,28.09,28.09,0,0,1,29,.39Z"/></svg>') center center no-repeat; }
+    .fz-checkbox-wrapper[data-fz-checkbox-type="bookmark"] .fz-bookmark:after {
+      background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321.48 380"><path fill="%2365beb9" d="M292.34,0a27.94,27.94,0,0,1,11.05,2.26,27.82,27.82,0,0,1,18.09,25.87V351.87a28.65,28.65,0,0,1-29.13,27.88,30.52,30.52,0,0,1-20.85-8L160.74,265.23,50,371.71A30.81,30.81,0,0,1,29.14,380a28,28,0,0,1-11-2.26A27.83,27.83,0,0,1,0,351.86V28.13A27.82,27.82,0,0,1,18.09,2.26,28.1,28.1,0,0,1,29.13,0Z" /></svg>') center center no-repeat;
+      background-size: contain;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      border: none;
+      box-shadow: none;
+      content: "";
+      margin: 0px;
+      padding: 0px;
+      position: absolute;
+      height: 100%;
+      -webkit-transition: top 0.25s;
+      -moz-transition: top 0.25s;
+      -o-transition: top 0.25s;
+      transition: top 0.25s;
+      transition-timing-function: cubic-bezier(0.7, 0.68, 0.48, 1.04);
+      left: 0;
+      width: 100%;
+      top: -100%; }
 /* Tickbox element */
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 /* See https://css-tricks.com/using-svg/ */

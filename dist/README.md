@@ -300,33 +300,35 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
     <code>data-fz-file-size-limit="0"</code>: <b>Optional.</b> In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
   </li>
   <li>
-    <code>data-fz-file-size-limit-cb="userDefinedCallbackFunctionAfterUpload"</code> - 
-    <b>Optional.</b> Where <code>userDefinedCallbackFunctionAfterUpload</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload does not exceed the declared file size limit in <code>data-fz-file-size-limit</code>.
+    <code>data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize"</code> - 
+    <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForFileSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
   <li>
-    <code>data-fz-total-size-limit-cb="userDefinedCallbackFunctionAfterUploadForTotalSize"</code> - 
-    <b>Optional.</b> Where <code>userDefinedCallbackFunctionAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope which will be fired if the total upload does not exceed the declared total size limit in <code>data-fz-total-size-limit</code>.
+    <code>data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize"</code> - 
+    <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
 </ul>
 
 ```js
-function userDefinedCallbackFunctionAfterUpload (uploaderEl, isWithinFileSizeLimit) {
-  console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
-  console.log(typeof isWithinFileSizeLimit); // Boolean if the latest file is within file size limit
-  }
+function userDefinedCallbackAfterUploadForFileSize (uploader) {
+  console.log(uploader.el); // the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.size.file); // Size of the file in the upload attempt in MB
+  console.log(uploader.size.max); // Size of file limit in MB
+  console.log(uploader.size.exceeded); // Boolean if the latest file is within file size limit
 }
 
-function userDefinedCallbackFunctionAfterUploadForTotalSize (uploaderEl, isWithinTotalSizeLimit) {
-  console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
-  console.log(typeof isWithinTotalSizeLimit); // Boolean if the total file size after latest file is less than total size limit
-  }
+function userDefinedCallbackAfterUploadForTotalSize (uploader) {
+  console.log(uploader.el); // the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.size.total); // Total size of all files including the file in upload attempt in MB
+  console.log(uploader.size.max); // Size of total limit in MB
+  console.log(uploader.size.exceeded); // Boolean if the total file size after latest file is less than total size limit
 }
 ```
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackFunctionAfterUpload">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -373,7 +375,7 @@ function userDefinedCallbackFunctionAfterUploadForTotalSize (uploaderEl, isWithi
 Captions per each squared image.
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-total-size-limit="8" data-fz-file-size-limit="8" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackFunctionAfterUpload">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-total-size-limit="8" data-fz-file-size-limit="8" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
   <div class="fz-upload-slots">
     <!-- Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -448,7 +450,7 @@ Captions per each squared image.
   <div class="fz-comment-grp">
     <textarea name="foobar" rows="3" cols="30" placeholder="Enter text here..."></textarea>
     <div class="fz-comment__cta">
-      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8" data-fz-file-size-limit-cb="userDefinedCallbackFunctionAfterUpload">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
         <div class="fz-upload-slots">
           <!-- Upload slot 1 -->
           <div class="fz-upload-slot">

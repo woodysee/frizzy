@@ -73,13 +73,11 @@
   
 })();
 
-function someFunctionIfWithinFileSizeLimit (uploaderEl) {
-  console.log(uploaderEl);
-  console.log("Is within size limit!");
+function userDefinedCallbackAfterUploadForTotalSize (uploader) {
+  console.log(uploader);
 }
-function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
-  console.log(uploaderEl);
-  console.log("Is not within size limit!");
+function userDefinedCallbackAfterUploadForFileSize (uploader) {
+  console.log(uploader);
 }
 
 (() => {

@@ -62,13 +62,13 @@ function detectChangesOfUploadedImages (evt) {
     
     switch (true) {
       case previewImageEl.style.width > previewImageEl.style.height:
-        // previewImageEl.style.width = "";
-        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.width = "";
+        // previewImageEl.style.removeProperty("width");
         previewImageEl.style.height = "100%";
         break;
       case previewImageEl.style.width < previewImageEl.style.height:
-        // previewImageEl.style.height = "";
-        previewImageEl.style.removeProperty("height");
+        previewImageEl.style.height = "";
+        // previewImageEl.style.removeProperty("height");
         previewImageEl.style.width = "100%";
         break;
       default:
@@ -112,22 +112,21 @@ function calculateTotalSizeOfFiles (uploaderEl) {
 
 function fileSizeIsWithinLimit (uploaderEl, file) {
   const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
-  const resolve = uploaderEl.dataset.fzInvokeIfWithinFileSizeLimit; // User-defined success function
-  const reject = uploaderEl.dataset.fzInvokeIfNotWithinFileSizeLimit; // User-defined reject function
+  const cb = uploaderEl.dataset.fzFileSizeLimitCb; // User-defined callback function
   if (typeof uploaderEl.dataset.fzFileSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzFileSizeLimit) > 0) {
     // console.log("...max file size was declared.");
     const maxFileSize = Math.ceil(parseFloat(uploaderEl.dataset.fzFileSizeLimit) * bytesInAMegabyte);
     if (file.size >= maxFileSize) {
-      if (typeof reject !== 'undefined' && typeof window[reject] === 'function') {
-        // console.log("...Invoking user-defined reject function declared on the window scope if file size is not within limit.");
-        window[reject](uploaderEl);
+      if (typeof cb !== 'undefined' && typeof window[cb] === 'function') {
+        // console.log("...Invoking user-defined cb function declared on the window scope if file size is not within limit.");
+        window[cb](uploaderEl, false);
       } else {
         console.warn(`The size of this file (${file.size / bytesInAMegabyte} MB) exceeded declared size limit per file (${maxFileSize / bytesInAMegabyte} MB). As such, this file (${file.name}) was prevented from being selected for upload.`);
       }
     } else {
-      if (typeof resolve !== 'undefined' && typeof window[resolve] === 'function') {
-        // console.log("...Invoking user-defined resolve function if file size is within limit.");
-        window[resolve](uploaderEl);
+      if (typeof cb !== 'undefined' && typeof window[cb] === 'function') {
+        // console.log("...Invoking user-defined cb function if file size is within limit.");
+        window[cb](uploaderEl, true);
       }
     }
     return file.size < maxFileSize;
@@ -137,16 +136,22 @@ function fileSizeIsWithinLimit (uploaderEl, file) {
 
 function totalSizeOfFilesIsWithinLimit (uploaderEl) {
   const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
+  const cb = uploaderEl.dataset.fzTotalSizeCb; // User-defined callback function for total file size
   if (typeof uploaderEl.dataset.fzTotalSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzTotalSizeLimit) > 0) {
     // console.log("...max total size of files allowed to be uploaded was declared.");
     const maxTotalSize = Math.ceil(parseFloat(uploaderEl.dataset.fzTotalSizeLimit) * bytesInAMegabyte);
     const totalSize = calculateTotalSizeOfFiles(uploaderEl);
     if (totalSize >= maxTotalSize) {
-      if (typeof reject !== 'undefined' && typeof reject === 'function') {
-        // console.log("...Invoking user-defined reject function if file size is not within limit.");
-        reject();
+      if (typeof cb !== 'undefined' && typeof cb === 'function') {
+        // console.log("...Invoking user-defined cb function if total size is not within limit.");
+        window[cb](uploaderEl, false);
       } else {
         console.warn(`The total size of all files (${totalSize / bytesInAMegabyte} MB) exceeded declared total size limit of all files (${maxTotalSize / bytesInAMegabyte} MB). As such, the latest file was prevented from being selected for upload.`);
+      }
+    } else {
+      if (typeof cb !== 'undefined' && typeof window[cb] === 'function') {
+        // console.log("...Invoking user-defined cb function if total size is within limit.");
+        window[cb](uploaderEl, true);
       }
     }
     return totalSize < maxTotalSize;

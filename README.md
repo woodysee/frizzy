@@ -296,30 +296,32 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
     </ul>
   </li>
   <li>
-    <code>data-fz-total-size-limit="8"</code>
-    Optional. In megabytes (1 MB = 10^6 bytes). If included, total size of all files allowed to be selected for upload in this <code>.fz-uploader</code> group is limited by the amount declared. This value <b>MUST NOT</b> be reassigned after the page is loaded.
+    <code>data-fz-total-size-limit="8"</code>: <b>Optional.</b> In megabytes (1 MB = 10^6 bytes). If included, total size of all files allowed to be selected for upload in this <code>.fz-uploader</code> group is limited by the amount declared. This value <b>MUST NOT</b> be reassigned after the page is loaded.
   </li>
   <li>
-    <code>data-fz-file-size-limit="0"</code>
-    Optional. In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
+    <code>data-fz-file-size-limit="0"</code>: <b>Optional.</b> In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
   </li>
-	<li>
-		<code>data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinFileSizeLimit"</code> - 
-		<b>Optional.</b> Where <code>someFunctionIfWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload does not exceed the declared file size limit in <code>data-fz-file-size-limit</code>.
-	</li>
-	<li>
-		<code>data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinFileSizeLimit"</code> - 
-		<b>Optional.</b> Where <code>someFunctionIfNotWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload hits or exceeds the declared file size limit in <code>data-fz-file-size-limit</code>.
-	</li>
+  <li>
+    <code>data-fz-file-size-limit-cb="userDefinedCallbackFunctionAfterUpload"</code> - 
+    <b>Optional.</b> Where <code>userDefinedCallbackFunctionAfterUpload</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload does not exceed the declared file size limit in <code>data-fz-file-size-limit</code>.
+  </li>
+  <li>
+    <code>data-fz-total-size-limit-cb="userDefinedCallbackFunctionAfterUploadForTotalSize"</code> - 
+    <b>Optional.</b> Where <code>userDefinedCallbackFunctionAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope which will be fired if the total upload does not exceed the declared total size limit in <code>data-fz-total-size-limit</code>.
+  </li>
 </ul>
 
 ```js
-function someFunctionIfWithinFileSizeLimit (uploaderEl) {
+function userDefinedCallbackFunctionAfterUpload (uploaderEl, isWithinFileSizeLimit) {
   console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(typeof isWithinFileSizeLimit); // Boolean if the latest file is less than file size limit
+  }
 }
 
-function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
+function userDefinedCallbackFunctionAfterUploadForTotalSize (uploaderEl, isWithinTotalSizeLimit) {
   console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(typeof isWithinTotalSizeLimit); // Boolean if the total file size after latest file is less than total size limit
+  }
 }
 ```
 

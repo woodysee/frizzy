@@ -1,5 +1,3 @@
-import './index.css';
-
 export default function multiStepFormLayout() {
 
   const stepsContentEls = document.getElementsByClassName('fz-content-steps');

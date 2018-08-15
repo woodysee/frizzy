@@ -1,5 +1,3 @@
-import './index.css';
-
 export default function noticeAlertBanner() {
 	const paperIconColour = "#ffffff";
 	const shellIconColour = "#f8ce8a";

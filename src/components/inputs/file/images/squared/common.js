@@ -37,42 +37,58 @@ function detectRemovalOfUploadedImage (evt) {
 function detectChangesOfUploadedImages (evt) {
   const uploadSlotEl = evt.target.parentNode;
   const uploaderEl = uploadSlotEl.parentNode.parentNode;
-  const previewWrapperEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+  const previewGroupEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+  const previewWrapperEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper');
   const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
   const reader = new FileReader();
   reader.onload = (whenLoaded) => {
     const loadedReader = whenLoaded.target;
-    previewWrapperEl.style.display = "block";
+    previewGroupEl.style.display = "block";
     previewImageEl.src = loadedReader.result;
     // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
     
     if (!fileSizeIsWithinLimit(uploaderEl, evt.target.files[0])) {
       // console.warn("...this file exceeded declared file size limit.");
-      previewWrapperEl.style.display = "none";
+      previewGroupEl.style.display = "none";
+      // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
+      previewWrapperEl.style.removeProperty("backgroundColor");
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
     }
     
     if (!totalSizeOfFilesIsWithinLimit(uploaderEl)) {
       // console.warn("...total size of files exceeded declared total size limit.");
-      previewWrapperEl.style.display = "none";
+      previewGroupEl.style.display = "none";
+      // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
+      previewWrapperEl.style.removeProperty("backgroundColor");
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
     }
     
-    switch (true) {
-      case previewImageEl.style.width > previewImageEl.style.height:
-        // previewImageEl.style.width = "";
-        previewImageEl.style.removeProperty("width");
-        previewImageEl.style.height = "100%";
-        break;
-      case previewImageEl.style.width < previewImageEl.style.height:
-        // previewImageEl.style.height = "";
-        previewImageEl.style.removeProperty("height");
-        previewImageEl.style.width = "100%";
-        break;
-      default:
-        previewImageEl.style.width = previewImageEl.style.height = "100%";
+    const previewImage = new Image();
+    previewImage.src = loadedReader.result;
+    
+    previewImage.onload = (whenLoaded) => {
+      
+      switch (true) {
+        case previewImage.width > previewImage.height:
+          // previewImageEl.style.width = "";
+          previewImageEl.style.removeProperty("width");
+          previewImageEl.style.height = "100%";
+          break;
+        case previewImage.width < previewImage.height:
+          // previewImageEl.style.height = "";
+          previewImageEl.style.removeProperty("height");
+          previewImageEl.style.width = "100%";
+          break;
+        default:
+          previewImageEl.style.removeProperty("width");
+          previewImageEl.style.height = "100%";
+      }
+      
+      // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
+      previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
+      
     }
     
   }
@@ -86,7 +102,7 @@ function detectChangesOfUploadedImages (evt) {
   
   reader.readAsDataURL(evt.target.files[0]);
   
-  const removeUploadedImageBtns = previewWrapperEl.getElementsByClassName('fz-upload-slot__rm-img');
+  const removeUploadedImageBtns = previewGroupEl.getElementsByClassName('fz-upload-slot__rm-img');
   
   for (let i = 0; i < removeUploadedImageBtns.length; i++) {
     removeUploadedImageBtns[i].addEventListener('click', detectRemovalOfUploadedImage);
@@ -112,22 +128,23 @@ function calculateTotalSizeOfFiles (uploaderEl) {
 
 function fileSizeIsWithinLimit (uploaderEl, file) {
   const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
-  const resolve = uploaderEl.dataset.fzInvokeIfWithinFileSizeLimit; // User-defined success function
-  const reject = uploaderEl.dataset.fzInvokeIfNotWithinFileSizeLimit; // User-defined reject function
+  const cb = uploaderEl.dataset.fzFileSizeLimitCb; // User-defined callback function
   if (typeof uploaderEl.dataset.fzFileSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzFileSizeLimit) > 0) {
     // console.log("...max file size was declared.");
     const maxFileSize = Math.ceil(parseFloat(uploaderEl.dataset.fzFileSizeLimit) * bytesInAMegabyte);
-    if (file.size >= maxFileSize) {
-      if (typeof reject !== 'undefined' && typeof window[reject] === 'function') {
-        // console.log("...Invoking user-defined reject function declared on the window scope if file size is not within limit.");
-        window[reject](uploaderEl);
-      } else {
-        console.warn(`The size of this file (${file.size / bytesInAMegabyte} MB) exceeded declared size limit per file (${maxFileSize / bytesInAMegabyte} MB). As such, this file (${file.name}) was prevented from being selected for upload.`);
-      }
+    if (typeof cb !== 'undefined' && typeof window[cb] === 'function') {
+      // console.log("...Invoking user-defined cb function declared on the window scope if available.");
+      window[cb]({
+        el: uploaderEl,
+        size: {
+          file: file.size / bytesInAMegabyte,
+          max: maxFileSize / bytesInAMegabyte,
+          exceeded: file.size > maxFileSize
+        }
+      });
     } else {
-      if (typeof resolve !== 'undefined' && typeof window[resolve] === 'function') {
-        // console.log("...Invoking user-defined resolve function if file size is within limit.");
-        window[resolve](uploaderEl);
+      if (file.size > maxFileSize) {
+        console.warn(`The size of this file (${file.size / bytesInAMegabyte} MB) exceeded declared size limit per file (${maxFileSize / bytesInAMegabyte} MB). As such, this file (${file.name}) was prevented from being selected for upload.`);
       }
     }
     return file.size < maxFileSize;
@@ -137,15 +154,23 @@ function fileSizeIsWithinLimit (uploaderEl, file) {
 
 function totalSizeOfFilesIsWithinLimit (uploaderEl) {
   const bytesInAMegabyte = Math.pow(10,6); // 1 MB = 1000000 bytes
+  const cb = uploaderEl.dataset.fzTotalSizeCb; // User-defined callback function for total file size
   if (typeof uploaderEl.dataset.fzTotalSizeLimit !== "undefined" && parseFloat(uploaderEl.dataset.fzTotalSizeLimit) > 0) {
     // console.log("...max total size of files allowed to be uploaded was declared.");
     const maxTotalSize = Math.ceil(parseFloat(uploaderEl.dataset.fzTotalSizeLimit) * bytesInAMegabyte);
     const totalSize = calculateTotalSizeOfFiles(uploaderEl);
-    if (totalSize >= maxTotalSize) {
-      if (typeof reject !== 'undefined' && typeof reject === 'function') {
-        // console.log("...Invoking user-defined reject function if file size is not within limit.");
-        reject();
-      } else {
+    if (typeof cb !== 'undefined' && typeof cb === 'function') {
+      // console.log("...Invoking user-defined cb function if available.");
+      window[cb]({
+        el: uploaderEl,
+        size: {
+          total: totalSize / bytesInAMegabyte,
+          max: maxTotalSize / bytesInAMegabyte,
+          exceeded: totalSize > maxTotalSize
+        }
+      });
+    } else {
+      if (totalSize > maxTotalSize) {
         console.warn(`The total size of all files (${totalSize / bytesInAMegabyte} MB) exceeded declared total size limit of all files (${maxTotalSize / bytesInAMegabyte} MB). As such, the latest file was prevented from being selected for upload.`);
       }
     }

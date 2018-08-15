@@ -16,11 +16,26 @@ code {
   border-radius: 3px;
   color: rgba(255,128,120,1);
   font-family: 'Menlo', 'Courier New', Courier, monospace;
-  font-size: 15px;
+  font-size: 12px;
+  letter-spacing: 0.01px;
   margin-top: 10px;
   padding: 10px;
   resize: none;
   width: 100%;
+}
+
+.code-snippet.js .comment {
+  color: rgba(200,200,200,1);
+  font-family: 'Menlo', 'Courier New', Courier, monospace;
+  font-size: 12px;
+  letter-spacing: 0.01px;
+}
+.code-snippet.js .function {
+  color: rgba(255,128,120,1);
+  font-family: 'Menlo', 'Courier New', Courier, monospace;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.01px;
 }
 
 .fz-banner__copy code {
@@ -28,6 +43,7 @@ code {
 }
 
 .demo-container,
+.console,
 #console--input-radio-basic,
 #console--input-radio-binary,
 #console--input-radio-classic,
@@ -35,6 +51,7 @@ code {
   width: 50vw;
 }
 
+.console,
 #console--input-radio-basic,
 #console--input-radio-binary,
 #console--input-radio-classic,
@@ -55,7 +72,8 @@ code {
 	.demo-container {
 		width: 100vw;
 	}
-
+  
+  .console,
 	#console--input-radio-basic,
 	#console--input-radio-binary,
   #console--input-radio-classic,

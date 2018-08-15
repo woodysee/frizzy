@@ -4,6 +4,13 @@ Reusable UI component library for Airfrov web.
 
 ## Updates
 
+### 0.5.0
+- Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.
+- Added Bookmark Checkbox Input
+- Breaking change to multiple images upload component. Collapsed user-defined resolve and reject callback declarations in multiple images upload component (Default, Captioned and Comment) into single user-defined callback declaration. New callback formal parameter structure.
+- Added support for user-defined callback function for total file size for multiple images upload component
+- Fixes to multiple images upload components (proportion bug, added backing colour for images with transparent backgrounds)
+
 ### 0.4.0
 - Added Info Default Button component
 - Added multiple images upload components with file and total size detection and support for user-defined resolve and reject callback declarations in the window scope: Default, Captioned and Comment.
@@ -30,11 +37,11 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.4.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.5.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your content here -->
-	<script src="/css/frizzy/0.4.0/dist/frizzy.min.js"></script>
+	<script src="/css/frizzy/0.5.0/dist/frizzy.min.js"></script>
 </body>
 ```
 
@@ -252,6 +259,19 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 ```
 
+### Bookmark Checkbox
+
+Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the checkbox size.
+
+```html
+
+<div class="fz-checkbox-wrapper" data-fz-checkbox-type="bookmark" data-fz-checkbox-size="40px">
+  <input class="fz-checkbox" type="checkbox" value="some_value" />
+  <div class="fz-bookmark"></div>
+</div>
+
+```
+
 ### Inputs: File
 
 #### Squared Image File Uploader
@@ -276,37 +296,41 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
     </ul>
   </li>
   <li>
-    <code>data-fz-total-size-limit="8"</code>
-    Optional. In megabytes (1 MB = 10^6 bytes). If included, total size of all files allowed to be selected for upload in this <code>.fz-uploader</code> group is limited by the amount declared. This value <b>MUST NOT</b> be reassigned after the page is loaded.
+    <code>data-fz-total-size-limit="8"</code>: <b>Optional.</b> In megabytes (1 MB = 10^6 bytes). If included, total size of all files allowed to be selected for upload in this <code>.fz-uploader</code> group is limited by the amount declared. This value <b>MUST NOT</b> be reassigned after the page is loaded.
   </li>
   <li>
-    <code>data-fz-file-size-limit="0"</code>
-    Optional. In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
+    <code>data-fz-file-size-limit="0"</code>: <b>Optional.</b> In megabytes (1 MB = 10^6 bytes). Each file size allowed per input. This value <b>SHOULD NOT</b> be reassigned after the page is loaded.
   </li>
   <li>
-    <code>data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinFileSizeLimit"</code> - 
-    <b>Optional.</b> Where <code>someFunctionIfWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload does not exceed the declared file size limit in <code>data-fz-file-size-limit</code>.
+    <code>data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize"</code> - 
+    <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForFileSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
   <li>
-    <code>data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinFileSizeLimit"</code> - 
-    <b>Optional.</b> Where <code>someFunctionIfNotWithinFileSizeLimit</code> is a function can be declared by the user in the window scope which will be fired if the latest file upload hits or exceeds the declared file size limit in <code>data-fz-file-size-limit</code>.
+    <code>data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize"</code> - 
+    <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
 </ul>
 
 ```js
-function someFunctionIfWithinFileSizeLimit (uploaderEl) {
-  console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+function userDefinedCallbackAfterUploadForFileSize (uploader) {
+  console.log(uploader.el); // the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.size.file); // Size of the file in the upload attempt in MB
+  console.log(uploader.size.max); // Size of file limit in MB
+  console.log(uploader.size.exceeded); // Boolean if the latest file is within file size limit
 }
 
-function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
-  console.log(uploaderEl);// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+function userDefinedCallbackAfterUploadForTotalSize (uploader) {
+  console.log(uploader.el); // the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.size.total); // Total size of all files including the file in upload attempt in MB
+  console.log(uploader.size.max); // Size of total limit in MB
+  console.log(uploader.size.exceeded); // Boolean if the total file size after latest file is less than total size limit
 }
 ```
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinSizeLimit" data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinSizeLimit">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -353,7 +377,7 @@ function someFunctionIfNotWithinFileSizeLimit (uploaderEl) {
 Captions per each squared image.
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-total-size-limit="8" data-fz-file-size-limit="8" data-fz-max-upload-slots="3" data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinSizeLimit" data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinSizeLimit">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__captioned" data-fz-total-size-limit="8" data-fz-file-size-limit="8" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
   <div class="fz-upload-slots">
     <!-- Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -428,7 +452,7 @@ Captions per each squared image.
   <div class="fz-comment-grp">
     <textarea name="foobar" rows="3" cols="30" placeholder="Enter text here..."></textarea>
     <div class="fz-comment__cta">
-      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8" data-fz-invoke-if-within-file-size-limit="someFunctionIfWithinSizeLimit" data-fz-invoke-if-not-within-file-size-limit="someFunctionIfNotWithinSizeLimit">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__comment" data-fz-file-size-limit="8" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
         <div class="fz-upload-slots">
           <!-- Upload slot 1 -->
           <div class="fz-upload-slot">

@@ -1,4 +1,3 @@
-import './index.css';
 import {
   getUploadSlotSnippet,
   initialiseImageUploadSlots,
@@ -70,34 +69,58 @@ export default function commentBoxWithSquaredImageInput () {
   function detectChangesOfUploadedImages (evt) {
     const uploadSlotEl = evt.target.parentNode;
     const uploaderEl = uploadSlotEl.parentNode.parentNode;
-    const previewWrapperEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+    const ppreviewGroupEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+    const previewWrapperEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper');
     const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
     const reader = new FileReader();
     reader.onload = (whenLoaded) => {
       const loadedReader = whenLoaded.target;
-      previewWrapperEl.style.display = "block";
+      ppreviewGroupEl.style.display = "block";
       previewImageEl.src = loadedReader.result;
       // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
-      if (previewImageEl.style.width >= previewImageEl.style.height) {
-        // console.log("...the height.");
-        previewImageEl.style.height = "100%";
-      } else {
-        // console.log("...the width.");
-        previewImageEl.style.width = "100%";
-      }
       
       if (!fileSizeIsWithinLimit(uploaderEl, evt.target.files[0])) {
         // console.warn("...this file exceeded declared file size limit.");
-        previewWrapperEl.style.display = "none";
+        ppreviewGroupEl.style.display = "none";
+        // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
+        ppreviewGroupEl.style.removeProperty("backgroundColor");
         removeImageUploadSlot(uploaderEl, uploadSlotEl);
         return;
       }
       
       if (!totalSizeOfFilesIsWithinLimit(uploaderEl)) {
         // console.warn("...total size of files exceeded declared total size limit.");
-        previewWrapperEl.style.display = "none";
+        ppreviewGroupEl.style.display = "none";
+        // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
+        ppreviewGroupEl.style.removeProperty("backgroundColor");
         removeImageUploadSlot(uploaderEl, uploadSlotEl);
         return;
+      }
+      
+      const previewImage = new Image();
+      previewImage.src = loadedReader.result;
+      
+      previewImage.onload = (whenLoaded) => {
+        
+        switch (true) {
+          case previewImage.width > previewImage.height:
+            // previewImageEl.style.width = "";
+            previewImageEl.style.removeProperty("width");
+            previewImageEl.style.height = "100%";
+            break;
+          case previewImage.width < previewImage.height:
+            // previewImageEl.style.height = "";
+            previewImageEl.style.removeProperty("height");
+            previewImageEl.style.width = "100%";
+            break;
+          default:
+            previewImageEl.style.removeProperty("width");
+            previewImageEl.style.height = "100%";
+        }
+        
+        // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
+        previewWrapperEl.style.backgroundColor = "rgba(255,255,255,1)";
+        
       }
       
       // console.log("Expanding styles of preview image size...");
@@ -128,7 +151,7 @@ export default function commentBoxWithSquaredImageInput () {
     
     reader.readAsDataURL(evt.target.files[0]);
     
-    const removeUploadedImageBtns = previewWrapperEl.getElementsByClassName('fz-upload-slot__rm-img');
+    const removeUploadedImageBtns = ppreviewGroupEl.getElementsByClassName('fz-upload-slot__rm-img');
     
     for (let i = 0; i < removeUploadedImageBtns.length; i++) {
       removeUploadedImageBtns[i].addEventListener('click', detectRemovalOfUploadedImage);

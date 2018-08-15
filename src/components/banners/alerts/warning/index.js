@@ -1,5 +1,3 @@
-import './index.css';
-
 export default function warningAlertBanner() {
   const battenburgPrimaryColour = "#ffffff";
 	const battenburgInverseColour = "rgba(226,119,92,1)";

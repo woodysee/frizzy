@@ -1,4 +1,3 @@
-import './index.css';
 import inArray from '../../../../lib/in-array.js';
 
 export default function inputRadioClassic() {

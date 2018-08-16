@@ -1256,7 +1256,6 @@ li.fz-step-title {
     border-radius: 0.5em;
     position: absolute;
     overflow: scroll;
-    overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
     height: 100%;
     top: 0;
@@ -1363,7 +1362,6 @@ li.fz-step-title {
     border-radius: 0.5em;
     position: absolute;
     overflow: scroll;
-    overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
     height: 100%;
     top: 0;
@@ -1507,7 +1505,6 @@ li.fz-step-title {
     border-radius: 0.5em;
     position: absolute;
     overflow: scroll;
-    overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
     height: 100%;
     top: 0;
@@ -1618,7 +1615,6 @@ li.fz-step-title {
     border-radius: 0.5em;
     position: absolute;
     overflow: scroll;
-    overflow: -moz-scrollbars-none;
     -ms-overflow-style: none;
     height: 100%;
     top: 0;

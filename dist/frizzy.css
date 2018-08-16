@@ -170,7 +170,7 @@ button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"] {
   text-align: center; }
   button.fz-btn--neg:hover, a.fz-btn--neg:hover,
   button.fz-btn[data-fz-btn-variant="neg"]:hover, a.fz-btn[data-fz-btn-variant="neg"]:hover {
-    background-color: rgba(228, 133, 129, 0.1); }
+    background-color: #fcf3f3; }
   button.fz-btn--neg:active, a.fz-btn--neg:active,
   button.fz-btn[data-fz-btn-variant="neg"]:active, a.fz-btn[data-fz-btn-variant="neg"]:active {
     background-color: #e48581;
@@ -253,10 +253,9 @@ a.fz-btn[data-fz-btn-variant="neu"] {
   a.fz-btn[data-fz-btn-variant="neu"]:hover {
     text-decoration: none; }
 button.fz-btn--pri, a.fz-btn--pri,
-button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
+button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"],
+button.fz-btn[data-fz-btn-variant="pri--alt"], a.fz-btn[data-fz-btn-variant="pri--alt"] {
   border-radius: 2px;
-  background-color: #65beb9;
-  border: solid 1px #65beb9;
   color: #ffffff;
   cursor: pointer;
   font-size: 14px;
@@ -264,25 +263,44 @@ button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
   min-width: 100px;
   padding: 10px;
   text-align: center; }
+
+button.fz-btn--pri, a.fz-btn--pri,
+button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
+  background-color: #65beb9;
+  border: solid 1px #65beb9;
+  color: #ffffff; }
   button.fz-btn--pri:hover, a.fz-btn--pri:hover,
   button.fz-btn[data-fz-btn-variant="pri"]:hover, a.fz-btn[data-fz-btn-variant="pri"]:hover {
     background-color: #77ccc8;
     border-color: #77ccc8; }
   button.fz-btn--pri:active, a.fz-btn--pri:active,
   button.fz-btn[data-fz-btn-variant="pri"]:active, a.fz-btn[data-fz-btn-variant="pri"]:active {
-    background-color: #52AFA9;
-    border-color: #52AFA9; }
+    background-color: #52afa9;
+    border-color: #52afa9; }
+
+button.fz-btn[data-fz-btn-variant="pri--alt"], a.fz-btn[data-fz-btn-variant="pri--alt"] {
+  background-color: #ffffff;
+  border: solid 1px #65beb9;
+  color: #65beb9; }
+  button.fz-btn[data-fz-btn-variant="pri--alt"]:hover, a.fz-btn[data-fz-btn-variant="pri--alt"]:hover {
+    background-color: #f1f8f8; }
+  button.fz-btn[data-fz-btn-variant="pri--alt"]:active, a.fz-btn[data-fz-btn-variant="pri--alt"]:active {
+    background-color: #65beb9;
+    color: #ffffff; }
 
 button.fz-btn--pri,
-button.fz-btn[data-fz-btn-variant="pri"] {
+button.fz-btn[data-fz-btn-variant="pri"],
+button.fz-btn[data-fz-btn-variant="pri--alt"] {
   padding: 10px; }
 
 a.fz-btn--pri,
-a.fz-btn[data-fz-btn-variant="pri"] {
+a.fz-btn[data-fz-btn-variant="pri"],
+a.fz-btn[data-fz-btn-variant="pri--alt"] {
   padding: 9px;
   text-decoration: none; }
   a.fz-btn--pri:hover,
-  a.fz-btn[data-fz-btn-variant="pri"]:hover {
+  a.fz-btn[data-fz-btn-variant="pri"]:hover,
+  a.fz-btn[data-fz-btn-variant="pri--alt"]:hover {
     text-decoration: none; }
 .fz-header-back-btn {
   background-color: unset;

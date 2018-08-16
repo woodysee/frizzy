@@ -10,6 +10,7 @@ Reusable UI component library for Airfrov web.
 - Breaking change to multiple images upload component. Collapsed user-defined resolve and reject callback declarations in multiple images upload component (Default, Captioned and Comment) into single user-defined callback declaration. New callback formal parameter structure.
 - Added support for user-defined callback function for total file size for multiple images upload component
 - Fixes to multiple images upload components (proportion bug, added backing colour for images with transparent backgrounds)
+- Fixed a bug in Mozilla Firefox where the scroll for multi-image uploader is locked. However, it will show scrollbars if image is not a square
 
 ### 0.4.0
 - Added Info Default Button component

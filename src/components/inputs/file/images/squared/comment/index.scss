@@ -134,7 +134,8 @@ $dark-grey-colour: rgba(128,128,128,1);
       border-radius: 0.5em;
       position: absolute;
       overflow: scroll;
-      overflow: -moz-scrollbars-none;  // Firefox
+      // overflow: -moz-scrollbars-none;  // No longer works in Firefox
+      // Unable to find a way to hide scrollbars for inner content for Mozilla Firefox
       -ms-overflow-style: none;  // IE 10+
       height: 100%;
       top: 0;

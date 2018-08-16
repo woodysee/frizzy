@@ -1,6 +1,7 @@
 $primary-colour: #65beb9;
 $primary-colour--light: #77ccc8;
-$primary-color--dark: #52AFA9;
+$primary-colour--dark: #52afa9;
+$primary-colour--faded: #f1f8f8;
 $white: #ffffff;
 
 $minButtonWidth: 100px;
@@ -8,10 +9,9 @@ $buttonPaddingTop: $minButtonWidth / 10;
 $anchorPaddingTop: ($minButtonWidth / 10) - 1;
 
 button.fz-btn--pri, a.fz-btn--pri,
-button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
+button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"],
+button.fz-btn[data-fz-btn-variant="pri--alt"], a.fz-btn[data-fz-btn-variant="pri--alt"] {
   border-radius: 2px;
-  background-color: $primary-colour;
-  border: solid 1px $primary-colour;
   color: $white;
   cursor: pointer;
   font-size: 14px;
@@ -19,26 +19,47 @@ button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
   min-width: $minButtonWidth;
   padding: $buttonPaddingTop;
   text-align: center;
-  
+}
+
+button.fz-btn--pri, a.fz-btn--pri,
+button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
+  background-color: $primary-colour;
+  border: solid 1px $primary-colour;
+  color: $white;
   &:hover {
     background-color: $primary-colour--light;
     border-color: $primary-colour--light;
   }
   
   &:active {
-    background-color: $primary-color--dark;
-    border-color: $primary-color--dark;
+    background-color: $primary-colour--dark;
+    border-color: $primary-colour--dark;
+  }
+}
+
+button.fz-btn[data-fz-btn-variant="pri--alt"], a.fz-btn[data-fz-btn-variant="pri--alt"] {
+  background-color: $white;
+  border: solid 1px $primary-colour;
+  color: $primary-colour;
+  &:hover {
+    background-color: $primary-colour--faded;
   }
   
+  &:active {
+    background-color: $primary-colour;
+    color: $white;
+  }
 }
 
 button.fz-btn--pri,
-button.fz-btn[data-fz-btn-variant="pri"] {
+button.fz-btn[data-fz-btn-variant="pri"],
+button.fz-btn[data-fz-btn-variant="pri--alt"] {
   padding: $buttonPaddingTop;
 }
 
 a.fz-btn--pri,
-a.fz-btn[data-fz-btn-variant="pri"] {
+a.fz-btn[data-fz-btn-variant="pri"],
+a.fz-btn[data-fz-btn-variant="pri--alt"] {
   padding: $anchorPaddingTop;
   text-decoration: none;
   &:hover {

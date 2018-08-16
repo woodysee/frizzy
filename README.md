@@ -521,6 +521,20 @@ Captions per each squared image.
 
 ```
 
+###### Alternate
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn" data-fz-btn-variant="pri--alt">
+		<i class="fa fa-caret-left" aria-hidden="true"></i> View Dispute
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="pri--alt">
+		Penawaran dari Traveller
+	</a>
+
+```
+
 ##### Positive
 
 ```html
@@ -550,6 +564,7 @@ Captions per each squared image.
 ```
 
 ##### Info
+###### Default
 
 ```html
 	<!-- Font Awesome is needed for the caret icon -->
@@ -558,6 +573,19 @@ Captions per each squared image.
 	</button>
 
 	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="info">
+		Tidak (Anchor)
+	</a>
+
+```
+###### Alternate
+
+```html
+	<!-- Font Awesome is needed for the caret icon -->
+	<button type="button" class="fz-btn" data-fz-btn-variant="info--alt">
+		<i class="fa fa-caret-left" aria-hidden="true"></i> Tidak (Button)
+	</button>
+
+	<a href="https://www.airfrov.com" class="fz-btn" data-fz-btn-variant="info--alt">
 		Tidak (Anchor)
 	</a>
 

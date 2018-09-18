@@ -159,7 +159,7 @@ function totalSizeOfFilesIsWithinLimit (uploaderEl) {
     // console.log("...max total size of files allowed to be uploaded was declared.");
     const maxTotalSize = Math.ceil(parseFloat(uploaderEl.dataset.fzTotalSizeLimit) * bytesInAMegabyte);
     const totalSize = calculateTotalSizeOfFiles(uploaderEl);
-    if (typeof cb !== 'undefined' && typeof cb === 'function') {
+    if (typeof cb !== 'undefined' && typeof window[cb] === 'function') {
       // console.log("...Invoking user-defined cb function if available.");
       window[cb]({
         el: uploaderEl,

@@ -159,7 +159,7 @@ function totalSizeOfFilesIsWithinLimit (uploaderEl) {
     // console.log("...max total size of files allowed to be uploaded was declared.");
     const maxTotalSize = Math.ceil(parseFloat(uploaderEl.dataset.fzTotalSizeLimit) * bytesInAMegabyte);
     const totalSize = calculateTotalSizeOfFiles(uploaderEl);
-    if (typeof cb !== 'undefined' && typeof cb === 'function') {
+    if (typeof cb !== 'undefined' && typeof window[cb] === 'function') {
       // console.log("...Invoking user-defined cb function if available.");
       window[cb]({
         el: uploaderEl,
@@ -179,6 +179,77 @@ function totalSizeOfFilesIsWithinLimit (uploaderEl) {
   return true;
 }
 
+function detectRemovalOfExistingImage (evt) {
+  let removeImgBtnEl, previewImgGrpEl;
+  if (evt.target.classList.contains('fz-upload-slot__rm-img__icon')) {
+    // console.log("The actual icon is clicked for Safari and Chrome...");
+    removeImgBtnEl = evt.target.parentNode;
+    previewImgGrpEl = evt.target.parentNode.parentNode;
+  } else {
+    // console.log("The parent btn element is clicked for Firefox.");
+    removeImgBtnEl = evt.target;
+    previewImgGrpEl = evt.target.parentNode;
+  }
+  const slotEl = previewImgGrpEl.parentNode;
+  const uploaderEl = slotEl.parentNode.parentNode;
+  
+  const removeExistingFileCb = uploaderEl.dataset.fzRmExistingFileCb;
+  if (typeof removeExistingFileCb !== 'undefined' && typeof window[removeExistingFileCb] === 'function') {
+    window[removeExistingFileCb]({
+      el: uploaderEl,
+      slotEl: slotEl,
+    });
+  }
+  detectRemovalOfUploadedImage(evt);
+}
+
+function initialiseExistingImage (uploadSlotEl, datum) {
+  const uploaderEl = uploadSlotEl.parentNode.parentNode;
+  const previewGroupEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+  const previewWrapperEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper');
+  const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
+  previewGroupEl.style.display = "block";
+  previewImageEl.src = datum.attributes.src;
+  if (typeof datum.id !== 'undefined') {
+    previewImageEl.dataset.fzExistingImageId = datum.id;
+  }
+  if (typeof datum.attributes.caption !== 'undefined') {
+    previewImageEl.alt = datum.attributes.caption;
+  }
+  // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
+  
+  const previewImage = new Image();
+  previewImage.src = datum.attributes.src;
+  
+  previewImage.onload = (whenLoaded) => {
+    switch (true) {
+      case previewImage.width > previewImage.height:
+        // previewImageEl.style.width = "";
+        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.height = "100%";
+        break;
+      case previewImage.width < previewImage.height:
+        // previewImageEl.style.height = "";
+        previewImageEl.style.removeProperty("height");
+        previewImageEl.style.width = "100%";
+        break;
+      default:
+        // previewImageEl.style.height = previewImageEl.style.width = "";
+        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.height = "100%";
+    }
+    // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
+    previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
+  }
+  
+  const removeUploadedImageBtns = previewGroupEl.getElementsByClassName('fz-upload-slot__rm-img');
+  
+  for (let i = 0; i < removeUploadedImageBtns.length; i++) {
+    removeUploadedImageBtns[i].addEventListener('click', detectRemovalOfExistingImage);
+  }
+  
+}
+
 function getUploadSlotSnippet (uploaderEl) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
   // console.log("We are using the last .fz-upload-slot child (because it will always be empty) in the parent .fz-upload-slots element as a reference element to create upload snippets.");
@@ -194,16 +265,35 @@ function getUploadSlotSnippet (uploaderEl) {
 
 function initialiseImageUploadSlots (uploaderEl) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
+  const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   const uploadSlotSnippet = getUploadSlotSnippet(uploaderEl);
-  if (uploadSlotSnippet === '') return;
+  let existingSlotSnippet = getUploadSlotSnippet(uploaderEl);
   targetEl.innerHTML = "";
-  targetEl.appendChild(uploadSlotSnippet);
+  if (uploadSlotSnippet === '') return;
+  const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
+  if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function') {
+    const existingImages = window[existingFilesInitialiser]({
+      el: uploaderEl
+    });
+    let uploadSlotEl;
+    for (let i = 0; i < existingImages.length; i++) {
+      targetEl.appendChild(existingSlotSnippet);
+      uploadSlotEl = targetEl.children[targetEl.children.length-1];
+      initialiseExistingImage(uploadSlotEl, existingImages[i]);
+      existingSlotSnippet = getUploadSlotSnippet(uploaderEl);
+    }
+  }
+  const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
+  if (existingImageUploadSlotEls.length < maxUploadSlots) {
+    targetEl.appendChild(uploadSlotSnippet);
+  }
 }
 
 function addImageUploadSlot (uploaderEl) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   const uploadSlotSnippet = getUploadSlotSnippet(uploaderEl);
+  
   const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   if (existingImageUploadSlotEls.length >= maxUploadSlots) return;
@@ -236,8 +326,10 @@ function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
 
 export {
   detectRemovalOfUploadedImage,
+  detectRemovalOfExistingImage,
   detectChangesOfUploadedImages,
   getUploadSlotSnippet,
+  initialiseExistingImage,
   initialiseImageUploadSlots,
   addImageUploadSlot,
   removeImageUploadSlot,

@@ -74,10 +74,18 @@
 })();
 
 function userDefinedCallbackAfterUploadForTotalSize (uploader) {
-  // console.log(uploader);
+  // console.log("Frizzy callbacks can be defined after invoking frizzy.js. However, it is recommended to define frizzy-invoked callbacks before declaring frizzy.");
+  console.log(uploader);
 }
 function userDefinedCallbackAfterUploadForFileSize (uploader) {
-  // console.log(uploader);
+  // console.log("Frizzy callbacks can be defined after invoking frizzy.js. However, it is recommended to define frizzy-invoked callbacks before declaring frizzy.");
+  console.log(uploader);
+}
+
+function removeExistingFileCb (uploader) {
+  // console.log("Frizzy callbacks can be defined after invoking frizzy.js. However, it is recommended to define frizzy-invoked callbacks before declaring frizzy.");
+  console.log(uploader);
+  console.log(uploader.slotEl.querySelector("img").src);
 }
 
 (() => {

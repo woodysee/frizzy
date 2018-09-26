@@ -17,10 +17,9 @@ function detectRemovalOfUploadedImage (evt) {
   const uploaderEl = slotEl.parentNode.parentNode;
   
   const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
-  let fzPreviousExistingImgSrc, fzPreviousExistingImgId;
-  if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function') {
-    fzPreviousExistingImgSrc = previewImgGrpEl.querySelector("img").src.trim();
-    fzPreviousExistingImgId = previewImgGrpEl.querySelector("img").dataset.fzExistingImageId;
+  let fzPreviousExistingImgSrc, fzPreviousExistingImgId = previewImgGrpEl.querySelector("img").dataset.fzExistingImageId;
+  if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function' && typeof fzPreviousExistingImgId !== "undefined") {
+    fzPreviousExistingImgSrc = previewImgGrpEl.querySelector("img").src.trim()
     // console.log(`Saving data-fz-previous-existing-img-src: ${fzPreviousExistingImgSrc}`);
     previewImgGrpEl.innerHTML = (
       '<div class="fz-upload-slot__preview-wrapper">'+
@@ -73,6 +72,7 @@ function detectChangesOfUploadedImages (evt) {
       previewGroupEl.style.display = "none";
       // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
       previewWrapperEl.style.removeProperty("backgroundColor");
+      uploadSlotEl.dataset.fzFileSizeExceededFileSizeLimit = true;
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
     }
@@ -82,6 +82,7 @@ function detectChangesOfUploadedImages (evt) {
       previewGroupEl.style.display = "none";
       // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
       previewWrapperEl.style.removeProperty("backgroundColor");
+      uploadSlotEl.dataset.fzFileSizeExceedededTotalSizeLimit = true;
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
     }
@@ -337,12 +338,11 @@ function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
       fzPreviousExistingImgId = previewImageGroup.querySelector("img").dataset.fzPreviousExistingImgId;
       // if (typeof fzPreviousExistingImgSrc !== "undefined") console.log(`Current fzPreviousExistingImgSrc: ${fzPreviousExistingImgSrc}`);
       // if (typeof existingImgSrc !== "undefined") console.log(`Current existingImgSrc: ${existingImgSrc}`);
-      if (typeof fzPreviousExistingImgId !== "undefined") console.log(`Current fzPreviousExistingImgId: ${fzPreviousExistingImgId}`);
+      // if (typeof fzPreviousExistingImgId !== "undefined") console.log(`Current fzPreviousExistingImgId: ${fzPreviousExistingImgId}`);
       existingImageIsBeingRemoved = (typeof fzPreviousExistingImgSrc !== "undefined" && typeof fzPreviousExistingImgId !== "undefined" && existingImgSrc !== fzPreviousExistingImgSrc);
       // console.log(`Not being removed?: ${existingImageIsBeingRemoved}`);
       if (fileInputValue !== "" || (fileInputValue === "" && !existingImageIsBeingRemoved)) {
         // console.log("Adding count to new image or server/API-obtained existing images that are not deleted...");
-        // console.log(`Removing attribute from slot named fzPreviousExistingImgSrc`);
         previewImageGroup.querySelector("img").removeAttribute("data-fz-previous-existing-img-src");
         previewImageGroup.querySelector("img").removeAttribute("data-fz-previous-existing-img-id");
         numberOfExistingImages++;
@@ -354,7 +354,8 @@ function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
   const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   // console.info(`Existing images: ${numberOfExistingImages}. Max upload slots: ${maxUploadSlots}.`);
-  if (numberOfExistingImages === maxUploadSlots - 1) {
+  
+  if (numberOfExistingImages === maxUploadSlots) {
     // console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
     const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
     const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
@@ -362,7 +363,29 @@ function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
       emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
     }
     targetEl.appendChild(emptySlotEl);
+  } else if ((numberOfExistingImages === maxUploadSlots - 1) && typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededFileSizeLimit === "undefined" && typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededTotalSizeLimit === "undefined") {
+    console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
+    const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
+    const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
+    for (let i = 0; i < emptySlotElInputs.length; i++) {
+      emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+    }
+    targetEl.appendChild(emptySlotEl);
   }
+  
+  if (numberOfExistingImages === maxUploadSlots && (typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededFileSizeLimit !== "undefined" || typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededTotalSizeLimit !== "undefined")) {
+    // console.info(`Existing images: ${numberOfExistingImages}. Max upload slots: (${maxUploadSlots}).`);
+    const emptySlotEl2 = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
+    console.log(slotElMarkedForRemoval);
+    const emptySlotElInputs2 = emptySlotEl2.getElementsByTagName("input");
+    for (let i = 0; i < emptySlotElInputs2.length; i++) {
+      emptySlotElInputs2[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+    }
+    console.log(emptySlotEl2);
+    // targetEl.appendChild(emptySlotEl2);
+  }
+  
+  // console.log(slotElMarkedForRemoval);
   slotElMarkedForRemoval.remove();
 }
 

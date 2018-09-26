@@ -11,24 +11,45 @@ function detectRemovalOfUploadedImage (evt) {
   }
   previewImgGrpEl.style.display = "none";
   removeImgBtnEl.removeEventListener('click', detectRemovalOfUploadedImage);
-  previewImgGrpEl.innerHTML = (
-    '<div class="fz-upload-slot__preview-wrapper">'+
-      '<img src="#" alt="Image Preview" />'+
-    '</div>'+
-    '<button class="fz-upload-slot__rm-img">'+
-      '<div class="fz-upload-slot__rm-img__icon"></div>'+
-    '</button>'
-  );
+  // console.log(previewImgGrpEl.querySelector("img").src.trim());
   
-  // console.log("If applicable, dynamically removing extra image slot...");
   const slotEl = previewImgGrpEl.parentNode;
   const uploaderEl = slotEl.parentNode.parentNode;
+  
+  const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
+  let fzPreviousExistingImgSrc, fzPreviousExistingImgId;
+  if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function') {
+    fzPreviousExistingImgSrc = previewImgGrpEl.querySelector("img").src.trim();
+    fzPreviousExistingImgId = previewImgGrpEl.querySelector("img").dataset.fzExistingImageId;
+    // console.log(`Saving data-fz-previous-existing-img-src: ${fzPreviousExistingImgSrc}`);
+    previewImgGrpEl.innerHTML = (
+      '<div class="fz-upload-slot__preview-wrapper">'+
+        `<img src="#" data-fz-previous-existing-img-id="${fzPreviousExistingImgId}" data-fz-previous-existing-img-src="${fzPreviousExistingImgSrc}" alt="Image Preview" />`+
+      '</div>'+
+      '<button class="fz-upload-slot__rm-img">'+
+        '<div class="fz-upload-slot__rm-img__icon"></div>'+
+      '</button>'
+    );
+  } else {
+    previewImgGrpEl.innerHTML = (
+      '<div class="fz-upload-slot__preview-wrapper">'+
+        `<img src="#" alt="Image Preview" />`+
+      '</div>'+
+      '<button class="fz-upload-slot__rm-img">'+
+        '<div class="fz-upload-slot__rm-img__icon"></div>'+
+      '</button>'
+    );
+  }
+  
+  // console.log("If applicable, dynamically removing extra image slot...");
   const inputEl = slotEl.querySelector('input[type="file"]');
   
   // console.log("Clearing current input...");
+  // console.log(inputEl.value);
   inputEl.value = "";
   
   if (typeof uploaderEl.dataset.fzMaxUploadSlots !== 'undefined') {
+    // console.log(`Max upload slots defined by user is ${uploaderEl.dataset.fzMaxUploadSlots}`);
     removeImageUploadSlot(uploaderEl, slotEl);
     uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
   }
@@ -179,6 +200,77 @@ function totalSizeOfFilesIsWithinLimit (uploaderEl) {
   return true;
 }
 
+function detectRemovalOfExistingImage (evt) {
+  let removeImgBtnEl, previewImgGrpEl;
+  if (evt.target.classList.contains('fz-upload-slot__rm-img__icon')) {
+    // console.log("The actual icon is clicked for Safari and Chrome...");
+    removeImgBtnEl = evt.target.parentNode;
+    previewImgGrpEl = evt.target.parentNode.parentNode;
+  } else {
+    // console.log("The parent btn element is clicked for Firefox.");
+    removeImgBtnEl = evt.target;
+    previewImgGrpEl = evt.target.parentNode;
+  }
+  const slotEl = previewImgGrpEl.parentNode;
+  const uploaderEl = slotEl.parentNode.parentNode;
+  
+  const removeExistingFileCb = uploaderEl.dataset.fzRmExistingFileCb;
+  if (typeof removeExistingFileCb !== 'undefined' && typeof window[removeExistingFileCb] === 'function') {
+    window[removeExistingFileCb]({
+      el: uploaderEl,
+      slotEl: slotEl,
+    });
+  }
+  detectRemovalOfUploadedImage(evt);
+}
+
+function initialiseExistingImage (uploadSlotEl, datum) {
+  const uploaderEl = uploadSlotEl.parentNode.parentNode;
+  const previewGroupEl = uploadSlotEl.getElementsByClassName('fz-upload-slot__preview-grp')[0];
+  const previewWrapperEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper');
+  const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
+  previewGroupEl.style.display = "block";
+  previewImageEl.src = datum.attributes.src;
+  if (typeof datum.id !== 'undefined') {
+    previewImageEl.dataset.fzExistingImageId = datum.id;
+  }
+  if (typeof datum.attributes.caption !== 'undefined') {
+    previewImageEl.alt = datum.attributes.caption;
+  }
+  // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
+  
+  const previewImage = new Image();
+  previewImage.src = datum.attributes.src;
+  
+  previewImage.onload = (whenLoaded) => {
+    switch (true) {
+      case previewImage.width > previewImage.height:
+        // previewImageEl.style.width = "";
+        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.height = "100%";
+        break;
+      case previewImage.width < previewImage.height:
+        // previewImageEl.style.height = "";
+        previewImageEl.style.removeProperty("height");
+        previewImageEl.style.width = "100%";
+        break;
+      default:
+        // previewImageEl.style.height = previewImageEl.style.width = "";
+        previewImageEl.style.removeProperty("width");
+        previewImageEl.style.height = "100%";
+    }
+    // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
+    previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
+  }
+  
+  const removeUploadedImageBtns = previewGroupEl.getElementsByClassName('fz-upload-slot__rm-img');
+  
+  for (let i = 0; i < removeUploadedImageBtns.length; i++) {
+    removeUploadedImageBtns[i].addEventListener('click', detectRemovalOfExistingImage);
+  }
+  
+}
+
 function getUploadSlotSnippet (uploaderEl) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
   // console.log("We are using the last .fz-upload-slot child (because it will always be empty) in the parent .fz-upload-slots element as a reference element to create upload snippets.");
@@ -194,16 +286,35 @@ function getUploadSlotSnippet (uploaderEl) {
 
 function initialiseImageUploadSlots (uploaderEl) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
+  const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   const uploadSlotSnippet = getUploadSlotSnippet(uploaderEl);
-  if (uploadSlotSnippet === '') return;
+  let existingSlotSnippet = getUploadSlotSnippet(uploaderEl);
   targetEl.innerHTML = "";
-  targetEl.appendChild(uploadSlotSnippet);
+  if (uploadSlotSnippet === '') return;
+  const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
+  if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function') {
+    const existingImages = window[existingFilesInitialiser]({
+      el: uploaderEl
+    });
+    let uploadSlotEl;
+    for (let i = 0; i < existingImages.length; i++) {
+      targetEl.appendChild(existingSlotSnippet);
+      uploadSlotEl = targetEl.children[targetEl.children.length-1];
+      initialiseExistingImage(uploadSlotEl, existingImages[i]);
+      existingSlotSnippet = getUploadSlotSnippet(uploaderEl);
+    }
+  }
+  const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
+  if (existingImageUploadSlotEls.length < maxUploadSlots) {
+    targetEl.appendChild(uploadSlotSnippet);
+  }
 }
 
 function addImageUploadSlot (uploaderEl) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
   const uploadSlotSnippet = getUploadSlotSnippet(uploaderEl);
+  
   const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   if (existingImageUploadSlotEls.length >= maxUploadSlots) return;
@@ -214,16 +325,37 @@ function addImageUploadSlot (uploaderEl) {
 function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];  
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
-  let previewImageGroup, fileInputValue, numberOfExistingImages = 0;
+  let previewImageGroup, numberOfExistingImages = 0;
+  let fileInputValue, fzPreviousExistingImgSrc, existingImgSrc, fzPreviousExistingImgId, existingImageIsBeingRemoved;
+  const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
   for (let i = 0; i < existingImageUploadSlotEls.length; i++) {
     previewImageGroup = existingImageUploadSlotEls[i].getElementsByClassName('fz-upload-slot__preview-grp')[0];
     fileInputValue = previewImageGroup.parentNode.querySelector(`input[type="file"]`).value;
-    if (fileInputValue !== "") numberOfExistingImages++;
+    if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function') {
+      fzPreviousExistingImgSrc = previewImageGroup.querySelector("img").dataset.fzPreviousExistingImgSrc;
+      existingImgSrc = previewImageGroup.querySelector("img").src;
+      fzPreviousExistingImgId = previewImageGroup.querySelector("img").dataset.fzPreviousExistingImgId;
+      // if (typeof fzPreviousExistingImgSrc !== "undefined") console.log(`Current fzPreviousExistingImgSrc: ${fzPreviousExistingImgSrc}`);
+      // if (typeof existingImgSrc !== "undefined") console.log(`Current existingImgSrc: ${existingImgSrc}`);
+      if (typeof fzPreviousExistingImgId !== "undefined") console.log(`Current fzPreviousExistingImgId: ${fzPreviousExistingImgId}`);
+      existingImageIsBeingRemoved = (typeof fzPreviousExistingImgSrc !== "undefined" && typeof fzPreviousExistingImgId !== "undefined" && existingImgSrc !== fzPreviousExistingImgSrc);
+      // console.log(`Not being removed?: ${existingImageIsBeingRemoved}`);
+      if (fileInputValue !== "" || (fileInputValue === "" && !existingImageIsBeingRemoved)) {
+        // console.log("Adding count to new image or server/API-obtained existing images that are not deleted...");
+        // console.log(`Removing attribute from slot named fzPreviousExistingImgSrc`);
+        previewImageGroup.querySelector("img").removeAttribute("data-fz-previous-existing-img-src");
+        previewImageGroup.querySelector("img").removeAttribute("data-fz-previous-existing-img-id");
+        numberOfExistingImages++;
+      }
+    } else {
+      if (fileInputValue !== "") numberOfExistingImages++;
+    }
   }
   const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
+  // console.info(`Existing images: ${numberOfExistingImages}. Max upload slots: ${maxUploadSlots}.`);
   if (numberOfExistingImages === maxUploadSlots - 1) {
-    // console.log(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
+    // console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
     const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
     const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
     for (let i = 0; i < emptySlotElInputs.length; i++) {
@@ -236,8 +368,10 @@ function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
 
 export {
   detectRemovalOfUploadedImage,
+  detectRemovalOfExistingImage,
   detectChangesOfUploadedImages,
   getUploadSlotSnippet,
+  initialiseExistingImage,
   initialiseImageUploadSlots,
   addImageUploadSlot,
   removeImageUploadSlot,

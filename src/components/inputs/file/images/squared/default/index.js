@@ -1,7 +1,9 @@
 import {
   detectRemovalOfUploadedImage,
+  detectRemovalOfExistingImage,
   detectChangesOfUploadedImages,
   getUploadSlotSnippet,
+  initialiseExistingImage,
   initialiseImageUploadSlots,
   addImageUploadSlot,
   removeImageUploadSlot
@@ -14,6 +16,7 @@ export default function defaultImagesFileInput () {
   // Initialising image uploaders in markup
   for (let i = 0; i < defaultImageUploadSlotsEls.length; i++) {
     defaultImageUploadSlotsEls[i].addEventListener('change', detectChangesOfUploadedImages);
+    
     if (typeof defaultImageUploadSlotsEls[i].dataset.fzMaxUploadSlots !== 'undefined') {
       initialiseImageUploadSlots(defaultImageUploadSlotsEls[i]);
     }

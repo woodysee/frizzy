@@ -4,6 +4,9 @@ Reusable UI component library for Airfrov web.
 
 ## Updates
 
+### 0.6.0
+- Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component.
+
 ### 0.5.0
 - Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.
 - Added Bookmark Checkbox Input
@@ -312,6 +315,12 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
     <code>data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize"</code> - 
     <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
+  <li>
+    <code>data-fz-init-existing-files="initialiseExistingFilesDefinedByUser"</code> - <b>Optional.</b> Where <code>initialiseExistingFilesDefinedByUser</code> is a function that can be declared by the user in the window scope when initialising the uploader to initialise user-defined existing images (usually server-rendered) within the uploader for edit or update.
+  </li>
+  <li>
+    <code>data-fz-rm-existing-file-cb="removeExistingFileCb"</code> - <b>Optional.</b> Where <code>removeExistingFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an existing image declared by the user within <code>initialiseExistingFilesDefinedByUser</code>.
+  </li>
 </ul>
 
 ```js
@@ -328,12 +337,41 @@ function userDefinedCallbackAfterUploadForTotalSize (uploader) {
   console.log(uploader.size.max); // Size of total limit in MB
   console.log(uploader.size.exceeded); // Boolean if the total file size after latest file is less than total size limit
 }
+
+function initialiseExistingFilesDefinedByUser (uploader) {
+  console.log(uploader.el); // the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  const data = [
+    {
+      id: 1,
+      type: "image",
+      attributes: {
+        src: "https://s3-ap-southeast-1.amazonaws.com/airfrovstg/2018-08-13_95291.8198321946.jpg",
+        caption: "Tsum Tsum at Bugis Street and Malay Street junction"
+      }
+    },
+    {
+      id: 0,
+      type: "image",
+      attributes: {
+        src: "https://s3-ap-southeast-1.amazonaws.com/airfrovstg/2016-11-21_37155518992438.jpg",
+        caption: "Korean banana milk"
+      }
+    }
+  ];
+  return data;
+}
+
+function removeExistingFileCb (uploader) {
+  console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
+  console.log(uploader.slotEl.querySelector("img").dataset.fzExistingImageId); // Existing image ID
+}
 ```
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">

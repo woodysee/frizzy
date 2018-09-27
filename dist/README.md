@@ -304,7 +304,7 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
         The <code>display</code> attribute of the CSSStyleDeclaration / style attribute of the <code>.fz-upload-slot</code> element <b>MUST NOT</b> be mutated further by the user agent. This attribute is used to determine if the upload slot is empty or occupied by an existing image when scanning all slots in the event an image is added or removed.
       </li>
       <li>
-        All <code>.fz-upload-slot</code> children nodes will generate an additional data attribute <code>data-fz-is-empty-file-slot="true"</code> when images are being manipulated within the uploader. Starting from <code>v0.6.0</code>, this data attribute <b>MUST NOT</b> be added, changed or removed by the user or third-party scripts as it will affect whether an empty image slot is added in the uploader.
+        All <code>.fz-upload-slot</code> children nodes will generate an additional data attribute <code>data-fz-is-empty-file-slot="true"</code> when images are being manipulated within the uploader. Starting from <code>v0.6.0</code>, this data attribute <b>MUST NOT</b> be added, changed or removed by the user or third-party scripts as it will affect whether an empty image slot is added in the uploader. The following namespeces in the dataset of this type of element is also reserved: <code>data-fz-file-size-exceededed-file-size-limit</code>, <code>data-fz-file-size-exceededed-total-size-limit</code>.
       </li>
     </ul>
   </li>

@@ -1,0 +1,24 @@
+.fz-form-grp__input {
+  select.fz-input {
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: solid 1px #e5e5e5;
+    font-size: 14px;
+    height: 36px;
+    
+    &:focus {
+      border: solid 1px #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+    }
+    
+    &::-webkit-placeholder,
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &::-ms-input-placeholder,
+    &::placeholder {
+      color: #999999; /* rgba(0, 0, 0, 0.4) */
+      font-size: 14px;
+      line-height: 1.1;
+    }
+    
+  }
+}

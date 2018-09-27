@@ -7,6 +7,7 @@ $pageTitleLeftPadding: 0.33 * 0.15 * $viewportWidth;
 $pageContentLeftPadding: 0.33 * 0.15 * $viewportWidth;
 $stepsContentWidth: $viewportWidth / 2 + $pageContentLeftPadding;
 $airfrovTeal: #65beb9;
+$darkerTeal: #0c8780;
 $white: #ffffff;
 $stepNrDiscDiameter: 21px;
 
@@ -63,7 +64,7 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
 .fz-page-title {
   color: #333333;
   font-size: 24px;
-  font-weight: normal;
+  font-weight: bold;
   padding-left: $pageTitleLeftPadding;
   text-shadow: none;
 }
@@ -74,21 +75,22 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
   width: $stepsContentWidth;
   
   .fz-step-indicator {
-    color: $airfrovTeal;
+    color: $darkerTeal;
     font-size: 11px;
     font-weight: bold;
-    letter-spacing: 0.6px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
     margin-top: 0px;
     text-transform: uppercase;
   }
   
   .fz-content-step__title {
-    color: rgba(0, 0, 0, 0.8);
+    color: #333333;
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 600;
+    margin-top: 0px;
     @media only screen and (max-device-width : $min-width-of-sm-devices - 1px) {
       margin-bottom: 0px;
-      margin-top: 0px;
     }
   }
 
@@ -286,11 +288,11 @@ li.fz-step-title {
   
   &:hover > .fz-step-nr-disc {
     border-color: $airfrovTeal;
-    color: $airfrovTeal;
+    color: $darkerTeal;
   }
   
   &:hover > .fz-step-copy > .fz-step-title__name {
-    color: $airfrovTeal;
+    color: $darkerTeal;
   }
   
   .fz-step-nr-disc, .fz-step-nr-disc--done, .fz-step-nr {

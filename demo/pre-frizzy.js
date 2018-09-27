@@ -19,6 +19,14 @@ function initialiseExistingFilesDefinedByUser (uploader) {
         src: "https://s3-ap-southeast-1.amazonaws.com/airfrovstg/2016-11-21_37155518992438.jpg",
         caption: "Korean banana milk"
       }
+    },
+    {
+      id: 2,
+      type: "image",
+      attributes: {
+        src: "https://s3-ap-southeast-1.amazonaws.com/airfrovstg/2018-09-25_46955.9206350176.jpg",
+        caption: "Yet another korean banana milk"
+      }
     }
   ];
   return data;

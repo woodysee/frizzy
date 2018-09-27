@@ -11,24 +11,47 @@ function detectRemovalOfUploadedImage (evt) {
   }
   previewImgGrpEl.style.display = "none";
   removeImgBtnEl.removeEventListener('click', detectRemovalOfUploadedImage);
-  previewImgGrpEl.innerHTML = (
-    '<div class="fz-upload-slot__preview-wrapper">'+
-      '<img src="#" alt="Image Preview" />'+
-    '</div>'+
-    '<button class="fz-upload-slot__rm-img">'+
-      '<div class="fz-upload-slot__rm-img__icon"></div>'+
-    '</button>'
-  );
+  // console.log(previewImgGrpEl.querySelector("img").src.trim());
   
-  // console.log("If applicable, dynamically removing extra image slot...");
   const slotEl = previewImgGrpEl.parentNode;
   const uploaderEl = slotEl.parentNode.parentNode;
+  
+  const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
+  let fzPreviousExistingImgSrc, fzPreviousExistingImgId = previewImgGrpEl.querySelector("img").dataset.fzExistingImageId;
+  
+  slotEl.dataset.fzIsEmptyFileSlot = true;
+  
+  if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function' && typeof fzPreviousExistingImgId !== "undefined") {
+    fzPreviousExistingImgSrc = previewImgGrpEl.querySelector("img").src.trim()
+    // console.log(`Saving data-fz-previous-existing-img-src: ${fzPreviousExistingImgSrc}`);
+    previewImgGrpEl.innerHTML = (
+      '<div class="fz-upload-slot__preview-wrapper">'+
+        `<img src="#" data-fz-previous-existing-img-id="${fzPreviousExistingImgId}" data-fz-previous-existing-img-src="${fzPreviousExistingImgSrc}" alt="Image Preview" />`+
+      '</div>'+
+      '<button class="fz-upload-slot__rm-img">'+
+        '<div class="fz-upload-slot__rm-img__icon"></div>'+
+      '</button>'
+    );
+  } else {
+    previewImgGrpEl.innerHTML = (
+      '<div class="fz-upload-slot__preview-wrapper">'+
+        `<img src="#" alt="Image Preview" />`+
+      '</div>'+
+      '<button class="fz-upload-slot__rm-img">'+
+        '<div class="fz-upload-slot__rm-img__icon"></div>'+
+      '</button>'
+    );
+  }
+  
+  // console.log("If applicable, dynamically removing extra image slot...");
   const inputEl = slotEl.querySelector('input[type="file"]');
   
   // console.log("Clearing current input...");
+  // console.log(inputEl.value);
   inputEl.value = "";
   
   if (typeof uploaderEl.dataset.fzMaxUploadSlots !== 'undefined') {
+    // console.log(`Max upload slots defined by user is ${uploaderEl.dataset.fzMaxUploadSlots}`);
     removeImageUploadSlot(uploaderEl, slotEl);
     uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
   }
@@ -52,6 +75,7 @@ function detectChangesOfUploadedImages (evt) {
       previewGroupEl.style.display = "none";
       // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
       previewWrapperEl.style.removeProperty("backgroundColor");
+      uploadSlotEl.dataset.fzFileSizeExceededFileSizeLimit = true;
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
     }
@@ -61,6 +85,7 @@ function detectChangesOfUploadedImages (evt) {
       previewGroupEl.style.display = "none";
       // console.log("Removing backing colour to the wrapper used to block placeholder icon and copy if image is rejected...")
       previewWrapperEl.style.removeProperty("backgroundColor");
+      uploadSlotEl.dataset.fzFileSizeExceedededTotalSizeLimit = true;
       removeImageUploadSlot(uploaderEl, uploadSlotEl);
       return;
     }
@@ -88,7 +113,7 @@ function detectChangesOfUploadedImages (evt) {
       
       // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
       previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
-      
+      uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
     }
     
   }
@@ -240,6 +265,7 @@ function initialiseExistingImage (uploadSlotEl, datum) {
     }
     // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
     previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
+    uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
   }
   
   const removeUploadedImageBtns = previewGroupEl.getElementsByClassName('fz-upload-slot__rm-img');
@@ -260,6 +286,7 @@ function getUploadSlotSnippet (uploaderEl) {
   for (let i = 0; i < uploadSlotSnippetInputs.length; i++) {
     uploadSlotSnippetInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
   }
+  uploadSlotSnippet.dataset.fzIsEmptyFileSlot = true;
   return uploadSlotSnippet;
 }
 
@@ -277,6 +304,7 @@ function initialiseImageUploadSlots (uploaderEl) {
     });
     let uploadSlotEl;
     for (let i = 0; i < existingImages.length; i++) {
+      existingSlotSnippet.removeAttribute("data-fz-is-empty-file-slot");
       targetEl.appendChild(existingSlotSnippet);
       uploadSlotEl = targetEl.children[targetEl.children.length-1];
       initialiseExistingImage(uploadSlotEl, existingImages[i]);
@@ -304,23 +332,60 @@ function addImageUploadSlot (uploaderEl) {
 function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
   const targetEl = uploaderEl.getElementsByClassName('fz-upload-slots')[0];  
   const existingImageUploadSlotEls = targetEl.getElementsByClassName('fz-upload-slot');
-  let previewImageGroup, fileInputValue, numberOfExistingImages = 0;
+  let previewImageGroup, numberOfExistingImages = 0;
+  let fileInputValue, fzPreviousExistingImgSrc, existingImgSrc, fzPreviousExistingImgId, existingImageIsBeingRemoved;
+  const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
   for (let i = 0; i < existingImageUploadSlotEls.length; i++) {
     previewImageGroup = existingImageUploadSlotEls[i].getElementsByClassName('fz-upload-slot__preview-grp')[0];
     fileInputValue = previewImageGroup.parentNode.querySelector(`input[type="file"]`).value;
-    if (fileInputValue !== "") numberOfExistingImages++;
+    if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function') {
+      fzPreviousExistingImgSrc = previewImageGroup.querySelector("img").dataset.fzPreviousExistingImgSrc;
+      existingImgSrc = previewImageGroup.querySelector("img").src;
+      fzPreviousExistingImgId = previewImageGroup.querySelector("img").dataset.fzPreviousExistingImgId;
+      // if (typeof fzPreviousExistingImgSrc !== "undefined") console.log(`Current fzPreviousExistingImgSrc: ${fzPreviousExistingImgSrc}`);
+      // if (typeof existingImgSrc !== "undefined") console.log(`Current existingImgSrc: ${existingImgSrc}`);
+      // if (typeof fzPreviousExistingImgId !== "undefined") console.log(`Current fzPreviousExistingImgId: ${fzPreviousExistingImgId}`);
+      existingImageIsBeingRemoved = (typeof fzPreviousExistingImgSrc !== "undefined" && typeof fzPreviousExistingImgId !== "undefined" && existingImgSrc !== fzPreviousExistingImgSrc);
+      // console.log(`Not being removed?: ${existingImageIsBeingRemoved}`);
+      if (fileInputValue !== "" || (fileInputValue === "" && !existingImageIsBeingRemoved)) {
+        // console.log("Adding count to new image or server/API-obtained existing images that are not deleted...");
+        previewImageGroup.querySelector("img").removeAttribute("data-fz-previous-existing-img-src");
+        previewImageGroup.querySelector("img").removeAttribute("data-fz-previous-existing-img-id");
+        numberOfExistingImages++;
+      }
+    } else {
+      if (fileInputValue !== "") numberOfExistingImages++;
+    }
   }
   const maxUploadSlots = parseInt(uploaderEl.dataset.fzMaxUploadSlots);
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
-  if (numberOfExistingImages === maxUploadSlots - 1) {
-    // console.log(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
-    const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
-    const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
-    for (let i = 0; i < emptySlotElInputs.length; i++) {
-      emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+  // console.info(`Existing images: ${numberOfExistingImages}. Max upload slots: ${maxUploadSlots}.`);
+  
+  let emptyFileSlotCount = -1; // -1 as it is assumed the removal already took place.
+  // console.log("Auditing extra and ensuring there is only one upload slot...");
+  for (let i = 0; i < existingImageUploadSlotEls.length; i++) {
+    if (typeof existingImageUploadSlotEls[i].dataset.fzIsEmptyFileSlot !== "undefined") {
+      // console.log(`Empty file slot: ${existingImageUploadSlotEls[i].dataset.fzIsEmptyFileSlot}`);
+      emptyFileSlotCount++;
     }
-    targetEl.appendChild(emptySlotEl);
   }
+  // console.log(`Empty file slot count: ${emptyFileSlotCount}`);
+  if (emptyFileSlotCount === 0) {
+    // console.log("...Adding empty file slot.");
+    if (numberOfExistingImages <= maxUploadSlots) {
+      // console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
+      const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
+      emptySlotEl.removeAttribute("data-fz-is-empty-file-slot");
+      emptySlotEl.dataset.fzIsEmptyFileSlot = true;
+      const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
+      for (let i = 0; i < emptySlotElInputs.length; i++) {
+        emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+      }
+      targetEl.appendChild(emptySlotEl);
+    }
+  }
+  
+  // console.log(slotElMarkedForRemoval);
   slotElMarkedForRemoval.remove();
 }
 

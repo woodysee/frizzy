@@ -5,7 +5,8 @@ Reusable UI component library for Airfrov web.
 ## Updates
 
 ### 0.6.0
-- Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component.
+- Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
+- Major fixes to managing existing images and new image uploads within multiple images upload component.
 
 ### 0.5.0
 - Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.
@@ -43,11 +44,14 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.5.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.6.0/dist/frizzy.min.css" />
 </head>
 <body>
-	<!-- Your content here -->
-	<script src="/css/frizzy/0.5.0/dist/frizzy.min.js"></script>
+	<!-- Your markup here -->
+  <!-- Your other scripts that are compatible with Frizzy -->
+  <!-- Callback functions used in Frizzy. They MUST BE declared before Frizzy is loaded. -->
+	<script src="/css/frizzy/0.6.0/dist/frizzy.min.js"></script>
+  <!-- Your other scripts that may not be compatible with Frizzy -->
 </body>
 ```
 
@@ -299,6 +303,9 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
       <li>
         The <code>display</code> attribute of the CSSStyleDeclaration / style attribute of the <code>.fz-upload-slot</code> element <b>MUST NOT</b> be mutated further by the user agent. This attribute is used to determine if the upload slot is empty or occupied by an existing image when scanning all slots in the event an image is added or removed.
       </li>
+      <li>
+        All <code>.fz-upload-slot</code> children nodes will generate an additional data attribute <code>data-fz-is-empty-file-slot="true"</code> when images are being manipulated within the uploader. Starting from <code>v0.6.0</code>, this data attribute <b>MUST NOT</b> be added, changed or removed by the user or third-party scripts as it will affect whether an empty image slot is added in the uploader.
+      </li>
     </ul>
   </li>
   <li>
@@ -408,6 +415,34 @@ function removeExistingFileCb (uploader) {
       </div>
     </div>
     <!-- Above: Upload slot 2 -->
+    <!-- Above: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
+  </div>
+</div>
+```
+
+###### If there are existing images...
+
+```html
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb">
+  <div class="fz-upload-slots">
+    <!-- Below: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
+    <!-- Below: Upload slot 1 -->
+    <div class="fz-upload-slot">
+      <div class="fz-upload-slot__placeholder">
+        <div class="fz-upload-slot__placeholder__icon"></div>
+        <div class="fz-upload-slot__placeholder__text">Upload image</div>
+      </div>
+      <input type="file" name="defaultDemoImages" accept="image/jpg,image/png,image/jpeg" />
+      <div class="fz-upload-slot__preview-grp">
+        <div class="fz-upload-slot__preview-wrapper">
+          <img src="#" alt="Image Preview" />
+        </div>
+        <button class="fz-upload-slot__rm-img">
+          <div class="fz-upload-slot__rm-img__icon"></div>
+        </button>
+      </div>
+    </div>
+    <!-- Above: Upload slot 1 -->
     <!-- Above: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
   </div>
 </div>

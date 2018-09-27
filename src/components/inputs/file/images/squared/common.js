@@ -18,6 +18,9 @@ function detectRemovalOfUploadedImage (evt) {
   
   const existingFilesInitialiser = uploaderEl.dataset.fzInitExistingFiles;
   let fzPreviousExistingImgSrc, fzPreviousExistingImgId = previewImgGrpEl.querySelector("img").dataset.fzExistingImageId;
+  
+  slotEl.dataset.fzIsEmptyFileSlot = true;
+  
   if (typeof existingFilesInitialiser !== 'undefined' && typeof window[existingFilesInitialiser] === 'function' && typeof fzPreviousExistingImgId !== "undefined") {
     fzPreviousExistingImgSrc = previewImgGrpEl.querySelector("img").src.trim()
     // console.log(`Saving data-fz-previous-existing-img-src: ${fzPreviousExistingImgSrc}`);
@@ -110,7 +113,7 @@ function detectChangesOfUploadedImages (evt) {
       
       // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
       previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
-      
+      uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
     }
     
   }
@@ -262,6 +265,7 @@ function initialiseExistingImage (uploadSlotEl, datum) {
     }
     // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
     previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
+    uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
   }
   
   const removeUploadedImageBtns = previewGroupEl.getElementsByClassName('fz-upload-slot__rm-img');
@@ -282,6 +286,7 @@ function getUploadSlotSnippet (uploaderEl) {
   for (let i = 0; i < uploadSlotSnippetInputs.length; i++) {
     uploadSlotSnippetInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
   }
+  uploadSlotSnippet.dataset.fzIsEmptyFileSlot = true;
   return uploadSlotSnippet;
 }
 
@@ -299,6 +304,7 @@ function initialiseImageUploadSlots (uploaderEl) {
     });
     let uploadSlotEl;
     for (let i = 0; i < existingImages.length; i++) {
+      existingSlotSnippet.removeAttribute("data-fz-is-empty-file-slot");
       targetEl.appendChild(existingSlotSnippet);
       uploadSlotEl = targetEl.children[targetEl.children.length-1];
       initialiseExistingImage(uploadSlotEl, existingImages[i]);
@@ -355,34 +361,28 @@ function removeImageUploadSlot (uploaderEl, slotElMarkedForRemoval) {
   if (isNaN(maxUploadSlots) || maxUploadSlots === 0) return;
   // console.info(`Existing images: ${numberOfExistingImages}. Max upload slots: ${maxUploadSlots}.`);
   
-  if (numberOfExistingImages === maxUploadSlots) {
-    // console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
-    const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
-    const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
-    for (let i = 0; i < emptySlotElInputs.length; i++) {
-      emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+  let emptyFileSlotCount = -1; // -1 as it is assumed the removal already took place.
+  // console.log("Auditing extra and ensuring there is only one upload slot...");
+  for (let i = 0; i < existingImageUploadSlotEls.length; i++) {
+    if (typeof existingImageUploadSlotEls[i].dataset.fzIsEmptyFileSlot !== "undefined") {
+      // console.log(`Empty file slot: ${existingImageUploadSlotEls[i].dataset.fzIsEmptyFileSlot}`);
+      emptyFileSlotCount++;
     }
-    targetEl.appendChild(emptySlotEl);
-  } else if ((numberOfExistingImages === maxUploadSlots - 1) && typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededFileSizeLimit === "undefined" && typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededTotalSizeLimit === "undefined") {
-    console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
-    const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
-    const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
-    for (let i = 0; i < emptySlotElInputs.length; i++) {
-      emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
-    }
-    targetEl.appendChild(emptySlotEl);
   }
-  
-  if (numberOfExistingImages === maxUploadSlots && (typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededFileSizeLimit !== "undefined" || typeof slotElMarkedForRemoval.dataset.fzFileSizeExceededTotalSizeLimit !== "undefined")) {
-    // console.info(`Existing images: ${numberOfExistingImages}. Max upload slots: (${maxUploadSlots}).`);
-    const emptySlotEl2 = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
-    console.log(slotElMarkedForRemoval);
-    const emptySlotElInputs2 = emptySlotEl2.getElementsByTagName("input");
-    for (let i = 0; i < emptySlotElInputs2.length; i++) {
-      emptySlotElInputs2[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+  // console.log(`Empty file slot count: ${emptyFileSlotCount}`);
+  if (emptyFileSlotCount === 0) {
+    // console.log("...Adding empty file slot.");
+    if (numberOfExistingImages <= maxUploadSlots) {
+      // console.info(`Existing images: ${numberOfExistingImages}. Adding a new empty slot since not already maxed out (${maxUploadSlots}).`);
+      const emptySlotEl = slotElMarkedForRemoval.cloneNode(true); // assuming preview image of source slotElMarkedForRemoval has aleady been cleared
+      emptySlotEl.removeAttribute("data-fz-is-empty-file-slot");
+      emptySlotEl.dataset.fzIsEmptyFileSlot = true;
+      const emptySlotElInputs = emptySlotEl.getElementsByTagName("input");
+      for (let i = 0; i < emptySlotElInputs.length; i++) {
+        emptySlotElInputs[i].value = ""; // clearing out all inputs within image slot (image + captions (if any))
+      }
+      targetEl.appendChild(emptySlotEl);
     }
-    console.log(emptySlotEl2);
-    // targetEl.appendChild(emptySlotEl2);
   }
   
   // console.log(slotElMarkedForRemoval);

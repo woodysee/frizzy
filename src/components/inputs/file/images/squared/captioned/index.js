@@ -1,7 +1,9 @@
 import {
   detectRemovalOfUploadedImage,
+  detectRemovalOfExistingImage,
   detectChangesOfUploadedImages,
   getUploadSlotSnippet,
+  initialiseExistingImage,
   initialiseImageUploadSlots,
   addImageUploadSlot,
   removeImageUploadSlot

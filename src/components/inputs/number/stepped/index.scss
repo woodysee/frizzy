@@ -4,57 +4,90 @@
 //   <span class="fz-input-aid" data-fz-input-aid-variant="caret__down"></span>
 // </div>
 
-$light-grey: #e6e6e6;
+// NOTE: Problems: Not always pixel perfect! if you hover on a stepper and zoom in closer
+
+$light-grey: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
 $grey: #f5f7fa;
+$faded-black: #333333; /* rgba(0,0,0,0.8) */
 $dark-grey: #999999;
 
-$stepper-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>';
+$chevron-el--up: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 7.4"><path class="st0" fill="%23606266" d="M6,2.8L1.7,7.1c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4c0,0,0,0,0,0l4.2-4.2L6,0l1.4,1.4l4.2,4.2c0.4,0.4,0.4,1,0,1.4s-1,0.4-1.4,0L6,2.8z"/></svg>';
+$chevron-el--down: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 7.4"><path fill="%23606266" d="M5.9,4.6l4.3-4.3c0.4-0.4,1-0.4,1.4,0c0.4,0.4,0.4,1,0,1.4l0,0L7.4,5.9L5.9,7.4L4.5,6L0.3,1.8c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0L5.9,4.6z"/></svg>';
 
 $font-size: 14px;
 
 $border-colour: $light-grey;
-$input-text-colour: $dark-grey;
+$input-text-colour: $faded-black;
 $stepper-bg-colour: $grey;
 $caret-colour: #606266;
 
 .fz-input-grp[data-fz-input-grp-variant="number__stepped"] {
-  position: relative;
   border: 1px solid $border-colour;
   border-radius: 2px;
+  position: relative;
   overflow: hidden;
+  
+  &:focus-within {
+    border: solid 1px #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+  }
+  
   input[type=number].fz-input {
     border: none;
+    box-sizing: border-box;
     color: $input-text-colour;
+    font-size: $font-size;
     outline: 0;
     padding: 11px 15px 11px 11px;
-    font-size: $font-size;
-    box-sizing: border-box;
     width: 100%;
   }
   .fz-input-aid {
     border-left: solid 1px $border-colour;
+    border-bottom-right-radius: 2px;
     background: $stepper-bg-colour;
-    height: 50%;
-    width: 40px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
     cursor: pointer;
+    display: block;
+    height: 50%;
+    position: absolute;
+    right: -1px;
+    width: 40px;
+    top: 0;
   }
-  .fz-input-aid[data-fz-input-aid-variant="caret__up"],
-  .fz-input-aid[data-fz-input-aid-variant="caret__down"] {
+  .fz-input-aid[data-fz-input-aid-variant="chevron__up"],
+  .fz-input-aid[data-fz-input-aid-variant="chevron__down"] {
     &:after {
-      background: url("data:image/svg+xml;charset=UTF-8," + $stepper-el) center center no-repeat;
-      background-size: contain;
+      // background: url("data:image/svg+xml;charset=UTF-8," + $chevron-el--up) center center no-repeat; /* remove for caret */
+      background-size: contain; /* remove for caret */
       position: absolute;
       top: 50%;
       left: 50%;
       content: '';
-      width: 100%; 
-    	height: 100%;
-    	// border-left: 4px solid transparent;
-    	// border-right: 4px solid transparent;
+      width: 30%; // 0 /* change for caret */
+    	height: 30%; // 0 /* change for caret */
+    	// border-left: 4px solid transparent; /* add for caret */
+    	// border-right: 4px solid transparent; /* add for caret */
+      transform: translate(-50%,-50%);
+    }
+    &:hover{
+      background: $border-colour;
+    }
+    &:active {
+      background: $border-colour;
+    }
+  }
+  
+  .fz-input-aid[data-fz-input-aid-variant="caret__up"],
+  .fz-input-aid[data-fz-input-aid-variant="caret__down"] {
+    &:after {
+      // background: url("data:image/svg+xml;charset=UTF-8," + $stepper-el) center center no-repeat; /* add for custom */
+      // background-size: contain; /* add for custom */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      content: '';
+      width: 0; // 30% /* change for caret */
+    	height: 0; // 30% /* change for caret */
+    	border-left: 4px solid transparent; /* remove for custom */
+    	border-right: 4px solid transparent; /* remove for caret */
       transform: translate(-50%,-50%);
     }
     &:hover{
@@ -64,19 +97,37 @@ $caret-colour: #606266;
       background: $border-colour;
     }
     &:hover:after {
-      border-top-color: #FFF;
-      border-bottom-color: #FFF;
+      border-top-color: $dark-grey;
+      border-bottom-color: $dark-grey;
     }
   }
+  
+  .fz-input-aid[data-fz-input-aid-variant="chevron__up"] {
+    &:after {
+      background: url("data:image/svg+xml;charset=UTF-8," + $chevron-el--up) center center no-repeat;
+    }
+  }
+  
+  .fz-input-aid[data-fz-input-aid-variant="chevron__down"] {
+    &:after {
+      background: url("data:image/svg+xml;charset=UTF-8," + $chevron-el--down) center center no-repeat;
+    }
+  }
+  
   .fz-input-aid[data-fz-input-aid-variant="caret__up"]:after {
     border-bottom: 4px solid $caret-colour;
   }
+  
   .fz-input-aid[data-fz-input-aid-variant="caret__down"] {
-    bottom: 0;
-    top: auto;
     border-top: 1px solid $border-colour;
     &:after {
       border-top: 4px solid $caret-colour;
     }
+  }
+  
+  .fz-input-aid[data-fz-input-aid-variant="chevron__down"],
+  .fz-input-aid[data-fz-input-aid-variant="caret__down"] {
+    bottom: 0;
+    top: auto;
   }
 }

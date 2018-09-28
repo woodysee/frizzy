@@ -9,8 +9,9 @@ Reusable UI component library for Airfrov web.
 - Major fixes to managing existing images and new image uploads within multiple images upload component.
 - Style tweaks to multistep form layout
 - Added form components
-  - Classic text / textarea input
-  - Select input element
+  - Classic text / textarea input (Documentation WIP)
+  - Select input element (Documentation WIP)
+  - Stepped number input (Documentation WIP)
 
 ### 0.5.0
 - Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.

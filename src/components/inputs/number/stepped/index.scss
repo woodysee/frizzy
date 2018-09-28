@@ -1,0 +1,82 @@
+// <div class="fz-input-grp" data-fz-input-grp-variant="number__stepped">
+//   <input class="fz-input" type="text" value="10" min="0" />
+//   <span class="fz-input-aid" data-fz-input-aid-variant="caret__up"></span>
+//   <span class="fz-input-aid" data-fz-input-aid-variant="caret__down"></span>
+// </div>
+
+$light-grey: #e6e6e6;
+$grey: #f5f7fa;
+$dark-grey: #999999;
+
+$stepper-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><polygon fill="%23FFF" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></svg>';
+
+$font-size: 14px;
+
+$border-colour: $light-grey;
+$input-text-colour: $dark-grey;
+$stepper-bg-colour: $grey;
+$caret-colour: #606266;
+
+.fz-input-grp[data-fz-input-grp-variant="number__stepped"] {
+  position: relative;
+  border: 1px solid $border-colour;
+  border-radius: 2px;
+  overflow: hidden;
+  input[type=number].fz-input {
+    border: none;
+    color: $input-text-colour;
+    outline: 0;
+    padding: 11px 15px 11px 11px;
+    font-size: $font-size;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .fz-input-aid {
+    border-left: solid 1px $border-colour;
+    background: $stepper-bg-colour;
+    height: 50%;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    cursor: pointer;
+  }
+  .fz-input-aid[data-fz-input-aid-variant="caret__up"],
+  .fz-input-aid[data-fz-input-aid-variant="caret__down"] {
+    &:after {
+      background: url("data:image/svg+xml;charset=UTF-8," + $stepper-el) center center no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      content: '';
+      width: 100%; 
+    	height: 100%;
+    	// border-left: 4px solid transparent;
+    	// border-right: 4px solid transparent;
+      transform: translate(-50%,-50%);
+    }
+    &:hover{
+      background: $border-colour;
+    }
+    &:active {
+      background: $border-colour;
+    }
+    &:hover:after {
+      border-top-color: #FFF;
+      border-bottom-color: #FFF;
+    }
+  }
+  .fz-input-aid[data-fz-input-aid-variant="caret__up"]:after {
+    border-bottom: 4px solid $caret-colour;
+  }
+  .fz-input-aid[data-fz-input-aid-variant="caret__down"] {
+    bottom: 0;
+    top: auto;
+    border-top: 1px solid $border-colour;
+    &:after {
+      border-top: 4px solid $caret-colour;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.fz-form-grp__input {
+  input[type=number].fz-input {
+    border-radius: 2px;
+    border: solid 1px #e6e6e6; /* rgba(0, 0, 0, 0.1) */
+    font-size: 14px;
+    padding: 11px;
+    
+    &:focus {
+      border: solid 1px #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+    }
+    
+  }
+}

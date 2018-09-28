@@ -5,6 +5,7 @@ export default function multiStepFormLayout() {
   const stepTitleEls = document.getElementsByClassName('fz-step-title');
   
   const airfrovTealColour = '#65beb9';
+  const darkerTealColour = '#0c8780';
   
   function toggleStepContent (evt) {
     // console.log(" " + evt.target.parentNode.dataset.stepsId + "-" + evt.target.dataset.stepNr);
@@ -38,13 +39,14 @@ export default function multiStepFormLayout() {
   }
 
   function styliseSelectedStepTitle (currentBlock, selectedStep) {
-    let stepNrDiscEls, stepNrCopyTitleEls;
+    let stepNrDiscEls, stepNrCopyTitleEls, doneStepNrDiscEls;
     for (let i = 0; i < stepTitleEls.length; i++) {
       // default style is unselected
       if (stepTitleEls[i].parentNode.dataset.stepsId !== currentBlock) {
         break;
       }
       stepNrDiscEls = stepTitleEls[i].getElementsByClassName("fz-step-nr-disc");
+      doneStepNrDiscEls = stepTitleEls[i].getElementsByClassName("fz-step-nr-disc--done");
       stepNrCopyTitleEls = stepTitleEls[i].getElementsByClassName("fz-step-title__name");
       if (stepTitleEls[i].dataset.stepNr === selectedStep) {
         // show the selected step
@@ -52,12 +54,19 @@ export default function multiStepFormLayout() {
         if (stepNrDiscEls.length > 0) {
           for (let j = 0; j < stepNrDiscEls.length; j++) {
             stepNrDiscEls[j].style.borderColor = airfrovTealColour;
-            stepNrDiscEls[j].style.color = airfrovTealColour;
+            stepNrDiscEls[j].style.color = darkerTealColour;
+          }
+        }
+        if (doneStepNrDiscEls.length > 0) {
+          for (let j = 0; j < doneStepNrDiscEls.length; j++) {
+            doneStepNrDiscEls[j].style.borderColor = airfrovTealColour;
+            doneStepNrDiscEls[j].style.color = darkerTealColour;
           }
         }
         if (stepNrCopyTitleEls.length > 0) {
           for (let j = 0; j < stepNrCopyTitleEls.length; j++) {
-            stepNrCopyTitleEls[j].style.borderColor = stepNrCopyTitleEls[j].style.color = airfrovTealColour;
+            stepNrCopyTitleEls[j].style.borderColor = airfrovTealColour;
+            stepNrCopyTitleEls[j].style.color = darkerTealColour;
           }
         }
       } else {
@@ -77,6 +86,24 @@ export default function multiStepFormLayout() {
             } else {
               // Retrospective support for IE9
               stepNrDiscEls[j].style.removeAttribute('color');
+            }
+          }
+        }
+        if (doneStepNrDiscEls.length > 0) {
+          for (let j = 0; j < doneStepNrDiscEls.length; j++) {
+            doneStepNrDiscEls[j].style.removeProperty('borderColor');
+            // Removed script-invoked style declaration to restore styles, especially hover styles from stylesheet
+            if (doneStepNrDiscEls[j].style.removeProperty) {
+              doneStepNrDiscEls[j].style.removeProperty('border-color');
+            } else {
+              // Retrospective support for IE9
+              doneStepNrDiscEls[j].style.removeAttribute('borderColor');
+            }
+            if (doneStepNrDiscEls[j].style.removeProperty) {
+              doneStepNrDiscEls[j].style.removeProperty('color');
+            } else {
+              // Retrospective support for IE9
+              doneStepNrDiscEls[j].style.removeAttribute('color');
             }
           }
         }

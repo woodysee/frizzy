@@ -7,6 +7,16 @@ Reusable UI component library for Airfrov web.
 ### 0.6.0
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
 - Major fixes to managing existing images and new image uploads within multiple images upload component.
+- Style tweaks to multiple images upload component to suit Airfrov v4
+  - Fixed a visual bug on iOS Safari where remove image icon appears smaller due to iOS default user agent styles
+  - Trash icon as remove image icon is default based on Airfrov v4 design while `data-fz-icon-variant=rubbish-bin` will receive the original rm-img icon
+  - Multi-image upload component placeholder icon may be either `portrait` (default based on Airfrov v4) or `landscape` (original) by declaring `data-fz-icon-variant=landscape` in `.fz-upload-slot__placeholder__icon` reference element
+- Style tweaks to multistep form layout to suit Airfrov v4
+- Added form components
+  - Classic text / textarea input (Documentation WIP)
+  - Select input element (Documentation WIP)
+  - Classic number input (Documentation WIP)
+  - Stepped number input (Documentation WIP)
 
 ### 0.5.0
 - Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.
@@ -779,6 +789,7 @@ Ensure that `data-steps-id` in `.fz-steps-select` value in the steps title list 
 				</div>
 			</li>
 			<li class="fz-step-title" data-step-nr="2">
+        <!-- Wondering why there is a tick? Removing `&#8212;&#8212;done` suffix from `.fz-step-nr-disc&#8212;&#8212;done` class name will remove the tick.-->
 				<div class="fz-step-nr-disc--done">
 					<div class="fz-step-tick">
 						<!-- Tick element and style is shown when the parent element class is `.fz-step-nr-disc&#8212;&#8212;done` signifiying a complete step in the multistep form. -->

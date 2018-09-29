@@ -13,9 +13,9 @@ Reusable UI component library for Airfrov web.
   - Multi-image upload component placeholder icon may be either `portrait` (default based on Airfrov v4) or `landscape` (original) by declaring `data-fz-icon-variant=landscape` in `.fz-upload-slot__placeholder__icon` reference element
 - Style tweaks to multistep form layout to suit Airfrov v4
 - Added form components
-  - Classic text / textarea input (Documentation WIP)
-  - Select input element (Documentation WIP)
-  - Classic number input (Documentation WIP)
+  - Default text / textarea input (Documentation WIP)
+  - Default select input element (Documentation WIP)
+  - Default number input (Documentation WIP)
   - Stepped number input (Documentation WIP)
 
 ### 0.5.0

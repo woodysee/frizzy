@@ -6,6 +6,8 @@ Reusable UI component library for Airfrov web.
 
 `npm install` installs all vendor packages needed inside `./node_modules`.
 
+Optionally, if you are developing and maintaining frizzy as a dependency manually, you can set a target destination for the distribution files to be copied into by `cp .env.example .env` and setting the values respectively. `npm run build` would also copy it into your specified target destination.
+
 ## Adding a new component
 
 - Create a new folder inside `./src/components`, e.g. `./src/components/someButton`.

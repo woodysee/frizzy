@@ -1,14 +1,19 @@
-.fz-form-grp__input {
-  input[type=text].fz-input,
-  textarea.fz-input {
-    border-radius: 2px;
-    border: solid 1px #e6e6e6; /* rgba(0, 0, 0, 0.1) */
-    font-size: 14px;
-    padding: 11px;
-    
-    &:focus {
-      border: solid 1px #9cc3c0; /* rgba(12, 135, 128, 0.5) */
-    }
-    
+$colour--mercury: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
+$colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+
+$input-border-colour: $colour--mercury;
+$input-border-colour--focus: $colour--shadow-green;
+
+input[type=text].fz-input,
+textarea.fz-input {
+  -webkit-appearance: none;
+  border-radius: 2px;
+  border: solid 1px $input-border-colour; 
+  font-size: 14px;
+  padding: 11px;
+  
+  &:focus {
+    border: solid 1px $input-border-colour--focus;
+    outline: 0;
   }
 }

@@ -68,6 +68,20 @@ code {
   margin: 0 0 0 5px;
 }
 
+input[name=demo-form__classic-text-input],
+textarea[name=demo-form__classic-textarea-input] {
+  width: 72%;
+}
+
+select[name=demo-form__classic-select],
+.fz-input-grp[data-fz-input-grp-variant=number__stepped] {
+  width: 75%;
+}
+
+.fz-form-grp--multiline:focus-within .fz-form-grp__name__title {
+  color: #0c8780!important;
+}
+
 @media only screen and (max-width: 767px) {
 	.demo-container {
 		width: 100vw;

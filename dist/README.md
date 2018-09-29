@@ -69,6 +69,43 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 
 ### Inputs
 
+#### Text
+
+```html
+
+<input type="text" name="something" class="fz-input" value="" />
+
+```
+
+#### Textarea
+
+```html
+
+<textarea class="fz-input" maxlength="500" name="itemDescription" placeholder="Description here" value=""></textarea>
+
+```
+#### Number
+
+##### Default
+
+```html
+
+<input type="number" name="total" class="fz-input" value="" step="0.01" min="1" max="1000" />
+
+```
+
+##### Stepped
+
+```html
+
+<div class="fz-input-grp" data-fz-input-grp-variant="number__stepped">
+  <input class="fz-input" type="number" pattern="\d*" step="1" min="1" max="1000" name="quantity" placeholder="Quantity" value="0" />
+  <span class="fz-input-aid" data-fz-input-aid-variant="chevron__up"></span>
+  <span class="fz-input-aid" data-fz-input-aid-variant="chevron__down"></span>
+</div>
+
+```
+
 #### Binary Inline Radios
 
 ```html

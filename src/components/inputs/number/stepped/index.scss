@@ -43,6 +43,7 @@ $caret-colour: $colour--shuttle-grey;
     padding: 11px 15px 11px 11px;
     width: 100%;
   }
+  
   .fz-input-aid {
     border-left: solid 1px $border-colour;
     border-bottom-right-radius: 2px;
@@ -54,6 +55,11 @@ $caret-colour: $colour--shuttle-grey;
     right: -1px;
     width: 40px;
     top: 0;
+    
+    &:nth-of-type(2) {
+      border-top: solid 1px $border-colour;
+    }
+    
   }
   .fz-input-aid[data-fz-input-aid-variant="chevron__up"],
   .fz-input-aid[data-fz-input-aid-variant="chevron__down"] {

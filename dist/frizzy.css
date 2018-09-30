@@ -1951,6 +1951,8 @@ input[type=number].fz-input {
     right: -1px;
     width: 40px;
     top: 0; }
+    .fz-input-grp[data-fz-input-grp-variant="number__stepped"] .fz-input-aid:nth-of-type(2) {
+      border-top: solid 1px #e6e6e6; }
   .fz-input-grp[data-fz-input-grp-variant="number__stepped"] .fz-input-aid[data-fz-input-aid-variant="chevron__up"]:after,
   .fz-input-grp[data-fz-input-grp-variant="number__stepped"] .fz-input-aid[data-fz-input-aid-variant="chevron__down"]:after {
     background-size: contain;

@@ -7,6 +7,7 @@ Reusable UI component library for Airfrov web.
 ### 0.6.0
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
 - Major fixes to managing existing images and new image uploads within multiple images upload component.
+- Allowed for user declared checkbox size for basic checkbox input as data attribute `data-fz-checkbox-size`
 - Style tweaks to multiple images upload component to suit Airfrov v4
   - Fixed a visual bug on iOS Safari where remove image icon appears smaller due to iOS default user agent styles
   - Trash icon as remove image icon is default based on Airfrov v4 design while `data-fz-icon-variant=rubbish-bin` will receive the original rm-img icon
@@ -290,6 +291,8 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 #### Labelled Checkbox
 
+Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the checkbox size. The label font size will also be affected.
+
 ```html
 
 <!-- With label -->
@@ -307,6 +310,17 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 <div class="fz-checkbox-wrapper">
 	<input class="fz-checkbox" id="business-logic-name-2" type="checkbox" />
 	<label class="fz-checkbox-tick" for="business-logic-name-2">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-checkbox-label">
+		With label (right)
+	</div>
+</div>
+
+<!-- Custom checkbox size -->
+<div class="fz-checkbox-wrapper">
+	<input class="fz-checkbox" data-fz-checkbox-size="16px" id="business-logic-name-3" type="checkbox" />
+	<label class="fz-checkbox-tick" for="business-logic-name-3">
 		<!-- Tick element -->
 	</label>
 	<div class="fz-checkbox-label">

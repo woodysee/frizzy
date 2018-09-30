@@ -1,6 +1,7 @@
 // Add all components to be compiled here
 import steppedNumberInput from './components/inputs/number/stepped';
 
+import basicCheckboxInput from './components/inputs/checkbox/basic';
 import bookmarkCheckboxInput from './components/inputs/checkbox/bookmark';
 
 import defaultImagesFileInput from './components/inputs/file/images/squared/default';
@@ -19,6 +20,7 @@ import warningAlertBanner from './components/banners/alerts/warning';
 
 steppedNumberInput();
 
+basicCheckboxInput();
 bookmarkCheckboxInput();
 
 defaultImagesFileInput();

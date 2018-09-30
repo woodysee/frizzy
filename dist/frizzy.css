@@ -1834,7 +1834,7 @@ li.fz-step-title {
       width: 100%;
       top: -100%; }
 /* Tickbox element */
-/* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
+/* %23 is used instead of # because the character is reserved as a fragment identifier inside the URI */
 /* See https://css-tricks.com/using-svg/ */
 .fz-checkbox-wrapper {
   align-items: center;

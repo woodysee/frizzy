@@ -55,6 +55,43 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 
 ### Inputs
 
+#### Text
+
+```html
+
+<input type="text" name="something" class="fz-input" value="" />
+
+```
+
+#### Textarea
+
+```html
+
+<textarea class="fz-input" maxlength="500" name="itemDescription" placeholder="Description here" value=""></textarea>
+
+```
+#### Number
+
+##### Default
+
+```html
+
+<input type="number" name="total" class="fz-input" value="" step="0.01" min="1" max="1000" />
+
+```
+
+##### Stepped
+
+```html
+
+<div class="fz-input-grp" data-fz-input-grp-variant="number__stepped">
+  <input class="fz-input" type="number" pattern="\d*" step="1" min="1" max="1000" name="quantity" placeholder="Quantity" value="0" />
+  <span class="fz-input-aid" data-fz-input-aid-variant="chevron__up"></span>
+  <span class="fz-input-aid" data-fz-input-aid-variant="chevron__down"></span>
+</div>
+
+```
+
 #### Binary Inline Radios
 
 ```html
@@ -239,6 +276,8 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 #### Labelled Checkbox
 
+Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the checkbox size. The label font size will also be affected.
+
 ```html
 
 <!-- With label -->
@@ -256,6 +295,17 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 <div class="fz-checkbox-wrapper">
 	<input class="fz-checkbox" id="business-logic-name-2" type="checkbox" />
 	<label class="fz-checkbox-tick" for="business-logic-name-2">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-checkbox-label">
+		With label (right)
+	</div>
+</div>
+
+<!-- Custom checkbox size -->
+<div class="fz-checkbox-wrapper">
+	<input class="fz-checkbox" data-fz-checkbox-size="16px" id="business-logic-name-3" type="checkbox" />
+	<label class="fz-checkbox-tick" for="business-logic-name-3">
 		<!-- Tick element -->
 	</label>
 	<div class="fz-checkbox-label">

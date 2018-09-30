@@ -374,6 +374,9 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
 	<li>
 		<code>data-fz-rm-existing-file-cb="removeExistingFileCb"</code> - <b>Optional.</b> Where <code>removeExistingFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an existing image declared by the user within <code>initialiseExistingFilesDefinedByUser</code>.
 	</li>
+	<li>
+    <code>data-fz-rm-file-cb="removeFileCb"</code> - <b>Optional.</b> Where <code>removeFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an uploaded image on the client meant for upload.
+  </li>
 </ul>
 
 ```js
@@ -416,16 +419,23 @@ function initialiseExistingFilesDefinedByUser (uploader) {
 }
 
 function removeExistingFileCb (uploader) {
+  // Existing files only
   console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
   console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
   console.log(uploader.slotEl.querySelector("img").dataset.fzExistingImageId); // Existing image ID
+}
+
+function removeFileCb (uploader) {
+  // Uploaded files + existing files
+  console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
 }
 ```
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb" data-fz-rm-file-cb="removeFileCb">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -470,7 +480,7 @@ function removeExistingFileCb (uploader) {
 ###### If there are existing images...
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb" data-fz-rm-file-cb="removeFileCb">
   <div class="fz-upload-slots">
     <!-- Below: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
     <!-- Below: Upload slot 1 -->

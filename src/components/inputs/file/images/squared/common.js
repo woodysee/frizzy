@@ -33,6 +33,15 @@ function detectRemovalOfUploadedImage (evt) {
       '</button>'
     );
   } else {
+    
+    const removeFileCb = uploaderEl.dataset.fzRmFileCb;
+    if (typeof removeFileCb !== 'undefined' && typeof window[removeFileCb] === 'function') {
+      window[removeFileCb]({
+        el: uploaderEl,
+        slotEl: slotEl
+      });
+    }
+    
     previewImgGrpEl.innerHTML = (
       '<div class="fz-upload-slot__preview-wrapper">'+
         `<img src="#" alt="Image Preview" />`+

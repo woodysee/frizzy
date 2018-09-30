@@ -373,6 +373,9 @@
           <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
         </li>
         <li>
+          <code>data-fz-rm-file-cb="removeFileCb"</code> - <b>Optional.</b> Where <code>removeFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an uploaded image on the client meant for upload.
+        </li>
+        <li>
           <div class="code-snippet js" readonly>
             <span class="function">function</span> userDefinedCallbackAfterUploadForFileSize (uploader) {<br/>
             &nbsp;&nbsp;console.log(uploader.el); <span class="comment">// the element where this function is declared in the element's data attribute, i.e. (.fz-uploader)</span><br/>
@@ -420,14 +423,18 @@
             <br/>}<br /><br />
             <span class="function">function</span> removeExistingFileCb (uploader) {<br/>
             &nbsp;&nbsp;console.log(uploader.el); <span class="comment">// the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)</span><br/>
-            &nbsp;&nbsp;console.log(uploader.slot.el); <span class="comment">// the slot element where this function is declared in the element's data attribute</span><br/>
+            &nbsp;&nbsp;console.log(uploader.slotEl); <span class="comment">// the slot element where this function is declared in the element's data attribute</span><br/>
             &nbsp;&nbsp;console.log(uploader.slotEl.querySelector("img").dataset.fzExistingImageId); // Existing image ID</span><br/>
+            }<br/><br/>
+            <span class="function">function</span> removeFileCb (uploader) {<br/>
+            &nbsp;&nbsp;console.log(uploader.el); <span class="comment">// the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)</span><br/>
+            &nbsp;&nbsp;console.log(uploader.slotEl); <span class="comment">// the slot element where this function is declared in the element's data attribute</span><br/>
             }<br/><br/>
           </div>
         </li>
       </ul>
       <h4>Default</h4>
-      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
+      <div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb" data-fz-rm-file-cb="removeFileCb" data-fz-rm-file-cb="removeFileCb">
         <div class="fz-upload-slots">
           <!-- Below: Upload slot 1 -->
           <div class="fz-upload-slot">

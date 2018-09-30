@@ -6,6 +6,7 @@ Reusable UI component library for Airfrov web.
 
 ### 0.6.0
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
+- Added callback declaration of removal of uploaded / existing image (`data-fz-rm-file-cb`) in multi-image file uploader
 - Major fixes to managing existing images and new image uploads within multiple images upload component.
 - Allowed for user declared checkbox size for basic checkbox input as data attribute `data-fz-checkbox-size`
 - Style tweaks to multiple images upload component to suit Airfrov v4
@@ -389,6 +390,9 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
   <li>
     <code>data-fz-rm-existing-file-cb="removeExistingFileCb"</code> - <b>Optional.</b> Where <code>removeExistingFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an existing image declared by the user within <code>initialiseExistingFilesDefinedByUser</code>.
   </li>
+  <li>
+    <code>data-fz-rm-file-cb="removeFileCb"</code> - <b>Optional.</b> Where <code>removeFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an uploaded image on the client meant for upload.
+  </li>
 </ul>
 
 ```js
@@ -430,16 +434,23 @@ function initialiseExistingFilesDefinedByUser (uploader) {
 }
 
 function removeExistingFileCb (uploader) {
+  // Existing files only
   console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
   console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
   console.log(uploader.slotEl.querySelector("img").dataset.fzExistingImageId); // Existing image ID
+}
+
+function removeFileCb (uploader) {
+  // Uploaded files
+  console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
 }
 ```
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb" data-fz-rm-file-cb="removeFileCb" data-fz-rm-file-cb="removeFileCb">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">

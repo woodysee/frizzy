@@ -34,14 +34,6 @@ function detectRemovalOfUploadedImage (evt) {
     );
   } else {
     
-    const removeFileCb = uploaderEl.dataset.fzRmFileCb;
-    if (typeof removeFileCb !== 'undefined' && typeof window[removeFileCb] === 'function') {
-      window[removeFileCb]({
-        el: uploaderEl,
-        slotEl: slotEl
-      });
-    }
-    
     previewImgGrpEl.innerHTML = (
       '<div class="fz-upload-slot__preview-wrapper">'+
         `<img src="#" alt="Image Preview" />`+
@@ -50,6 +42,7 @@ function detectRemovalOfUploadedImage (evt) {
         '<div class="fz-upload-slot__rm-img__icon"></div>'+
       '</button>'
     );
+    
   }
   
   // console.log("If applicable, dynamically removing extra image slot...");
@@ -64,6 +57,19 @@ function detectRemovalOfUploadedImage (evt) {
     removeImageUploadSlot(uploaderEl, slotEl);
     uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
   }
+  
+  if (typeof existingFilesInitialiser === 'undefined' || typeof window[existingFilesInitialiser] !== 'function' || typeof fzPreviousExistingImgId === "undefined") {
+    
+    const removeFileCb = uploaderEl.dataset.fzRmFileCb;
+    if (typeof removeFileCb !== 'undefined' && typeof window[removeFileCb] === 'function') {
+      window[removeFileCb]({
+        el: uploaderEl,
+        slotEl: slotEl
+      });
+    }
+    
+  }
+  
 }
 
 function detectChangesOfUploadedImages (evt) {
@@ -100,8 +106,8 @@ function detectChangesOfUploadedImages (evt) {
     previewImageEl.src = loadedReader.result;
     
     const adjustPreviewImageAspect = (params) => {
-      const previewImageEl = params.previewImageEl;
-      const previewWrapperEl = params.previewWrapperEl;
+      const imageEl = params.previewImageEl;
+      const wrapperEl = params.previewWrapperEl;
       const previewImage = new Image();
       previewImage.src = loadedReader.result;
       previewImage.onload = (progressEvent) => {
@@ -109,29 +115,36 @@ function detectChangesOfUploadedImages (evt) {
         switch (true) {
           case previewImage.width > previewImage.height:
             // console.log("Need to center the image to be vertically aligned...");
-            previewImageEl.style.width = "100%";
-            // console.log(`Preview image height: ${previewImage.height} versus upload slot element height: ${previewWrapperEl.getBoundingClientRect().height}`);
+            imageEl.style.width = "100%";
             const imgHeight = previewImage.height;
             const imgWidth = previewImage.width;
-            const wrapperHeight = previewWrapperEl.getBoundingClientRect().height;
-            const resizedHeight = wrapperHeight * (imgHeight / imgWidth);
-            
-            const positionY = (wrapperHeight - resizedHeight) / 2;
-            // console.log(`(wrapperHeight - imgHeight) / 2 = (${wrapperHeight} - ${resizedHeight}) / 2 = ${(wrapperHeight - resizedHeight) / 2}`);
-            previewImageEl.style.marginTop = `${positionY}px`;
+            let wrapperHeight = wrapperEl.getBoundingClientRect().height;
+            if (wrapperEl.getBoundingClientRect().height === 0 && wrapperEl.style.height !== "") {
+              // console.log("If auxiliary preview wrapper element is not the same as the auxiliary element, centreing have to be handled by wrapper, thus not capable of calulating height using getBoundingClientRect and will use wrapperEl instead.");
+              wrapperHeight = parseFloat(wrapperEl.style.height.split("px")[0]);
+              // console.warn("Resetting user-defined height for auxiliary wrapper element.");
+              wrapperEl.style.removeProperty("height");
+            }
+            // console.log(`Preview image height: ${previewImage.height} versus upload slot element height: ${wrapperEl.getBoundingClientRect().height}`);
+            if (wrapperHeight !== 0) {
+              const resizedHeight = wrapperHeight * (imgHeight / imgWidth);
+              const positionY = (wrapperHeight - resizedHeight) / 2;
+              // console.log(`(wrapperHeight - resizedHeight) / 2 = (${wrapperHeight} - ${resizedHeight}) / 2 = ${(wrapperHeight - resizedHeight) / 2}`);
+              imageEl.style.marginTop = `${positionY}px`;
+            }
             break;
           case previewImage.width < previewImage.height:
             // previewImageEl.style.height = "";
-            previewImageEl.style.removeProperty("width");
-            previewImageEl.style.height = "100%";
+            imageEl.style.removeProperty("width");
+            imageEl.style.height = "100%";
             break;
           default:
-            previewImageEl.style.removeProperty("height");
-            previewImageEl.style.width = "100%";
+            imageEl.style.removeProperty("height");
+            imageEl.style.width = "100%";
         }
         
         // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
-        previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
+        wrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
       }
     }
     
@@ -146,8 +159,7 @@ function detectChangesOfUploadedImages (evt) {
       window[cb]({
         el: uploaderEl,
         slotEl: uploadSlotEl,
-        onloadProgressEvent: progressEvent,
-        adjustPreviewImageAspect: adjustPreviewImageAspect
+        onloadProgressEvent: progressEvent
       });
     }
     

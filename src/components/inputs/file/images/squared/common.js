@@ -73,11 +73,7 @@ function detectChangesOfUploadedImages (evt) {
   const previewWrapperEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper');
   const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
   const reader = new FileReader();
-  reader.onload = (whenLoaded) => {
-    const loadedReader = whenLoaded.target;
-    previewGroupEl.style.display = "block";
-    previewImageEl.src = loadedReader.result;
-    // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
+  reader.onload = (progressEvent) => {
     
     if (!fileSizeIsWithinLimit(uploaderEl, evt.target.files[0])) {
       // console.warn("...this file exceeded declared file size limit.");
@@ -99,30 +95,60 @@ function detectChangesOfUploadedImages (evt) {
       return;
     }
     
-    const previewImage = new Image();
-    previewImage.src = loadedReader.result;
+    const loadedReader = progressEvent.target;
+    previewGroupEl.style.display = "block";
+    previewImageEl.src = loadedReader.result;
     
-    previewImage.onload = (whenLoaded) => {
-      
-      switch (true) {
-        case previewImage.width > previewImage.height:
-          // previewImageEl.style.width = "";
-          previewImageEl.style.removeProperty("width");
-          previewImageEl.style.height = "100%";
-          break;
-        case previewImage.width < previewImage.height:
-          // previewImageEl.style.height = "";
-          previewImageEl.style.removeProperty("height");
-          previewImageEl.style.width = "100%";
-          break;
-        default:
-          previewImageEl.style.removeProperty("width");
-          previewImageEl.style.height = "100%";
+    const adjustPreviewImageAspect = (params) => {
+      const previewImageEl = params.previewImageEl;
+      const previewWrapperEl = params.previewWrapperEl;
+      const previewImage = new Image();
+      previewImage.src = loadedReader.result;
+      previewImage.onload = (progressEvent) => {
+        // console.log("In order to see the image entirely, we scale down the larger side to fit the appropriate wrapper dimension wholly within the preview...");
+        switch (true) {
+          case previewImage.width > previewImage.height:
+            // console.log("Need to center the image to be vertically aligned...");
+            previewImageEl.style.width = "100%";
+            // console.log(`Preview image height: ${previewImage.height} versus upload slot element height: ${previewWrapperEl.getBoundingClientRect().height}`);
+            const imgHeight = previewImage.height;
+            const imgWidth = previewImage.width;
+            const wrapperHeight = previewWrapperEl.getBoundingClientRect().height;
+            const resizedHeight = wrapperHeight * (imgHeight / imgWidth);
+            
+            const positionY = (wrapperHeight - resizedHeight) / 2;
+            // console.log(`(wrapperHeight - imgHeight) / 2 = (${wrapperHeight} - ${resizedHeight}) / 2 = ${(wrapperHeight - resizedHeight) / 2}`);
+            previewImageEl.style.marginTop = `${positionY}px`;
+            break;
+          case previewImage.width < previewImage.height:
+            // previewImageEl.style.height = "";
+            previewImageEl.style.removeProperty("width");
+            previewImageEl.style.height = "100%";
+            break;
+          default:
+            previewImageEl.style.removeProperty("height");
+            previewImageEl.style.width = "100%";
+        }
+        
+        // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
+        previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
       }
-      
-      // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
-      previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
-      uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
+    }
+    
+    adjustPreviewImageAspect({
+      previewWrapperEl: previewWrapperEl,
+      previewImageEl: previewImageEl
+    });
+    
+    uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
+    const cb = uploaderEl.dataset.fzAddFileCb;
+    if (typeof window[cb] !== "undefined" && typeof window[cb] === "function") {
+      window[cb]({
+        el: uploaderEl,
+        slotEl: uploadSlotEl,
+        onloadProgressEvent: progressEvent,
+        adjustPreviewImageAspect: adjustPreviewImageAspect
+      });
     }
     
   }
@@ -255,7 +281,7 @@ function initialiseExistingImage (uploadSlotEl, datum) {
   const previewImage = new Image();
   previewImage.src = datum.attributes.src;
   
-  previewImage.onload = (whenLoaded) => {
+  previewImage.onload = (progressEvent) => {
     switch (true) {
       case previewImage.width > previewImage.height:
         // previewImageEl.style.width = "";

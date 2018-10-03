@@ -1,16 +1,31 @@
 @import '../alerts.scss';
 
+$colour--terra-cota: #e2775c; /* rgba(226,119,92,1) */
+$colour--rose-white: #fef2ef; /* rgba(254,242,239,1) */
+
+$colour--white--escaped: "%23ffffff";
+$colour--terra-cota--escaped: "%23e2775c";
+
+$battenburg-shield-colour--main: $colour--white--escaped;
+$battenburg-shield-colour--inverse: $colour--terra-cota--escaped;
+$copy-colour: $colour--terra-cota;
+
+$battenburg-shield-icon: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 719 719"><circle fill="'+$battenburg-shield-colour--inverse+'" cx="359.5" cy="359.5" r="359.5"/><path fill="'+$battenburg-shield-colour--main+'" d="M142.5,228.5l218-88,216,88s1,350-211,350C155.64,578.5,142.5,314.5,142.5,228.5Z"/><path fill="'+$battenburg-shield-colour--inverse+'" d="M359.25,180.5l-175.75,80s.75,64.25,17,102H359.25Z"/><path fill="'+$battenburg-shield-colour--inverse+'" d="M359.25,362.5H524.5s-35.25,184-165.25,184Z"/></svg>';
+
 .fz-banner--warning {
   background-color: rgba(254,242,239,1);
   
   .fz-banner__icon {
+    background: url("data:image/svg+xml;charset=UTF-8," + $battenburg-shield-icon) center center no-repeat;
+    height: 30px;
+    width: 30px;
     svg {
       width: 30px;
     }
   }
   
   .fz-banner__copy {
-    color: rgba(226,119,92,1);
+    color: $copy-colour;
   }
   
 }

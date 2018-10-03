@@ -423,8 +423,12 @@ a.fz-btn[data-fz-btn-variant="pri--alt"] {
 
 .fz-banner--notice {
   background-color: #fdfbf4; }
-  .fz-banner--notice .fz-banner__icon svg {
+  .fz-banner--notice .fz-banner__icon {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 29 29" style="enable-background:new 0 0 29 29;" xml:space="preserve"><g><g><path fill="%23ffffff" d="M14.5,29C6.5,29,0,22.5,0,14.5S6.5,0,14.5,0S29,6.5,29,14.5S22.5,29,14.5,29z M19.5,8.2h-10c-0.4,0-0.7,0.1-0.9,0.4C8.3,8.8,8.2,9.1,8.2,9.5v10c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4h10c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-10c0-0.4-0.1-0.7-0.4-0.9C20.2,8.3,19.9,8.2,19.5,8.2z M16.3,17.7v-1.4h-5.4v1.4H16.3L16.3,17.7zM18.1,15v-1.4h-7.2V15H18.1z M18.1,12.2v-1.4h-7.2v1.4H18.1L18.1,12.2z"/></g><path fill="%23f8ce8a" d="M14.5,29C6.5,29,0,22.5,0,14.5S6.5,0,14.5,0S29,6.5,29,14.5S22.5,29,14.5,29z M19.5,8.2h-10c-0.4,0-0.7,0.1-0.9,0.4C8.3,8.8,8.2,9.1,8.2,9.5v10c0,0.4,0.1,0.7,0.4,0.9c0.3,0.3,0.6,0.4,0.9,0.4h10c0.4,0,0.7-0.1,0.9-0.4c0.3-0.3,0.4-0.6,0.4-0.9v-10c0-0.4-0.1-0.7-0.4-0.9C20.2,8.3,19.9,8.2,19.5,8.2z M16.3,17.7v-1.4h-5.4v1.4H16.3L16.3,17.7zM18.1,15v-1.4h-7.2V15H18.1z M18.1,12.2v-1.4h-7.2v1.4H18.1L18.1,12.2z"/></g></svg>') center center no-repeat;
+    height: 30px;
     width: 30px; }
+    .fz-banner--notice .fz-banner__icon svg {
+      width: 30px; }
   .fz-banner--notice .fz-banner__copy {
     color: #d5aa66; }
 /* Common styles for all alert banners */
@@ -469,10 +473,16 @@ a.fz-btn[data-fz-btn-variant="pri--alt"] {
     padding-left: 5%;
     width: 85%; }
 
+/* rgba(226,119,92,1) */
+/* rgba(254,242,239,1) */
 .fz-banner--warning {
   background-color: #fef2ef; }
-  .fz-banner--warning .fz-banner__icon svg {
+  .fz-banner--warning .fz-banner__icon {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 719 719"><circle fill="%23e2775c" cx="359.5" cy="359.5" r="359.5"/><path fill="%23ffffff" d="M142.5,228.5l218-88,216,88s1,350-211,350C155.64,578.5,142.5,314.5,142.5,228.5Z"/><path fill="%23e2775c" d="M359.25,180.5l-175.75,80s.75,64.25,17,102H359.25Z"/><path fill="%23e2775c" d="M359.25,362.5H524.5s-35.25,184-165.25,184Z"/></svg>') center center no-repeat;
+    height: 30px;
     width: 30px; }
+    .fz-banner--warning .fz-banner__icon svg {
+      width: 30px; }
   .fz-banner--warning .fz-banner__copy {
     color: #e2775c; }
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */

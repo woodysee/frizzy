@@ -14,6 +14,7 @@ Reusable UI component library for Airfrov web.
   - Trash icon as remove image icon is default based on Airfrov v4 design while `data-fz-icon-variant=rubbish-bin` will receive the original rm-img icon
   - Multi-image upload component placeholder icon may be either `portrait` (default based on Airfrov v4) or `landscape` (original) by declaring `data-fz-icon-variant=landscape` in `.fz-upload-slot__placeholder__icon` reference element
 - Style tweaks to multistep form layout to suit Airfrov v4
+- Alert banners no longer use JS to render icons
 - Added form components
   - Default text / textarea input (Documentation WIP)
   - Default select input element (Documentation WIP)

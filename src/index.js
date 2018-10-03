@@ -13,9 +13,6 @@ import tickedRadioInput from './components/inputs/radio/ticked';
 
 import multiStepFormLayout from './components/layouts/forms/multistep';
 
-import noticeAlertBanner from './components/banners/alerts/notice';
-import warningAlertBanner from './components/banners/alerts/warning';
-
 // Initialise each imported component on page load (optional, only if there is JS)
 
 steppedNumberInput();
@@ -31,6 +28,3 @@ classicRadioInput();
 tickedRadioInput();
 
 multiStepFormLayout();
-
-noticeAlertBanner();
-warningAlertBanner();

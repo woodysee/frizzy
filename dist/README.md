@@ -17,6 +17,8 @@ Reusable UI component library for Airfrov web.
 - Adding `data-step-disabled` stringified boolean attribute to toggle opening of content step (does not apply if it is current step)
 - Alert banners no longer use JS to render icons
 - Disabled styles for select, text, number, classic radio inputs
+- Disabled styles for default buttons / anchors
+- Buttons and anchors should have same padding
 - Added form components
   - Default text / textarea input
   - Default select input element

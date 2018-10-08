@@ -1,16 +1,18 @@
-$red: #e48581;
+$colour--airfrov-peach: #e48581;
+$colour--airfrov-peach--faded: #fcf3f3;
 $white: #ffffff;
-$redButtonBG: #fcf3f3;
+$colour--gray60: #999999;
+
 $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
-$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+$anchorPaddingTop: ($minButtonWidth / 10);
 
 button.fz-btn--neg, a.fz-btn--neg,
 button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"] {
   border-radius: 2px;
   background-color: $white;
-  border: solid 1px $red;
-  color: $red;
+  border: solid 1px $colour--airfrov-peach;
+  color: $colour--airfrov-peach;
   cursor: pointer;
   font-size: 14px;
   font-weight: 600;
@@ -18,12 +20,17 @@ button.fz-btn[data-fz-btn-variant="neg"], a.fz-btn[data-fz-btn-variant="neg"] {
   padding: $buttonPaddingTop;
   text-align: center;
   &:hover {
-    background-color: $redButtonBG;
+    background-color: $colour--airfrov-peach--faded;
   }
   
   &:active {
-    background-color: $red;
+    background-color: $colour--airfrov-peach;
     color: $white;
+  }
+  
+  &[disabled] {
+    border: solid 1px $colour--gray60;
+    color: $colour--gray60;
   }
   
 }

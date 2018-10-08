@@ -1,16 +1,19 @@
-$green: #5cb85c;
+$colour--fern: #5cb85c;
 $white: #ffffff;
-$lightGreen: #6ec76e;
-$darkGreen: #5cb85c;
+$colour--airfrov-light-green: #6ec76e;
+$colour--airfrov-dark-green: #5cb85c;
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
 $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
-$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+$anchorPaddingTop: ($minButtonWidth / 10);
+
+$primary-colour--disabled: $colour--gray60;
 
 button.fz-btn--pos, a.fz-btn--pos,
 button.fz-btn[data-fz-btn-variant="pos"], a.fz-btn[data-fz-btn-variant="pos"] {
   border-radius: 2px;
-  background-color: $green;
-  border: solid 1px $green;
+  background-color: $colour--fern;
+  border: solid 1px $colour--fern;
   color: $white;
   cursor: pointer;
   font-size: 14px;
@@ -20,13 +23,18 @@ button.fz-btn[data-fz-btn-variant="pos"], a.fz-btn[data-fz-btn-variant="pos"] {
   text-align: center;
   
   &:hover {
-    border-color: $lightGreen;
-    background-color: $lightGreen;
+    border-color: $colour--airfrov-light-green;
+    background-color: $colour--airfrov-light-green;
   }
   
   &:active {
-    background-color: $darkGreen;
-    border-color: $darkGreen;
+    background-color: $colour--airfrov-dark-green;
+    border-color: $colour--airfrov-dark-green;
+  }
+  
+  &[disabled] {
+    background-color: $primary-colour--disabled;
+    border: solid 1px $primary-colour--disabled;
   }
   
 }

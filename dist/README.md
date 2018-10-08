@@ -14,12 +14,13 @@ Reusable UI component library for Airfrov web.
   - Trash icon as remove image icon is default based on Airfrov v4 design while `data-fz-icon-variant=rubbish-bin` will receive the original rm-img icon
   - Multi-image upload component placeholder icon may be either `portrait` (default based on Airfrov v4) or `landscape` (original) by declaring `data-fz-icon-variant=landscape` in `.fz-upload-slot__placeholder__icon` reference element
 - Style tweaks to multistep form layout to suit Airfrov v4
+- Adding `data-step-disabled` stringified boolean attribute to toggle opening of content step (does not apply if it is current step)
 - Alert banners no longer use JS to render icons
 - Added form components
-  - Default text / textarea input (Documentation WIP)
-  - Default select input element (Documentation WIP)
-  - Default number input (Documentation WIP)
-  - Stepped number input (Documentation WIP)
+  - Default text / textarea input
+  - Default select input element
+  - Default number input
+  - Stepped number input
 
 ### 0.5.0
 - Breaking changes. All CSS and JS are separated and have to be loaded in conjunction for full functionality. Frizzy JS can no longer be loaded by itself. This allows a smaller JS size, and prevent needless double loading of styles.

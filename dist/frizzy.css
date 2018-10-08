@@ -485,6 +485,7 @@ a.fz-btn[data-fz-btn-variant="pri--alt"] {
       width: 30px; }
   .fz-banner--warning .fz-banner__copy {
     color: #e2775c; }
+/* rgba(0,0,0,0.5) */
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 .fz-multistep-form-wrapper {
   margin-left: 0;
@@ -708,7 +709,7 @@ li.fz-step-title {
     text-align: center; }
   li.fz-step-title .fz-step-nr-disc {
     border: solid 1px #b1afaf;
-    color: rgba(0, 0, 0, 0.5); }
+    color: #808080; }
   li.fz-step-title .fz-step-nr {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
@@ -742,7 +743,7 @@ li.fz-step-title {
     font-weight: 500;
     margin: 0 0 0 0; }
   li.fz-step-title .fz-step-title__deck {
-    color: rgba(0, 0, 0, 0.5);
+    color: #808080;
     font-size: 11px;
     font-weight: 500;
     margin-top: 5px; }
@@ -1196,6 +1197,7 @@ li.fz-step-title {
     border-color: #65beb9;
     background-color: #65beb9;
     color: #ffffff; }
+/* rgba(0,0,0,0.5) */
 .fz-comment-grp textarea {
   border: solid 1px #e6e6e6;
   border-radius: 2px;
@@ -1310,7 +1312,7 @@ li.fz-step-title {
     top: 0;
     width: 100%; }
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__comment"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #808080;
     border: unset;
     border-radius: 50%;
     bottom: 10px;
@@ -1333,6 +1335,7 @@ li.fz-step-title {
 
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__comment"] .fz-uploader__errors {
   margin-left: 10px; }
+/* rgba(0,0,0,0.5) */
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slots,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slots,
@@ -1433,7 +1436,7 @@ li.fz-step-title {
     width: 100%; }
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img,
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #808080;
     border: unset;
     border-radius: 50%;
     bottom: 10px;
@@ -1501,6 +1504,7 @@ li.fz-step-title {
 
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-uploader__errors {
   margin-top: 15px; }
+/* rgba(0,0,0,0.5) */
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slots,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slots,
@@ -1601,7 +1605,7 @@ li.fz-step-title {
     width: 100%; }
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img,
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #808080;
     border: unset;
     border-radius: 50%;
     bottom: 10px;
@@ -1636,6 +1640,7 @@ li.fz-step-title {
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-uploader__errors,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-uploader__errors {
   margin-left: 10px; }
+/* rgba(0,0,0,0.5) */
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slots,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot,
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slots,
@@ -1736,7 +1741,7 @@ li.fz-step-title {
     width: 100%; }
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img,
   .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] .fz-upload-slot__preview-grp button.fz-upload-slot__rm-img {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #808080;
     border: unset;
     border-radius: 50%;
     bottom: 10px;
@@ -1931,17 +1936,16 @@ input[type=number].fz-input {
   font-size: 14px;
   padding: 11px; }
   input[type=number].fz-input:focus {
-    border: solid 1px #9cc3c0; }
+    border: solid 1px #95cbc7; }
 /* rgba(0, 0, 0, 0.1) */
 /* rgba(0,0,0,0.8) */
-/* rgba(12, 135, 128, 0.5) */
 .fz-input-grp[data-fz-input-grp-variant="number__stepped"] {
   border: 1px solid #e6e6e6;
   border-radius: 2px;
   position: relative;
   overflow: hidden; }
   .fz-input-grp[data-fz-input-grp-variant="number__stepped"]:focus-within {
-    border: solid 1px #9cc3c0; }
+    border: solid 1px #95cbc7; }
   .fz-input-grp[data-fz-input-grp-variant="number__stepped"] input[type=number].fz-input {
     border: none;
     box-sizing: border-box;
@@ -2028,9 +2032,8 @@ textarea.fz-input {
   padding: 11px; }
   input[type=text].fz-input:focus,
   textarea.fz-input:focus {
-    border: solid 1px #9cc3c0;
+    border: solid 1px #95cbc7;
     outline: 0; }
-/* rgba(12, 135, 128, 0.5) */
 /* rgba(12, 135, 128, 0.5) */
 select.fz-input {
   -webkit-appearance: none;
@@ -2046,8 +2049,8 @@ select.fz-input {
   background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
   background-repeat: no-repeat; }
   select.fz-input:focus {
-    background-image: linear-gradient(45deg, transparent 50%, #fafafa 50%), linear-gradient(135deg, #fafafa 50%, transparent 50%), linear-gradient(to right, #9cc3c0, #9cc3c0);
-    border: solid 1px #9cc3c0;
+    background-image: linear-gradient(45deg, transparent 50%, #fafafa 50%), linear-gradient(135deg, #fafafa 50%, transparent 50%), linear-gradient(to right, #95cbc7, #95cbc7);
+    border: solid 1px #95cbc7;
     outline: 0; }
   select.fz-input option {
     line-height: 1.1; }

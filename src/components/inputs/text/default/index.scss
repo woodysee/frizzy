@@ -1,8 +1,9 @@
 $colour--mercury: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
-$colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+// $colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+$colour--airfrov-morning-glory: #95cbc7; /* rgba(12, 135, 128, 0.5) */
 
 $input-border-colour: $colour--mercury;
-$input-border-colour--focus: $colour--shadow-green;
+$input-border-colour--focus: $colour--airfrov-morning-glory;
 
 input[type=text].fz-input,
 textarea.fz-input {

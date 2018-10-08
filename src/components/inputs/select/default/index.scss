@@ -1,11 +1,12 @@
 $colour--alabaster: #fafafa;
 $colour--silver-chalice: #b0b0b0;
 $colour--mercury: #e5e5e5;
-$colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+// $colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+$colour--airfrov-morning-glory: #95cbc7;
 $colour--airfrov-teal: #65beb9; /* rgba(12, 135, 128, 0.5) */
 
 $select-border-colour: $colour--mercury;
-$select-border-colour--focus: $colour--shadow-green;
+$select-border-colour--focus: $colour--airfrov-morning-glory;
 
 $caret-colour--triangle-left: $colour--silver-chalice;
 $caret-colour--triangle-right: $colour--silver-chalice;
@@ -16,8 +17,8 @@ $caret-colour--triangle-right--focus: $colour--alabaster;
 $caret-backing-colour--left-pole: $colour--alabaster;
 $caret-backing-colour--right-pole: $colour--alabaster;
 
-$caret-backing-colour--left-pole--focus: $colour--shadow-green;
-$caret-backing-colour--right-pole--focus: $colour--shadow-green;
+$caret-backing-colour--left-pole--focus: $colour--airfrov-morning-glory;
+$caret-backing-colour--right-pole--focus: $colour--airfrov-morning-glory;
 
 select.fz-input {
   -webkit-appearance: none;

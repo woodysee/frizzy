@@ -974,13 +974,6 @@ li.fz-step-title {
   /* aligns horizontally */
   margin: 0 auto;
   text-align: center; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio {
-    display: none; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner {
-    background: #ffffff;
-    border-color: #5cb85c; }
-  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner:after {
-    transform: scale(0.7); }
   .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-label {
     display: -webkit-flex;
     display: -webkit-box;
@@ -1041,6 +1034,20 @@ li.fz-step-title {
     transition: .2s; }
   .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio-inner:active:before {
     background: rgba(143, 142, 143, 0.2); }
+  .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio {
+    display: none; }
+    .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio[disabled] + .fz-radio-inner {
+      border-color: #b0b0b0; }
+    .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner {
+      background: #ffffff;
+      border-color: #5cb85c; }
+      .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked + .fz-radio-inner:after {
+        transform: scale(0.7); }
+    .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked[disabled] + .fz-radio-inner {
+      background: #ffffff;
+      border-color: #b0b0b0; }
+      .fz-radio-wrapper[data-fz-radio-type="classic"] .fz-radio:checked[disabled] + .fz-radio-inner:after {
+        background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%23b0b0b0" cx="50.5" cy="50.5" r="50"/></svg>') center center no-repeat; }
 
 .fz-content-wrapper .fz-radio-wrapper[data-fz-radio-type="classic"]:nth-child(2) {
   margin-left: 0px; }
@@ -1886,12 +1893,15 @@ li.fz-step-title {
       border-color: #5cb85c; }
     .fz-checkbox-wrapper .fz-checkbox:checked + .fz-checkbox-tick:after {
       transform: scale(0.9); }
+    .fz-checkbox-wrapper .fz-checkbox:checked[disabled] + .fz-checkbox-tick {
+      background: #b0b0b0;
+      border-color: #b0b0b0; }
   .fz-checkbox-wrapper .fz-checkbox-tick {
     display: block;
     box-sizing: border-box;
     width: 25px;
     height: 25px;
-    background: #FFF;
+    background: #ffffff;
     margin: 12.5px 0;
     border: 2.5px solid #b0b0b0;
     border-radius: 10%;
@@ -1929,7 +1939,7 @@ li.fz-step-title {
 .fz-content-wrapper .fz-checkbox-tick:before {
   z-index: 0; }
 /* rgba(0, 0, 0, 0.1) */
-/* rgba(12, 135, 128, 0.5) */
+/* rgba(0, 0, 0, 0.4) */
 input[type=number].fz-input {
   border-radius: 2px;
   border: solid 1px #e6e6e6;
@@ -1937,8 +1947,11 @@ input[type=number].fz-input {
   padding: 11px; }
   input[type=number].fz-input:focus {
     border: solid 1px #95cbc7; }
+  input[type=number].fz-input[disabled] {
+    color: #999999; }
 /* rgba(0, 0, 0, 0.1) */
 /* rgba(0,0,0,0.8) */
+/* rgba(0, 0, 0, 0.4) */
 .fz-input-grp[data-fz-input-grp-variant="number__stepped"] {
   border: 1px solid #e6e6e6;
   border-radius: 2px;
@@ -1954,6 +1967,8 @@ input[type=number].fz-input {
     outline: 0;
     padding: 11px 15px 11px 11px;
     width: 100%; }
+    .fz-input-grp[data-fz-input-grp-variant="number__stepped"] input[type=number].fz-input[disabled] {
+      color: #999999; }
   .fz-input-grp[data-fz-input-grp-variant="number__stepped"] .fz-input-aid {
     border-left: solid 1px #e6e6e6;
     border-bottom-right-radius: 2px;
@@ -2022,7 +2037,7 @@ input[type=number].fz-input {
     bottom: 0;
     top: auto; }
 /* rgba(0, 0, 0, 0.1) */
-/* rgba(12, 135, 128, 0.5) */
+/* rgba(0, 0, 0, 0.4) */
 input[type=text].fz-input,
 textarea.fz-input {
   -webkit-appearance: none;
@@ -2034,7 +2049,10 @@ textarea.fz-input {
   textarea.fz-input:focus {
     border: solid 1px #95cbc7;
     outline: 0; }
-/* rgba(12, 135, 128, 0.5) */
+  input[type=text].fz-input[disabled],
+  textarea.fz-input[disabled] {
+    color: #999999; }
+/* rgba(0, 0, 0, 0.4) */
 select.fz-input {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2054,3 +2072,5 @@ select.fz-input {
     outline: 0; }
   select.fz-input option {
     line-height: 1.1; }
+  select.fz-input[disabled] {
+    color: #999999; }

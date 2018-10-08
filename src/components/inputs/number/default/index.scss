@@ -1,9 +1,11 @@
 $colour--mercury: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
 // $colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
-$colour--airfrov-morning-glory: #95cbc7; /* rgba(12, 135, 128, 0.5) */
+$colour--airfrov-morning-glory: #95cbc7;
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
 
 $input-border-colour: $colour--mercury;
 $input-border-colour--focus: $colour--airfrov-morning-glory;
+$input-text-colour--disabled: $colour--gray60;
 
 input[type=number].fz-input {
   border-radius: 2px;
@@ -13,6 +15,10 @@ input[type=number].fz-input {
   
   &:focus {
     border: solid 1px $input-border-colour--focus;
+  }
+  
+  &[disabled] {
+    color: $input-text-colour--disabled;
   }
   
 }

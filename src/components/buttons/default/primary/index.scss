@@ -1,12 +1,15 @@
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
+
 $primary-colour: #65beb9;
 $primary-colour--light: #77ccc8;
 $primary-colour--dark: #52afa9;
 $primary-colour--faded: #f1f8f8;
+$primary-colour--disabled: $colour--gray60;
 $white: #ffffff;
 
 $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
-$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+$anchorPaddingTop: ($minButtonWidth / 10);
 
 button.fz-btn--pri, a.fz-btn--pri,
 button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"],
@@ -35,6 +38,12 @@ button.fz-btn[data-fz-btn-variant="pri"], a.fz-btn[data-fz-btn-variant="pri"] {
     background-color: $primary-colour--dark;
     border-color: $primary-colour--dark;
   }
+  
+  &[disabled] {
+    background-color: $primary-colour--disabled;
+    border: solid 1px $primary-colour--disabled;
+  }
+  
 }
 
 button.fz-btn[data-fz-btn-variant="pri--alt"], a.fz-btn[data-fz-btn-variant="pri--alt"] {
@@ -49,6 +58,12 @@ button.fz-btn[data-fz-btn-variant="pri--alt"], a.fz-btn[data-fz-btn-variant="pri
     background-color: $primary-colour;
     color: $white;
   }
+  
+  &[disabled] {
+    border: solid 1px $primary-colour--disabled;
+    color: $primary-colour--disabled;
+  }
+  
 }
 
 button.fz-btn--pri,

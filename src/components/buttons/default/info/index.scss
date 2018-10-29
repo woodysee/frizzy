@@ -1,11 +1,14 @@
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
+
 $primary-colour--default: #337ab7;
 $primary-colour--light: #4099e5;
 $primary-colour--dark: #24557f;
 $primary-colour--faded: #edf2f8;
+$primary-colour--disabled: $colour--gray60;
 $white: #ffffff;
 $minButtonWidth: 100px;
 $buttonPaddingTop: $minButtonWidth / 10;
-$anchorPaddingTop: ($minButtonWidth / 10) - 1;
+$anchorPaddingTop: ($minButtonWidth / 10);
 
 button.fz-btn--info, a.fz-btn--info,
 button.fz-btn[data-fz-btn-variant="info"], a.fz-btn[data-fz-btn-variant="info"],
@@ -34,6 +37,11 @@ button.fz-btn[data-fz-btn-variant="info"], a.fz-btn[data-fz-btn-variant="info"] 
     border: solid 1px $primary-colour--dark;
     color: $white;
   }
+  
+  &[disabled] {
+    background-color: $primary-colour--disabled;
+    border: solid 1px $primary-colour--disabled;
+  }
 }
 
 button.fz-btn--info, a.fz-btn--info,
@@ -49,6 +57,12 @@ button.fz-btn[data-fz-btn-variant="info--alt"], a.fz-btn[data-fz-btn-variant="in
     background-color: $primary-colour--default;
     color: $white;
   }
+  
+  &[disabled] {
+    border: solid 1px $primary-colour--disabled;
+    color: $primary-colour--disabled;
+  }
+  
 }
 
 button.fz-btn--info,

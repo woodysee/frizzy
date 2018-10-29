@@ -1,4 +1,7 @@
 // Add all components to be compiled here
+import steppedNumberInput from './components/inputs/number/stepped';
+
+import basicCheckboxInput from './components/inputs/checkbox/basic';
 import bookmarkCheckboxInput from './components/inputs/checkbox/bookmark';
 
 import defaultImagesFileInput from './components/inputs/file/images/squared/default';
@@ -10,11 +13,11 @@ import tickedRadioInput from './components/inputs/radio/ticked';
 
 import multiStepFormLayout from './components/layouts/forms/multistep';
 
-import noticeAlertBanner from './components/banners/alerts/notice';
-import warningAlertBanner from './components/banners/alerts/warning';
-
 // Initialise each imported component on page load (optional, only if there is JS)
 
+steppedNumberInput();
+
+basicCheckboxInput();
 bookmarkCheckboxInput();
 
 defaultImagesFileInput();
@@ -25,6 +28,3 @@ classicRadioInput();
 tickedRadioInput();
 
 multiStepFormLayout();
-
-noticeAlertBanner();
-warningAlertBanner();

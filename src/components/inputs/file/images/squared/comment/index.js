@@ -123,8 +123,10 @@ export default function commentBoxWithSquaredImageInput () {
         
       }
       
-      // console.log("Expanding styles of preview image size...");
       let previewImageSize = 200;
+      if (uploaderEl.dataset.fzPreviewImgSize && typeof parseFloat(uploaderEl.dataset.fzPreviewImgSize) === 'number' && parseFloat(uploaderEl.dataset.fzPreviewImgSize) > 0) {
+        previewImageSize = parseFloat(uploaderEl.dataset.fzPreviewImgSize);
+      }
       uploadSlotEl.style.height = uploadSlotEl.style.width = `${previewImageSize}px`;
       uploadSlotEl.style.marginRight = uploadSlotEl.style.marginLeft = `${previewImageSize * 0.05}px`;
       

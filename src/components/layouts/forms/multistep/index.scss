@@ -9,6 +9,7 @@ $stepsContentWidth: $viewportWidth / 2 + $pageContentLeftPadding;
 $airfrovTeal: #65beb9;
 $darkerTeal: #0c8780;
 $white: #ffffff;
+$colour--grey: #808080; /* rgba(0,0,0,0.5) */
 $stepNrDiscDiameter: 21px;
 
 $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3"><g><polygon style="fill:%23ffffff;" points="114.63 199.5 94.83 219.3 0 124.47 19.8 104.67 94.82 179.68 94.82 179.68 275.5 -1 295.3 18.8 114.61 199.48 114.63 199.5"/></g></svg>';
@@ -318,7 +319,7 @@ li.fz-step-title {
   
   .fz-step-nr-disc {
     border: solid 1px #b1afaf;
-    color: rgba(0, 0, 0, 0.5);
+    color: $colour--grey;
   }
   
   .fz-step-nr {
@@ -366,7 +367,7 @@ li.fz-step-title {
   }
   
   .fz-step-title__deck {
-    color: rgba(0, 0, 0, 0.5);
+    color: $colour--grey;
     font-size: 11px;
     font-weight: 500;
     margin-top: 5px;

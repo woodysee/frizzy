@@ -8,6 +8,9 @@ $trash-can-icon: '<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/
 
 $slot-dimension: 200px;
 
+// $colour--grey: #808080; /* rgba(0,0,0,0.5) */
+$colour--transparent-black: rgba(0,0,0,0.5); /* #808080 */
+
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__default"],
 .fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"] {
   .fz-upload-slots,
@@ -110,7 +113,7 @@ $slot-dimension: 200px;
     }
     
     button.fz-upload-slot__rm-img {
-      background-color: rgba(0,0,0,0.5);
+      background-color: $colour--transparent-black;
       border: unset;
       border-radius: 50%;
       bottom: 10px;

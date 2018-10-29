@@ -1,0 +1,78 @@
+$colour--alabaster: #fafafa;
+$colour--silver-chalice: #b0b0b0;
+$colour--mercury: #e5e5e5;
+// $colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+$colour--airfrov-morning-glory: #95cbc7;
+$colour--airfrov-teal: #65beb9;
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
+
+$select-border-colour: $colour--mercury;
+$select-border-colour--focus: $colour--airfrov-morning-glory;
+
+$caret-colour--triangle-left: $colour--silver-chalice;
+$caret-colour--triangle-right: $colour--silver-chalice;
+
+$caret-colour--triangle-left--focus: $colour--alabaster;
+$caret-colour--triangle-right--focus: $colour--alabaster;
+
+$caret-backing-colour--left-pole: $colour--alabaster;
+$caret-backing-colour--right-pole: $colour--alabaster;
+
+$caret-backing-colour--left-pole--focus: $colour--airfrov-morning-glory;
+$caret-backing-colour--right-pole--focus: $colour--airfrov-morning-glory;
+
+$disabled-text-colour: $colour--gray60;
+
+select.fz-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: solid 1px $select-border-colour;
+  font-size: 14px;
+  padding-left: 11px;
+  height: 36px;
+  
+  // Caret suffix styles
+  background-image:
+    linear-gradient(45deg, transparent 50%, $caret-colour--triangle-left 50%),
+    linear-gradient(135deg, $caret-colour--triangle-right 50%, transparent 50%),
+    linear-gradient(to right, $caret-backing-colour--left-pole, $caret-backing-colour--right-pole);
+  background-position:
+    calc(100% - 17px) calc(1em + 2px),
+    calc(100% - 12px) calc(1em + 2px),
+    100% 0;
+  background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+  background-repeat: no-repeat;
+  
+  &:focus {
+    // Caret suffix styles when dropdown is open
+    background-image:
+      linear-gradient(45deg, transparent 50%, $caret-colour--triangle-left--focus 50%),
+      linear-gradient(135deg, $caret-colour--triangle-left--focus 50%, transparent 50%),
+      linear-gradient(to right, $caret-backing-colour--left-pole--focus, $caret-backing-colour--right-pole--focus);
+    // background-position:
+    //   calc(100% - 17px) 1em,
+    //   calc(100% - 12px) 1em,
+    //   100% 0;
+    // background-size:
+    //   5px 5px,
+    //   5px 5px,
+    //   2.5em 2.5em;
+    // background-repeat: no-repeat;
+    border: solid 1px $select-border-colour--focus;
+    outline: 0;
+  }
+  
+  option {
+    line-height: 1.1;
+  }
+  
+  &[disabled] {
+    color: $disabled-text-colour;
+  }
+  
+}

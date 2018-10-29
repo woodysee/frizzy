@@ -6,6 +6,8 @@ Reusable UI component library for Airfrov web.
 
 `npm install` installs all vendor packages needed inside `./node_modules`.
 
+Optionally, if you are developing and maintaining frizzy as a dependency manually, you can set a target destination for the distribution files to be copied into by `cp .env.example .env` and setting the values respectively. `npm run build` would also copy it into your specified target destination.
+
 ## Adding a new component
 
 - Create a new folder inside `./src/components`, e.g. `./src/components/someButton`.
@@ -52,6 +54,43 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ## Components
 
 ### Inputs
+
+#### Text
+
+```html
+
+<input type="text" name="something" class="fz-input" value="" />
+
+```
+
+#### Textarea
+
+```html
+
+<textarea class="fz-input" maxlength="500" name="itemDescription" placeholder="Description here" value=""></textarea>
+
+```
+#### Number
+
+##### Default
+
+```html
+
+<input type="number" name="total" class="fz-input" value="" step="0.01" min="1" max="1000" />
+
+```
+
+##### Stepped
+
+```html
+
+<div class="fz-input-grp" data-fz-input-grp-variant="number__stepped">
+  <input class="fz-input" type="number" pattern="\d*" step="1" min="1" max="1000" name="quantity" placeholder="Quantity" value="0" />
+  <span class="fz-input-aid" data-fz-input-aid-variant="chevron__up"></span>
+  <span class="fz-input-aid" data-fz-input-aid-variant="chevron__down"></span>
+</div>
+
+```
 
 #### Binary Inline Radios
 
@@ -237,6 +276,8 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 
 #### Labelled Checkbox
 
+Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25px**. Since `/frizzy.js` is only loaded once, changing this data attribute **after** the page is loaded will not change the checkbox size. The label font size will also be affected.
+
 ```html
 
 <!-- With label -->
@@ -254,6 +295,17 @@ Declaring `data-fz-radio-size` is optional. The default radio size is **25px**. 
 <div class="fz-checkbox-wrapper">
 	<input class="fz-checkbox" id="business-logic-name-2" type="checkbox" />
 	<label class="fz-checkbox-tick" for="business-logic-name-2">
+		<!-- Tick element -->
+	</label>
+	<div class="fz-checkbox-label">
+		With label (right)
+	</div>
+</div>
+
+<!-- Custom checkbox size -->
+<div class="fz-checkbox-wrapper">
+	<input class="fz-checkbox" data-fz-checkbox-size="16px" id="business-logic-name-3" type="checkbox" />
+	<label class="fz-checkbox-tick" for="business-logic-name-3">
 		<!-- Tick element -->
 	</label>
 	<div class="fz-checkbox-label">
@@ -322,6 +374,9 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
 	<li>
 		<code>data-fz-rm-existing-file-cb="removeExistingFileCb"</code> - <b>Optional.</b> Where <code>removeExistingFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an existing image declared by the user within <code>initialiseExistingFilesDefinedByUser</code>.
 	</li>
+	<li>
+    <code>data-fz-rm-file-cb="removeFileCb"</code> - <b>Optional.</b> Where <code>removeFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an uploaded image on the client meant for upload.
+  </li>
 </ul>
 
 ```js
@@ -364,16 +419,23 @@ function initialiseExistingFilesDefinedByUser (uploader) {
 }
 
 function removeExistingFileCb (uploader) {
+  // Existing files only
   console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
   console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
   console.log(uploader.slotEl.querySelector("img").dataset.fzExistingImageId); // Existing image ID
+}
+
+function removeFileCb (uploader) {
+  // Uploaded files + existing files
+  console.log(uploader.el); // the parent uploader element where this function is declared in the element's data attribute, i.e. (.fz-uploader)
+  console.log(uploader.slotEl); // the slot element where this function is declared in the element's data attribute
 }
 ```
 
 ##### Default
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb" data-fz-rm-file-cb="removeFileCb">
   <div class="fz-upload-slots">
     <!-- Below: Upload slot 1 -->
     <div class="fz-upload-slot">
@@ -418,7 +480,7 @@ function removeExistingFileCb (uploader) {
 ###### If there are existing images...
 
 ```html
-<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb">
+<div class="fz-uploader" data-fz-uploader-file-type="image" data-fz-uploader-variant="squared__default" data-fz-total-size-limit="8" data-fz-file-size-limit="2" data-fz-max-upload-slots="3" data-fz-file-size-limit-cb="userDefinedCallbackAfterUploadForFileSize" data-fz-total-size-limit-cb="userDefinedCallbackAfterUploadForTotalSize" data-fz-init-existing-files="initialiseExistingFilesDefinedByUser" data-fz-rm-existing-file-cb="removeExistingFileCb" data-fz-rm-file-cb="removeFileCb">
   <div class="fz-upload-slots">
     <!-- Below: This upload slot will be used as a reference to clone when a new slot is populated if .data-fz-upload-slots is specified. -->
     <!-- Below: Upload slot 1 -->
@@ -519,6 +581,10 @@ Captions per each squared image.
       <code>data-fz-comment-txt-inner-html="Upload image"</code> - 
       Required if <code>data-fz-comment-img-inner-html</code> is declared. Inner HTML for the text shown if an image is removed from preview.
     </li>
+		<li>
+			<code>data-data-fz-preview-img-size="200"</code> - 
+			Optional. Sets the preview size of preview image in pixels. Default is 200px;
+		</li>
   </ul>
   <div class="fz-comment-grp">
     <textarea name="foobar" rows="3" cols="30" placeholder="Enter text here..."></textarea>

@@ -33,6 +33,7 @@ function detectRemovalOfUploadedImage (evt) {
       '</button>'
     );
   } else {
+    
     previewImgGrpEl.innerHTML = (
       '<div class="fz-upload-slot__preview-wrapper">'+
         `<img src="#" alt="Image Preview" />`+
@@ -41,6 +42,7 @@ function detectRemovalOfUploadedImage (evt) {
         '<div class="fz-upload-slot__rm-img__icon"></div>'+
       '</button>'
     );
+    
   }
   
   // console.log("If applicable, dynamically removing extra image slot...");
@@ -55,6 +57,19 @@ function detectRemovalOfUploadedImage (evt) {
     removeImageUploadSlot(uploaderEl, slotEl);
     uploaderEl.addEventListener('change', detectChangesOfUploadedImages);
   }
+  
+  if (typeof existingFilesInitialiser === 'undefined' || typeof window[existingFilesInitialiser] !== 'function' || typeof fzPreviousExistingImgId === "undefined") {
+    
+    const removeFileCb = uploaderEl.dataset.fzRmFileCb;
+    if (typeof removeFileCb !== 'undefined' && typeof window[removeFileCb] === 'function') {
+      window[removeFileCb]({
+        el: uploaderEl,
+        slotEl: slotEl
+      });
+    }
+    
+  }
+  
 }
 
 function detectChangesOfUploadedImages (evt) {
@@ -64,11 +79,7 @@ function detectChangesOfUploadedImages (evt) {
   const previewWrapperEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper');
   const previewImageEl = uploadSlotEl.querySelector('.fz-upload-slot__preview-wrapper img');
   const reader = new FileReader();
-  reader.onload = (whenLoaded) => {
-    const loadedReader = whenLoaded.target;
-    previewGroupEl.style.display = "block";
-    previewImageEl.src = loadedReader.result;
-    // console.log("In order to set a unidirectional scroll, we scale down the smaller side to fit the appropriate wrapper dimension, which is...");
+  reader.onload = (progressEvent) => {
     
     if (!fileSizeIsWithinLimit(uploaderEl, evt.target.files[0])) {
       // console.warn("...this file exceeded declared file size limit.");
@@ -90,30 +101,66 @@ function detectChangesOfUploadedImages (evt) {
       return;
     }
     
-    const previewImage = new Image();
-    previewImage.src = loadedReader.result;
+    const loadedReader = progressEvent.target;
+    previewGroupEl.style.display = "block";
+    previewImageEl.src = loadedReader.result;
     
-    previewImage.onload = (whenLoaded) => {
-      
-      switch (true) {
-        case previewImage.width > previewImage.height:
-          // previewImageEl.style.width = "";
-          previewImageEl.style.removeProperty("width");
-          previewImageEl.style.height = "100%";
-          break;
-        case previewImage.width < previewImage.height:
-          // previewImageEl.style.height = "";
-          previewImageEl.style.removeProperty("height");
-          previewImageEl.style.width = "100%";
-          break;
-        default:
-          previewImageEl.style.removeProperty("width");
-          previewImageEl.style.height = "100%";
+    const adjustPreviewImageAspect = (params) => {
+      const imageEl = params.previewImageEl;
+      const wrapperEl = params.previewWrapperEl;
+      const previewImage = new Image();
+      previewImage.src = loadedReader.result;
+      previewImage.onload = (progressEvent) => {
+        // console.log("In order to see the image entirely, we scale down the larger side to fit the appropriate wrapper dimension wholly within the preview...");
+        switch (true) {
+          case previewImage.width > previewImage.height:
+            // console.log("Need to center the image to be vertically aligned...");
+            imageEl.style.width = "100%";
+            const imgHeight = previewImage.height;
+            const imgWidth = previewImage.width;
+            let wrapperHeight = wrapperEl.getBoundingClientRect().height;
+            if (wrapperEl.getBoundingClientRect().height === 0 && wrapperEl.style.height !== "") {
+              // console.log("If auxiliary preview wrapper element is not the same as the auxiliary element, centreing have to be handled by wrapper, thus not capable of calulating height using getBoundingClientRect and will use wrapperEl instead.");
+              wrapperHeight = parseFloat(wrapperEl.style.height.split("px")[0]);
+              // console.warn("Resetting user-defined height for auxiliary wrapper element.");
+              wrapperEl.style.removeProperty("height");
+            }
+            // console.log(`Preview image height: ${previewImage.height} versus upload slot element height: ${wrapperEl.getBoundingClientRect().height}`);
+            if (wrapperHeight !== 0) {
+              const resizedHeight = wrapperHeight * (imgHeight / imgWidth);
+              const positionY = (wrapperHeight - resizedHeight) / 2;
+              // console.log(`(wrapperHeight - resizedHeight) / 2 = (${wrapperHeight} - ${resizedHeight}) / 2 = ${(wrapperHeight - resizedHeight) / 2}`);
+              imageEl.style.marginTop = `${positionY}px`;
+            }
+            break;
+          case previewImage.width < previewImage.height:
+            // previewImageEl.style.height = "";
+            imageEl.style.removeProperty("width");
+            imageEl.style.height = "100%";
+            break;
+          default:
+            imageEl.style.removeProperty("height");
+            imageEl.style.width = "100%";
+        }
+        
+        // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
+        wrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
       }
-      
-      // console.log("Adding backing colour to the wrapper to block placeholder icon and copy if the image has a transparent background...")
-      previewWrapperEl.style.backgroundColor = "rgba(250,250,250,1)";
-      uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
+    }
+    
+    adjustPreviewImageAspect({
+      previewWrapperEl: previewWrapperEl,
+      previewImageEl: previewImageEl
+    });
+    
+    uploadSlotEl.removeAttribute("data-fz-is-empty-file-slot");
+    const cb = uploaderEl.dataset.fzAddFileCb;
+    if (typeof window[cb] !== "undefined" && typeof window[cb] === "function") {
+      window[cb]({
+        el: uploaderEl,
+        slotEl: uploadSlotEl,
+        onloadProgressEvent: progressEvent
+      });
     }
     
   }
@@ -246,7 +293,7 @@ function initialiseExistingImage (uploadSlotEl, datum) {
   const previewImage = new Image();
   previewImage.src = datum.attributes.src;
   
-  previewImage.onload = (whenLoaded) => {
+  previewImage.onload = (progressEvent) => {
     switch (true) {
       case previewImage.width > previewImage.height:
         // previewImageEl.style.width = "";

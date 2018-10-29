@@ -29,6 +29,17 @@ export default function multiStepFormLayout() {
       el = el.parentNode;
     }
     
+    const selectedStepTitle = parentEl.querySelector(`.fz-step-title[data-step-nr='${el.dataset.stepNr}']`);
+    // console.log(selectedStepTitle);
+    // console.log(typeof selectedStepTitle !== "undefined");
+    // console.log(typeof selectedStepTitle.dataset.stepDisabled !== "undefined");
+    // console.log(selectedStepTitle.dataset.stepDisabled === "true");
+    
+    if (typeof selectedStepTitle !== "undefined" && typeof selectedStepTitle.dataset.stepDisabled !== "undefined" && selectedStepTitle.dataset.stepDisabled === "true") {
+      // console.log("Selected step has been disabled by the user...");
+      return;
+    }
+    
     if (typeof selectedBlock !== 'undefined' || typeof selectedStep !== 'undefined') {
       // hide other blocks
       // console.log("selectedStep", selectedStep, "for", selectedBlock);

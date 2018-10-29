@@ -5,11 +5,17 @@ $radio-inner-length: round($length * (9 / 10));
 $radio-inner-length--mobile: round($length--mobile * (9 / 10));
 $border-width: round($length / 15);
 $border-width--mobile: round($length--mobile / 15);
+
 $white: #ffffff;
-$green-hexcode: "5cb85c";
-$green: #5cb85c;
-$radio-inner-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%23'+"5cb85c"+'" cx="50.5" cy="50.5" r="50"/></svg>';
-$clicked-halo-colour: rgba(143,142,143,0.2);
+$colour--fern: #5cb85c;
+$colour--silver-chalice: #b0b0b0;
+$colour--fern--no-hash: "5cb85c";
+$colour--silver-chalice--no-hash: "b0b0b0";
+$colour--buttered-rum--faded: rgba(143,142,143,0.2);
+
+$radio-inner-el: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%23'+$colour--fern--no-hash+'" cx="50.5" cy="50.5" r="50"/></svg>';
+$radio-inner-el--disabled: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101"><circle fill="%23'+$colour--silver-chalice--no-hash+'" cx="50.5" cy="50.5" r="50"/></svg>';
+$clicked-halo-colour: $colour--buttered-rum--faded;
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 /* See https://css-tricks.com/using-svg/ */
   
@@ -26,17 +32,6 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
   justify-content: left; /* aligns horizontally */
   margin: 0 auto;
   text-align: center;
-  
-  .fz-radio {
-    display: none;
-  }
-  .fz-radio:checked + .fz-radio-inner {
-    background: $white;
-    border-color: $green;
-  }
-  .fz-radio:checked + .fz-radio-inner:after {
-    transform: scale(0.7);  
-  }
   
   .fz-radio-label {
     display: -webkit-flex;
@@ -66,7 +61,7 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
     height: $radio-inner-length;
     background: $white;
     margin: ($length / 5);
-    border-color: $green;
+    border-color: $colour--fern;
     border-style: solid;
     border-width: $border-width;
     border-radius: 50%;
@@ -107,6 +102,32 @@ $clicked-halo-colour: rgba(143,142,143,0.2);
   .fz-radio-inner:active:before {
     background: $clicked-halo-colour;
   }
+  
+  .fz-radio {
+    display: none;
+    
+    &[disabled] + .fz-radio-inner {
+      border-color: $colour--silver-chalice;
+    }
+    
+    &:checked + .fz-radio-inner {
+      background: $white;
+      border-color: $colour--fern;
+      &:after {
+        transform: scale(0.7);  
+      }
+    }
+    
+    &:checked[disabled] + .fz-radio-inner {
+      background: $white;
+      border-color: $colour--silver-chalice;
+      &:after {
+        background: url("data:image/svg+xml;charset=UTF-8," + $radio-inner-el--disabled) center center no-repeat;
+      }
+    }
+    
+  }
+  
 }
 
 .fz-content-wrapper {

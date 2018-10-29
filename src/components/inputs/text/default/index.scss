@@ -1,0 +1,27 @@
+$colour--mercury: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
+// $colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+$colour--airfrov-morning-glory: #95cbc7;
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
+
+$input-border-colour: $colour--mercury;
+$input-text-colour--disabled: $colour--gray60;
+$input-border-colour--focus: $colour--airfrov-morning-glory;
+
+input[type=text].fz-input,
+textarea.fz-input {
+  -webkit-appearance: none;
+  border-radius: 2px;
+  border: solid 1px $input-border-colour; 
+  font-size: 14px;
+  padding: 11px;
+  
+  &:focus {
+    border: solid 1px $input-border-colour--focus;
+    outline: 0;
+  }
+  
+  &[disabled] {
+    color: $input-text-colour--disabled;
+  }
+  
+}

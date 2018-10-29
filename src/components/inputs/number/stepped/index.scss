@@ -6,20 +6,27 @@
 
 // NOTE: Problems: Not always pixel perfect! if you hover on a stepper and zoom in closer
 
-$light-grey: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
-$grey: #f5f7fa;
-$faded-black: #333333; /* rgba(0,0,0,0.8) */
-$dark-grey: #999999;
+$colour--mercury: #e6e6e6; /* rgba(0, 0, 0, 0.1) */
+$colour--catskill-white: #f5f7fa;
+$colour--mineshaft: #333333; /* rgba(0,0,0,0.8) */
+$colour--dusty-grey: #999999;
+$colour--shuttle-grey: #606266;
+$colour--airfrov-morning-glory: #95cbc7;
+// $colour--shadow-green: #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+$colour--gray60: #999999; /* rgba(0, 0, 0, 0.4) */
 
 $chevron-el--up: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 7.4"><path class="st0" fill="%23606266" d="M6,2.8L1.7,7.1c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4c0,0,0,0,0,0l4.2-4.2L6,0l1.4,1.4l4.2,4.2c0.4,0.4,0.4,1,0,1.4s-1,0.4-1.4,0L6,2.8z"/></svg>';
 $chevron-el--down: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12 7.4"><path fill="%23606266" d="M5.9,4.6l4.3-4.3c0.4-0.4,1-0.4,1.4,0c0.4,0.4,0.4,1,0,1.4l0,0L7.4,5.9L5.9,7.4L4.5,6L0.3,1.8c-0.4-0.4-0.4-1,0-1.4s1-0.4,1.4,0L5.9,4.6z"/></svg>';
 
 $font-size: 14px;
 
-$border-colour: $light-grey;
-$input-text-colour: $faded-black;
-$stepper-bg-colour: $grey;
-$caret-colour: #606266;
+$border-colour: $colour--mercury;
+$border-colour--focus: $colour--airfrov-morning-glory;
+$border-colour--focus: $colour--airfrov-morning-glory;
+$input-text-colour: $colour--mineshaft;
+$input-text-colour--disabled: $colour--gray60;
+$stepper-bg-colour: $colour--catskill-white;
+$caret-colour: $colour--shuttle-grey;
 
 .fz-input-grp[data-fz-input-grp-variant="number__stepped"] {
   border: 1px solid $border-colour;
@@ -28,7 +35,7 @@ $caret-colour: #606266;
   overflow: hidden;
   
   &:focus-within {
-    border: solid 1px #9cc3c0; /* rgba(12, 135, 128, 0.5) */
+    border: solid 1px $border-colour--focus;
   }
   
   input[type=number].fz-input {
@@ -39,7 +46,11 @@ $caret-colour: #606266;
     outline: 0;
     padding: 11px 15px 11px 11px;
     width: 100%;
+    &[disabled] {
+      color: $input-text-colour--disabled;
+    }
   }
+  
   .fz-input-aid {
     border-left: solid 1px $border-colour;
     border-bottom-right-radius: 2px;
@@ -51,6 +62,11 @@ $caret-colour: #606266;
     right: -1px;
     width: 40px;
     top: 0;
+    
+    &:nth-of-type(2) {
+      border-top: solid 1px $border-colour;
+    }
+    
   }
   .fz-input-aid[data-fz-input-aid-variant="chevron__up"],
   .fz-input-aid[data-fz-input-aid-variant="chevron__down"] {
@@ -97,8 +113,8 @@ $caret-colour: #606266;
       background: $border-colour;
     }
     &:hover:after {
-      border-top-color: $dark-grey;
-      border-bottom-color: $dark-grey;
+      border-top-color: $colour--dusty-grey;
+      border-bottom-color: $colour--dusty-grey;
     }
   }
   

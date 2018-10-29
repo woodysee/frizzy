@@ -8,6 +8,7 @@ Reusable UI component library for Airfrov web.
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
 - Added callback declaration of removal of uploaded / existing image (`data-fz-rm-file-cb`) in multi-image file uploader
 - Major fixes to managing existing images and new image uploads within multiple images upload component.
+- Allow custom image preview size declared as `data-fz-preview-img-size` in `.fz-uploader`
 - Allowed for user declared checkbox size for basic checkbox input as data attribute `data-fz-checkbox-size`
 - Style tweaks to multiple images upload component to suit Airfrov v4
   - Fixed a visual bug on iOS Safari where remove image icon appears smaller due to iOS default user agent styles
@@ -586,6 +587,10 @@ Captions per each squared image.
   <li>
     <code>data-fz-comment-txt-inner-html="Upload image"</code> - 
     Required if <code>data-fz-comment-img-inner-html</code> is declared. Inner HTML for the text shown if an image is removed from preview.
+  </li>
+  <li>
+    <code>data-data-fz-preview-img-size="200"</code> - 
+    Optional. Sets the preview size of preview image in pixels. Default is 200px;
   </li>
 </ul>
 

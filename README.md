@@ -1,6 +1,8 @@
 # Frizzy
 
-Reusable UI component library for Airfrov web.
+Reusable UI component library for web pages.
+
+As this library is still in nascent development, there will be no backward compatibility support to the public until further notice.
 
 ## Initialising repository
 

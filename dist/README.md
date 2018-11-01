@@ -1,8 +1,14 @@
 # Frizzy
 
-Reusable UI component library for Airfrov web.
+Reusable UI component library for web pages.
+
+As this library is still in nascent development, there will be no backward compatibility support to the public until further notice.
 
 ## Updates
+
+### 0.6.1
+- Dependencies update
+- Suitable copywriting for semi-public release
 
 ### 0.6.0
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.

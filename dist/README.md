@@ -2,7 +2,7 @@
 
 Reusable UI component library for web pages.
 
-As this library is still in nascent development, there will be effort to introduce backward compatibility support to the public until further notice.
+As this library is still in nascent development, there will be no backward compatibility support to the public until further notice.
 
 ## Updates
 

@@ -6,13 +6,15 @@ As this library is still in nascent development, there will be no backward compa
 
 ## Updates
 
-### 0.7.0
+### 0.7.0 (WIP)
+- Initialised Frizzy developer's interface
+- Image uploaders will no longer be automatically initialised. Users have to instantiate their type of image uploader (i.e. `DefaultImagesFileInput`, `CaptionedImagesFileInput` or `CommentBoxWithImageFileInput`) first, then calling `init()` via the script themselves. (Documentation on repo and dist README pending)
 
 ### 0.6.1
 - Dependencies update
 - Suitable copywriting for semi-public release
 
-### 0.7.0
+### 0.6.0
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
 - Added callback declaration of removal of uploaded / existing image (`data-fz-rm-file-cb`) in multi-image file uploader
 - Major fixes to managing existing images and new image uploads within multiple images upload component.

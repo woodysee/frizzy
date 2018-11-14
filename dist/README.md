@@ -6,11 +6,13 @@ As this library is still in nascent development, there will be no backward compa
 
 ## Updates
 
+### 0.7.0
+
 ### 0.6.1
 - Dependencies update
 - Suitable copywriting for semi-public release
 
-### 0.6.0
+### 0.7.0
 - Added support for managing existing images and existing image removal callback declaration to co-occupy with upload inputs within multiple images upload component. Read documentation on how to use and manage existing images with new images for this component.
 - Added callback declaration of removal of uploaded / existing image (`data-fz-rm-file-cb`) in multi-image file uploader
 - Major fixes to managing existing images and new image uploads within multiple images upload component.
@@ -68,13 +70,13 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.6.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.7.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your markup here -->
   <!-- Your other scripts that are compatible with Frizzy -->
   <!-- Callback functions used in Frizzy. They MUST BE declared before Frizzy is loaded. -->
-	<script src="/css/frizzy/0.6.0/dist/frizzy.min.js"></script>
+	<script src="/css/frizzy/0.7.0/dist/frizzy.min.js"></script>
   <!-- Your other scripts that may not be compatible with Frizzy -->
 </body>
 ```

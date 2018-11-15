@@ -175,13 +175,23 @@ export default class CommentBoxWithSquaredImageInput {
     this.detectRemovalOfUploadedImage = detectRemovalOfUploadedImage;
     this.detectChangesOfUploadedImages = detectChangesOfUploadedImages;
   }
-  
-  init() {
-    const commentBoxWithSquaredImageInputEls = document.querySelectorAll('.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__comment"]');
-    commentBoxWithSquaredImageInputEls.forEach((slotsEl) => {
-      slotsEl.addEventListener('change', this.detectChangesOfUploadedImages);
-      if (slotsEl.dataset.fzMaxUploadSlots) {
-        this.initialiseImageUploadSlots(slotsEl);
+  init(props) {
+    let selectors = [];
+    if (props && props.els && props.els.length > 0) {
+      selectors = props.els;
+    } else {
+      selectors = ['.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__comment"]'];
+    }
+    let commentBoxWithSquaredImageInputEls;
+    selectors.forEach((selector) => {
+      commentBoxWithSquaredImageInputEls = document.querySelectorAll(selectors);
+      if (commentBoxWithSquaredImageInputEls.length > 0) {
+        commentBoxWithSquaredImageInputEls.forEach((slotsEl) => {
+          slotsEl.addEventListener('change', this.detectChangesOfUploadedImages);
+          if (slotsEl.dataset.fzMaxUploadSlots) {
+            this.initialiseImageUploadSlots(slotsEl);
+          }
+        });
       }
     });
   }

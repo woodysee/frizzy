@@ -16,7 +16,6 @@ import multiStepFormLayout from './components/layouts/forms/multistep';
 // Initialise each imported component on page load (optional, only if there is JS)
 
 steppedNumberInput();
-
 basicCheckboxInput();
 bookmarkCheckboxInput();
 
@@ -34,9 +33,17 @@ window.frizzy = {
       }
     }
   }
-}
+};
 
 classicRadioInput();
 tickedRadioInput();
-
 multiStepFormLayout();
+
+(() => {
+  const allDefaultImagesFileInputs = new DefaultImagesFileInput();
+  allDefaultImagesFileInputs.init();
+  const allCaptionedImagesFileInputs = new CaptionedImagesFileInput();
+  allCaptionedImagesFileInputs.init();
+  const allCommentBoxWithImageFileInputs = new CommentBoxWithImageFileInput();
+  allCommentBoxWithImageFileInputs.init();
+})();

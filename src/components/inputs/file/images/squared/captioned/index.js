@@ -20,12 +20,23 @@ export default class CaptionedImagesFileInput {
     this.addImageUploadSlot = addImageUploadSlot;
     this.removeImageUploadSlot = removeImageUploadSlot;
   }
-  init() {
-    const captionedImageUploadSlotsEls = document.querySelectorAll('.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"]');
-    captionedImageUploadSlotsEls.forEach((slotsEl) => {
-      slotsEl.addEventListener('change', this.detectChangesOfUploadedImages);
-      if (slotsEl.dataset.fzMaxUploadSlots) {
-        this.initialiseImageUploadSlots(slotsEl);
+  init(props) {
+    let selectors = [];
+    if (props && props.els && props.els.length > 0) {
+      selectors = props.els;
+    } else {
+      selectors = ['.fz-uploader[data-fz-uploader-file-type="image"][data-fz-uploader-variant="squared__captioned"]'];
+    }
+    let captionedImageUploadSlotsEls;
+    selectors.forEach((selector) => {
+      captionedImageUploadSlotsEls = document.querySelectorAll(selectors);
+      if (captionedImageUploadSlotsEls.length > 0) {
+        captionedImageUploadSlotsEls.forEach((slotsEl) => {
+          slotsEl.addEventListener('change', this.detectChangesOfUploadedImages);
+          if (slotsEl.dataset.fzMaxUploadSlots) {
+            this.initialiseImageUploadSlots(slotsEl);
+          }
+        });
       }
     });
   }

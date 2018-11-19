@@ -1,7 +1,7 @@
 // Add all components to be compiled here
-import steppedNumberInput from './components/inputs/number/stepped';
+import SteppedNumberInput from './components/inputs/number/stepped';
 
-import basicCheckboxInput from './components/inputs/checkbox/basic';
+import BasicCheckboxInput from './components/inputs/checkbox/basic';
 import bookmarkCheckboxInput from './components/inputs/checkbox/bookmark';
 
 import DefaultImagesFileInput from './components/inputs/file/images/squared/default';
@@ -15,13 +15,14 @@ import multiStepFormLayout from './components/layouts/forms/multistep';
 
 // Initialise each imported component on page load (optional, only if there is JS)
 
-steppedNumberInput();
-basicCheckboxInput();
 bookmarkCheckboxInput();
 
 window.frizzy = {
-  elements: {
+  components: {
     inputs: {
+      checkbox: {
+        basic: BasicCheckboxInput
+      },
       file: {
         image: {
           squared: {
@@ -30,6 +31,9 @@ window.frizzy = {
             comment: CommentBoxWithImageFileInput
           }
         }
+      },
+      number: {
+        stepped: SteppedNumberInput
       }
     }
   }
@@ -40,6 +44,10 @@ tickedRadioInput();
 multiStepFormLayout();
 
 (() => {
+  const allSteppedNumberInputs = new SteppedNumberInput();
+  allSteppedNumberInputs.init();
+  const allBasicCheckboxInputs = new BasicCheckboxInput();
+  allBasicCheckboxInputs.init();
   const allDefaultImagesFileInputs = new DefaultImagesFileInput();
   allDefaultImagesFileInputs.init();
   const allCaptionedImagesFileInputs = new CaptionedImagesFileInput();

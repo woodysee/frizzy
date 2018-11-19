@@ -8,7 +8,8 @@ As this library is still in nascent development, there will be no backward compa
 
 ### 0.7.0 (WIP)
 - Initialised Frizzy developer's interface
-- Image uploaders will no longer be automatically initialised. Users have to instantiate their type of image uploader (i.e. `DefaultImagesFileInput`, `CaptionedImagesFileInput` or `CommentBoxWithImageFileInput`) first, then calling `init()` via the script themselves. (Documentation on repo and dist README pending)
+- Elements can defer its initialisation by instantiating it later (Documentation WIP)
+- Users can instantiate their type of image uploader (i.e. `DefaultImagesFileInput`, `CaptionedImagesFileInput` or `CommentBoxWithImageFileInput`) first, then calling `init()` via the script themselves. (Documentation on repo and dist README pending)
 
 ### 0.6.1
 - Dependencies update

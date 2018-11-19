@@ -8,8 +8,9 @@ As this library is still in nascent development, there will be no backward compa
 
 ### 0.7.0 (WIP)
 - Initialised Frizzy developer's interface
+  - `frizzy` global object tree available where script is loaded
 - Elements can defer its initialisation by instantiating it later (Documentation WIP)
-- Users can instantiate their type of image uploader (i.e. `DefaultImagesFileInput`, `CaptionedImagesFileInput` or `CommentBoxWithImageFileInput`) first, then calling `init()` via the script themselves. (Documentation on repo and dist README pending)
+- Users can instantiate their type of image uploader (i.e. `new frizzy.components.inputs.file.image.squared.default()`, `new frizzy.components.inputs.file.image.squared.captioned()` or `frizzy.components.inputs.file.image.squared.comment()`) first, then calling `init()` via the script themselves. (Documentation on repo and dist README pending)
 
 ### 0.6.1
 - Dependencies update

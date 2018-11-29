@@ -403,7 +403,7 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
     <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
   <li>
-    <code>data-fz-init-existing-files="initialiseExistingFilesDefinedByUser"</code> - <b>Optional.</b> Where <code>initialiseExistingFilesDefinedByUser</code> is a function that can be declared by the user in the window scope when initialising the uploader to initialise user-defined existing images (usually server-rendered) within the uploader for edit or update.
+    <code>data-fz-init-existing-files="initialiseExistingFilesDefinedByUser"</code> - <b>Optional.</b> Where <code>initialiseExistingFilesDefinedByUser</code> is a function that can be declared by the user in the window scope when initialising the uploader to initialise user-defined existing images (usually server-rendered) within the uploader for edit or update. <code>data-fz-max-upload-slots</code> must also be declared in order to initialise existing images. This function <b>MUST BE</b> defined <b>before</b> declaring frizzy.js, or instantiating and initialising frizzy image file uploader.
   </li>
   <li>
     <code>data-fz-rm-existing-file-cb="removeExistingFileCb"</code> - <b>Optional.</b> Where <code>removeExistingFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an existing image declared by the user within <code>initialiseExistingFilesDefinedByUser</code>.

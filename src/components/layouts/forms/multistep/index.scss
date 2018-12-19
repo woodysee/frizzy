@@ -66,14 +66,15 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
   color: #333333;
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 32px;
   padding-left: $pageTitleLeftPadding;
   text-shadow: none;
 }
 .fz-content-wrapper {
   background-color: $white;
   float: left;
-  padding: 20px 0 20px 0;
-  width: $stepsContentWidth;
+  padding: 48px 0 20px 0;
+  width: $stepsContentWidth - $pageContentLeftPadding;
   
   .fz-step-indicator {
     color: $darkerTeal;
@@ -130,11 +131,7 @@ $tealTickEl: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.3 219.3">
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    width: $stepsContentWidth - $pageContentLeftPadding;
-
-    @media only screen and (max-device-width : $min-width-of-sm-devices - 1px) {
-      width: 100%;
-    }
+    width: 100%;
     
     .fz-form-grp__name,
     .fz-form-grp__input {
@@ -277,7 +274,7 @@ li.fz-step-title {
   display: -webkit-flex;
   display: flex;
   font-size: 19px;
-  padding: 10px 10px $pageContentLeftPadding $pageTitleLeftPadding;
+  padding: 20px 20px 20px $pageTitleLeftPadding;
   
   &:first-child {
     background-color: $white;
@@ -368,9 +365,10 @@ li.fz-step-title {
   
   .fz-step-title__deck {
     color: $colour--grey;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
-    margin-top: 5px;
+    line-height: 1.4em;
+    margin-top: 8px;
   }
   
 }

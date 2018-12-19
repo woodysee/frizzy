@@ -549,14 +549,15 @@ a.fz-btn[data-fz-btn-variant="pri--alt"] {
   color: #333333;
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 32px;
   padding-left: 4.95vw;
   text-shadow: none; }
 
 .fz-content-wrapper {
   background-color: #ffffff;
   float: left;
-  padding: 20px 0 20px 0;
-  width: 54.95vw;
+  padding: 48px 0 20px 0;
+  width: 50vw;
   /* End of .fz-content-wrapper */ }
   .fz-content-wrapper .fz-step-indicator {
     color: #0c8780;
@@ -601,11 +602,7 @@ a.fz-btn[data-fz-btn-variant="pri--alt"] {
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    width: 50vw; }
-    @media only screen and (max-device-width: 767px) {
-      .fz-content-wrapper .fz-form-grp,
-      .fz-content-wrapper .fz-form-grp--multiline {
-        width: 100%; } }
+    width: 100%; }
     .fz-content-wrapper .fz-form-grp .fz-form-grp__name,
     .fz-content-wrapper .fz-form-grp .fz-form-grp__input,
     .fz-content-wrapper .fz-form-grp--multiline .fz-form-grp__name,
@@ -704,7 +701,7 @@ li.fz-step-title {
   display: -webkit-flex;
   display: flex;
   font-size: 19px;
-  padding: 10px 10px 4.95vw 4.95vw; }
+  padding: 20px 20px 20px 4.95vw; }
   li.fz-step-title:first-child {
     background-color: #ffffff; }
   li.fz-step-title:hover {
@@ -770,9 +767,10 @@ li.fz-step-title {
     margin: 0 0 0 0; }
   li.fz-step-title .fz-step-title__deck {
     color: #808080;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 500;
-    margin-top: 5px; }
+    line-height: 1.4em;
+    margin-top: 8px; }
 /* Ticked radio element */
 /* %23 is used instead of # because the character is reserved as a fragment identifier insude the URI */
 /* See https://css-tricks.com/using-svg/ */

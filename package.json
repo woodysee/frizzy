@@ -1,6 +1,6 @@
 {
   "name": "frizzy",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Reusable UI component library for web pages",
   "private": true,
   "dependencies": {

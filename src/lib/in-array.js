@@ -1,3 +1,4 @@
+// Some older browsers (e.g. Samsung Browser on Android) do not seem to have Element.classList.contains function
 export default function inArray (needle, haystack) {
   
   function arrayCompare (a1, a2) {

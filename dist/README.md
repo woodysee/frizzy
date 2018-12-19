@@ -6,6 +6,12 @@ As this library is still in nascent development, there will be no backward compa
 
 ## Updates
 
+### 0.7.0 (WIP)
+- Initialised Frizzy developer's interface
+  - `frizzy` global object tree available where script is loaded
+- Elements can defer its initialisation by instantiating it later (Documentation WIP)
+- Users can instantiate their type of image uploader (i.e. `new frizzy.components.inputs.file.image.squared.default()`, `new frizzy.components.inputs.file.image.squared.captioned()` or `frizzy.components.inputs.file.image.squared.comment()`) first, then calling `init()` via the script themselves. (Documentation on repo and dist README pending)
+
 ### 0.6.1
 - Dependencies update
 - Suitable copywriting for semi-public release
@@ -68,13 +74,13 @@ To use the library in the webpage, add the script tag (mandatory) and stylesheet
 ```html
 <head>
 	<!-- Your other stylesheets / scripts / links here -->
-	<link rel="stylesheet" href="/css/frizzy/0.6.0/dist/frizzy.min.css" />
+	<link rel="stylesheet" href="/css/frizzy/0.7.0/dist/frizzy.min.css" />
 </head>
 <body>
 	<!-- Your markup here -->
   <!-- Your other scripts that are compatible with Frizzy -->
   <!-- Callback functions used in Frizzy. They MUST BE declared before Frizzy is loaded. -->
-	<script src="/css/frizzy/0.6.0/dist/frizzy.min.js"></script>
+	<script src="/css/frizzy/0.7.0/dist/frizzy.min.js"></script>
   <!-- Your other scripts that may not be compatible with Frizzy -->
 </body>
 ```
@@ -397,7 +403,7 @@ Declaring `data-fz-checkbox-size` is optional. The default checkbox size is **25
     <b>Optional.</b> Where <code>userDefinedCallbackAfterUploadForTotalSize</code> is a function can be declared by the user in the window scope to be invoked after attempting to set an uploaded file.
   </li>
   <li>
-    <code>data-fz-init-existing-files="initialiseExistingFilesDefinedByUser"</code> - <b>Optional.</b> Where <code>initialiseExistingFilesDefinedByUser</code> is a function that can be declared by the user in the window scope when initialising the uploader to initialise user-defined existing images (usually server-rendered) within the uploader for edit or update.
+    <code>data-fz-init-existing-files="initialiseExistingFilesDefinedByUser"</code> - <b>Optional.</b> Where <code>initialiseExistingFilesDefinedByUser</code> is a function that can be declared by the user in the window scope when initialising the uploader to initialise user-defined existing images (usually server-rendered) within the uploader for edit or update. <code>data-fz-max-upload-slots</code> must also be declared in order to initialise existing images. This function <b>MUST BE</b> defined <b>before</b> declaring frizzy.js, or instantiating and initialising frizzy image file uploader.
   </li>
   <li>
     <code>data-fz-rm-existing-file-cb="removeExistingFileCb"</code> - <b>Optional.</b> Where <code>removeExistingFileCb</code> is a function that can be declared by the user in the window scope to be invoked after removing an existing image declared by the user within <code>initialiseExistingFilesDefinedByUser</code>.
